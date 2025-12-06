@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Compound Interest Calculator – FinanceCalcCenter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Calculate compound interest with annual, monthly, weekly or daily compounding. Free tool to project investment growth and savings over time."
+  />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .container {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #0f172a;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      border: 1px solid #1e293b;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.9rem;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #1e293b;
+      color: #e5e7eb;
+      margin-top: 4px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #22c55e;
+      color: #022c22;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background: #16a34a;
+    }
+
+    .result-box {
+      margin-top: 20px;
+      padding: 20px;
+      background: #0f172a;
+      border-radius: 10px;
+      border: 1px solid #334155;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      color: #22c55e;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Compound Interest Calculator</h1>
+
+    <label>Initial Amount ($)</label>
+    <input type="number" id="principal" value="10000" />
+
+    <label>Monthly Contribution ($)</label>
+    <input type="number" id="contribution" value="0" />
+
+    <label>Annual Interest Rate (%)</label>
+    <input type="number" id="rate" value="6" />
+
+    <label>Years</label>
+    <input type="number" id="years" value="20" />
+
+    <label>Compounding Frequency</label>
+    <select id="frequency">
+      <option value="1">Annually</option>
+      <option value="12">Monthly</option>
+      <option value="52">Weekly</option>
+      <option value="365">Daily</option>
+    </select>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result" class="result-box" style="display:none;"></div>
+
+    <a class="back-link" href="index.html">← Back to home</a>
+  </div>
+
+  <script>
+    function calculate() {
+      let P = parseFloat(document.getElementById("principal").value);
+      let contrib = parseFloat(document.getElementById("contribution").value);
+      let r = parseFloat(document.getElementById("rate").value) / 100;
+      let years = parseFloat(document.getElementById("years").value);
+      let n = parseInt(document.getElementById("frequency").value);
+
+      // Compound interest with contributions
+      let total = P * Math.pow(1 + r / n, n * years);
+
+      for (let i = 1; i <= years * n; i++) {
+        total += contrib * Math.pow(1 + r / n, (years * n - i));
+      }
+
+      let invested = P + contrib * (years * 12);
+      let interestEarned = total - invested;
+
+      document.getElementById("result").style.display = "block";
+      document.getElementById("result").innerHTML = `
+        <h2>Results</h2>
+        <p><strong>Final Balance:</strong> $${total.toFixed(2)}</p>
+        <p><strong>Total Contributions:</strong> $${invested.toFixed(2)}</p>
+        <p><strong>Interest Earned:</strong> $${interestEarned.toFixed(2)}</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
