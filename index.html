@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FinanceCalcCenter – Free Online Financial Calculators</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="FinanceCalcCenter offers free online financial calculators for compound interest, savings, loans, retirement and more. Plan your money with fast, simple tools."
+  />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #020617;
+      --card: #020617;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.14);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #f97373;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(circle at top, #1f2937 0, #020617 45%) fixed,
+        linear-gradient(to bottom, #020617, #020617);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    .wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 3rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 0.9rem;
+      background: radial-gradient(circle at 30% 20%, #22c55e 0, #16a34a 35%, #052e16 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #022c22;
+      font-size: 1.2rem;
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.45);
+    }
+
+    .brand-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-pill {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.85);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-dot {
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .hero {
+      margin-top: 0.75rem;
+      margin-bottom: 2.25rem;
+      display: grid;
+      gap: 1.75rem;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      align-items: center;
+    }
+
+    @media (max-width: 880px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        justify-content: flex-start;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        margin-top: 1.5rem;
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3.1vw, 2.6rem);
+      margin: 0 0 0.4rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(135deg, #22c55e, #a3e635);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      color: var(--muted);
+      max-width: 540px;
+      font-size: 0.98rem;
+    }
+
+    .hero-actions {
+      margin-top: 1.1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: none;
+      padding: 0.65rem 1.55rem;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      box-shadow: 0 14px 35px rgba(34, 197, 94, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-primary:active,
+    .btn-secondary:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      border-radius: 1.35rem;
+      padding: 1.4rem 1.3rem;
+      background: radial-gradient(circle at top left, #052e16 0, #020617 55%);
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-card-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-card-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .metric {
+      padding: 0.5rem 0.6rem;
+      border-radius: 0.75rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-bottom: 0.1rem;
+    }
+
+    .metric-value {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .metric-sub {
+      font-size: 0.7rem;
+      color: var(--muted);
+      opacity: 0.9;
+    }
+
+    .hero-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: #bbf7d0;
+      margin-top: 0.1rem;
+    }
+
+    .section-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.75rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .cards-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .tool-card {
+      border-radius: 1rem;
+      padding: 0.9rem 0.95rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      transition: border-color 0.14s ease, background 0.14s ease,
+        transform 0.12s ease, box-shadow 0.14s ease;
+    }
+
+    .tool-card:hover {
+      border-color: rgba(34, 197, 94, 0.7);
+      background: rgba(15, 23, 42, 0.98);
+      transform: translateY(-1px);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.7);
+    }
+
+    .tool-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .tool-name {
+      font-size: 0.96rem;
+      font-weight: 500;
+    }
+
+    .tool-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .tool-meta {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    main {
+      margin-top: 1.25rem;
+      max-width: 760px;
+    }
+
+    main h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    main p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0.3rem 0;
+    }
+
+    main ul {
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding-left: 1.1rem;
+    }
+
+    main li + li {
+      margin-top: 0.15rem;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="brand">
+        <div class="logo">F</div>
+        <div>
+          <div class="brand-title">FinanceCalcCenter</div>
+          <div class="brand-subtitle">
+            Free online financial calculators &amp; tools
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="nav-pill">
+          <span class="nav-dot"></span>
+          <span>Secure · Ad-supported · No sign-up</span>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1 class="hero-title">
+          Plan your <span class="hero-highlight">money</span> with fast,
+          accurate calculators.
+        </h1>
+        <p class="hero-text">
+          FinanceCalcCenter brings together simple, transparent calculators for
+          savings, investing, loans and retirement. No confusing jargon – just
+          clear numbers to support better financial decisions.
+        </p>
+
+        <div class="hero-actions">
+          <a href="compound-interest-calculator.html">
+            <button class="btn btn-primary" type="button">
+              <span>Open compound interest calculator</span>
+              <span>→</span>
+            </button>
+          </a>
+          <a href="#tools">
+            <button class="btn btn-secondary" type="button">
+              <span>Browse all tools</span>
+            </button>
+          </a>
+        </div>
+        <p class="hero-note">
+          Educational use only · Not financial advice · Results are estimates.
+        </p>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-label">Featured calculator</div>
+        <div class="hero-card-title">Compound Interest</div>
+        <p class="hero-card-text">
+          See how your savings or investments can grow over time when interest
+          is compounded. Explore different rates, time horizons and contribution
+          amounts.
+        </p>
+        <div class="hero-metrics">
+          <div class="metric">
+            <div class="metric-label">Example</div>
+            <div class="metric-value">$10,000 → $32,071</div>
+            <div class="metric-sub">20 yrs · 6% p.a. · monthly</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Interest earned</div>
+            <div class="metric-value">$12,071</div>
+            <div class="metric-sub">on top of principal</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Try yourself</div>
+            <div class="metric-value">Custom scenarios</div>
+            <div class="metric-sub">Change rate, years, deposits</div>
+          </div>
+        </div>
+        <a href="compound-interest-calculator.html" class="hero-card-link">
+          Try the compound interest calculator
+          <span>→</span>
+        </a>
+      </aside>
+    </section>
+
+    <section id="tools">
+      <div class="section-title-row">
+        <div class="section-title">Available & upcoming calculators</div>
+        <div class="section-subtitle">
+          We’re starting with compound interest and will add more tools over time.
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Ready tool -->
+        <a href="compound-interest-calculator.html" class="tool-card">
+          <div class="tool-label">Investing &amp; saving</div>
+          <div class="tool-name">Compound Interest Calculator</div>
+          <div class="tool-desc">
+            Project future value of a lump sum plus regular contributions with
+            different compounding frequencies.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">Live · v1.0</span>
+            <span>Typical use: long-term saving &amp; retirement</span>
+          </div>
+        </a>
+
+        <!-- Placeholder tools you can build later -->
+        <div class="tool-card">
+          <div class="tool-label">Investing</div>
+          <div class="tool-name">Investment Growth Calculator</div>
+          <div class="tool-desc">
+            Estimate how a recurring investment could grow over time at a chosen
+            rate of return.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">Planned</span>
+            <span>Coming soon</span>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-label">Savings</div>
+          <div class="tool-name">Savings Goal Calculator</div>
+          <div class="tool-desc">
+            Work out how much you need to save each month to reach a specific
+            savings target by a deadline.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">Planned</span>
+            <span>Coming soon</span>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-label">Loans &amp; debt</div>
+          <div class="tool-name">Loan Payment Calculator</div>
+          <div class="tool-desc">
+            Calculate monthly repayments, total interest and payoff time for a
+            fixed-rate loan.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">Planned</span>
+            <span>Coming soon</span>
+          </div>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-label">Loans &amp; debt</div>
+          <div class="tool-name">Debt Payoff (Snowball) Calculator</div>
+          <div class="tool-desc">
+            Model strategies to pay off multiple debts using the snowball
+            method.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">Planned</span>
