@@ -1,33 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68ZVCW4FWK');
+  </script>
 
-  gtag('config', 'G-68ZVCW4FWK');
-</script>
-<meta charset="UTF-8" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Loan Payment Calculator | Monthly Payment & Total Interest</title>
+  <meta
+    name="description"
+    content="Calculate your monthly loan payments, total interest, and full amortization schedule. Works for auto loans, personal loans, and any fixed-rate loan. Fast, accurate, and free."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://financecalccenter.com/loan-payment-calculator.html" />
+
+  <!-- Favicon & PWA icons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="shortcut icon" href="/favicon.ico">
-<title>Loan Payment Calculator | Monthly Payment & Total Interest</title>
-<meta
-  name="description"
-  content="Calculate your monthly loan payments, total interest, and full amortization schedule. Works for auto loans, personal loans, and any fixed-rate loan. Fast, accurate, and free."
-/>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
 
-<style>
-
+  <style>
     :root {
       --bg: #020617;
       --card: #0f172a;
@@ -273,25 +274,27 @@
       text-decoration: underline;
     }
   </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Loan Payment Calculator",
-  "url": "https://financecalccenter.com/loan-payment-calculator.html",
-  "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Any",
-  "inLanguage": "en",
-  "description": "Calculate your monthly loan payments, total interest, and full amortization schedule. Works for auto loans, personal loans, and any fixed-rate loan. Fast, accurate, and free.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinanceCalcCenter",
-    "url": "https://financecalccenter.com/"
-  }
-}
-</script>
 
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Loan Payment Calculator",
+    "url": "https://financecalccenter.com/loan-payment-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "en",
+    "description": "Calculate your monthly loan payments, total interest, and full amortization schedule. Works for auto loans, personal loans, and any fixed-rate loan. Fast, accurate, and free.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter",
+      "url": "https://financecalccenter.com/"
+    }
+  }
+  </script>
 </head>
+
 <body>
   <div class="wrapper">
     <header>
@@ -478,7 +481,6 @@
         totalPaidFull = payment * periods;
         totalInterestFull = totalPaidFull - amount;
       } else {
-        const factor = Math.pow(1 + periodRate, periods);
         totalPaidFull = payment * periods;
         totalInterestFull = totalPaidFull - amount;
       }
