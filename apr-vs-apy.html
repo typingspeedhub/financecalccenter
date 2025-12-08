@@ -1,44 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-68ZVCW4FWK");
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>APR vs APY: What’s the Difference? (Clear Examples 2025)</title>
-
-  <meta name="description"
-    content="APR vs APY explained in simple terms with clear USD examples. Learn why APY is always higher, how compounding works, and how to compare loans and savings rates." />
-
-  <link rel="canonical" href="https://financecalccenter.com/apr-vs-apy.html" />
+  <meta
+    name="description"
+    content="APR vs APY explained in simple terms with clear USD examples. Learn why APY is always higher, how compounding works, and how to compare loans and savings rates."
+  />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://financecalccenter.com/apr-vs-apy.html" />
 
-  <meta property="og:title" content="APR vs APY: What’s the Difference? (Clear Examples)" />
-  <meta property="og:description"
-    content="Simple explanation of APR vs APY with USD examples. Learn how compounding changes the real return or cost of interest." />
+  <!-- Favicon & PWA icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- Open Graph -->
   <meta property="og:type" content="article" />
+  <meta property="og:title" content="APR vs APY: What’s the Difference? (Clear Examples)" />
+  <meta
+    property="og:description"
+    content="Simple explanation of APR vs APY with USD examples. Learn how compounding changes the real return or cost of interest."
+  />
+  <meta property="og:url" content="https://financecalccenter.com/apr-vs-apy.html" />
 
   <style>
+    :root {
+      --bg: #020617;
+      --card: #020617;
+      --accent: #22c55e;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: system-ui, sans-serif;
-      background: #020617;
-      color: #e5e7eb;
-      line-height: 1.6;
       margin: 0;
-      padding: 2rem 1rem 4rem;
-      max-width: 760px;
-      margin-left: auto;
-      margin-right: auto;
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(circle at top, #1f2937 0, #020617 45%) fixed,
+        linear-gradient(to bottom, #020617, #020617);
+      color: var(--text);
+      line-height: 1.6;
     }
-    h1, h2, h3 {
-      color: #fff;
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
     }
-    a { color: #22c55e; }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrapper {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 3rem;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.9rem;
+      background: radial-gradient(circle at 30% 20%, #22c55e 0, #16a34a 35%, #052e16 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #022c22;
+      font-size: 1.3rem;
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.45);
+    }
+
+    .brand-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    nav a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: rgba(15, 23, 42, 0.9);
+      margin-left: 0.25rem;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    main article {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 1.2rem;
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 3vw, 2.3rem);
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+    }
+
+    h2 {
+      margin-top: 1.8rem;
+      font-size: 1.3rem;
+    }
+
+    h3 {
+      margin-top: 1.3rem;
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin: 0.4rem 0;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    li + li {
+      margin-top: 0.15rem;
+    }
+
     .cta-box {
       background: rgba(34,197,94,0.12);
       border: 1px solid rgba(34,197,94,0.35);
       padding: 1.2rem;
       border-radius: 1rem;
       margin: 1.5rem 0;
+      font-size: 0.95rem;
     }
+
     .cta-button {
       display: inline-block;
       background: linear-gradient(135deg,#22c55e,#16a34a);
@@ -48,177 +188,289 @@
       text-decoration: none;
       font-weight: 600;
       margin-top: 0.5rem;
+      font-size: 0.9rem;
+      box-shadow: 0 14px 35px rgba(34, 197, 94, 0.45);
+    }
+
+    .cta-button:hover {
+      filter: brightness(1.05);
+    }
+
+    table {
+      width: 100%;
+      margin-top: 1rem;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      padding: 0.6rem;
+      border-bottom: 1px solid #1e293b;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(15,23,42,0.95);
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    pre {
+      background: #0f172a;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        margin-top: 0.4rem;
+      }
+      main article {
+        padding: 1.2rem 1.1rem;
+      }
     }
   </style>
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "APR vs APY: What’s the Difference? (Clear Examples 2025)",
+    "description": "APR vs APY explained in simple terms with clear USD examples. Learn why APY is always higher, how compounding works, and how to compare loans and savings rates.",
+    "author": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://financecalccenter.com/favicon-32x32.png"
+      }
+    },
+    "url": "https://financecalccenter.com/apr-vs-apy.html",
+    "inLanguage": "en"
+  }
+  </script>
 </head>
 
 <body>
+  <div class="wrapper">
+    <header>
+      <div class="brand">
+        <div class="logo">F</div>
+        <div>
+          <div class="brand-title">FinanceCalcCenter</div>
+          <div class="brand-subtitle">Free online financial calculators &amp; tools</div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="compound-interest-calculator.html">Compound interest</a>
+        <a href="loan-payment-calculator.html">Loan payment</a>
+        <a href="savings-goal-calculator.html">Savings goal</a>
+      </nav>
+    </header>
 
-<h1>APR vs APY: What’s the Difference? (2025 Guide With Simple Examples)</h1>
+    <main>
+      <article>
+        <h1>APR vs APY: What’s the Difference? (2025 Guide With Simple Examples)</h1>
 
-<p>APR and APY are two interest-rate terms that look similar — but they mean very different things. Understanding them helps you compare loans, savings accounts, and investments accurately.</p>
+        <p>
+          APR and APY are two interest-rate terms that look similar — but they mean very different things.
+          Understanding them helps you compare loans, savings accounts, and investments accurately.
+        </p>
 
-<p>Here’s the simplest possible explanation:</p>
+        <p>Here’s the simplest possible explanation:</p>
 
-<ul>
-  <li><strong>APR</strong> shows the yearly rate <em>without</em> compounding.</li>
-  <li><strong>APY</strong> shows the yearly rate <em>with</em> compounding included.</li>
-</ul>
+        <ul>
+          <li><strong>APR</strong> shows the yearly rate <em>without</em> compounding.</li>
+          <li><strong>APY</strong> shows the yearly rate <em>with</em> compounding included.</li>
+        </ul>
 
-<p>This difference can change your real cost (for loans) or your real return (for savings).</p>
+        <p>This difference can change your real cost (for loans) or your real return (for savings).</p>
 
-<div class="cta-box">
-  <h3>Try it yourself while reading</h3>
-  <p>Use the free compound interest calculator to compare APR and APY with your own numbers.</p>
-  <a href="compound-interest-calculator.html" class="cta-button">Open calculator →</a>
-</div>
+        <div class="cta-box">
+          <h3>Try it yourself while reading</h3>
+          <p>Use the free compound interest calculator to compare APR and APY with your own numbers.</p>
+          <a href="compound-interest-calculator.html" class="cta-button">Open calculator →</a>
+        </div>
 
-<h2>What Is APR?</h2>
-<p><strong>APR (Annual Percentage Rate)</strong> is the simple yearly interest rate. It does <strong>not</strong> include compounding.</p>
+        <h2>What Is APR?</h2>
+        <p><strong>APR (Annual Percentage Rate)</strong> is the simple yearly interest rate. It does <strong>not</strong> include compounding.</p>
 
-<p>If a savings account or loan advertises:</p>
+        <p>If a savings account or loan advertises:</p>
 
-<p><strong>APR: 5%</strong></p>
+        <p><strong>APR: 5%</strong></p>
 
-<p>This means you earn or pay exactly 5% per year — assuming no monthly or daily compounding is applied.</p>
+        <p>This means you earn or pay exactly 5% per year — assuming no monthly or daily compounding is applied.</p>
 
-<h3>APR Example</h3>
-<p>If you invest <strong>$10,000</strong> at <strong>5% APR</strong> for one year:</p>
+        <h3>APR Example</h3>
+        <p>If you invest <strong>$10,000</strong> at <strong>5% APR</strong> for one year:</p>
 
-<p><strong>Interest earned: $500</strong></p>
-<p>End balance: <strong>$10,500</strong></p>
+        <p><strong>Interest earned: $500</strong></p>
+        <p>End balance: <strong>$10,500</strong></p>
 
-<p>No matter the compounding frequency, the APR itself ignores it.</p>
+        <p>No matter the compounding frequency, the APR itself ignores it.</p>
 
-<h2>What Is APY?</h2>
-<p><strong>APY (Annual Percentage Yield)</strong> shows the true yearly return because it includes compounding — monthly, daily, or even continuous.</p>
+        <h2>What Is APY?</h2>
+        <p><strong>APY (Annual Percentage Yield)</strong> shows the true yearly return because it includes compounding — monthly, daily, or even continuous.</p>
 
-<p>If a bank says:</p>
+        <p>If a bank says:</p>
 
-<p><strong>APY: 5.12%</strong></p>
+        <p><strong>APY: 5.12%</strong></p>
 
-<p>This means the account pays the equivalent of 5.12% per year after compounding.</p>
+        <p>This means the account pays the equivalent of 5.12% per year after compounding.</p>
 
-<h3>APY Example</h3>
-<p>If your account pays <strong>5% APR, compounded monthly</strong>, the APY becomes:</p>
+        <h3>APY Example</h3>
+        <p>If your account pays <strong>5% APR, compounded monthly</strong>, the APY becomes:</p>
 
-<p><strong>APY = 5.12%</strong></p>
+        <p><strong>APY ≈ 5.12%</strong></p>
 
-<p>On a <strong>$10,000</strong> deposit:</p>
+        <p>On a <strong>$10,000</strong> deposit:</p>
 
-<ul>
-  <li>Interest earned: <strong>$512</strong></li>
-  <li>End balance: <strong>$10,512</strong></li>
-</ul>
+        <ul>
+          <li>Interest earned: <strong>$512</strong></li>
+          <li>End balance: <strong>$10,512</strong></li>
+        </ul>
 
-<p>This is higher than the APR result because compounding grows your money faster.</p>
+        <p>This is higher than the APR result because compounding grows your money faster.</p>
 
-<h2>APR vs APY Formula</h2>
+        <h2>APR vs APY Formula</h2>
 
-<p><strong>APY formula:</strong></p>
+        <p><strong>APY formula:</strong></p>
 
-<p><pre>APY = (1 + APR / n)<sup>n</sup> – 1</pre></p>
+        <pre>APY = (1 + APR / n)<sup>n</sup> − 1</pre>
 
-<p>Where:</p>
-<ul>
-  <li><strong>APR</strong> = annual percentage rate</li>
-  <li><strong>n</strong> = compounding periods per year</li>
-</ul>
+        <p>Where:</p>
+        <ul>
+          <li><strong>APR</strong> = annual percentage rate</li>
+          <li><strong>n</strong> = compounding periods per year</li>
+        </ul>
 
-<p>Common compounding intervals:</p>
-<ul>
-  <li>Monthly → n = 12</li>
-  <li>Daily → n = 365</li>
-  <li>Quarterly → n = 4</li>
-</ul>
+        <p>Common compounding intervals:</p>
+        <ul>
+          <li>Monthly → n = 12</li>
+          <li>Daily → n = 365</li>
+          <li>Quarterly → n = 4</li>
+        </ul>
 
-<h2>APR vs APY Side-by-Side Example</h2>
+        <h2>APR vs APY Side-by-Side Example</h2>
 
-<p>Imagine a savings account offering:</p>
-<ul>
-  <li><strong>APR: 5%</strong></li>
-  <li>Compounded: monthly</li>
-</ul>
+        <p>Imagine a savings account offering:</p>
+        <ul>
+          <li><strong>APR: 5%</strong></li>
+          <li>Compounded: monthly</li>
+        </ul>
 
-<table style="width:100%; margin-top:1rem; border-collapse:collapse;">
-  <tr>
-    <td style="padding:0.6rem; border-bottom:1px solid #1e293b;"><strong>APR</strong></td>
-    <td style="padding:0.6rem; border-bottom:1px solid #1e293b;">5.00%</td>
-  </tr>
-  <tr>
-    <td style="padding:0.6rem; border-bottom:1px solid #1e293b;"><strong>APY</strong></td>
-    <td style="padding:0.6rem; border-bottom:1px solid #1e293b;">5.12%</td>
-  </tr>
-</table>
+        <table>
+          <tr>
+            <td><strong>APR</strong></td>
+            <td>5.00%</td>
+          </tr>
+          <tr>
+            <td><strong>APY</strong></td>
+            <td>5.12%</td>
+          </tr>
+        </table>
 
-<p>On a <strong>$10,000</strong> deposit:</p>
+        <p>On a <strong>$10,000</strong> deposit:</p>
 
-<ul>
-  <li>APR result: <strong>$500 interest</strong></li>
-  <li>APY result: <strong>$512 interest</strong></li>
-</ul>
+        <ul>
+          <li>APR result: <strong>$500 interest</strong></li>
+          <li>APY result: <strong>$512 interest</strong></li>
+        </ul>
 
-<p>The difference grows dramatically over multiple years.</p>
+        <p>The difference grows dramatically over multiple years.</p>
 
-<h2>Why APY Is Always Higher Than APR</h2>
+        <h2>Why APY Is Always Higher Than APR</h2>
 
-<p>When interest compounds, you earn interest on interest.  
-That snowball effect makes APY higher — unless compounding is zero, in which case APR = APY.</p>
+        <p>
+          When interest compounds, you earn interest on interest.
+          That snowball effect makes APY higher — unless compounding is zero, in which case APR = APY.
+        </p>
 
-<h2>When to Use APR vs APY</h2>
+        <h2>When to Use APR vs APY</h2>
 
-<h3>Use APR when comparing:</h3>
-<ul>
-  <li>Loans (personal loans, mortgages, auto loans)</li>
-  <li>Credit cards</li>
-  <li>Any borrowing where compounding varies</li>
-</ul>
+        <h3>Use APR when comparing:</h3>
+        <ul>
+          <li>Loans (personal loans, mortgages, auto loans)</li>
+          <li>Credit cards</li>
+          <li>Any borrowing where compounding varies</li>
+        </ul>
 
-<h3>Use APY when comparing:</h3>
-<ul>
-  <li>Savings accounts</li>
-  <li>High-yield savings</li>
-  <li>Certificates of deposit (CDs)</li>
-  <li>Investment platforms with compounding</li>
-</ul>
+        <h3>Use APY when comparing:</h3>
+        <ul>
+          <li>Savings accounts</li>
+          <li>High-yield savings</li>
+          <li>Certificates of deposit (CDs)</li>
+          <li>Investment platforms with compounding</li>
+        </ul>
 
-<h2>Summary Table</h2>
+        <h2>Summary Table</h2>
 
-<table style="width:100%; margin-top:1rem; border-collapse:collapse;">
-  <tr>
-    <th style="text-align:left; padding:0.6rem;">Feature</th>
-    <th style="text-align:left; padding:0.6rem;">APR</th>
-    <th style="text-align:left; padding:0.6rem;">APY</th>
-  </tr>
-  <tr>
-    <td style="padding:0.6rem;">Includes compounding?</td>
-    <td style="padding:0.6rem;">❌ No</td>
-    <td style="padding:0.6rem;">✅ Yes</td>
-  </tr>
-  <tr>
-    <td style="padding:0.6rem;">Used for</td>
-    <td style="padding:0.6rem;">Loans, credit cards</td>
-    <td style="padding:0.6rem;">Savings, investments</td>
-  </tr>
-  <tr>
-    <td style="padding:0.6rem;">Which is higher?</td>
-    <td style="padding:0.6rem;">Lower</td>
-    <td style="padding:0.6rem;">Higher</td>
-  </tr>
-</table>
+        <table>
+          <tr>
+            <th>Feature</th>
+            <th>APR</th>
+            <th>APY</th>
+          </tr>
+          <tr>
+            <td>Includes compounding?</td>
+            <td>❌ No</td>
+            <td>✅ Yes</td>
+          </tr>
+          <tr>
+            <td>Used for</td>
+            <td>Loans, credit cards</td>
+            <td>Savings, investments</td>
+          </tr>
+          <tr>
+            <td>Which is higher?</td>
+            <td>Lower</td>
+            <td>Higher (when compounding)</td>
+          </tr>
+        </table>
 
-<h2>Final Thoughts</h2>
+        <h2>Final Thoughts</h2>
 
-<p>APR tells you the <strong>sticker rate</strong>.  
-APY tells you the <strong>real rate</strong>.</p>
+        <p>APR tells you the <strong>sticker rate</strong>.<br>APY tells you the <strong>real rate</strong>.</p>
 
-<p>If you want to know the true growth of your savings — or the true cost of a loan — always compare APY.</p>
+        <p>
+          If you want to know the true growth of your savings — or the true cost of a loan — always compare APY.
+        </p>
 
-<div class="cta-box">
-  <h3>Run your own APR vs APY scenarios</h3>
-  <p>Use the free calculator to see long-term differences instantly.</p>
-  <a href="compound-interest-calculator.html" class="cta-button">Try the calculator →</a>
-</div>
+        <div class="cta-box">
+          <h3>Run your own APR vs APY scenarios</h3>
+          <p>Use the free calculator to see long-term differences instantly.</p>
+          <a href="compound-interest-calculator.html" class="cta-button">Try the calculator →</a>
+        </div>
+      </article>
+    </main>
 
+    <footer>
+      © <span id="year"></span> FinanceCalcCenter — Educational use only.
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
