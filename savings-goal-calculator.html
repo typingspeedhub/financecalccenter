@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68ZVCW4FWK');
+  </script>
 
-  gtag('config', 'G-68ZVCW4FWK');
-</script>
   <meta charset="UTF-8" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="shortcut icon" href="/favicon.ico">
-  <title>Savings Goal Calculator | How Much Should You Save Monthly?</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-    <meta
-  name="description"
-  content="Find out how much you need to save each month to reach your financial goals. Supports custom timeframes, interest rates, and contributions. Ideal for emergency funds, big purchases, and long-term planning."
-/>
 
+  <title>Savings Goal Calculator | How Much Should You Save Monthly?</title>
+  <meta
+    name="description"
+    content="Find out how much you need to save each month to reach your financial goals. Supports custom timeframes, interest rates, and existing savings. Ideal for emergency funds, big purchases, and long-term planning."
   />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://financecalccenter.com/savings-goal-calculator.html" />
+
+  <!-- Favicon & PWA icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+
   <style>
     :root {
       --bg: #020617;
@@ -267,87 +266,74 @@
       text-decoration: underline;
     }
   </style>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Savings Goal Calculator",
-  "url": "https://financecalccenter.com/savings-goal-calculator.html",
-  "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Any",
-  "inLanguage": "en",
-  "description": "Find out how much you need to save each month to reach your financial goals. Supports custom timeframes, interest rates, and contributions. Ideal for emergency funds, big purchases, and long-term planning.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "FinanceCalcCenter",
-    "url": "https://financecalccenter.com/"
-  }
-}
-</script>
 
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Savings Goal Calculator",
+    "url": "https://financecalccenter.com/savings-goal-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "en",
+    "description": "Find out how much you need to save each month to reach your financial goals. Supports custom timeframes, interest rates, and contributions. Ideal for emergency funds, big purchases, and long-term planning.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter",
+      "url": "https://financecalccenter.com/"
+    }
+  }
+  </script>
 </head>
+
 <body>
   <div class="wrapper">
     <header>
       <a class="back" href="index.html">← Back to FinanceCalcCenter</a>
-      <h1>Mortgage Calculator</h1>
+      <h1>Savings Goal Calculator</h1>
       <p class="subtitle">
-        Estimate your monthly mortgage payment including principal, interest,
-        property taxes, homeowner’s insurance and HOA fees.
+        Find out how much you should save each month to hit a specific savings target on time,
+        with optional investment growth.
       </p>
     </header>
 
     <section class="layout">
       <!-- Calculator -->
-      <div class="card" aria-label="Mortgage calculator">
+      <div class="card" aria-label="Savings goal calculator">
         <div class="row">
           <div>
-            <label for="homePrice">Home price</label>
-            <input id="homePrice" type="number" min="0" step="0.01" value="350000" />
+            <label for="goalAmount">Savings goal amount</label>
+            <input id="goalAmount" type="number" min="0" step="0.01" value="10000" />
           </div>
           <div>
-            <label for="downPayment">Down payment</label>
-            <input id="downPayment" type="number" min="0" step="0.01" value="70000" />
+            <label for="currentSavings">Current savings</label>
+            <input id="currentSavings" type="number" min="0" step="0.01" value="1000" />
           </div>
         </div>
 
         <div class="row">
           <div>
-            <label for="rate">Interest rate (annual %)</label>
-            <input id="rate" type="number" min="0" max="100" step="0.01" value="5" />
+            <label for="years">Time to reach goal (years)</label>
+            <input id="years" type="number" min="0.5" step="0.5" value="5" />
           </div>
           <div>
-            <label for="years">Term (years)</label>
-            <input id="years" type="number" min="5" max="40" step="1" value="30" />
+            <label for="rate">Expected annual interest rate (%)</label>
+            <input id="rate" type="number" min="0" max="100" step="0.01" value="4" />
           </div>
         </div>
 
         <div class="row">
-          <div>
-            <label for="taxRate">Property tax (annual % of home price)</label>
-            <input id="taxRate" type="number" min="0" max="10" step="0.01" value="1.2" />
-          </div>
-          <div>
-            <label for="insuranceYear">Homeowner’s insurance (per year)</label>
-            <input id="insuranceYear" type="number" min="0" step="1" value="1200" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="hoa">HOA fees (per month)</label>
-            <input id="hoa" type="number" min="0" step="1" value="0" />
-          </div>
           <div>
             <label for="currencyLabel">Currency label (optional)</label>
             <input id="currencyLabel" type="text" maxlength="5" placeholder="USD" />
           </div>
         </div>
 
-        <button id="calcBtn" type="button">Calculate mortgage payment</button>
+        <button id="calcBtn" type="button">Calculate required monthly savings</button>
         <p class="hint">
-          This calculator uses a standard fixed-rate mortgage formula and assumes
-          that taxes and insurance are paid evenly over 12 months.
+          This calculator assumes monthly contributions and monthly compounding based on the
+          annual interest rate you enter.
         </p>
         <div id="error" class="error"></div>
       </div>
@@ -355,61 +341,62 @@
       <!-- Results & explainer -->
       <div>
         <div id="results" class="results" style="display:none;">
-          <h2>Payment breakdown</h2>
+          <h2>Savings plan summary</h2>
           <div class="results-grid">
             <div class="res-item">
-              <div class="res-label">Monthly payment (P&I)</div>
-              <div id="piPayment" class="res-value">—</div>
+              <div class="res-label">Required monthly savings</div>
+              <div id="monthlySaving" class="res-value">—</div>
             </div>
             <div class="res-item">
-              <div class="res-label">Total monthly payment</div>
-              <div id="totalPayment" class="res-value">—</div>
+              <div class="res-label">Total contributed</div>
+              <div id="totalContributed" class="res-value">—</div>
             </div>
             <div class="res-item">
-              <div class="res-label">Total paid over term</div>
-              <div id="totalPaid" class="res-value">—</div>
+              <div class="res-label">Estimated interest earned</div>
+              <div id="interestEarned" class="res-value">—</div>
             </div>
             <div class="res-item">
-              <div class="res-label">Total interest</div>
-              <div id="totalInterest" class="res-value">—</div>
+              <div class="res-label">Projected final balance</div>
+              <div id="finalBalance" class="res-value">—</div>
             </div>
           </div>
 
           <div class="breakdown" id="detailBreakdown"></div>
 
           <p class="res-note">
-            This is an estimate only and does not include closing costs, mortgage
-            insurance (PMI) or other fees your lender may charge.
+            This is an estimate only. Real returns depend on market performance, taxes,
+            fees and how consistently you follow the savings plan.
           </p>
         </div>
 
         <div class="card explainer">
-          <h2>How this mortgage calculator works</h2>
+          <h2>How this savings goal calculator works</h2>
           <p>
-            The principal and interest part of your payment is calculated using a
-            standard amortizing loan formula:
+            This tool calculates the monthly amount you need to save to reach a target
+            balance by a certain time, using:
           </p>
           <ul>
-            <li><strong>Principal:</strong> home price minus down payment</li>
-            <li><strong>Interest rate:</strong> fixed annual rate for the full term</li>
-            <li><strong>Term:</strong> number of years of the mortgage</li>
+            <li>Your savings goal amount</li>
+            <li>Your current savings</li>
+            <li>The number of years you want to save</li>
+            <li>An expected annual interest rate (optional)</li>
           </ul>
           <p>
-            Property taxes and homeowner’s insurance are converted to monthly
-            amounts and added on top of the principal &amp; interest payment, along
-            with any HOA fees you enter.
+            It assumes monthly contributions and monthly compounding. If the result shows
+            that your current savings already meet or exceed your goal, the required monthly
+            saving will be shown as zero.
           </p>
           <p>
-            Use this tool to compare scenarios (for example different down payment
-            sizes or interest rates) and see how they change your monthly budget.
+            Use this calculator to plan an emergency fund, a down payment, a big purchase or
+            any other medium- to long-term savings goal.
           </p>
         </div>
       </div>
     </section>
 
     <footer>
-      This mortgage calculator is for educational purposes only and does not
-      constitute financial advice or a mortgage offer.
+      This savings calculator is for educational purposes only and does not
+      constitute financial advice.
     </footer>
   </div>
 
@@ -425,85 +412,109 @@
       return currency ? formatted + " " + currency : formatted;
     }
 
-    function calculateMortgage() {
-      const homePrice = parseFloat($("homePrice").value || "0");
-      const downPayment = parseFloat($("downPayment").value || "0");
-      const rate = parseFloat($("rate").value || "0");
+    function calculateSavingsGoal() {
+      const goal = parseFloat($("goalAmount").value || "0");
+      const current = parseFloat($("currentSavings").value || "0");
       const years = parseFloat($("years").value || "0");
-      const taxRate = parseFloat($("taxRate").value || "0");
-      const insuranceYear = parseFloat($("insuranceYear").value || "0");
-      const hoa = parseFloat($("hoa").value || "0");
+      const rate = parseFloat($("rate").value || "0");
       const currency = ($("currencyLabel").value || "USD").trim();
 
       const errorEl = $("error");
       const resultsEl = $("results");
-      const piPaymentEl = $("piPayment");
-      const totalPaymentEl = $("totalPayment");
-      const totalPaidEl = $("totalPaid");
-      const totalInterestEl = $("totalInterest");
+      const monthlySavingEl = $("monthlySaving");
+      const totalContributedEl = $("totalContributed");
+      const interestEarnedEl = $("interestEarned");
+      const finalBalanceEl = $("finalBalance");
       const breakdownEl = $("detailBreakdown");
 
       errorEl.textContent = "";
       resultsEl.style.display = "none";
       breakdownEl.textContent = "";
 
-      if (homePrice <= 0 || isNaN(homePrice)) {
-        errorEl.textContent = "Please enter a valid home price.";
+      if (goal <= 0 || isNaN(goal)) {
+        errorEl.textContent = "Please enter a valid savings goal amount.";
         return;
       }
-      if (downPayment < 0 || isNaN(downPayment) || downPayment >= homePrice) {
-        errorEl.textContent = "Please enter a valid down payment lower than the home price.";
+      if (current < 0 || isNaN(current)) {
+        errorEl.textContent = "Please enter a valid current savings amount.";
         return;
       }
       if (years <= 0 || isNaN(years)) {
-        errorEl.textContent = "Please enter a valid mortgage term.";
+        errorEl.textContent = "Please enter a valid time period in years.";
         return;
       }
-      if (rate < 0 || isNaN(rate)) {
-        errorEl.textContent = "Please enter a valid interest rate.";
+      if (current >= goal) {
+        // Already at or above goal
+        const currencyLabel = currency || "USD";
+        monthlySavingEl.textContent = formatMoney(0, currencyLabel);
+        totalContributedEl.textContent = formatMoney(0, currencyLabel);
+        interestEarnedEl.textContent = formatMoney(0, currencyLabel);
+        finalBalanceEl.textContent = formatMoney(current, currencyLabel);
+        breakdownEl.textContent =
+          "You already meet or exceed your target. No additional monthly saving is required to reach this specific goal.";
+        resultsEl.style.display = "block";
         return;
       }
 
-      const principal = homePrice - downPayment;
-      const n = years * 12;
-      const monthlyRate = rate / 100 / 12;
+      const n = Math.round(years * 12); // months
+      const annualRate = rate / 100;
+      const monthlyRate = annualRate / 12;
 
-      let piPayment;
+      // Future value of current savings
+      let fvCurrent;
       if (monthlyRate === 0) {
-        piPayment = principal / n;
+        fvCurrent = current;
+      } else {
+        fvCurrent = current * Math.pow(1 + monthlyRate, n);
+      }
+
+      // If without contributions, goal is unreachable (fvCurrent < goal)
+      const remaining = goal - fvCurrent;
+      let monthly;
+
+      if (monthlyRate === 0) {
+        monthly = remaining / n;
       } else {
         const factor = Math.pow(1 + monthlyRate, n);
-        piPayment = principal * (monthlyRate * factor) / (factor - 1);
+        monthly = remaining * monthlyRate / (factor - 1);
       }
 
-      // Monthly property tax and insurance
-      const monthlyTax = (homePrice * (taxRate / 100)) / 12;
-      const monthlyInsurance = insuranceYear / 12;
-      const monthlyHOA = hoa;
+      if (!isFinite(monthly) || monthly < 0) {
+        errorEl.textContent =
+          "With the current parameters, the calculation is not valid. Try adjusting the goal, time period or interest rate.";
+        return;
+      }
 
-      const totalMonthly = piPayment + monthlyTax + monthlyInsurance + monthlyHOA;
-      const totalPaid = totalMonthly * n;
-      const totalInterest = piPayment * n - principal;
+      const totalContributed = monthly * n;
+      const finalBalance = fvCurrent + totalContributed * (monthlyRate === 0
+        ? 1
+        : (Math.pow(1 + monthlyRate, n) - 1) / monthlyRate); // but we know this should be close to 'goal'
 
-      piPaymentEl.textContent = formatMoney(piPayment, currency);
-      totalPaymentEl.textContent = formatMoney(totalMonthly, currency);
-      totalPaidEl.textContent = formatMoney(totalPaid, currency);
-      totalInterestEl.textContent = formatMoney(totalInterest, currency);
+      const estimatedFinal = goal; // by construction, we aim at the goal
+      const totalInvested = current + totalContributed;
+      const interestEarned = estimatedFinal - totalInvested;
+
+      const currencyLabel = currency || "USD";
+
+      monthlySavingEl.textContent = formatMoney(monthly, currencyLabel);
+      totalContributedEl.textContent = formatMoney(totalContributed, currencyLabel);
+      interestEarnedEl.textContent = formatMoney(interestEarned, currencyLabel);
+      finalBalanceEl.textContent = formatMoney(estimatedFinal, currencyLabel);
 
       breakdownEl.innerHTML =
-        "<span>Principal &amp; interest: " + formatMoney(piPayment, currency) +
-        "</span><span>Taxes: " + formatMoney(monthlyTax, currency) +
-        "</span><span>Insurance: " + formatMoney(monthlyInsurance, currency) +
-        (monthlyHOA ? "</span><span>HOA: " + formatMoney(monthlyHOA, currency) : "") +
-        "</span>";
+        "<span>Goal amount: " + formatMoney(goal, currencyLabel) +
+        "</span><span>Timeframe: " + years.toFixed(1) + " years" +
+        (rate ? "</span><span>Assumed annual return: " + rate.toFixed(2) + "%</span>" : "</span>");
 
       resultsEl.style.display = "block";
     }
 
-    $("calcBtn").addEventListener("click", calculateMortgage);
+    $("calcBtn").addEventListener("click", calculateSavingsGoal);
 
     // Default example on load
-    calculateMortgage();
+    calculateSavingsGoal();
   </script>
 </body>
 </html>
+
+
