@@ -1,182 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-68ZVCW4FWK");
+  </script>
+
   <meta charset="UTF-8" />
-  <title>How Much Should You Save Each Month? (Simple Guide + USD Examples)</title>
-  <meta name="description" content="Learn how much you should save monthly depending on your goals. Includes clear USD examples, timelines, and a free savings calculator to plan smarter." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>How Much Should You Save Each Month? (Simple Guide + USD Examples)</title>
+  <meta
+    name="description"
+    content="Learn how much you should save monthly depending on your goals. Includes clear USD examples, timelines, and a free savings calculator to plan smarter."
+  />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://financecalccenter.com/how-much-should-you-save-each-month.html" />
 
+  <!-- Favicon & PWA icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How Much Should You Save Each Month? (Simple Guide + USD Examples)" />
+  <meta property="og:description" content="Learn how much you should save every month based on your goals, with clear USD examples and a free savings goal calculator." />
+  <meta property="og:url" content="https://financecalccenter.com/how-much-should-you-save-each-month.html" />
+
   <style>
+    :root {
+      --bg: #020617;
+      --card: #020617;
+      --accent: #22c55e;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #020617;
-      color: #e5e7eb;
+      font-family: var(--font-sans);
+      background:
+        radial-gradient(circle at top, #1f2937 0, #020617 45%) fixed,
+        linear-gradient(to bottom, #020617, #020617);
+      color: var(--text);
       line-height: 1.6;
-      padding: 1.5rem;
-      max-width: 760px;
-      margin-inline: auto;
     }
-    h1, h2, h3 { color: #fff; }
-    a { color: #22c55e; text-decoration: none; }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrapper {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 1.75rem 1.25rem 3rem;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.9rem;
+      background: radial-gradient(circle at 30% 20%, #22c55e 0, #16a34a 35%, #052e16 80%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #022c22;
+      font-size: 1.3rem;
+      box-shadow: 0 10px 30px rgba(34, 197, 94, 0.45);
+    }
+
+    .brand-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+    }
+
+    .brand-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    nav a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: rgba(15, 23, 42, 0.9);
+      margin-left: 0.25rem;
+      white-space: nowrap;
+    }
+
+    nav a:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    main article {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 1.2rem;
+      border: 1px solid var(--border);
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 3vw, 2.3rem);
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+    }
+
+    h2 {
+      margin-top: 1.8rem;
+      font-size: 1.3rem;
+    }
+
+    h3 {
+      margin-top: 1.3rem;
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin: 0.4rem 0;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    li + li {
+      margin-top: 0.15rem;
+    }
+
     .cta-box {
       background: rgba(34, 197, 94, 0.1);
       border: 1px solid rgba(34, 197, 94, 0.4);
       padding: 1rem;
       border-radius: 0.75rem;
       margin: 1.5rem 0;
+      font-size: 0.95rem;
     }
+
     .example-box {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1rem;
-      border-radius: 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 0.9rem 1rem;
+      border-radius: 0.75rem;
       margin: 1rem 0;
+      font-size: 0.92rem;
     }
-    ul { padding-left: 1.2rem; }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: #0f172a;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.4rem;
+      font-size: 0.9rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #1f2937;
+      margin: 2rem 0;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        margin-top: 0.4rem;
+      }
+      main article {
+        padding: 1.2rem 1.1rem;
+      }
+    }
   </style>
 
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How Much Should You Save Each Month? (Simple Guide + USD Examples)",
+    "description": "Learn how much you should save monthly depending on your goals, with clear USD examples, timelines and a free savings goal calculator.",
+    "author": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://financecalccenter.com/favicon-32x32.png"
+      }
+    },
+    "url": "https://financecalccenter.com/how-much-should-you-save-each-month.html",
+    "inLanguage": "en"
+  }
+  </script>
 </head>
 
 <body>
+  <div class="wrapper">
+    <header>
+      <div class="brand">
+        <div class="logo">F</div>
+        <div>
+          <div class="brand-title">FinanceCalcCenter</div>
+          <div class="brand-subtitle">Free online financial calculators &amp; tools</div>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="savings-goal-calculator.html">Savings goal calculator</a>
+        <a href="compound-interest-calculator.html">Compound interest</a>
+        <a href="loan-payment-calculator.html">Loan payment</a>
+      </nav>
+    </header>
 
-<h1>How Much Should You Save Each Month? (Simple Guide + USD Examples)</h1>
+    <main>
+      <article>
+        <h1>How Much Should You Save Each Month? (Simple Guide + USD Examples)</h1>
 
-<p>
-  Knowing how much you should save per month depends on <strong>your financial goal, your timeline, and whether your savings earn interest</strong>. 
-  In this guide, you’ll learn simple rules of thumb, practical USD examples, and how to calculate the exact amount using a free online tool.
-</p>
+        <p>
+          Knowing how much you should save per month depends on <strong>your financial goal, your timeline, and whether your savings earn interest</strong>.
+          In this guide, you’ll learn simple rules of thumb, practical USD examples, and how to calculate the exact amount using a free online tool.
+        </p>
 
-<div class="cta-box">
-  <strong>Try it while you read:</strong><br />
-  Use the <a href="savings-goal-calculator.html">Savings Goal Calculator</a> to see how much you need to save each month based on your goal, timeline, and interest rate.
-</div>
+        <div class="cta-box">
+          <strong>Try it while you read:</strong><br />
+          Use the <a href="savings-goal-calculator.html">Savings Goal Calculator</a> to see how much you need to save each month based on your goal, timeline, and interest rate.
+        </div>
 
----
+        <hr />
 
-<h2>1. The Simple Rule: The 50/30/20 Method</h2>
-<p>
-  A popular budgeting rule suggests saving <strong>20% of your monthly income</strong>.
-</p>
+        <h2>1. The Simple Rule: The 50/30/20 Method</h2>
+        <p>
+          A popular budgeting rule suggests saving <strong>20% of your monthly income</strong>.
+        </p>
 
-<div class="example-box">
-  <strong>Example:</strong><br>
-  Monthly income: <strong>$4,000</strong><br>
-  Recommended savings: <strong>$800/month</strong>
-</div>
+        <div class="example-box">
+          <strong>Example:</strong><br>
+          Monthly income: <strong>$4,000</strong><br>
+          Recommended savings: <strong>$800/month</strong>
+        </div>
 
-<p>
-  This rule works well as a general guideline, but it doesn’t tell you if you'll reach a specific goal in time.  
-  That’s where goal-based saving comes in.
-</p>
+        <p>
+          This rule works well as a general guideline, but it doesn’t tell you if you'll reach a specific goal in time.
+          That’s where goal-based saving comes in.
+        </p>
 
----
+        <hr />
 
-<h2>2. Goal-Based Saving: Calculate Backwards</h2>
+        <h2>2. Goal-Based Saving: Calculate Backwards</h2>
 
-<p>
-  To know how much you need to save each month, answer three questions:
-</p>
+        <p>
+          To know how much you need to save each month, answer three questions:
+        </p>
 
-<ul>
-  <li><strong>What is your goal?</strong> (e.g., $10,000 emergency fund)</li>
-  <li><strong>When do you need it?</strong> (timeline)</li>
-  <li><strong>Will your savings earn interest?</strong> (0–5% typical)</li>
-</ul>
+        <ul>
+          <li><strong>What is your goal?</strong> (e.g., $10,000 emergency fund)</li>
+          <li><strong>When do you need it?</strong> (timeline)</li>
+          <li><strong>Will your savings earn interest?</strong> (0–5% typical)</li>
+        </ul>
 
----
+        <hr />
 
-<h2>3. Clear USD Examples</h2>
+        <h2>3. Clear USD Examples</h2>
 
-<h3>📌 Example 1: Save $5,000 in 1 year</h3>
-<p>
-  If you save <strong>every month</strong> with no interest:
-</p>
+        <h3>📌 Example 1: Save $5,000 in 1 year</h3>
+        <p>
+          If you save <strong>every month</strong> with no interest:
+        </p>
 
-<div class="example-box">
-  You must save: <strong>$417 per month</strong>
-</div>
+        <div class="example-box">
+          You must save: <strong>$417 per month</strong>
+        </div>
 
----
+        <h3>📌 Example 2: Save $10,000 in 3 years</h3>
+        <p>With 3% annual interest (compounded monthly):</p>
 
-<h3>📌 Example 2: Save $10,000 in 3 years</h3>
-<p>With 3% annual interest (compounded monthly):</p>
+        <div class="example-box">
+          You must save: <strong>$268 per month</strong>
+        </div>
 
-<div class="example-box">
-  You must save: <strong>$268 per month</strong>
-</div>
+        <p>
+          Without interest, it would be $278/month — interest saves you time and money.
+        </p>
 
-<p>
-  Without interest, it would be $278/month — interest saves you time and money.
-</p>
+        <h3>📌 Example 3: Save $20,000 in 5 years</h3>
+        <p>Assuming a 4% interest rate:</p>
 
----
+        <div class="example-box">
+          You must save: <strong>$295 per month</strong>
+        </div>
 
-<h3>📌 Example 3: Save $20,000 in 5 years</h3>
+        <hr />
 
-<p>Assuming a 4% interest rate:</p>
+        <h2>4. How to Calculate Your Exact Monthly Savings</h2>
 
-<div class="example-box">
-  You must save: <strong>$295 per month</strong>
-</div>
+        <p>Use this formula (or the online calculator):</p>
 
----
+        <p>
+          <code>Monthly Saving = Goal × r / ((1 + r)<sup>n</sup> − 1)</code>
+        </p>
 
-<h2>4. How to Calculate Your Exact Monthly Savings</h2>
+        <ul>
+          <li><strong>r</strong> = monthly interest rate</li>
+          <li><strong>n</strong> = number of months</li>
+        </ul>
 
-<p>Use this formula (or the online calculator):</p>
+        <p>
+          Or, simply use the <a href="savings-goal-calculator.html">Savings Goal Calculator</a> — it applies this formula automatically.
+        </p>
 
-<p style="font-family: monospace; background:#0f172a; padding:0.75rem;">
-Monthly Saving = Goal × r / ((1 + r)<sup>n</sup> − 1)
-</p>
+        <hr />
 
-<ul>
-  <li><strong>r</strong> = monthly interest rate</li>
-  <li><strong>n</strong> = number of months</li>
-</ul>
+        <h2>5. How Much <em>Should</em> You Save? (Quick Table)</h2>
 
-<p>
-Or, simply use the <a href="savings-goal-calculator.html">Savings Goal Calculator</a> — it applies this formula automatically.
-</p>
+        <div class="example-box">
+          <strong>Emergency fund:</strong> $200–$500/month<br>
+          <strong>Down payment:</strong> $400–$1,200/month<br>
+          <strong>Retirement:</strong> 10–20% of income<br>
+          <strong>Big purchase (car, travel):</strong> $150–$400/month
+        </div>
 
----
+        <hr />
 
-<h2>5. How Much *Should* You Save? (Quick Table)</h2>
+        <h2>6. Tips to Save More Without Feeling It</h2>
+        <ul>
+          <li>Automate your transfers on payday</li>
+          <li>Reduce 1–2 recurring expenses</li>
+          <li>Put bonus/increase money directly into savings</li>
+          <li>Use a high-yield savings account (3–5%)</li>
+        </ul>
 
-<div class="example-box">
-<strong>Emergency fund:</strong> $200–$500/month  
-<br>
-<strong>Down payment:</strong> $400–$1,200/month  
-<br>
-<strong>Retirement:</strong> 10–20% of income  
-<br>
-<strong>Big purchase (car, travel):</strong> $150–$400/month  
-</div>
+        <hr />
 
----
+        <div class="cta-box">
+          <h3>Try the Savings Goal Calculator</h3>
+          <p>
+            Enter your goal, timeline, and interest rate — the calculator shows exactly what you must save each month.
+          </p>
+          <a href="savings-goal-calculator.html">Open Savings Goal Calculator →</a>
+        </div>
+      </article>
+    </main>
 
-<h2>6. Tips to Save More Without Feeling It</h2>
-<ul>
-  <li>Automate your transfers on payday</li>
-  <li>Reduce 1–2 recurring expenses</li>
-  <li>Put bonus/increase money directly into savings</li>
-  <li>Use a high-yield savings account (3–5%)</li>
-</ul>
+    <footer>
+      © <span id="year"></span> FinanceCalcCenter — Educational use only.
+    </footer>
+  </div>
 
----
-
-<div class="cta-box">
-  <h3>Try the Savings Goal Calculator</h3>
-  <p>
-    Enter your goal, timeline, and interest rate — the calculator shows exactly what you must save each month.
-  </p>
-  <a href="savings-goal-calculator.html">Open Savings Goal Calculator →</a>
-</div>
-
-<footer style="margin-top:3rem; color:#9ca3af;">
-  © <script>document.write(new Date().getFullYear())</script> FinanceCalcCenter — Educational use only.
-</footer>
-
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
