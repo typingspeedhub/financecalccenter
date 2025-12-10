@@ -238,6 +238,31 @@
       font-weight: 500;
     }
 
+    .related-links {
+      margin-top: 2rem;
+      padding: 1.1rem 1.1rem;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .related-links h2 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    .related-links ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.3rem 0 0;
+    }
+
+    .related-links li + li {
+      margin-top: 0.3rem;
+    }
+
     footer {
       margin-top: 3rem;
       color: var(--muted);
@@ -417,6 +442,24 @@
           <a href="compound-interest-calculator.html">compound interest calculator</a><br />
           👉 Or return to the <a href="index.html">FinanceCalcCenter homepage</a> to explore more tools and guides.
         </p>
+
+        <!-- 🔗 Related internal links for SEO -->
+        <section class="related-links">
+          <h2>Related calculators &amp; articles</h2>
+          <ul>
+            <!-- Calculators -->
+            <li><a href="compound-interest-calculator.html">Compound Interest Calculator</a> – see compound growth in action.</li>
+            <li><a href="savings-goal-calculator.html">Savings Goal Calculator</a> – plan how much you need to save each month.</li>
+            <li><a href="inflation-calculator.html">Inflation Calculator</a> – check how rising prices affect your returns.</li>
+            <li><a href="loan-payment-calculator.html">Loan Payment Calculator</a> – see how interest works on debt.</li>
+            <li><a href="mortgage-calculator.html">Mortgage Calculator</a> – understand long-term home loan interest.</li>
+
+            <!-- Articles (only existing ones) -->
+            <li><a href="what-is-compound-interest.html">What Is Compound Interest?</a></li>
+            <li><a href="how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a></li>
+            <li><a href="apr-vs-apy.html">APR vs APY – What's the Difference?</a></li>
+          </ul>
+        </section>
       </article>
     </main>
 
@@ -430,4 +473,3 @@
   </script>
 </body>
 </html>
-
