@@ -250,6 +250,26 @@
       margin-top: 0.2rem;
     }
 
+    .related-links {
+      margin-top: 1.4rem;
+      font-size: 0.86rem;
+    }
+
+    .related-links h2 {
+      font-size: 0.95rem;
+      margin: 0 0 0.4rem;
+    }
+
+    .related-links ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.3rem 0 0;
+    }
+
+    .related-links li + li {
+      margin-top: 0.25rem;
+    }
+
     footer {
       margin-top: 1.8rem;
       font-size: 0.78rem;
@@ -394,6 +414,23 @@
       </div>
     </section>
 
+    <!-- 🔗 Related internal links for SEO -->
+    <section class="card related-links">
+      <h2>Related calculators &amp; articles</h2>
+      <ul>
+        <!-- Calculators -->
+        <li><a href="https://financecalccenter.com/compound-interest-calculator.html">Compound Interest Calculator</a> – see how your savings can grow faster.</li>
+        <li><a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a> – check how rising prices affect your goal.</li>
+        <li><a href="https://financecalccenter.com/loan-payment-calculator.html">Loan Payment Calculator</a> – compare saving vs. borrowing.</li>
+        <li><a href="https://financecalccenter.com/mortgage-calculator.html">Mortgage Calculator</a> – plan for a future home purchase.</li>
+
+        <!-- Articles – csak létezők -->
+        <li><a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a></li>
+        <li><a href="https://financecalccenter.com/what-is-compound-interest.html">What Is Compound Interest?</a></li>
+        <li><a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What's the Difference?</a></li>
+      </ul>
+    </section>
+
     <footer>
       This savings calculator is for educational purposes only and does not
       constitute financial advice.
@@ -468,7 +505,6 @@
         fvCurrent = current * Math.pow(1 + monthlyRate, n);
       }
 
-      // If without contributions, goal is unreachable (fvCurrent < goal)
       const remaining = goal - fvCurrent;
       let monthly;
 
@@ -486,10 +522,6 @@
       }
 
       const totalContributed = monthly * n;
-      const finalBalance = fvCurrent + totalContributed * (monthlyRate === 0
-        ? 1
-        : (Math.pow(1 + monthlyRate, n) - 1) / monthlyRate); // but we know this should be close to 'goal'
-
       const estimatedFinal = goal; // by construction, we aim at the goal
       const totalInvested = current + totalContributed;
       const interestEarned = estimatedFinal - totalInvested;
@@ -516,5 +548,3 @@
   </script>
 </body>
 </html>
-
-
