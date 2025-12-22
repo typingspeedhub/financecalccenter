@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-68ZVCW4FWK");
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Debt Payoff Calculator | Payoff Time, Total Interest & Savings</title>
+  <meta
+    name="description"
+    content="Free debt payoff calculator: estimate payoff time, total interest, and an amortization schedule for credit cards and loans. Add extra monthly payments to see how much faster you can become debt-free."
+  />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://financecalccenter.com/debt-payoff-calculator.html" />
+
+  <!-- Favicon & PWA icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Debt Payoff Calculator | Payoff Time & Total Interest" />
+  <meta property="og:description" content="Estimate how long it will take to pay off debt, total interest, and how extra payments reduce payoff time." />
+  <meta property="og:url" content="https://financecalccenter.com/debt-payoff-calculator.html" />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --card: #0f172a;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1e293b;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --danger: #f97373;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: radial-gradient(circle at top, #1f2937 0, #020617 45%);
+      color: var(--text);
+      padding: 20px 12px 32px;
+      line-height: 1.55;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrapper { max-width: 980px; margin: 0 auto; }
+
+    header { margin-bottom: 1.25rem; }
+
+    .back {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .back:hover { text-decoration: underline; }
+
+    h1 {
+      margin: 0.6rem 0 0.25rem;
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 760px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 1.2rem;
+      margin-top: 1.1rem;
+      align-items: start;
+    }
+
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 1.1rem;
+      padding: 1.35rem 1.25rem 1.45rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.7);
+    }
+
+    label {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+    @media (max-width: 640px) {
+      .row { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.62rem 0.7rem;
+      margin-top: 0.25rem;
+      border-radius: 0.7rem;
+      border: 1px solid var(--border);
+      background: #020617;
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.55rem;
+    }
+
+    .error {
+      margin-top: 0.6rem;
+      color: var(--danger);
+      font-size: 0.85rem;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 1.05rem;
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      font-weight: 650;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 16px 32px rgba(34, 197, 94, 0.4);
+    }
+
+    button:active { transform: translateY(1px); box-shadow: none; }
+
+    .results {
+      border-radius: 1.05rem;
+      padding: 1.1rem 1rem 1rem;
+      background: radial-gradient(circle at top left, #052e16 0, #020617 55%);
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .results h2 {
+      font-size: 1rem;
+      margin: 0 0 0.55rem;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    @media (max-width: 640px) {
+      .results-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .res-item {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 0.9rem;
+      border: 1px solid rgba(30, 64, 175, 0.45);
+      padding: 0.65rem 0.7rem;
+    }
+
+    .res-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .res-value {
+      font-size: 1rem;
+      font-weight: 650;
+      margin-top: 0.15rem;
+    }
+
+    .res-note {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .amort {
+      margin-top: 0.95rem;
+      border-radius: 0.9rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .amort-head {
+      background: rgba(15, 23, 42, 0.96);
+      padding: 0.5rem 0.7rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .amort-body {
+      max-height: 260px;
+      overflow: auto;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    th, td {
+      padding: 0.48rem 0.6rem;
+      text-align: right;
+      white-space: nowrap;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    th:first-child, td:first-child { text-align: left; }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    tr:nth-child(even) td { background: rgba(15, 23, 42, 0.95); }
+
+    .explainer h2 { font-size: 1rem; margin: 0 0 0.4rem; }
+    .explainer p, .explainer li { font-size: 0.88rem; color: var(--muted); }
+    .explainer ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+
+    footer {
+      margin-top: 1.6rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .links {
+      margin-top: 1.1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(31, 41, 55, 0.85);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 0.9rem;
+      justify-content: center;
+    }
+
+    .links a {
+      font-size: 0.85rem;
+      color: #bbf7d0;
+      text-decoration: none;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      background: rgba(15, 23, 42, 0.75);
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+    }
+    .links a:hover { border-color: rgba(34, 197, 94, 0.6); }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Debt Payoff Calculator",
+    "url": "https://financecalccenter.com/debt-payoff-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "en",
+    "description": "Estimate debt payoff time, total interest, and see how extra payments reduce your payoff timeline.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter",
+      "url": "https://financecalccenter.com/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <a class="back" href="index.html">← Back to FinanceCalcCenter</a>
+      <h1>Debt Payoff Calculator</h1>
+      <p class="subtitle">
+        Estimate how long it will take to pay off your debt, how much total interest you’ll pay,
+        and how much faster you can become debt-free with extra monthly payments.
+      </p>
+    </header>
+
+    <section class="layout">
+      <!-- Calculator -->
+      <div class="card" aria-label="Debt payoff calculator">
+        <div class="row">
+          <div>
+            <label for="balance">Current debt balance</label>
+            <input id="balance" type="number" min="0" step="0.01" value="8000" />
+          </div>
+          <div>
+            <label for="apr">APR (annual %)</label>
+            <input id="apr" type="number" min="0" max="200" step="0.01" value="19.99" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="payment">Monthly payment</label>
+            <input id="payment" type="number" min="0" step="0.01" value="250" />
+          </div>
+          <div>
+            <label for="extra">Extra monthly payment (optional)</label>
+            <input id="extra" type="number" min="0" step="0.01" value="0" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="paymentDay">Payment timing</label>
+            <select id="paymentDay">
+              <option value="end" selected>End of month (typical)</option>
+              <option value="start">Start of month (slightly less interest)</option>
+            </select>
+          </div>
+          <div>
+            <label for="currency">Currency label (optional)</label>
+            <input id="currency" type="text" maxlength="6" placeholder="USD" value="USD" />
+          </div>
+        </div>
+
+        <button id="calcBtn" type="button">Calculate payoff</button>
+
+        <p class="hint">
+          This tool assumes a fixed APR and one payment per month. Results are estimates.
+          If your payment is too low to cover monthly interest, payoff is not possible until you increase the payment.
+        </p>
+
+        <div id="error" class="error"></div>
+      </div>
+
+      <!-- Results & explainer -->
+      <div>
+        <div id="results" class="results">
+          <h2>Payoff summary</h2>
+          <div class="results-grid">
+            <div class="res-item">
+              <div class="res-label">Payoff time</div>
+              <div id="payoffTime" class="res-value">—</div>
+            </div>
+            <div class="res-item">
+              <div class="res-label">Payoff date (approx.)</div>
+              <div id="payoffDate" class="res-value">—</div>
+            </div>
+            <div class="res-item">
+              <div class="res-label">Total paid</div>
+              <div id="totalPaid" class="res-value">—</div>
+            </div>
+            <div class="res-item">
+              <div class="res-label">Total interest</div>
+              <div id="totalInterest" class="res-value">—</div>
+            </div>
+          </div>
+
+          <p class="res-note" id="savingsNote"></p>
+
+          <div class="amort">
+            <div class="amort-head">
+              <span>Amortization schedule (first 24 payments)</span>
+              <span id="scheduleMeta"></span>
+            </div>
+            <div class="amort-body">
+              <table aria-label="Debt payoff amortization schedule">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Payment</th>
+                    <th>Interest</th>
+                    <th>Principal</th>
+                    <th>Balance</th>
+                  </tr>
+                </thead>
+                <tbody id="scheduleBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card explainer">
+          <h2>How this debt payoff calculator works</h2>
+          <p>
+            Each month, interest is calculated on your remaining balance using your APR. Your payment is then applied:
+            interest first, and whatever remains reduces the principal (your balance).
+          </p>
+          <ul>
+            <li><strong>APR:</strong> converted to a monthly rate (APR ÷ 12).</li>
+            <li><strong>Monthly payment:</strong> your planned payment amount.</li>
+            <li><strong>Extra payment:</strong> added on top to reduce the balance faster.</li>
+          </ul>
+          <p>
+            If your payment doesn’t cover the monthly interest, your balance will grow and you won’t reach payoff.
+            In that case, increase your payment or lower the APR (e.g., via refinancing).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Educational use only · Not financial advice. Results are estimates.
+      <div class="links" aria-label="Internal links">
+        <a href="compound-interest-calculator.html">Compound Interest Calculator</a>
+        <a href="loan-payment-calculator.html">Loan Payment Calculator</a>
+        <a href="mortgage-calculator.html">Mortgage Calculator</a>
+        <a href="savings-goal-calculator.html">Savings Goal Calculator</a>
+        <a href="inflation-calculator.html">Inflation Calculator</a>
+        <a href="retirement-savings-calculator.html">Retirement Savings Calculator</a>
+        <a href="how-to-build-an-emergency-fund.html">Emergency Fund Guide</a>
+        <a href="how-inflation-erodes-your-money.html">Inflation Guide</a>
+        <a href="apr-vs-apy.html">APR vs APY</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    function isFiniteNumber(x) {
+      return typeof x === "number" && isFinite(x);
+    }
+
+    function formatMoney(value, currency) {
+      if (!isFiniteNumber(value)) return "—";
+      const formatted = value.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+      return currency ? formatted + " " + currency : formatted;
+    }
+
+    function formatMonthsToYearsMonths(months) {
+      const years = Math.floor(months / 12);
+      const rem = months % 12;
+      if (years <= 0) return rem + " months";
+      if (rem === 0) return years + (years === 1 ? " year" : " years");
+      return years + (years === 1 ? " year" : " years") + " " + rem + " months";
+    }
+
+    function addMonths(date, months) {
+      const d = new Date(date.getTime());
+      const day = d.getDate();
+      d.setMonth(d.getMonth() + months);
+      // handle month rollover (e.g., Jan 31 -> Mar 2). clamp to last day
+      if (d.getDate() < day) d.setDate(0);
+      return d;
+    }
+
+    function simulatePayoff({
+      balance,
+      monthlyRate,
+      monthlyPayment,
+      paymentTiming
+    }) {
+      let month = 0;
+      let totalPaid = 0;
+      let totalInterest = 0;
+
+      // Safety limit to avoid infinite loops
+      const MAX_MONTHS = 1200; // 100 years
+
+      while (balance > 0.005 && month < MAX_MONTHS) {
+        month++;
+
+        // Interest timing assumption
+        // - "end": interest accrues first, then payment
+        // - "start": payment first, then interest on remaining (slightly better)
+        let interestThisMonth = 0;
+
+        if (paymentTiming === "start") {
+          const pay = Math.min(monthlyPayment, balance);
+          balance -= pay;
+          totalPaid += pay;
+
+          interestThisMonth = balance * monthlyRate;
+          balance += interestThisMonth;
+          totalInterest += interestThisMonth;
+        } else {
+          interestThisMonth = balance * monthlyRate;
+          balance += interestThisMonth;
+          totalInterest += interestThisMonth;
+
+          const pay = Math.min(monthlyPayment, balance);
+          balance -= pay;
+          totalPaid += pay;
+        }
+
+        // Payment must at least reduce balance eventually; otherwise it grows or stalls
+        // (We still keep sim, but caller should pre-check for negative amortization.)
+        if (!isFiniteNumber(balance) || balance > 1e12) break;
+      }
+
+      const paidOff = balance <= 0.01;
+
+      return {
+        months: month,
+        totalPaid,
+        totalInterest,
+        paidOff
+      };
+    }
+
+    function buildSchedule({
+      balance,
+      monthlyRate,
+      monthlyPayment,
+      paymentTiming,
+      currency,
+      maxRows
+    }) {
+      const rows = [];
+      let b = balance;
+
+      for (let i = 1; i <= maxRows && b > 0.005; i++) {
+        let interest = 0;
+        let principal = 0;
+        let payment = 0;
+
+        if (paymentTiming === "start") {
+          payment = Math.min(monthlyPayment, b);
+          principal = payment;
+          b -= principal;
+
+          interest = b * monthlyRate;
+          b += interest;
+        } else {
+          interest = b * monthlyRate;
+          b += interest;
+
+          payment = Math.min(monthlyPayment, b);
+          principal = payment - interest;
+          b -= payment;
+        }
+
+        // For end-of-month timing, principal can be slightly off if payment < interest
+        // Clamp for display
+        const principalDisplay = Math.max(0, principal);
+
+        rows.push({
+          n: i,
+          payment: formatMoney(payment, currency),
+          interest: formatMoney(interest, currency),
+          principal: formatMoney(principalDisplay, currency),
+          balance: formatMoney(Math.max(0, b), currency)
+        });
+
+        if (!isFiniteNumber(b)) break;
+      }
+
+      return rows;
+    }
+
+    function calculateDebtPayoff() {
+      const balance = parseFloat($("balance").value || "0");
+      const apr = parseFloat($("apr").value || "0");
+      const paymentBase = parseFloat($("payment").value || "0");
+      const extra = parseFloat($("extra").value || "0");
+      const paymentTiming = $("paymentDay").value;
+      const currency = ($("currency").value || "").trim();
+
+      const errorEl = $("error");
+      const resultsEl = $("results");
+      const scheduleBody = $("scheduleBody");
+      const scheduleMeta = $("scheduleMeta");
+      const savingsNote = $("savingsNote");
+
+      errorEl.textContent = "";
+      resultsEl.style.display = "none";
+      scheduleBody.innerHTML = "";
+      scheduleMeta.textContent = "";
+      savingsNote.textContent = "";
+
+      if (!(balance > 0) || isNaN(balance)) {
+        errorEl.textContent = "Please enter a valid current balance.";
+        return;
+      }
+      if (apr < 0 || isNaN(apr)) {
+        errorEl.textContent = "Please enter a valid APR (0 or higher).";
+        return;
+      }
+      if (paymentBase <= 0 || isNaN(paymentBase)) {
+        errorEl.textContent = "Please enter a valid monthly payment.";
+        return;
+      }
+      if (extra < 0 || isNaN(extra)) {
+        errorEl.textContent = "Extra payment cannot be negative.";
+        return;
+      }
+
+      const monthlyPayment = paymentBase + extra;
+      const monthlyRate = apr / 100 / 12;
+
+      // Negative amortization check (end-of-month typical)
+      if (paymentTiming === "end" && monthlyRate > 0) {
+        const firstMonthInterest = balance * monthlyRate;
+        if (monthlyPayment <= firstMonthInterest + 0.005) {
+          errorEl.textContent =
+            "Your monthly payment is too low to cover monthly interest. Increase the payment (or add extra) to reach payoff.";
+          return;
+        }
+      }
+
+      // Baseline (no extra) for “savings” note
+      const baseline = simulatePayoff({
+        balance,
+        monthlyRate,
+        monthlyPayment: paymentBase,
+        paymentTiming
+      });
+
+      const scenario = simulatePayoff({
+        balance,
+        monthlyRate,
+        monthlyPayment,
+        paymentTiming
+      });
+
+      if (!scenario.paidOff) {
+        errorEl.textContent =
+          "Unable to compute a payoff timeline with these inputs. Please increase your payment and try again.";
+        return;
+      }
+
+      const months = scenario.months;
+      const payoffDate = addMonths(new Date(), months);
+
+      $("payoffTime").textContent = formatMonthsToYearsMonths(months);
+      $("payoffDate").textContent = payoffDate.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short"
+      });
+      $("totalPaid").textContent = formatMoney(scenario.totalPaid, currency);
+      $("totalInterest").textContent = formatMoney(scenario.totalInterest, currency);
+
+      // Savings note if extra payment is used and baseline is valid
+      if (extra > 0 && baseline.paidOff) {
+        const monthsSaved = Math.max(0, baseline.months - scenario.months);
+        const interestSaved = Math.max(0, baseline.totalInterest - scenario.totalInterest);
+
+        savingsNote.textContent =
+          "With an extra " + formatMoney(extra, currency) + " per month, you could become debt-free " +
+          (monthsSaved ? (monthsSaved + " months") : "faster") +
+          " sooner and save about " + formatMoney(interestSaved, currency) + " in interest (estimate).";
+      } else {
+        savingsNote.textContent =
+          "Tip: adding even a small extra payment each month can reduce your payoff time and total interest significantly.";
+      }
+
+      // Schedule (first 24)
+      const rows = buildSchedule({
+        balance,
+        monthlyRate,
+        monthlyPayment,
+        paymentTiming,
+        currency,
+        maxRows: 24
+      });
+
+      for (const r of rows) {
+        const tr = document.createElement("tr");
+        const td = (txt) => {
+          const c = document.createElement("td");
+          c.textContent = txt;
+          return c;
+        };
+        tr.appendChild(td(String(r.n)));
+        tr.appendChild(td(r.payment));
+        tr.appendChild(td(r.interest));
+        tr.appendChild(td(r.principal));
+        tr.appendChild(td(r.balance));
+        scheduleBody.appendChild(tr);
+      }
+
+      scheduleMeta.textContent =
+        "APR " + apr.toFixed(2) + "% · Payment " + formatMoney(monthlyPayment, currency) +
+        (extra > 0 ? " (includes extra)" : "");
+
+      resultsEl.style.display = "block";
+    }
+
+    $("calcBtn").addEventListener("click", calculateDebtPayoff);
+
+    // Run once with defaults
+    calculateDebtPayoff();
+  </script>
+</body>
+</html>
