@@ -1,12 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://financecalccenter.com/</loc></url>
-  <url><loc>https://financecalccenter.com/compound-interest-calculator.html</loc></url>
-  <url><loc>https://financecalccenter.com/loan-payment-calculator.html</loc></url>
-  <url><loc>https://financecalccenter.com/mortgage-calculator.html</loc></url>
-  <url><loc>https://financecalccenter.com/savings-goal-calculator.html</loc></url>
-  <url><loc>https://financecalccenter.com/what-is-compound-interest.html</loc></url>
-  <url><loc>https://financecalccenter.com/simple-interest-vs-compound-interest.html</loc></url>
-  <url><loc>https://financecalccenter.com/how-much-should-you-save-each-month.html</loc></url>
-  <url><loc>https://financecalccenter.com/apr-vs-apy.html</loc></url>
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://financecalccenter.com/</loc>
+  </url>
+
+  <!-- Calculators -->
+  <url>
+    <loc>https://financecalccenter.com/compound-interest-calculator.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/loan-payment-calculator.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/mortgage-calculator.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/savings-goal-calculator.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/inflation-calculator.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/retirement-savings-calculator.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/debt-payoff-calculator.html</loc>
+  </url>
+
+  <!-- Articles -->
+  <url>
+    <loc>https://financecalccenter.com/what-is-compound-interest.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/simple-interest-vs-compound-interest.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/how-much-should-you-save-each-month.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/apr-vs-apy.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/what-is-high-yield-savings-account.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/how-inflation-erodes-your-money.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/how-to-build-an-emergency-fund.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/savings-vs-investing-which-comes-first.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/how-to-pay-off-debt-faster-snowball-vs-avalanche.html</loc>
+  </url>
+
 </urlset>
+
