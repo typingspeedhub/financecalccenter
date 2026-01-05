@@ -28,7 +28,12 @@
   <url>
     <loc>https://financecalccenter.com/debt-payoff-calculator.html</loc>
   </url>
-   <url><loc>https://financecalccenter.com/investment-return-calculator.html</loc></url>
+  <url>
+    <loc>https://financecalccenter.com/investment-return-calculator.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/emergency-fund-calculator.html</loc>
+  </url>
 
   <!-- Articles -->
   <url>
@@ -58,6 +63,22 @@
   <url>
     <loc>https://financecalccenter.com/how-to-pay-off-debt-faster-snowball-vs-avalanche.html</loc>
   </url>
+  <url>
+    <loc>https://financecalccenter.com/average-stock-market-return-explained.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/what-is-a-good-interest-rate-in-2025.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/should-you-save-monthly-or-invest-monthly.html</loc>
+  </url>
+
+  <!-- Utility pages -->
+  <url>
+    <loc>https://financecalccenter.com/privacy-policy.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/about.html</loc>
+  </url>
 
 </urlset>
-
