@@ -105,31 +105,36 @@
       margin-top: 24px;
       font-size: 0.92rem;
       color: #cbd5f5;
+      line-height: 1.55;
     }
 
     .info-section h2 {
       font-size: 1.1rem;
-      margin-top: 0;
+      margin-top: 1.2rem;
       margin-bottom: 0.5rem;
+    }
+
+    .info-section h2:first-child {
+      margin-top: 0;
     }
 
     .info-section h3 {
       font-size: 1rem;
-      margin-top: 1rem;
+      margin-top: 0.9rem;
       margin-bottom: 0.25rem;
     }
 
     .info-section p {
-      margin: 0.25rem 0;
+      margin: 0.35rem 0;
     }
 
     .info-section ul {
       padding-left: 1.1rem;
-      margin: 0.3rem 0 0.6rem;
+      margin: 0.3rem 0 0.8rem;
     }
 
     .info-section li {
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
     }
 
     .related-links {
@@ -220,40 +225,96 @@
 
     <!-- Explanation / SEO content -->
     <section class="info-section">
-      <h2>How to use this compound interest calculator</h2>
-      <p>Fill in the fields above and click <strong>Calculate</strong> to see how your money could grow over time.</p>
-
-      <h3>Inputs</h3>
-      <ul>
-        <li><strong>Initial amount</strong> – how much you invest or save at the start.</li>
-        <li><strong>Monthly contribution</strong> – extra money you add every month.</li>
-        <li><strong>Annual interest rate</strong> – the expected yearly return (before taxes and fees).</li>
-        <li><strong>Years</strong> – how long you plan to keep the money invested.</li>
-        <li><strong>Compounding frequency</strong> – how often interest is added to your balance.</li>
-      </ul>
-
-      <h3>What the results show</h3>
-      <ul>
-        <li><strong>Final balance</strong> – the estimated future value of your investment.</li>
-        <li><strong>Total contributions</strong> – how much money you put in (initial amount + monthly deposits).</li>
-        <li><strong>Interest earned</strong> – how much of the final balance comes from growth rather than deposits.</li>
-      </ul>
-
-      <h3>Example</h3>
+      <h2>What Is a Compound Interest Calculator?</h2>
       <p>
-        If you start with <strong>$10,000</strong>, earn <strong>6% per year</strong>, and leave the money
-        invested for <strong>20 years</strong> with monthly compounding, your balance could grow to
-        roughly <strong>over $32,000</strong> – more than triple your initial amount.
+        A compound interest calculator estimates how your money can grow over time when interest is added to both your
+        original deposit and the interest you’ve already earned. This “interest on interest” effect can make a big
+        difference for long-term savings and investing.
+      </p>
+      <p>
+        To use this calculator, enter your starting amount, optional monthly contributions, an annual interest rate,
+        and a time period. Then choose how often interest is compounded (for example, monthly or yearly) and click
+        <strong>Calculate</strong>.
+      </p>
+
+      <h2>What Can You Use This Calculator For?</h2>
+      <p>You can use this calculator to explore and compare scenarios like:</p>
+      <ul>
+        <li><strong>Savings growth:</strong> estimate how a savings balance may build over time.</li>
+        <li><strong>Long-term investing:</strong> project potential investment growth using an assumed average annual return.</li>
+        <li><strong>Retirement planning:</strong> see how time and consistent contributions can affect future value.</li>
+        <li><strong>Comparing monthly vs. yearly compounding:</strong> understand how compounding frequency can change outcomes.</li>
+      </ul>
+
+      <h2>How Compound Interest Works (Simple Explanation)</h2>
+      <p>
+        With simple interest, you earn interest only on your initial amount. With compound interest, each period’s
+        interest is added to your balance, so future interest is calculated on a larger total. Over time, this can
+        create a snowball effect—especially when you keep your money invested and add contributions regularly.
+      </p>
+      <p>
+        In general, longer time horizons and consistent contributions often have a bigger impact than small differences
+        in short-term returns.
+      </p>
+
+      <h2>Example Calculation</h2>
+      <p>
+        For example, if you start with <strong>$10,000</strong>, earn <strong>6% per year</strong>, and leave the money
+        invested for <strong>20 years</strong> with monthly compounding, your balance could grow to roughly
+        <strong>over $32,000</strong>—even without adding extra money each month.
+      </p>
+      <p>
+        If you also make monthly contributions, the final balance can be much higher because every new deposit has time
+        to compound as well.
+      </p>
+
+      <h2>Why Compound Interest Is So Powerful</h2>
+      <p>
+        Compound interest rewards two things more than anything else: <strong>time</strong> and <strong>consistency</strong>.
+        Starting earlier gives your money more time to grow, and steady contributions can significantly increase the
+        amount that compounds. That’s why many long-term plans focus on regular saving and investing rather than trying
+        to chase perfect timing.
+      </p>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>Is this compound interest calculator accurate?</h3>
+      <p>
+        It provides an estimate based on the values you enter. Real-world results may differ due to fees, taxes,
+        changing interest rates, and market performance.
+      </p>
+
+      <h3>Does this calculator include inflation?</h3>
+      <p>
+        No. Results are shown in nominal dollars and do not adjust for inflation. To estimate “real” buying power, you
+        can compare your result against an assumed inflation rate.
+      </p>
+
+      <h3>What interest rate should I use?</h3>
+      <p>
+        For a savings account, use the rate your bank provides. For investments, it can help to try a few conservative
+        long-term rates to compare scenarios rather than relying on short-term performance.
+      </p>
+
+      <h3>What does compounding frequency change?</h3>
+      <p>
+        More frequent compounding means interest is added more often, which can slightly increase the final balance—
+        especially over long time periods. The difference between monthly and yearly compounding is usually modest, but
+        it can add up over decades.
+      </p>
+
+      <p class="disclaimer" style="font-size: 0.95em; opacity: 0.85;">
+        <strong>Note:</strong> This calculator is for educational purposes only and does not provide financial advice.
       </p>
 
       <!-- 🔗 SEO optimalizált belső link blokk -->
       <section class="related-links">
         <p><strong>Related articles & calculators</strong></p>
-        <!-- Cikkek -->
+        <!-- Articles -->
         <a href="https://financecalccenter.com/what-is-compound-interest.html">What Is Compound Interest?</a>
         <a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What's the Difference?</a>
         <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
-        <!-- Más kalkulátorok -->
+        <!-- Calculators -->
         <a href="https://financecalccenter.com/mortgage-calculator.html">Mortgage Calculator</a>
         <a href="https://financecalccenter.com/loan-payment-calculator.html">Loan Payment Calculator</a>
         <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
