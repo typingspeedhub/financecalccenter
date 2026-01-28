@@ -16,7 +16,7 @@
   <title>Loan Payment Calculator | Monthly Payment & Total Interest</title>
   <meta
     name="description"
-    content="Calculate your monthly loan payments, total interest, and full amortization schedule. Works for auto loans, personal loans, and any fixed-rate loan. Fast, accurate, and free."
+    content="Calculate your monthly loan payments, total interest, and a sample amortization schedule. Works for auto loans, personal loans, and any fixed-rate installment loan. Fast, accurate, and free."
   />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://financecalccenter.com/loan-payment-calculator.html" />
@@ -78,7 +78,8 @@
     .subtitle {
       font-size: 0.9rem;
       color: var(--muted);
-      max-width: 540px;
+      max-width: 560px;
+      line-height: 1.45;
     }
 
     .card {
@@ -148,6 +149,7 @@
       font-size: 0.8rem;
       color: var(--muted);
       margin-top: 0.4rem;
+      line-height: 1.45;
     }
 
     .error {
@@ -203,6 +205,7 @@
       margin-top: 0.6rem;
       font-size: 0.78rem;
       color: var(--muted);
+      line-height: 1.45;
     }
 
     .amort {
@@ -258,6 +261,20 @@
       background: rgba(15, 23, 42, 0.95);
     }
 
+    /* ✅ Readability improvements for the educational section */
+    .card h2 { margin-top: 0; }
+    .card h3 {
+      margin-top: 1rem;
+      margin-bottom: 0.35rem;
+      font-size: 1rem;
+    }
+    .card p { line-height: 1.55; }
+    .card ul {
+      margin: 0.4rem 0 0.9rem;
+      padding-left: 1.1rem;
+    }
+    .card li { margin: 0.25rem 0; }
+
     .related-links {
       margin-top: 1.4rem;
       font-size: 0.86rem;
@@ -283,6 +300,7 @@
       font-size: 0.78rem;
       color: var(--muted);
       text-align: center;
+      line-height: 1.45;
     }
 
     a {
@@ -305,7 +323,7 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "inLanguage": "en",
-    "description": "Calculate your monthly loan payments, total interest, and full amortization schedule. Works for auto loans, personal loans, and any fixed-rate loan. Fast, accurate, and free.",
+    "description": "Calculate your monthly loan payments, total interest, and a sample amortization schedule. Works for auto loans, personal loans, and any fixed-rate installment loan. Fast, accurate, and free.",
     "publisher": {
       "@type": "Organization",
       "name": "FinanceCalcCenter",
@@ -321,8 +339,8 @@
       <a class="back" href="index.html">← Back to FinanceCalcCenter</a>
       <h1>Loan Payment Calculator</h1>
       <p class="subtitle">
-        Estimate your monthly loan payment, total amount repaid and total interest
-        over the life of a fixed-rate loan.
+        Estimate your periodic loan payment, total amount repaid, and total interest over the life of a fixed-rate loan.
+        Use it for personal loans, auto loans, and most standard installment loans.
       </p>
     </header>
 
@@ -355,8 +373,8 @@
 
       <button id="calcBtn" type="button">Calculate payment</button>
       <p class="hint">
-        This calculator uses a standard amortizing loan formula and assumes a fixed
-        interest rate for the entire term.
+        This calculator uses a standard amortizing loan formula and assumes a fixed interest rate for the entire term.
+        Results are estimates and may differ from lender statements due to fees, rounding, or payment rules.
       </p>
       <div id="error" class="error"></div>
 
@@ -377,8 +395,7 @@
           </div>
         </div>
         <p class="res-note">
-          Payments are estimates only and do not include taxes, insurance or any
-          extra fees your lender may charge.
+          Payments are estimates only and do not include taxes, insurance, late fees, or other charges your lender may apply.
         </p>
 
         <div class="amort">
@@ -404,6 +421,131 @@
       </div>
     </section>
 
+    <!-- 🧠 Educational / SEO explanation -->
+    <section id="loan-guide" class="card" style="margin-top:1.5rem;">
+      <h2>How This Loan Payment Calculator Works</h2>
+
+      <p>
+        This loan payment calculator helps you estimate how much you may pay on a fixed-rate installment loan over time.
+        Enter your loan amount, annual interest rate, loan term, and payment frequency to see an estimated periodic payment,
+        the total amount repaid, and the total interest cost across the full term.
+      </p>
+
+      <p>
+        It can be useful for planning and comparison: for example, testing how a longer loan term changes the payment size,
+        or how a lower interest rate affects the total cost of borrowing. The goal is to explain loan math in a clear,
+        beginner-friendly way—so you can understand what the numbers mean before you make decisions.
+      </p>
+
+      <h3>What Is a Loan Payment?</h3>
+      <p>
+        A loan payment is the amount you pay to a lender on a schedule—most commonly monthly, but sometimes bi-weekly or weekly.
+        Each payment is generally split into two components:
+        <strong>principal</strong> (the amount that reduces the loan balance) and <strong>interest</strong> (the cost of borrowing).
+      </p>
+
+      <ul>
+        <li><strong>Principal</strong> reduces what you owe. Over time, paying principal brings the balance down toward zero.</li>
+        <li><strong>Interest</strong> is calculated based on your interest rate and the remaining balance during that period.</li>
+      </ul>
+
+      <p>
+        With a standard amortizing loan, the payment amount stays the same (assuming a fixed rate),
+        but the split between principal and interest changes over time. Early on, interest usually takes a larger share of each payment
+        because the balance is higher. Later, as the balance falls, interest tends to shrink and more of the payment goes toward principal.
+      </p>
+
+      <h3>Fixed-Rate Loans and Why They’re Predictable</h3>
+      <p>
+        This calculator is designed for fixed-rate loans, meaning the interest rate does not change over the life of the loan.
+        That’s why fixed-rate loans often feel more predictable: the periodic payment is calculated up front and remains the same
+        across the entire schedule (again, assuming no fees and no payment rule changes).
+      </p>
+
+      <p>
+        Many personal loans and auto loans are fixed-rate installment loans. Some mortgages are fixed-rate as well.
+        If you’re working with a variable or adjustable rate, the payment may change when the rate changes,
+        so a fixed-rate calculator may not match future lender statements.
+      </p>
+
+      <h3>How the Monthly (or Periodic) Payment Is Calculated</h3>
+      <p>
+        The calculator uses a standard amortization formula to compute your periodic payment. It converts your annual interest rate
+        into a periodic rate by dividing it by the number of payments per year (monthly = 12, bi-weekly = 26, weekly = 52).
+        It then finds the fixed payment that fully repays the balance after the total number of payment periods in your chosen term.
+      </p>
+
+      <p>
+        If your interest rate is set to 0%, the calculation becomes simpler: the loan balance is split evenly across all payments.
+        In real life, a “0% APR” offer may still include fees or conditions, so treat it as a math scenario rather than a guarantee.
+      </p>
+
+      <h3>What an Amortization Schedule Shows</h3>
+      <p>
+        An amortization schedule is a table that breaks down each payment into principal and interest and shows how the remaining balance changes.
+        In this tool, you’ll see a preview of the first 12 payments. This quick snapshot is helpful because it demonstrates an important concept:
+        even when payments are equal, the interest portion is typically larger at the beginning and smaller later on.
+      </p>
+
+      <p>
+        If you want a deeper comparison, try changing the term (for example, 3 years vs. 5 years) and observe how the total interest changes.
+        Shorter terms usually mean higher payments but lower total interest, while longer terms can lower the payment but raise the interest cost.
+      </p>
+
+      <h3>Payment Frequency: Monthly vs. Bi-weekly vs. Weekly</h3>
+      <p>
+        Payment frequency changes how often you pay and how the interest rate is applied per period.
+        With more frequent payments, the periodic interest rate is smaller, and the balance can decrease more often.
+        Depending on the loan’s rules and the exact schedule, this may slightly reduce total interest over the life of the loan.
+      </p>
+
+      <p>
+        That said, lenders may handle “bi-weekly” setups differently (some collect payments and apply them monthly, while others apply immediately).
+        This calculator assumes regular payments applied each period based on the selected frequency.
+        Use it as a consistent comparison tool rather than an exact replica of every lender’s processing method.
+      </p>
+
+      <h3>How to Use This Loan Calculator Effectively</h3>
+      <ul>
+        <li><strong>Compare terms:</strong> Test different loan lengths to balance affordability and total cost.</li>
+        <li><strong>Compare rates:</strong> Small interest rate differences can have a noticeable impact over time.</li>
+        <li><strong>Check affordability:</strong> Use the periodic payment as a starting point for budgeting.</li>
+        <li><strong>Understand total interest:</strong> Focus on how much borrowing costs over the full term, not just the payment size.</li>
+      </ul>
+
+      <p>
+        Remember that real loans can include additional costs (origination fees, documentation fees, insurance, taxes, or penalties).
+        Those items can change the true “out-the-door” monthly payment and the effective borrowing cost.
+        If you need a more complete picture, you can use this calculator alongside tools like an inflation calculator or savings goal calculator
+        to understand the broader impact of payments on your budget.
+      </p>
+
+      <h3>FAQ</h3>
+      <p><strong>Is this loan payment calculator accurate?</strong><br>
+        It uses standard amortization math and is accurate for typical fixed-rate loans. Differences can occur due to lender fees, rounding rules,
+        or how payments are applied.</p>
+
+      <p><strong>What is the difference between principal and interest?</strong><br>
+        Principal reduces the amount you borrowed. Interest is the borrowing cost calculated from the rate and remaining balance.</p>
+
+      <p><strong>Why is total interest higher on longer loan terms?</strong><br>
+        Even with a lower payment, interest has more time to accumulate. Longer terms often increase the total interest paid.</p>
+
+      <p><strong>Does paying weekly or bi-weekly always save interest?</strong><br>
+        Not always. It depends on how the lender applies payments. More frequent payments can reduce the balance sooner, which may reduce interest,
+        but lender rules can vary.</p>
+
+      <p><strong>Does this include fees, taxes, or insurance?</strong><br>
+        No. The calculator estimates principal and interest only. Any fees or required extras should be checked with your lender.</p>
+
+      <h3>Educational Use Only</h3>
+      <p>
+        This loan payment calculator is intended for informational and educational purposes only.
+        It does not provide financial advice or represent a loan offer. Always review loan agreements carefully and
+        consider professional guidance if you are unsure about terms, fees, or obligations.
+      </p>
+    </section>
+
     <!-- 🔗 Related internal links for SEO -->
     <section class="card related-links">
       <h2>Related calculators &amp; articles</h2>
@@ -413,14 +555,13 @@
         <li><a href="https://financecalccenter.com/compound-interest-calculator.html">Compound Interest Calculator</a> – see how investing extra can offset interest costs.</li>
         <li><a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a> – plan how much you need to save before taking a loan.</li>
         <li><a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a> – see how inflation affects real loan cost.</li>
-        <!-- Article – csak élő -->
+        <!-- Article – only if live -->
         <li><a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What's the Difference?</a></li>
       </ul>
     </section>
 
     <footer>
-      This loan calculator is for educational purposes only and does not constitute
-      financial advice or a loan offer.
+      This loan calculator is for educational purposes only and does not constitute financial advice or a loan offer.
     </footer>
   </div>
 
@@ -477,8 +618,6 @@
 
       // Build amortization schedule (first 12 payments)
       let balance = amount;
-      let totalInterest = 0;
-      let totalPaid = 0;
 
       const maxRows = Math.min(12, periods);
 
@@ -486,9 +625,6 @@
         const interestPortion = balance * periodRate;
         const principalPortion = payment - interestPortion;
         balance -= principalPortion;
-
-        totalInterest += interestPortion;
-        totalPaid += payment;
 
         const row = document.createElement("tr");
 
@@ -508,23 +644,14 @@
       }
 
       // Total over full term
-      let totalPaidFull;
-      let totalInterestFull;
-
-      if (periodRate === 0) {
-        totalPaidFull = payment * periods;
-        totalInterestFull = totalPaidFull - amount;
-      } else {
-        totalPaidFull = payment * periods;
-        totalInterestFull = totalPaidFull - amount;
-      }
+      const totalPaidFull = payment * periods;
+      const totalInterestFull = totalPaidFull - amount;
 
       $("payment").textContent = "$" + formatMoney(payment);
       $("totalPaid").textContent = "$" + formatMoney(totalPaidFull);
       $("totalInterest").textContent = "$" + formatMoney(totalInterestFull);
 
-      scheduleMeta.textContent =
-        periods + " payments · " + years + " years";
+      scheduleMeta.textContent = periods + " payments · " + years + " years";
 
       resultsEl.style.display = "block";
     }
