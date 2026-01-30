@@ -33,6 +33,18 @@
   <meta property="og:title" content="What Is Compound Interest? Simple Explanation With Examples" />
   <meta property="og:description" content="Understand compound interest with clear USD examples and see how your savings can grow faster. Includes a free online compound interest calculator." />
   <meta property="og:url" content="https://financecalccenter.com/what-is-compound-interest.html" />
+  <meta property="og:image" content="https://financecalccenter.com/assets/og/what-is-compound-interest.png" />
+  <meta property="og:image:secure_url" content="https://financecalccenter.com/assets/og/what-is-compound-interest.png" />
+  <meta property="og:image:alt" content="What is compound interest visual explainer" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What Is Compound Interest? Simple Explanation With Examples" />
+  <meta name="twitter:description" content="Understand compound interest with clear USD examples and see how your savings can grow faster. Includes a free online compound interest calculator." />
+  <meta name="twitter:image" content="https://financecalccenter.com/assets/og/what-is-compound-interest.png" />
+  <meta name="twitter:image:alt" content="What is compound interest visual explainer" />
 
   <style>
     :root {
@@ -67,12 +79,24 @@
       align-items: center;
       gap: 1rem;
       margin-bottom: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 0.75rem;
+    }
+
+    .brand-title {
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-subtitle {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 0.1rem;
     }
 
     .logo {
@@ -87,6 +111,7 @@
       color: #022c22;
       font-size: 1.3rem;
       box-shadow: 0 10px 30px rgba(34, 197, 94, 0.45);
+      flex: 0 0 auto;
     }
 
     nav a {
@@ -97,6 +122,8 @@
       background: rgba(15, 23, 42, 0.9);
       border: 1px solid transparent;
       margin-left: 0.25rem;
+      text-decoration: none;
+      display: inline-block;
     }
 
     nav a:hover {
@@ -123,6 +150,77 @@
       margin-bottom: 0.5rem;
     }
 
+    h1 {
+      margin-top: 0.4rem;
+      line-height: 1.2;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .cta-box {
+      margin: 1rem 0 1.25rem;
+      padding: 1rem 1.1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      background: rgba(34, 197, 94, 0.06);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      margin-top: 0.35rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.16);
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      border-color: var(--accent);
+      background: rgba(34, 197, 94, 0.22);
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 0.75rem 0 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 0.9rem;
+      background: rgba(2, 6, 23, 0.35);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 420px;
+    }
+
+    th, td {
+      padding: 0.7rem 0.8rem;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+      text-align: left;
+    }
+
+    th {
+      color: var(--text);
+      font-size: 0.9rem;
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    code {
+      background: rgba(2, 6, 23, 0.65);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 0.15rem 0.35rem;
+      border-radius: 0.4rem;
+    }
+
     .related-links {
       margin-top: 2rem;
       padding: 1rem 1.2rem;
@@ -130,25 +228,34 @@
       border: 1px solid var(--border);
       border-radius: 1rem;
     }
+
     .related-links h2 {
       margin-top: 0;
       margin-bottom: .6rem;
       font-size: 1.1rem;
     }
+
     .related-links ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
+
     .related-links li {
       margin: .35rem 0;
     }
+
     .related-links a {
       color: var(--accent);
       text-decoration: none;
     }
+
     .related-links a:hover {
       text-decoration: underline;
+    }
+
+    a {
+      color: var(--accent);
     }
 
     footer {
@@ -166,6 +273,7 @@
     "@type": "Article",
     "headline": "What Is Compound Interest? Simple Explanation With USD Examples",
     "description": "Learn how compound interest works with clear USD examples and a free calculator.",
+    "image": "https://financecalccenter.com/assets/og/what-is-compound-interest.png",
     "author": { "@type": "Organization", "name": "FinanceCalcCenter" },
     "publisher": {
       "@type": "Organization",
@@ -253,7 +361,6 @@
         <h2>Final Thoughts</h2>
         <p>Start early, stay consistent, let compounding work for you.</p>
 
-        <!-- 🔗 INSERTED RELATED LINKS -->
         <section class="related-links">
           <h2>Related calculators &amp; guides</h2>
           <ul>
@@ -262,7 +369,6 @@
             <li><a href="loan-payment-calculator.html">Loan Payment Calculator</a></li>
             <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
             <li><a href="inflation-calculator.html">Inflation Calculator</a></li>
-
             <li><a href="how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a></li>
             <li><a href="apr-vs-apy.html">APR vs APY — What’s the Difference?</a></li>
           </ul>
