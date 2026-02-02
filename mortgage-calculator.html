@@ -250,6 +250,47 @@
       margin-top: 0.2rem;
     }
 
+    /* NEW: SEO info-section similar to compound interest page */
+    .info-section {
+      margin-top: 1.2rem;
+      font-size: 0.92rem;
+      color: #cbd5f5;
+      line-height: 1.55;
+    }
+
+    .info-section h2 {
+      font-size: 1.05rem;
+      margin-top: 1.1rem;
+      margin-bottom: 0.45rem;
+      color: var(--text);
+    }
+
+    .info-section h2:first-child {
+      margin-top: 0;
+    }
+
+    .info-section h3 {
+      font-size: 0.98rem;
+      margin-top: 0.85rem;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+
+    .info-section p {
+      margin: 0.35rem 0;
+      color: #cbd5f5;
+      opacity: 0.95;
+    }
+
+    .info-section ul {
+      padding-left: 1.15rem;
+      margin: 0.35rem 0 0.9rem;
+    }
+
+    .info-section li {
+      margin-bottom: 0.25rem;
+    }
+
     .related-links {
       margin-top: 1.4rem;
       font-size: 0.86rem;
@@ -424,6 +465,90 @@
             Use this tool to compare scenarios (for example different down payment
             sizes or interest rates) and see how they change your monthly budget.
           </p>
+
+          <!-- NEW: SEO / explanation section, similar structure to compound interest page -->
+          <section class="info-section" aria-label="Mortgage calculator explanation">
+            <h2>What Is a Mortgage Calculator?</h2>
+            <p>
+              A mortgage calculator estimates your monthly home loan payment based on your home price, down payment,
+              interest rate, and loan term. It helps you understand how much you may pay each month and what the total
+              cost of borrowing could be over time.
+            </p>
+            <p>
+              This page includes taxes, insurance, and HOA fees (if applicable) to give a more realistic monthly estimate.
+              Enter your numbers, click <strong>Calculate mortgage payment</strong>, and review the payment breakdown.
+            </p>
+
+            <h2>What This Calculator Includes</h2>
+            <p>This mortgage payment calculator separates your costs into clear components:</p>
+            <ul>
+              <li><strong>Principal &amp; interest (P&amp;I):</strong> the core loan payment based on the amortization formula.</li>
+              <li><strong>Property taxes:</strong> estimated from an annual tax rate and spread evenly across 12 months.</li>
+              <li><strong>Homeowner’s insurance:</strong> an annual amount divided into a monthly estimate.</li>
+              <li><strong>HOA fees:</strong> optional monthly fees added on top of the mortgage payment.</li>
+            </ul>
+
+            <h2>How Mortgage Payments Work (Simple Explanation)</h2>
+            <p>
+              Most mortgages are amortizing loans. That means your payment is designed so the loan balance reaches zero
+              by the end of the term. Early in the loan, a larger share of each payment typically goes to interest.
+              Over time, more of your payment goes toward the principal balance.
+            </p>
+            <p>
+              Even small changes to the interest rate or term can significantly change the total interest you pay, which
+              is why comparing scenarios can be useful before you commit.
+            </p>
+
+            <h2>Example Mortgage Calculation</h2>
+            <p>
+              Suppose you buy a <strong>$350,000</strong> home with a <strong>$70,000</strong> down payment (loan amount:
+              <strong>$280,000</strong>), a <strong>5%</strong> interest rate, and a <strong>30-year</strong> term.
+              Your principal &amp; interest payment is calculated from those inputs, and then estimated taxes, insurance,
+              and HOA fees (if any) are added to estimate your total monthly housing cost.
+            </p>
+            <p>
+              Try changing the down payment or term to see how the monthly payment moves—and how the total interest paid
+              over the full term changes.
+            </p>
+
+            <h2>Tips for Using This Mortgage Calculator</h2>
+            <ul>
+              <li><strong>Compare interest rates:</strong> even a 0.25% difference can add up over decades.</li>
+              <li><strong>Test different down payments:</strong> a larger down payment reduces the loan amount (and often the interest).</li>
+              <li><strong>Include realistic taxes &amp; insurance:</strong> these can materially affect affordability.</li>
+              <li><strong>Watch total cost:</strong> a lower monthly payment (longer term) can mean higher total interest.</li>
+            </ul>
+
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>Is this mortgage calculator accurate?</h3>
+            <p>
+              It provides an estimate based on the values you enter and a standard fixed-rate mortgage formula.
+              Your actual payment may differ due to lender fees, escrow policies, rounding, and local tax/insurance costs.
+            </p>
+
+            <h3>Does this include PMI (mortgage insurance)?</h3>
+            <p>
+              No. This estimate does not include PMI. If your down payment is below a lender’s threshold (often 20%),
+              you may need to add PMI to your monthly cost.
+            </p>
+
+            <h3>Does this include closing costs?</h3>
+            <p>
+              No. Closing costs are typically paid upfront (or rolled into the loan in some cases) and are not included
+              in the monthly estimate.
+            </p>
+
+            <h3>What is the difference between “monthly payment (P&amp;I)” and “total monthly payment”?</h3>
+            <p>
+              <strong>P&amp;I</strong> is just principal plus interest. <strong>Total monthly payment</strong> adds estimated
+              property taxes, homeowner’s insurance, and any HOA fees you enter.
+            </p>
+
+            <p class="disclaimer" style="font-size: 0.95em; opacity: 0.85; margin-top: 0.75rem;">
+              <strong>Note:</strong> This calculator is for educational purposes only and does not provide financial advice.
+            </p>
+          </section>
         </div>
       </div>
     </section>
@@ -438,8 +563,7 @@
         <li><a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a> – plan your down payment or emergency fund.</li>
         <li><a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a> – understand how inflation affects long-term housing costs.</li>
         <!-- Articles -->
-              
-<li><a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What's the Difference?</a></li>
+        <li><a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What's the Difference?</a></li>
       </ul>
     </section>
 
@@ -543,3 +667,4 @@
   </script>
 </body>
 </html>
+
