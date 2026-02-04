@@ -14,7 +14,7 @@
   <title>Inflation Calculator | Future Prices & Purchasing Power</title>
   <meta
     name="description"
-    content="See how inflation changes prices over time and how much purchasing power your money loses. Enter an amount, inflation rate, and years to estimate future prices in USD."
+    content="See how inflation changes prices over time and how much purchasing power your money loses. Enter an amount, inflation rate, and years to estimate future prices and real value."
   />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="canonical" href="https://financecalccenter.com/inflation-calculator.html" />
@@ -27,7 +27,6 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <!-- Simple dark UI styling (harmonizál a többi kalkulátorral) -->
   <style>
     :root {
       --bg: #020617;
@@ -89,9 +88,7 @@
     }
 
     @media (max-width: 880px) {
-      .layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .layout { grid-template-columns: minmax(0, 1fr); }
     }
 
     .card {
@@ -116,9 +113,7 @@
     }
 
     @media (max-width: 640px) {
-      .row {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .row { grid-template-columns: minmax(0, 1fr); }
     }
 
     input, select {
@@ -190,9 +185,7 @@
     }
 
     @media (max-width: 640px) {
-      .results-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .results-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
     .res-item {
@@ -239,6 +232,47 @@
 
     .explainer li + li {
       margin-top: 0.2rem;
+    }
+
+    /* NEW: SEO info-section similar to mortgage page */
+    .info-section {
+      margin-top: 1.2rem;
+      font-size: 0.92rem;
+      color: #cbd5f5;
+      line-height: 1.55;
+    }
+
+    .info-section h2 {
+      font-size: 1.05rem;
+      margin-top: 1.1rem;
+      margin-bottom: 0.45rem;
+      color: var(--text);
+    }
+
+    .info-section h2:first-child {
+      margin-top: 0;
+    }
+
+    .info-section h3 {
+      font-size: 0.98rem;
+      margin-top: 0.85rem;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+
+    .info-section p {
+      margin: 0.35rem 0;
+      color: #cbd5f5;
+      opacity: 0.95;
+    }
+
+    .info-section ul {
+      padding-left: 1.15rem;
+      margin: 0.35rem 0 0.9rem;
+    }
+
+    .info-section li {
+      margin-bottom: 0.25rem;
     }
 
     .related-links {
@@ -365,7 +399,7 @@
         </div>
       </div>
 
-      <!-- Explainer card -->
+      <!-- Explainer card (with added SEO/info section like the mortgage page) -->
       <div class="card explainer">
         <h2>How this inflation calculator works</h2>
         <p>
@@ -381,6 +415,87 @@
           Use this tool to understand why it’s important for your savings and income to grow at least as fast as
           inflation in the long run.
         </p>
+
+        <!-- NEW: SEO / explanation section -->
+        <section class="info-section" aria-label="Inflation calculator explanation">
+          <h2>What Is an Inflation Calculator?</h2>
+          <p>
+            An inflation calculator estimates how the price of something can change over time as inflation compounds.
+            It can also show how the “real value” of money falls if you keep the same amount while prices rise.
+          </p>
+          <p>
+            Enter a starting amount (like a $100 purchase), an average annual inflation rate, and the number of years.
+            Then click <strong>Calculate inflation impact</strong> to see a future price estimate and purchasing power.
+          </p>
+
+          <h2>What This Calculator Shows</h2>
+          <p>This page outputs four simple results:</p>
+          <ul>
+            <li><strong>Future price after inflation:</strong> an estimate of what the same item could cost in the future.</li>
+            <li><strong>Total inflation over period:</strong> the cumulative % increase in prices across the full timeframe.</li>
+            <li><strong>Purchasing power (real value):</strong> what your fixed amount is “worth” in today’s dollars after inflation.</li>
+            <li><strong>Purchasing power lost:</strong> the % drop in value when your money doesn’t grow with inflation.</li>
+          </ul>
+
+          <h2>How Inflation Compounding Works (Simple Explanation)</h2>
+          <p>
+            Inflation compounds similarly to interest. If inflation is 3% each year, prices don’t just rise by 3% once —
+            they rise by 3% on top of the previous year’s higher prices. That’s why long time horizons can produce big changes.
+          </p>
+          <p>
+            This tool uses the standard compounding formula:
+            <strong>Future price = Amount × (1 + inflation rate)<sup>years</sup></strong>.
+            Purchasing power is calculated by reversing the same compounding effect.
+          </p>
+
+          <h2>Example Inflation Calculation</h2>
+          <p>
+            Suppose a product costs <strong>$100</strong> today and average inflation is <strong>3%</strong> for <strong>10 years</strong>.
+            The estimated future price is about <strong>$134</strong>. If you keep the same $100, its purchasing power becomes about
+            <strong>$74</strong> in today’s dollars — meaning you lose roughly <strong>26%</strong> of purchasing power.
+          </p>
+          <p>
+            Try changing the inflation rate or the number of years to see how sensitive the results are to assumptions.
+          </p>
+
+          <h2>Tips for Using This Inflation Calculator</h2>
+          <ul>
+            <li><strong>Use a realistic long-term rate:</strong> inflation varies, so test a range (e.g., 2%–5%).</li>
+            <li><strong>Compare time horizons:</strong> inflation impact grows faster over longer periods.</li>
+            <li><strong>Think in real terms:</strong> focus on purchasing power, not just the nominal number.</li>
+            <li><strong>Pair with investing:</strong> compare inflation to expected returns using a compound interest calculator.</li>
+          </ul>
+
+          <h2>Frequently Asked Questions</h2>
+
+          <h3>Is this inflation calculator accurate?</h3>
+          <p>
+            It provides an estimate based on a constant annual inflation rate compounded once per year.
+            Real inflation changes from year to year, so results should be treated as a scenario, not a prediction.
+          </p>
+
+          <h3>What inflation rate should I use?</h3>
+          <p>
+            If you don’t have a specific number, test multiple rates (for example 2%, 3%, and 4%) to see a range.
+            The goal is to understand sensitivity, not to guess the exact future.
+          </p>
+
+          <h3>What does “purchasing power” mean?</h3>
+          <p>
+            Purchasing power is what your money can buy. If prices rise, the same nominal amount buys fewer goods and services.
+            The calculator shows your amount in “today’s dollars” after accounting for inflation.
+          </p>
+
+          <h3>Is this the same as CPI?</h3>
+          <p>
+            CPI is one common measure of inflation for a “basket” of consumer goods. This calculator doesn’t pull CPI data —
+            it uses whatever inflation rate you enter to model compounding over time.
+          </p>
+
+          <p class="disclaimer" style="font-size: 0.95em; opacity: 0.85; margin-top: 0.75rem;">
+            <strong>Note:</strong> This calculator is for educational purposes only and does not provide financial advice.
+          </p>
+        </section>
       </div>
     </section>
 
@@ -394,7 +509,6 @@
         <li><a href="https://financecalccenter.com/loan-payment-calculator.html">Loan Payment Calculator</a> – understand how inflation interacts with fixed monthly payments.</li>
         <!-- Articles -->
         <li><a href="https://financecalccenter.com/what-is-compound-interest.html">What Is Compound Interest?</a></li>
-        
         <li><a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What's the Difference?</a></li>
         <li><a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a></li>
       </ul>
