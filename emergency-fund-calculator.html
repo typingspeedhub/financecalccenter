@@ -365,6 +365,26 @@
 
     .calculator-guide summary::-webkit-details-marker { display: none; }
     .calculator-guide details p { margin: 0.45rem 0 0; }
+
+    /* Secondary button for "Jump to guide" */
+    .secondary-btn{
+      width: 100%;
+      margin-top: 0.65rem;
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.45);
+      background: rgba(15, 23, 42, 0.65);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(2, 6, 23, 0.35);
+    }
+
+    .secondary-btn:hover{
+      border-color: rgba(34, 197, 94, 0.75);
+      background: rgba(15, 23, 42, 0.8);
+    }
   </style>
 
   <!-- Structured data: WebApplication -->
@@ -491,29 +511,39 @@
         </div>
 
         <button id="calcBtn" type="button">Calculate emergency fund</button>
+
+        <button id="jumpGuideBtn" type="button" class="secondary-btn">
+          Read the full guide ↓
+        </button>
+
         <p class="hint">
           Educational estimates only. Real life varies with irregular expenses, taxes, fees, and interest changes.
         </p>
+
         <div id="error" class="error"></div>
       </div>
 
-      <!-- RIGHT: Summary -->
+      <!-- RIGHT: Summary (always visible) -->
       <div>
-        <div id="results" class="results" style="display:none;">
+        <div id="results" class="results">
           <h2>Emergency fund summary</h2>
+
           <div class="results-grid">
             <div class="res-item">
               <div class="res-label">Emergency fund target</div>
               <div id="fundTarget" class="res-value">—</div>
             </div>
+
             <div class="res-item">
               <div class="res-label">Remaining to save</div>
               <div id="remaining" class="res-value">—</div>
             </div>
+
             <div class="res-item">
               <div class="res-label">Time to reach goal</div>
               <div id="timeToGoal" class="res-value">—</div>
             </div>
+
             <div class="res-item">
               <div class="res-label">Monthly saving needed (if timeline set)</div>
               <div id="neededMonthly" class="res-value">—</div>
@@ -739,7 +769,7 @@
         </p>
         <p>
           <strong>Not financial advice:</strong> This website does not provide personalized financial, legal, or tax advice.
-          Consider speaking with a qualified professional for guidance tailored to your situation.
+          Consider speaking with a qualified professional for guidance tailored to your specific situation.
         </p>
 
         <h2>Related tools & guides</h2>
@@ -837,7 +867,6 @@
     }
 
     // Solve for payment needed to hit target in n months, given current and rate.
-    // If r ~ 0 => payment = (target - current)/n
     function paymentNeeded(current, r, n, target) {
       if (n <= 0) return NaN;
       if (current >= target) return 0;
@@ -847,8 +876,6 @@
       }
 
       const factor = Math.pow(1 + r, n);
-      // target = current*factor + payment*(factor-1)/r
-      // payment = (target - current*factor) * r / (factor - 1)
       const numerator = (target - current * factor) * r;
       const denom = (factor - 1);
       return numerator / denom;
@@ -862,11 +889,9 @@
       const apy = parseFloat($("apy").value || "0");
       const targetMonthsInput = ($("targetMonths").value || "").trim();
       const targetMonths = targetMonthsInput ? parseInt(targetMonthsInput, 10) : NaN;
-
       const currency = ($("currencyLabel").value || "USD").trim();
 
       const errorEl = $("error");
-      const resultsEl = $("results");
       const breakdownEl = $("detailBreakdown");
 
       const fundTargetEl = $("fundTarget");
@@ -875,7 +900,6 @@
       const neededMonthlyEl = $("neededMonthly");
 
       errorEl.textContent = "";
-      resultsEl.style.display = "none";
       breakdownEl.textContent = "";
 
       if (!isFinite(monthlyExpenses) || monthlyExpenses <= 0) {
@@ -907,7 +931,6 @@
       const remaining = Math.max(0, fundTarget - currentSavings);
 
       // Convert APY (percent) -> monthly rate
-      // Approx: r = (1 + apy/100)^(1/12) - 1
       const rMonthly = Math.pow(1 + (apy / 100), 1 / 12) - 1;
 
       // Time to reach with given monthly saving
@@ -920,13 +943,9 @@
       let neededMonthly = "—";
       if (isFinite(targetMonths)) {
         const p = paymentNeeded(currentSavings, rMonthly, targetMonths, fundTarget);
-        if (!isFinite(p)) {
-          neededMonthly = "—";
-        } else if (p <= 0) {
-          neededMonthly = formatMoney(0, currency);
-        } else {
-          neededMonthly = formatMoney(p, currency);
-        }
+        if (!isFinite(p)) neededMonthly = "—";
+        else if (p <= 0) neededMonthly = formatMoney(0, currency);
+        else neededMonthly = formatMoney(p, currency);
       }
 
       fundTargetEl.textContent = formatMoney(fundTarget, currency);
@@ -943,11 +962,15 @@
         "<span>Monthly saving: " + formatMoney(monthlySaving, currency) + "</span>" +
         "<span>APY: " + apyText + "</span>" +
         (isFinite(targetMonths) ? "<span>Timeline: " + targetMonths + " months</span>" : "");
-
-      resultsEl.style.display = "block";
     }
 
     $("calcBtn").addEventListener("click", calculateEmergencyFund);
+
+    $("jumpGuideBtn").addEventListener("click", () => {
+      const guide = document.getElementById("emergency-fund-guide");
+      if (guide) guide.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Example on load
