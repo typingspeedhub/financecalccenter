@@ -1,297 +1,949 @@
-<section id="emergency-fund-guide" class="card explainer calculator-guide" aria-labelledby="emergency-fund-guide-title">
-  <h2 id="emergency-fund-guide-title">Emergency Fund Calculator: How Much Should You Save?</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68ZVCW4FWK');
+  </script>
 
-  <p>
-    An <strong>emergency fund</strong> is one of the simplest ways to reduce financial stress. It’s a dedicated cash buffer
-    for unexpected events—like a medical bill, urgent car repair, or a sudden job change—so you don’t have to rely on
-    high-interest debt. This guide explains what an emergency fund is, how this <strong>Emergency Fund Calculator</strong> works,
-    and how to turn the results into a realistic plan.
-  </p>
+  <meta charset="UTF-8" />
+  <title>Emergency Fund Calculator | How Much to Save & How Long It Takes</title>
 
-  <p>
-    If you’re building your savings beyond emergencies, explore our
-    <a href="savings-goal-calculator.html" title="Savings Goal Calculator">Savings Goal Calculator</a>.
-    To understand growth over time, try the
-    <a href="compound-interest-calculator.html" title="Compound Interest Calculator">Compound Interest Calculator</a>.
-    If debt payments are limiting your ability to save, the
-    <a href="debt-payoff-calculator.html" title="Debt Payoff Calculator">Debt Payoff Calculator</a>
-    can help you estimate payoff time and interest costs.
-  </p>
+  <meta name="description"
+    content="Use this emergency fund calculator to estimate how big your emergency fund should be (3–12 months of expenses), how much you still need, and how long it will take to reach your goal. Includes optional APY growth and monthly saving estimates." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://financecalccenter.com/emergency-fund-calculator.html" />
 
-  <hr />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Emergency Fund Calculator | Savings Goal & Timeline" />
+  <meta property="og:description"
+    content="Estimate your emergency fund target (months of expenses), remaining gap, and timeline with optional APY growth. Educational, fast, no signup." />
+  <meta property="og:url" content="https://financecalccenter.com/emergency-fund-calculator.html" />
 
-  <h3 id="what-is-emergency-fund">What Is an Emergency Fund?</h3>
-  <p>
-    An emergency fund is <strong>money set aside for true emergencies</strong>—unexpected but likely expenses that would otherwise
-    disrupt your ability to pay essentials. It is <strong>not</strong> meant for planned purchases (vacations, gifts, upgrades),
-    and it’s typically not invested in volatile assets. The priority is <strong>stability + accessibility</strong>.
-  </p>
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Emergency Fund Calculator | Savings Goal & Timeline" />
+  <meta name="twitter:description"
+    content="Calculate how much to save for an emergency fund and how long it could take based on your monthly savings." />
 
-  <p>
-    A common guideline is <strong>3–6 months of essential expenses</strong>. Some households aim for <strong>6–12 months</strong> if
-    income is irregular, job security is uncertain, or dependents increase risk. The “right” target depends on your situation:
-    your baseline expenses, income stability, insurance coverage, and how quickly you could reduce spending if needed.
-  </p>
+  <style>
+    :root {
+      --bg: #020617;
+      --card: #0f172a;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1e293b;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-  <h3 id="why-it-matters">Why an Emergency Fund Matters in Real Life</h3>
-  <p>
-    Surprise expenses often get financed with credit cards or personal loans. The problem is that debt can turn a one-time cost
-    into months or years of payments. A properly sized emergency fund can help you:
-  </p>
-  <ul>
-    <li><strong>Avoid high-interest debt</strong> when unexpected costs appear.</li>
-    <li><strong>Keep bills on time</strong> during income disruptions.</li>
-    <li><strong>Reduce stress</strong> and protect decision-making under pressure.</li>
-    <li><strong>Protect long-term goals</strong> so you don’t sell investments at a bad time.</li>
-  </ul>
+    * { box-sizing: border-box; }
 
-  <p>
-    Think of it like insurance you control: you “pay” into it each month, and if you never need it, you still have a strong
-    financial safety net.
-  </p>
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: radial-gradient(circle at top, #1f2937 0, #020617 45%);
+      color: var(--text);
+      padding: 20px 12px 32px;
+      line-height: 1.6;
+    }
 
-  <hr />
+    .wrapper {
+      max-width: 880px;
+      margin: 0 auto;
+    }
 
-  <h3 id="how-calculator-works">How This Emergency Fund Calculator Works (Simple Explanation)</h3>
-  <p>
-    This calculator estimates an emergency fund target based on your monthly essentials and chosen coverage period, then shows
-    how long it may take to reach that target with your current savings plan. If you enter an optional APY, the calculator
-    models interest compounding monthly (a reasonable approximation for savings accounts).
-  </p>
+    header {
+      margin-bottom: 1.4rem;
+    }
 
-  <h4 id="inputs">Inputs you provide</h4>
-  <ul>
-    <li>
-      <strong>Average monthly expenses:</strong> essentials such as rent/mortgage, utilities, groceries, insurance,
-      transportation, and minimum debt payments.
-    </li>
-    <li><strong>Months to cover:</strong> typically 3–6 months, or more for higher risk or irregular income.</li>
-    <li><strong>Current emergency savings:</strong> what you already have set aside specifically for emergencies.</li>
-    <li><strong>Monthly saving amount:</strong> what you can reliably add each month.</li>
-    <li>
-      <strong>Savings APY (optional):</strong> interest rate on the account holding your emergency fund
-      (for example a high-yield savings account).
-    </li>
-    <li>
-      <strong>Target timeline in months (optional):</strong> if you want to hit your goal by a certain date,
-      the calculator estimates the monthly saving needed (using the same APY assumption).
-    </li>
-  </ul>
+    .back {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
 
-  <h4 id="outputs">What you get</h4>
-  <ul>
-    <li><strong>Emergency fund target:</strong> monthly expenses × months of coverage.</li>
-    <li><strong>Remaining to save:</strong> target minus current savings (never below zero).</li>
-    <li><strong>Time to reach goal:</strong> estimated months based on your monthly saving and optional APY.</li>
-    <li><strong>Monthly saving needed:</strong> if a timeline is set, the calculator estimates required monthly contributions.</li>
-  </ul>
+    .back:hover { text-decoration: underline; }
 
-  <p>
-    Want to account for purchasing power over time? Use our
-    <a href="inflation-calculator.html" title="Inflation Calculator">Inflation Calculator</a>.
-    Comparing loan payments? Try the
-    <a href="loan-payment-calculator.html" title="Loan Payment Calculator">Loan Payment Calculator</a>.
-  </p>
+    h1 {
+      margin: 0.6rem 0 0.2rem;
+      font-size: clamp(1.8rem, 3.1vw, 2.4rem);
+      line-height: 1.15;
+    }
 
-  <hr />
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 720px;
+    }
 
-  <h3 id="what-to-include">What Counts as “Monthly Expenses” for an Emergency Fund?</h3>
-  <p>
-    For emergency planning, focus on <strong>essentials</strong>. If you include discretionary spending, your target can become
-    unnecessarily large. A practical method is to list your “must-pay” items first:
-  </p>
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
 
-  <div style="overflow:auto;">
-    <table style="width:100%; border-collapse:collapse; font-size:0.86rem;">
-      <thead>
-        <tr>
-          <th style="text-align:left; padding:10px; border:1px solid rgba(30,41,59,0.8);">Include (Essentials)</th>
-          <th style="text-align:left; padding:10px; border:1px solid rgba(30,41,59,0.8);">Usually Exclude (Optional)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="vertical-align:top; padding:10px; border:1px solid rgba(30,41,59,0.8);">
-            Housing (rent/mortgage), basic utilities, groceries, insurance, transportation, minimum debt payments, child care essentials
-          </td>
-          <td style="vertical-align:top; padding:10px; border:1px solid rgba(30,41,59,0.8);">
-            Dining out, subscriptions, travel, upgrades, luxury shopping, high-end entertainment
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align:top; padding:10px; border:1px solid rgba(30,41,59,0.8);">
-            Medical essentials and prescriptions, basic phone/internet (if required for work), core household necessities
-          </td>
-          <td style="vertical-align:top; padding:10px; border:1px solid rgba(30,41,59,0.8);">
-            Non-essential gadgets, optional memberships, elective services, lifestyle add-ons
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    @media (max-width: 880px) {
+      .layout { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 1.1rem;
+      padding: 1.4rem 1.3rem 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.7);
+    }
+
+    label {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    @media (max-width: 640px) {
+      .row { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      margin-top: 0.25rem;
+      border-radius: 0.7rem;
+      border: 1px solid var(--border);
+      background: #020617;
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 1.1rem;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 16px 32px rgba(34, 197, 94, 0.4);
+    }
+
+    button:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    .error {
+      margin-top: 0.5rem;
+      color: #f97373;
+      font-size: 0.8rem;
+    }
+
+    .results {
+      border-radius: 1.05rem;
+      padding: 1.1rem 1rem 1rem;
+      background: radial-gradient(circle at top left, #052e16 0, #020617 55%);
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      margin-bottom: 1rem;
+    }
+
+    .results h2 {
+      font-size: 1rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 640px) {
+      .results-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .res-item {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 0.9rem;
+      border: 1px solid rgba(30, 64, 175, 0.45);
+      padding: 0.6rem 0.7rem;
+    }
+
+    .res-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .res-value {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 0.15rem;
+    }
+
+    .res-note {
+      margin-top: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .breakdown {
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .breakdown span {
+      display: inline-block;
+      margin-right: 0.8rem;
+      margin-top: 0.2rem;
+    }
+
+    .explainer h2 {
+      font-size: 1rem;
+      margin: 0 0 0.4rem;
+    }
+
+    .explainer p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin: 0.25rem 0;
+    }
+
+    .explainer ul {
+      font-size: 0.86rem;
+      color: var(--muted);
+      padding-left: 1.2rem;
+      margin: 0.4rem 0;
+    }
+
+    .explainer li + li { margin-top: 0.2rem; }
+
+    .links-grid {
+      margin-top: 0.8rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    @media (max-width: 640px) {
+      .links-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .link-card {
+      display: block;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 0.9rem;
+      border: 1px solid var(--border);
+      padding: 0.7rem 0.75rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      transition: border-color 0.14s ease, background 0.14s ease, transform 0.12s ease;
+    }
+
+    .link-card strong {
+      display: block;
+      margin-bottom: 0.1rem;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .link-card:hover {
+      border-color: rgba(34, 197, 94, 0.7);
+      background: rgba(15, 23, 42, 0.98);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    footer {
+      margin-top: 1.8rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .bottom-links {
+      margin-top: 0.9rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    .bottom-links a { color: var(--accent); }
+
+    /* --- Guide polish so it matches your dark theme --- */
+    .calculator-guide hr {
+      border: 0;
+      height: 1px;
+      background: rgba(30, 41, 59, 0.9);
+      margin: 1.2rem 0;
+    }
+
+    .calculator-guide h3 { margin-top: 1.1rem; }
+    .calculator-guide h4 { margin-top: 0.9rem; }
+
+    .calculator-guide table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+      margin-top: 0.6rem;
+      overflow: hidden;
+      border-radius: 0.9rem;
+      border: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.55);
+    }
+
+    .calculator-guide th, .calculator-guide td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+      vertical-align: top;
+      color: var(--muted);
+    }
+
+    .calculator-guide th {
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.85);
+      font-weight: 700;
+    }
+
+    .calculator-guide details {
+      border: 1px solid var(--border);
+      border-radius: 0.9rem;
+      padding: 0.6rem 0.75rem;
+      background: rgba(15, 23, 42, 0.75);
+    }
+
+    .calculator-guide details + details { margin-top: 0.6rem; }
+
+    .calculator-guide summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text);
+      list-style: none;
+    }
+
+    .calculator-guide summary::-webkit-details-marker { display: none; }
+    .calculator-guide details p { margin: 0.45rem 0 0; }
+  </style>
+
+  <!-- Structured data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Emergency Fund Calculator",
+    "url": "https://financecalccenter.com/emergency-fund-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "en",
+    "description": "Calculate an emergency fund target (months of expenses), remaining amount, and timeline to reach it with optional APY growth.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter",
+      "url": "https://financecalccenter.com/"
+    }
+  }
+  </script>
+
+  <!-- Structured data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many months of expenses should my emergency fund cover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Many people aim for 3–6 months of essential expenses. Consider 6–12 months if your income is variable, you’re self-employed, you have dependents, or job security is uncertain."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I build an emergency fund before investing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Often yes—at least a starter emergency fund. A cash buffer reduces the chance you’ll sell investments at a bad time to cover surprises."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this calculator account for irregular expenses and inflation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This tool uses simplified assumptions such as steady monthly saving and optional APY compounding. For inflation planning, use an inflation calculator. For irregular expenses, consider using an essentials-only estimate plus a small buffer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if the calculator says not reachable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It usually means your current monthly saving amount and APY assumptions won’t reach the target within the calculator’s long cap. Increase monthly saving, reduce the months of coverage, or adjust expenses to essentials only."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <a class="back" href="index.html">← Back to FinanceCalcCenter</a>
+      <h1>Emergency Fund Calculator</h1>
+      <p class="subtitle">
+        Estimate your <strong>emergency fund goal</strong> (based on 3–12 months of expenses), how much you still need,
+        and how long it could take to reach it with monthly savings. Optional APY helps model a savings account.
+      </p>
+    </header>
+
+    <section class="layout">
+      <!-- Calculator (LEFT) -->
+      <div class="card" aria-label="Emergency fund calculator">
+        <div class="row">
+          <div>
+            <label for="monthlyExpenses">Average monthly expenses</label>
+            <input id="monthlyExpenses" type="number" min="0" step="0.01" value="2500" />
+          </div>
+          <div>
+            <label for="monthsCovered">Months to cover (3–12)</label>
+            <select id="monthsCovered">
+              <option value="3">3 months</option>
+              <option value="4">4 months</option>
+              <option value="6" selected>6 months</option>
+              <option value="9">9 months</option>
+              <option value="12">12 months</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="currentSavings">Current emergency savings</label>
+            <input id="currentSavings" type="number" min="0" step="0.01" value="1000" />
+          </div>
+          <div>
+            <label for="monthlySaving">Monthly saving amount</label>
+            <input id="monthlySaving" type="number" min="0" step="0.01" value="300" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="apy">Savings APY (optional)</label>
+            <input id="apy" type="number" min="0" step="0.01" value="0" />
+          </div>
+          <div>
+            <label for="targetMonths">Target timeline in months (optional)</label>
+            <input id="targetMonths" type="number" min="1" step="1" placeholder="e.g., 12" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="currencyLabel">Currency label (optional)</label>
+            <input id="currencyLabel" type="text" maxlength="5" placeholder="USD" />
+          </div>
+        </div>
+
+        <button id="calcBtn" type="button">Calculate emergency fund</button>
+        <p class="hint">
+          Educational estimates only. Real life varies with irregular expenses, taxes, fees, and interest changes.
+        </p>
+        <div id="error" class="error"></div>
+      </div>
+
+      <!-- Results + Guide (RIGHT) -->
+      <div>
+        <div id="results" class="results" style="display:none;">
+          <h2>Emergency fund summary</h2>
+          <div class="results-grid">
+            <div class="res-item">
+              <div class="res-label">Emergency fund target</div>
+              <div id="fundTarget" class="res-value">—</div>
+            </div>
+            <div class="res-item">
+              <div class="res-label">Remaining to save</div>
+              <div id="remaining" class="res-value">—</div>
+            </div>
+            <div class="res-item">
+              <div class="res-label">Time to reach goal</div>
+              <div id="timeToGoal" class="res-value">—</div>
+            </div>
+            <div class="res-item">
+              <div class="res-label">Monthly saving needed (if timeline set)</div>
+              <div id="neededMonthly" class="res-value">—</div>
+            </div>
+          </div>
+
+          <div class="breakdown" id="detailBreakdown"></div>
+
+          <p class="res-note">
+            Tip: Many people aim for 3–6 months of essential expenses. If your income is variable or you have dependents,
+            you may prefer a larger buffer.
+          </p>
+        </div>
+
+        <!-- LONG SEO GUIDE (Card) -->
+        <section id="emergency-fund-guide" class="card explainer calculator-guide" aria-labelledby="emergency-fund-guide-title">
+          <h2 id="emergency-fund-guide-title">Emergency Fund Calculator: How Much Should You Save?</h2>
+
+          <p>
+            An <strong>emergency fund</strong> is one of the simplest ways to reduce financial stress. It’s a dedicated cash buffer
+            for unexpected events—like a medical bill, urgent car repair, or a sudden job change—so you don’t have to rely on
+            high-interest debt. This guide explains what an emergency fund is, how this <strong>Emergency Fund Calculator</strong> works,
+            and how to turn the results into a realistic plan.
+          </p>
+
+          <p>
+            If you’re building savings beyond emergencies, explore our
+            <a href="savings-goal-calculator.html" title="Savings Goal Calculator">Savings Goal Calculator</a>.
+            To understand growth over time, try the
+            <a href="compound-interest-calculator.html" title="Compound Interest Calculator">Compound Interest Calculator</a>.
+            If debt payments are limiting your ability to save, the
+            <a href="debt-payoff-calculator.html" title="Debt Payoff Calculator">Debt Payoff Calculator</a>
+            can help you estimate payoff time and interest costs.
+          </p>
+
+          <hr />
+
+          <h3 id="what-is-emergency-fund">What Is an Emergency Fund?</h3>
+          <p>
+            An emergency fund is <strong>money set aside for true emergencies</strong>—unexpected but likely expenses that would otherwise
+            disrupt your ability to pay essentials. It is <strong>not</strong> meant for planned purchases (vacations, gifts, upgrades),
+            and it’s typically not invested in volatile assets. The priority is <strong>stability + accessibility</strong>.
+          </p>
+
+          <p>
+            A common guideline is <strong>3–6 months of essential expenses</strong>. Some households aim for <strong>6–12 months</strong> if
+            income is irregular, job security is uncertain, or dependents increase risk. The “right” target depends on your situation:
+            baseline expenses, income stability, insurance coverage, and how quickly you could reduce spending if needed.
+          </p>
+
+          <h3 id="why-it-matters">Why an Emergency Fund Matters in Real Life</h3>
+          <p>
+            Surprise expenses often get financed with credit cards or personal loans. The problem is that debt can turn a one-time cost
+            into months or years of payments. A properly sized emergency fund can help you:
+          </p>
+          <ul>
+            <li><strong>Avoid high-interest debt</strong> when unexpected costs appear.</li>
+            <li><strong>Keep bills on time</strong> during income disruptions.</li>
+            <li><strong>Reduce stress</strong> and protect decision-making under pressure.</li>
+            <li><strong>Protect long-term goals</strong> so you don’t sell investments at a bad time.</li>
+          </ul>
+
+          <p>
+            Think of it like insurance you control: you “pay” into it each month, and if you never need it, you still have a strong
+            financial safety net.
+          </p>
+
+          <hr />
+
+          <h3 id="how-calculator-works">How This Emergency Fund Calculator Works (Simple Explanation)</h3>
+          <p>
+            This calculator estimates an emergency fund target based on your monthly essentials and chosen coverage period, then shows
+            how long it may take to reach that target with your current saving plan. If you enter an optional APY, the calculator models
+            interest compounding monthly (a reasonable approximation for savings accounts).
+          </p>
+
+          <h4 id="inputs">Inputs you provide</h4>
+          <ul>
+            <li><strong>Average monthly expenses:</strong> essentials such as rent/mortgage, utilities, groceries, insurance, transportation, and minimum debt payments.</li>
+            <li><strong>Months to cover:</strong> typically 3–6 months (or more for higher risk or irregular income).</li>
+            <li><strong>Current emergency savings:</strong> what you already have set aside specifically for emergencies.</li>
+            <li><strong>Monthly saving amount:</strong> what you can reliably add each month.</li>
+            <li><strong>Savings APY (optional):</strong> interest rate on the account holding your emergency fund (for example a high-yield savings account).</li>
+            <li><strong>Target timeline in months (optional):</strong> if you want to hit your goal by a certain date, the calculator estimates the monthly saving needed (using the same APY assumption).</li>
+          </ul>
+
+          <h4 id="outputs">What you get</h4>
+          <ul>
+            <li><strong>Emergency fund target:</strong> monthly expenses × months of coverage.</li>
+            <li><strong>Remaining to save:</strong> target minus current savings (never below zero).</li>
+            <li><strong>Time to reach goal:</strong> estimated months based on your monthly saving amount and optional APY.</li>
+            <li><strong>Monthly saving needed:</strong> if a timeline is set, the calculator estimates required monthly contributions.</li>
+          </ul>
+
+          <p>
+            Want to account for purchasing power over time? Use our
+            <a href="inflation-calculator.html" title="Inflation Calculator">Inflation Calculator</a>.
+            Comparing loan payments? Try the
+            <a href="loan-payment-calculator.html" title="Loan Payment Calculator">Loan Payment Calculator</a>.
+          </p>
+
+          <hr />
+
+          <h3 id="what-to-include">What Counts as “Monthly Expenses” for an Emergency Fund?</h3>
+          <p>
+            For emergency planning, focus on <strong>essentials</strong>. If you include discretionary spending, your target can become
+            unnecessarily large. A practical method is to list your “must-pay” items first.
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Include (Essentials)</th>
+                <th>Usually Exclude (Optional)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Housing (rent/mortgage), basic utilities, groceries, insurance, transportation, minimum debt payments, childcare essentials</td>
+                <td>Dining out, subscriptions, travel, upgrades, luxury shopping, high-end entertainment</td>
+              </tr>
+              <tr>
+                <td>Medical essentials and prescriptions, basic phone/internet (if required for work), core household necessities</td>
+                <td>Non-essential gadgets, optional memberships, elective services, lifestyle add-ons</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>
+            Tip: If expenses vary month to month, use a <strong>3–6 month average</strong> of essentials rather than a single month.
+          </p>
+
+          <hr />
+
+          <h3 id="example">Example Calculation (Using Realistic Numbers)</h3>
+          <p>
+            Suppose your essential monthly expenses are <strong>$2,300</strong> and you choose <strong>6 months</strong> of coverage. Your target would be:
+          </p>
+          <p><strong>$2,300 × 6 = $13,800</strong></p>
+
+          <p>
+            If you already have <strong>$1,000</strong> saved and can contribute <strong>$300 per month</strong>, you still need:
+          </p>
+          <p><strong>$13,800 − $1,000 = $12,800</strong></p>
+
+          <p>
+            Without interest, $300/month would take about <strong>$12,800 ÷ $300 ≈ 42.7 months</strong> (about <strong>3 years and 7 months</strong>).
+            With a modest savings APY, the timeline may shorten slightly, but the biggest driver is consistent monthly contributions.
+          </p>
+
+          <hr />
+
+          <h3 id="where-to-keep">Where Should You Keep an Emergency Fund?</h3>
+          <p>
+            An emergency fund is usually held in <strong>cash or cash-like accounts</strong> where value is stable and access is fast.
+            Common options include savings accounts (including high-yield savings), money market accounts, or short-term cash products.
+            The main idea: <strong>reliable access</strong> without market volatility.
+          </p>
+
+          <p>
+            Want to learn how APY works and why it matters for savings? See:
+            <a href="what-is-high-yield-savings-account.html" title="High-Yield Savings Account">High-Yield Savings Account</a>.
+          </p>
+
+          <hr />
+
+          <h3 id="mistakes">Common Emergency Fund Mistakes (and How to Avoid Them)</h3>
+          <ul>
+            <li><strong>Making the goal too big too fast:</strong> If the number feels impossible, you might quit. Use staged goals: $500–$1,000 → 1 month → 3 months → 6 months.</li>
+            <li><strong>Including non-essentials:</strong> Use essentials only. Discretionary spending can be cut in a real emergency.</li>
+            <li><strong>Keeping it too hard to access:</strong> If withdrawals take days or fees, it may not help when needed.</li>
+            <li><strong>Investing emergency money in volatile assets:</strong> Market drops can happen exactly when you need cash most.</li>
+            <li><strong>Not separating it from spending money:</strong> A dedicated account helps protect the fund.</li>
+          </ul>
+
+          <hr />
+
+          <h3 id="faq">Emergency Fund FAQ</h3>
+
+          <details>
+            <summary>How many months of expenses should my emergency fund cover?</summary>
+            <p>
+              Many people aim for <strong>3–6 months</strong> of essential expenses. Consider <strong>6–12 months</strong> if income is variable,
+              you’re self-employed, you have dependents, or job security is uncertain.
+            </p>
+          </details>
+
+          <details>
+            <summary>Should I build an emergency fund before investing?</summary>
+            <p>
+              Often yes—at least a starter emergency fund. A cash buffer reduces the chance you’ll sell investments at a bad time to cover surprises.
+              For prioritization, see:
+              <a href="savings-vs-investing-which-comes-first.html" title="Savings vs Investing">Savings vs Investing</a>.
+            </p>
+          </details>
+
+          <details>
+            <summary>Does this calculator account for irregular expenses and inflation?</summary>
+            <p>
+              This tool uses simplified assumptions (steady monthly saving and optional APY compounding). For inflation planning,
+              try the <a href="inflation-calculator.html" title="Inflation Calculator">Inflation Calculator</a>.
+              For irregular expenses, use essentials-only plus a small buffer.
+            </p>
+          </details>
+
+          <details>
+            <summary>What if the calculator says “Not reachable”?</summary>
+            <p>
+              That usually means your monthly saving amount (and APY, if any) won’t reach the target within the calculator’s long cap.
+              Increase monthly saving, reduce the months of coverage, or adjust expenses to essentials only.
+            </p>
+          </details>
+
+          <hr />
+
+          <h3 id="disclaimer">Educational Disclaimer</h3>
+          <p>
+            <strong>Educational use only:</strong> FinanceCalcCenter provides calculators and written content for general informational and educational purposes.
+            Results are <strong>estimates</strong> based on the numbers you enter and simplified assumptions such as constant monthly contributions and optional APY.
+          </p>
+          <p>
+            <strong>Not financial advice:</strong> This website does not provide personalized financial, legal, or tax advice.
+            Consider speaking with a qualified professional for guidance tailored to your situation.
+          </p>
+
+          <h2>Related tools & guides</h2>
+          <div class="links-grid">
+            <a class="link-card" href="savings-goal-calculator.html">
+              <strong>Savings Goal Calculator</strong>
+              <span>Plan monthly saving to hit a target by a deadline.</span>
+            </a>
+            <a class="link-card" href="compound-interest-calculator.html">
+              <strong>Compound Interest Calculator</strong>
+              <span>Project growth of savings with contributions and compounding.</span>
+            </a>
+            <a class="link-card" href="how-to-build-an-emergency-fund.html">
+              <strong>How to Build an Emergency Fund</strong>
+              <span>Step-by-step guide with simple examples.</span>
+            </a>
+            <a class="link-card" href="what-is-high-yield-savings-account.html">
+              <strong>High-Yield Savings Account</strong>
+              <span>Learn how APY works and why it matters.</span>
+            </a>
+            <a class="link-card" href="debt-payoff-calculator.html">
+              <strong>Debt Payoff Calculator</strong>
+              <span>See how extra payments affect payoff time and interest.</span>
+            </a>
+            <a class="link-card" href="savings-vs-investing-which-comes-first.html">
+              <strong>Savings vs Investing</strong>
+              <span>Prioritize emergency fund, debt, and investing in the right order.</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> FinanceCalcCenter — Educational use only. Not financial advice.
+      <div class="bottom-links">
+        <a href="privacy-policy.html">Privacy Policy</a> ·
+        <a href="about.html">About</a> ·
+        <a href="sitemap.xml">Sitemap</a>
+      </div>
+    </footer>
   </div>
 
-  <p>
-    Tip: If your expenses vary, use a <strong>3–6 month average</strong> of essentials rather than a single month.
-  </p>
+  <script>
+    const $ = (id) => document.getElementById(id);
 
-  <hr />
-
-  <h3 id="example">Example Calculation (Using Realistic Numbers)</h3>
-  <p>
-    Suppose your essential monthly expenses are <strong>$2,300</strong>, and you choose <strong>6 months</strong> of coverage.
-    Your target would be:
-  </p>
-  <p><strong>$2,300 × 6 = $13,800</strong></p>
-
-  <p>
-    If you already have <strong>$1,000</strong> saved and can contribute <strong>$300 per month</strong>, you still need:
-  </p>
-  <p><strong>$13,800 − $1,000 = $12,800</strong></p>
-
-  <p>
-    Without interest, $300/month would take about:
-    <strong>$12,800 ÷ $300 ≈ 42.7 months</strong> (about <strong>3 years and 7 months</strong>).
-    With a modest savings APY, the timeline may shorten slightly, but the biggest driver is your consistent monthly contribution.
-  </p>
-
-  <p>
-    If you want to speed things up, test “what-if” scenarios: increase your monthly saving amount, or set a target timeline and see
-    what monthly contribution would be required.
-  </p>
-
-  <hr />
-
-  <h3 id="where-to-keep">Where Should You Keep an Emergency Fund?</h3>
-  <p>
-    An emergency fund is typically held in <strong>cash or cash-like accounts</strong> where value is stable and access is fast.
-    Common options include savings accounts (including high-yield savings), money market accounts, or short-term cash products.
-    The main idea: you want <strong>reliable access</strong> without market risk.
-  </p>
-
-  <p>
-    If you want a deeper explanation of savings APY and how interest works, see:
-    <a href="what-is-high-yield-savings-account.html" title="High-Yield Savings Account Guide">High-Yield Savings Account</a>.
-  </p>
-
-  <hr />
-
-  <h3 id="mistakes">Common Emergency Fund Mistakes (and How to Avoid Them)</h3>
-  <ul>
-    <li>
-      <strong>Making the target too big too fast:</strong> If the number feels impossible, you might quit. Consider a staged goal:
-      first $500–$1,000, then 1 month, then 3 months, then 6 months.
-    </li>
-    <li>
-      <strong>Including non-essentials:</strong> Use essentials only for your baseline. Discretionary costs can be cut in a real emergency.
-    </li>
-    <li>
-      <strong>Keeping it too hard to access:</strong> If it takes days or penalties to withdraw, it may not help. Choose accessibility.
-    </li>
-    <li>
-      <strong>Investing emergency money in volatile assets:</strong> Market drops can happen exactly when you need cash most.
-      Keep emergency funds low-risk.
-    </li>
-    <li>
-      <strong>Not separating it from spending money:</strong> A dedicated account makes it easier to protect the fund.
-    </li>
-  </ul>
-
-  <hr />
-
-  <h3 id="faq">Emergency Fund FAQ</h3>
-
-  <details style="margin:0.5rem 0;">
-    <summary style="cursor:pointer; font-weight:600;">How many months of expenses should my emergency fund cover?</summary>
-    <p style="margin:0.35rem 0 0;">
-      Many people aim for <strong>3–6 months</strong> of essential expenses. Consider <strong>6–12 months</strong> if your income is variable,
-      you’re self-employed, you have dependents, or job security is uncertain.
-    </p>
-  </details>
-
-  <details style="margin:0.5rem 0;">
-    <summary style="cursor:pointer; font-weight:600;">Should I build an emergency fund before investing?</summary>
-    <p style="margin:0.35rem 0 0;">
-      Often, yes—at least a starter emergency fund. A cash buffer reduces the chance you’ll sell investments at a bad time to cover surprises.
-      Read more in:
-      <a href="savings-vs-investing-which-comes-first.html" title="Savings vs Investing: Which comes first?">Savings vs Investing</a>.
-    </p>
-  </details>
-
-  <details style="margin:0.5rem 0;">
-    <summary style="cursor:pointer; font-weight:600;">Does this calculator account for irregular expenses and inflation?</summary>
-    <p style="margin:0.35rem 0 0;">
-      This tool uses simplified assumptions (steady monthly saving and optional APY compounding). For inflation planning,
-      try the <a href="inflation-calculator.html" title="Inflation Calculator">Inflation Calculator</a>. For irregular expenses,
-      consider using a conservative expense estimate (essentials + a buffer).
-    </p>
-  </details>
-
-  <details style="margin:0.5rem 0;">
-    <summary style="cursor:pointer; font-weight:600;">What if the calculator says “Not reachable”?</summary>
-    <p style="margin:0.35rem 0 0;">
-      That usually means your current monthly saving amount (and APY, if any) won’t reach the target within the calculator’s long cap.
-      Increase the monthly saving amount, reduce the target months of coverage, or update your expense estimate to essentials only.
-    </p>
-  </details>
-
-  <hr />
-
-  <h3 id="disclaimer">Educational Disclaimer</h3>
-  <p>
-    <strong>Educational use only:</strong> FinanceCalcCenter provides calculators and written content for general informational and educational purposes.
-    Results are <strong>estimates</strong> based on the numbers you enter and simplified assumptions such as constant monthly contributions and optional APY.
-  </p>
-  <p>
-    <strong>Not financial advice:</strong> This website does not provide personalized financial, legal, or tax advice.
-    Consider speaking with a qualified professional for guidance tailored to your situation.
-  </p>
-
-  <p>
-    Next steps: run a few scenarios, then explore related tools:
-    <a href="savings-goal-calculator.html" title="Savings Goal Calculator">Savings Goal</a>,
-    <a href="compound-interest-calculator.html" title="Compound Interest Calculator">Compound Interest</a>,
-    <a href="inflation-calculator.html" title="Inflation Calculator">Inflation</a>,
-    <a href="debt-payoff-calculator.html" title="Debt Payoff Calculator">Debt Payoff</a>.
-  </p>
-</section>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How many months of expenses should my emergency fund cover?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Many people aim for 3–6 months of essential expenses. Consider 6–12 months if your income is variable, you’re self-employed, you have dependents, or job security is uncertain."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Should I build an emergency fund before investing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Often, yes—at least a starter emergency fund. A cash buffer reduces the chance you’ll sell investments at a bad time to cover surprises."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does this calculator account for irregular expenses and inflation?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The tool uses simplified assumptions such as steady monthly saving and optional APY compounding. For inflation planning, use an inflation calculator. For irregular expenses, consider a conservative expense estimate (essentials plus a buffer)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What if the calculator says “Not reachable”?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It usually means your current monthly saving amount (and APY, if any) won’t reach the target within a long cap. Increase monthly saving, reduce the months of coverage, or adjust expenses to essentials only."
-      }
+    function formatMoney(value, currency) {
+      if (!isFinite(value)) return "—";
+      const formatted = value.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+      return currency ? formatted + " " + currency : formatted;
     }
-  ]
-}
-</script>
+
+    function formatMonths(m) {
+      if (!isFinite(m)) return "—";
+      if (m <= 0) return "0 months";
+      const whole = Math.ceil(m);
+      const years = Math.floor(whole / 12);
+      const months = whole % 12;
+      if (years <= 0) return whole + " months";
+      if (months === 0) return years + (years === 1 ? " year" : " years");
+      return years + (years === 1 ? " year" : " years") + " " + months + " months";
+    }
+
+    // FV with monthly compounding:
+    // FV = current*(1+r)^n + payment*((1+r)^n - 1)/r
+    function fvMonthly(current, payment, r, n) {
+      if (n <= 0) return current;
+      if (Math.abs(r) < 1e-12) return current + payment * n;
+      const factor = Math.pow(1 + r, n);
+      return current * factor + payment * (factor - 1) / r;
+    }
+
+    // Solve for months needed to reach target, given payment and rate.
+    // Uses binary search on n in [0..maxMonths].
+    function monthsToReachTarget(current, payment, r, target) {
+      if (current >= target) return 0;
+      if (payment <= 0 && r <= 0) return Infinity;
+
+      const maxMonths = 1200; // 100 years cap
+      let low = 0;
+      let high = maxMonths;
+
+      // If even at high we can't reach, return Infinity
+      if (fvMonthly(current, payment, r, high) < target) return Infinity;
+
+      for (let i = 0; i < 70; i++) {
+        const mid = (low + high) / 2;
+        const value = fvMonthly(current, payment, r, mid);
+        if (value >= target) high = mid;
+        else low = mid;
+      }
+      return high;
+    }
+
+    // Solve for payment needed to hit target in n months, given current and rate.
+    // If r ~ 0 => payment = (target - current)/n
+    function paymentNeeded(current, r, n, target) {
+      if (n <= 0) return NaN;
+      if (current >= target) return 0;
+
+      if (Math.abs(r) < 1e-12) {
+        return (target - current) / n;
+      }
+
+      const factor = Math.pow(1 + r, n);
+      // target = current*factor + payment*(factor-1)/r
+      // payment = (target - current*factor) * r / (factor - 1)
+      const numerator = (target - current * factor) * r;
+      const denom = (factor - 1);
+      return numerator / denom;
+    }
+
+    function calculateEmergencyFund() {
+      const monthlyExpenses = parseFloat($("monthlyExpenses").value || "0");
+      const monthsCovered = parseInt($("monthsCovered").value || "0", 10);
+      const currentSavings = parseFloat($("currentSavings").value || "0");
+      const monthlySaving = parseFloat($("monthlySaving").value || "0");
+      const apy = parseFloat($("apy").value || "0");
+      const targetMonthsInput = ($("targetMonths").value || "").trim();
+      const targetMonths = targetMonthsInput ? parseInt(targetMonthsInput, 10) : NaN;
+
+      // If empty, default to USD (and keeps your current behavior)
+      const currency = ($("currencyLabel").value || "USD").trim();
+
+      const errorEl = $("error");
+      const resultsEl = $("results");
+      const breakdownEl = $("detailBreakdown");
+
+      const fundTargetEl = $("fundTarget");
+      const remainingEl = $("remaining");
+      const timeToGoalEl = $("timeToGoal");
+      const neededMonthlyEl = $("neededMonthly");
+
+      errorEl.textContent = "";
+      resultsEl.style.display = "none";
+      breakdownEl.textContent = "";
+
+      if (!isFinite(monthlyExpenses) || monthlyExpenses <= 0) {
+        errorEl.textContent = "Please enter a valid monthly expenses amount.";
+        return;
+      }
+      if (!isFinite(monthsCovered) || monthsCovered <= 0) {
+        errorEl.textContent = "Please select how many months of expenses you want to cover.";
+        return;
+      }
+      if (!isFinite(currentSavings) || currentSavings < 0) {
+        errorEl.textContent = "Please enter a valid current savings amount.";
+        return;
+      }
+      if (!isFinite(monthlySaving) || monthlySaving < 0) {
+        errorEl.textContent = "Please enter a valid monthly saving amount (0 or more).";
+        return;
+      }
+      if (!isFinite(apy) || apy < 0) {
+        errorEl.textContent = "Please enter a valid APY (0 or more).";
+        return;
+      }
+      if (targetMonthsInput && (!isFinite(targetMonths) || targetMonths <= 0)) {
+        errorEl.textContent = "Target timeline must be a whole number of months (e.g., 12).";
+        return;
+      }
+
+      const fundTarget = monthlyExpenses * monthsCovered;
+      const remaining = Math.max(0, fundTarget - currentSavings);
+
+      // Convert APY (percent) -> monthly rate
+      // Approx: r = (1 + apy/100)^(1/12) - 1
+      const rMonthly = Math.pow(1 + (apy / 100), 1 / 12) - 1;
+
+      // Time to reach with given monthly saving
+      let timeMonths = monthsToReachTarget(currentSavings, monthlySaving, rMonthly, fundTarget);
+      let timeText = "—";
+      if (timeMonths === Infinity) timeText = "Not reachable (increase monthly saving)";
+      else timeText = formatMonths(timeMonths);
+
+      // Needed monthly saving if timeline provided
+      let neededMonthly = "—";
+      if (isFinite(targetMonths)) {
+        const p = paymentNeeded(currentSavings, rMonthly, targetMonths, fundTarget);
+        if (!isFinite(p)) {
+          neededMonthly = "—";
+        } else if (p <= 0) {
+          neededMonthly = formatMoney(0, currency);
+        } else {
+          neededMonthly = formatMoney(p, currency);
+        }
+      }
+
+      fundTargetEl.textContent = formatMoney(fundTarget, currency);
+      remainingEl.textContent = formatMoney(remaining, currency);
+      timeToGoalEl.textContent = timeText;
+      neededMonthlyEl.textContent = neededMonthly;
+
+      const apyText = apy ? (apy.toFixed(2) + "% APY") : "0% APY";
+      breakdownEl.innerHTML =
+        "<span>Monthly expenses: " + formatMoney(monthlyExpenses, currency) + "</span>" +
+        "<span>Coverage: " + monthsCovered + " months</span>" +
+        "<span>Target: " + formatMoney(fundTarget, currency) + "</span>" +
+        "<span>Current savings: " + formatMoney(currentSavings, currency) + "</span>" +
+        "<span>Monthly saving: " + formatMoney(monthlySaving, currency) + "</span>" +
+        "<span>APY: " + apyText + "</span>" +
+        (isFinite(targetMonths) ? "<span>Timeline: " + targetMonths + " months</span>" : "");
+
+      resultsEl.style.display = "block";
+    }
+
+    $("calcBtn").addEventListener("click", calculateEmergencyFund);
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Example on load
+    calculateEmergencyFund();
+  </script>
+</body>
+</html>
