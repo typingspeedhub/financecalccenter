@@ -81,9 +81,10 @@
       margin: 0;
       color: var(--muted);
       font-size: 0.95rem;
-      max-width: 760px;
+      max-width: 780px;
     }
 
+    /* TOP: 2 columns (calculator + summary) */
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
@@ -165,12 +166,53 @@
 
     button:active { transform: translateY(1px); box-shadow: none; }
 
+    /* Secondary button (guide / CSV) */
+    .secondary-btn{
+      width: 100%;
+      margin-top: 0.65rem;
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.45);
+      background: rgba(15, 23, 42, 0.65);
+      color: var(--text);
+      font-weight: 650;
+      font-size: 0.92rem;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(2, 6, 23, 0.35);
+    }
+
+    .secondary-btn:hover{
+      border-color: rgba(34, 197, 94, 0.75);
+      background: rgba(15, 23, 42, 0.8);
+      text-decoration: none;
+    }
+
+    .secondary-btn[disabled]{
+      opacity: 0.55;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* RIGHT summary panel */
+    .summary-wrap {
+      display: grid;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    /* Sticky on desktop only */
+    @media (min-width: 921px) {
+      .sticky-panel {
+        position: sticky;
+        top: 16px;
+      }
+    }
+
     .results {
       border-radius: 1.05rem;
       padding: 1.1rem 1rem 1rem;
       background: radial-gradient(circle at top left, #052e16 0, #020617 55%);
       border: 1px solid rgba(34, 197, 94, 0.5);
-      margin-bottom: 1rem;
       display: none;
     }
 
@@ -221,13 +263,45 @@
 
     .amort-head {
       background: rgba(15, 23, 42, 0.96);
-      padding: 0.5rem 0.7rem;
+      padding: 0.55rem 0.7rem;
       font-size: 0.8rem;
       color: var(--muted);
       display: flex;
       justify-content: space-between;
-      gap: 0.5rem;
+      gap: 0.65rem;
       flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .amort-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    /* small button inside header */
+    .mini-btn{
+      width: auto;
+      margin: 0;
+      padding: 0.38rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      background: rgba(15, 23, 42, 0.7);
+      color: #bbf7d0;
+      font-weight: 650;
+      font-size: 0.78rem;
+      cursor: pointer;
+      box-shadow: none;
+    }
+    .mini-btn:hover{
+      border-color: rgba(34, 197, 94, 0.65);
+      background: rgba(15, 23, 42, 0.85);
+    }
+    .mini-btn[disabled]{
+      opacity: 0.55;
+      cursor: not-allowed;
     }
 
     .amort-body {
@@ -261,9 +335,105 @@
 
     tr:nth-child(even) td { background: rgba(15, 23, 42, 0.95); }
 
-    .explainer h2 { font-size: 1rem; margin: 0 0 0.4rem; }
-    .explainer p, .explainer li { font-size: 0.88rem; color: var(--muted); }
-    .explainer ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+    /* BELOW: full-width long guide */
+    .below-layout { margin-top: 1.2rem; }
+
+    .calculator-guide hr {
+      border: 0;
+      height: 1px;
+      background: rgba(30, 41, 59, 0.9);
+      margin: 1.2rem 0;
+    }
+
+    .calculator-guide h2 { font-size: 1.05rem; margin: 0 0 0.4rem; }
+    .calculator-guide h3 { margin-top: 1.1rem; }
+    .calculator-guide h4 { margin-top: 0.9rem; }
+
+    .calculator-guide p, .calculator-guide li {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .calculator-guide ul { margin: 0.4rem 0 0; padding-left: 1.2rem; }
+
+    .calculator-guide table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 0.6rem;
+      overflow: hidden;
+      border-radius: 0.9rem;
+      border: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.55);
+    }
+
+    .calculator-guide th, .calculator-guide td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+      vertical-align: top;
+      color: var(--muted);
+    }
+
+    .calculator-guide th {
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.85);
+      font-weight: 750;
+    }
+
+    .calculator-guide details {
+      border: 1px solid var(--border);
+      border-radius: 0.9rem;
+      padding: 0.6rem 0.75rem;
+      background: rgba(15, 23, 42, 0.75);
+    }
+
+    .calculator-guide details + details { margin-top: 0.6rem; }
+
+    .calculator-guide summary {
+      cursor: pointer;
+      font-weight: 750;
+      color: var(--text);
+      list-style: none;
+    }
+
+    .calculator-guide summary::-webkit-details-marker { display: none; }
+    .calculator-guide details p { margin: 0.45rem 0 0; }
+
+    .links-grid {
+      margin-top: 0.8rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+    @media (max-width: 640px) {
+      .links-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+
+    .link-card {
+      display: block;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 0.9rem;
+      border: 1px solid var(--border);
+      padding: 0.7rem 0.75rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+      transition: border-color 0.14s ease, background 0.14s ease, transform 0.12s ease;
+    }
+
+    .link-card strong {
+      display: block;
+      margin-bottom: 0.12rem;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .link-card:hover {
+      border-color: rgba(34, 197, 94, 0.7);
+      background: rgba(15, 23, 42, 0.98);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
 
     footer {
       margin-top: 1.6rem;
@@ -272,17 +442,15 @@
       text-align: center;
     }
 
-    .links {
-      margin-top: 1.1rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(31, 41, 55, 0.85);
+    .bottom-links {
+      margin-top: 0.85rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem 0.9rem;
       justify-content: center;
+      gap: 0.6rem 0.9rem;
     }
 
-    .links a {
+    .bottom-links a {
       font-size: 0.85rem;
       color: #bbf7d0;
       text-decoration: none;
@@ -291,9 +459,10 @@
       padding: 0.35rem 0.65rem;
       border-radius: 999px;
     }
-    .links a:hover { border-color: rgba(34, 197, 94, 0.6); }
+    .bottom-links a:hover { border-color: rgba(34, 197, 94, 0.6); }
   </style>
 
+  <!-- Structured data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -311,6 +480,48 @@
     }
   }
   </script>
+
+  <!-- Structured data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why does a small extra payment reduce payoff time so much?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Extra payments reduce your principal earlier. With a smaller balance, you’re charged less interest each month, so more of each payment goes to principal and the debt ends sooner."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if my monthly payment is lower than monthly interest?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "That’s negative amortization: the balance won’t go down and can grow. Increase the payment, lower the APR, or reduce the balance to reach payoff."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is snowball or avalanche better?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Avalanche (highest APR first) usually minimizes interest paid. Snowball (smallest balance first) can improve motivation. The best method is the one you’ll stick with consistently."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the calculator include fees or changing interest rates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. It assumes a fixed APR and one payment per month. Real balances can change with fees, new purchases, and rate changes, so treat results as estimates."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -319,13 +530,13 @@
       <a class="back" href="index.html">← Back to FinanceCalcCenter</a>
       <h1>Debt Payoff Calculator</h1>
       <p class="subtitle">
-        Estimate how long it will take to pay off your debt, how much total interest you’ll pay,
-        and how much faster you can become debt-free with extra monthly payments.
+        Estimate payoff time, total interest, and see how extra monthly payments can make you debt-free faster.
+        Includes an amortization preview and CSV export (no signup).
       </p>
     </header>
 
     <section class="layout">
-      <!-- Calculator -->
+      <!-- LEFT: Calculator -->
       <div class="card" aria-label="Debt payoff calculator">
         <div class="row">
           <div>
@@ -365,18 +576,23 @@
 
         <button id="calcBtn" type="button">Calculate payoff</button>
 
+        <button id="jumpGuideBtn" type="button" class="secondary-btn">
+          Read the full guide ↓
+        </button>
+
         <p class="hint">
-          This tool assumes a fixed APR and one payment per month. Results are estimates.
-          If your payment is too low to cover monthly interest, payoff is not possible until you increase the payment.
+          Assumes a fixed APR and one payment per month. Results are estimates.
+          If your payment doesn’t cover monthly interest, payoff isn’t possible until you increase the payment.
         </p>
 
         <div id="error" class="error"></div>
       </div>
 
-      <!-- Results & explainer -->
-      <div>
-        <div id="results" class="results">
+      <!-- RIGHT: Summary (sticky on desktop) -->
+      <div class="summary-wrap">
+        <div id="results" class="results sticky-panel">
           <h2>Payoff summary</h2>
+
           <div class="results-grid">
             <div class="res-item">
               <div class="res-label">Payoff time</div>
@@ -400,9 +616,14 @@
 
           <div class="amort">
             <div class="amort-head">
-              <span>Amortization schedule (first 24 payments)</span>
-              <span id="scheduleMeta"></span>
+              <span>Amortization schedule (preview)</span>
+
+              <div class="amort-actions">
+                <span id="scheduleMeta"></span>
+                <button id="csvBtn" class="mini-btn" type="button" disabled>Download CSV</button>
+              </div>
             </div>
+
             <div class="amort-body">
               <table aria-label="Debt payoff amortization schedule">
                 <thead>
@@ -418,36 +639,222 @@
               </table>
             </div>
           </div>
-        </div>
 
-        <div class="card explainer">
-          <h2>How this debt payoff calculator works</h2>
-          <p>
-            Each month, interest is calculated on your remaining balance using your APR. Your payment is then applied:
-            interest first, and whatever remains reduces the principal (your balance).
-          </p>
-          <ul>
-            <li><strong>APR:</strong> converted to a monthly rate (APR ÷ 12).</li>
-            <li><strong>Monthly payment:</strong> your planned payment amount.</li>
-            <li><strong>Extra payment:</strong> added on top to reduce the balance faster.</li>
-          </ul>
-          <p>
-            If your payment doesn’t cover the monthly interest, your balance will grow and you won’t reach payoff.
-            In that case, increase your payment or lower the APR (e.g., via refinancing).
+          <p class="res-note" id="csvNote" style="margin-top:0.6rem;">
+            CSV export includes the <strong>full payoff schedule</strong> (not just the preview), based on your inputs.
           </p>
         </div>
       </div>
     </section>
 
+    <!-- BELOW: full-width long guide -->
+    <section class="below-layout">
+      <section id="debt-payoff-guide" class="card calculator-guide" aria-labelledby="debt-payoff-guide-title">
+        <h2 id="debt-payoff-guide-title">Debt Payoff Calculator: How to Pay Off Debt Faster</h2>
+
+        <p>
+          Paying off debt is mostly math and consistency. The math is simple: interest is charged on your balance,
+          and your payment reduces it. The hard part is staying consistent—and making small improvements that compound
+          over time. This guide explains how the <strong>Debt Payoff Calculator</strong> works, what the results mean,
+          and how to use them to build a realistic payoff plan.
+        </p>
+
+        <p>
+          Related tools that pair well with debt payoff planning:
+          <a href="loan-payment-calculator.html" title="Loan Payment Calculator">Loan Payment Calculator</a>,
+          <a href="compound-interest-calculator.html" title="Compound Interest Calculator">Compound Interest Calculator</a>,
+          and <a href="emergency-fund-calculator.html" title="Emergency Fund Calculator">Emergency Fund Calculator</a>.
+        </p>
+
+        <hr />
+
+        <h3 id="how-debt-interest-works">How Interest Works on Debt (Simple Explanation)</h3>
+        <p>
+          Most loans and credit cards charge interest as a percentage of your balance. This calculator uses your APR
+          (annual percentage rate) and converts it to a monthly rate:
+          <strong>monthly rate = APR ÷ 12</strong>.
+        </p>
+        <p>
+          Each month, interest is added to the balance, then your payment is applied. If your payment is large enough,
+          the balance goes down and you move toward payoff. If your payment is too small to cover interest, the balance
+          can stall or even grow (called <strong>negative amortization</strong>).
+        </p>
+
+        <hr />
+
+        <h3 id="what-to-enter">What to Enter in the Calculator</h3>
+        <ul>
+          <li><strong>Current debt balance:</strong> what you owe right now.</li>
+          <li><strong>APR:</strong> your annual interest rate (credit cards can be high).</li>
+          <li><strong>Monthly payment:</strong> what you plan to pay every month.</li>
+          <li><strong>Extra monthly payment:</strong> optional—this is where payoff speed improves quickly.</li>
+          <li><strong>Payment timing:</strong> “start of month” assumes you pay earlier (less interest than end-of-month).</li>
+        </ul>
+
+        <hr />
+
+        <h3 id="reading-results">How to Read the Results</h3>
+        <ul>
+          <li><strong>Payoff time:</strong> how long it takes to bring the balance to (approximately) zero.</li>
+          <li><strong>Total interest:</strong> the cost of borrowing over the payoff period.</li>
+          <li><strong>Total paid:</strong> principal + interest combined.</li>
+          <li><strong>Amortization schedule:</strong> month-by-month breakdown of interest and principal.</li>
+        </ul>
+        <p>
+          Tip: if you add an extra payment and the calculator shows big interest savings, that’s normal. Extra payments
+          reduce principal sooner, which reduces interest charged every month after that.
+        </p>
+
+        <hr />
+
+        <h3 id="extra-payments">Why Extra Payments Work So Well</h3>
+        <p>
+          Debt interest is calculated on your remaining balance. When you pay extra, you reduce the balance earlier.
+          That means future interest is charged on a smaller number. Over time, this can save a surprising amount.
+        </p>
+        <p>
+          If your budget is tight, consider “micro-extra” strategies:
+          round up your payment, apply windfalls (refunds/bonuses), or redirect a subscription cut into debt payoff.
+        </p>
+
+        <hr />
+
+        <h3 id="snowball-vs-avalanche">Snowball vs Avalanche (Two Popular Strategies)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Strategy</th>
+              <th>How it works</th>
+              <th>Best for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Avalanche</strong></td>
+              <td>Pay extra toward the <strong>highest APR</strong> debt first.</td>
+              <td>Minimizing total interest (usually mathematically best).</td>
+            </tr>
+            <tr>
+              <td><strong>Snowball</strong></td>
+              <td>Pay extra toward the <strong>smallest balance</strong> first.</td>
+              <td>Motivation and quick wins to maintain consistency.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Both strategies can work. The best one is the one you can stick with for months (and years, if needed).
+        </p>
+
+        <hr />
+
+        <h3 id="example">Example Debt Payoff Scenario</h3>
+        <p>
+          Imagine you owe <strong>$8,000</strong> at <strong>19.99% APR</strong> and you pay <strong>$250/month</strong>.
+          The calculator estimates your payoff time and total interest. If you add just <strong>$50/month</strong> extra,
+          you’ll often cut months off the timeline and reduce total interest meaningfully.
+        </p>
+        <p>
+          Try it: enter your numbers, then increase “Extra monthly payment” slowly ($10, $25, $50) and watch how the payoff
+          time changes. That’s a great way to choose a realistic target.
+        </p>
+
+        <hr />
+
+        <h3 id="common-mistakes">Common Mistakes (and How to Avoid Them)</h3>
+        <ul>
+          <li><strong>Only paying the minimum forever:</strong> minimum payments can keep you in debt for a long time.</li>
+          <li><strong>Ignoring fees/new spending:</strong> new purchases or fees can change payoff time materially.</li>
+          <li><strong>Not having a small emergency buffer:</strong> without one, you may add new debt when surprises happen.</li>
+          <li><strong>Choosing an “impossible” plan:</strong> a plan you can’t sustain is worse than a smaller plan you keep.</li>
+        </ul>
+
+        <hr />
+
+        <h3 id="faq">Debt Payoff FAQ</h3>
+
+        <details>
+          <summary>What if my payment is lower than monthly interest?</summary>
+          <p>
+            Then your balance won’t decrease (and can even grow). Increase your payment, lower the APR (e.g., refinance),
+            or reduce the balance. The calculator will warn you when payoff is not possible with the current payment.
+          </p>
+        </details>
+
+        <details>
+          <summary>Should I build an emergency fund while paying off debt?</summary>
+          <p>
+            Often yes—at least a starter buffer. Even $500–$1,000 can prevent new debt from surprises.
+            You can estimate a target using our <a href="emergency-fund-calculator.html">Emergency Fund Calculator</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>Does this calculator include changing interest rates or credit card fees?</summary>
+          <p>
+            No. It assumes a fixed APR and one payment per month. Real credit cards can change APR, add fees,
+            or accrue interest differently. Treat results as a planning estimate.
+          </p>
+        </details>
+
+        <details>
+          <summary>Is paying at the start of the month really better?</summary>
+          <p>
+            Usually slightly. Paying earlier reduces the balance sooner, so less interest accrues. The difference isn’t massive,
+            but it can help over long timelines.
+          </p>
+        </details>
+
+        <hr />
+
+        <h3 id="disclaimer">Educational Disclaimer</h3>
+        <p>
+          <strong>Educational use only:</strong> FinanceCalcCenter calculators and content are for general informational purposes.
+          Results are <strong>estimates</strong> based on simplified assumptions.
+        </p>
+        <p>
+          <strong>Not financial advice:</strong> This website does not provide personalized financial, legal, or tax advice.
+          Consider speaking with a qualified professional for guidance tailored to your situation.
+        </p>
+
+        <h2>Related tools & guides</h2>
+        <div class="links-grid">
+          <a class="link-card" href="loan-payment-calculator.html">
+            <strong>Loan Payment Calculator</strong>
+            <span>Estimate payments, interest, and payoff timelines for fixed-rate loans.</span>
+          </a>
+          <a class="link-card" href="compound-interest-calculator.html">
+            <strong>Compound Interest Calculator</strong>
+            <span>See how savings can grow over time with contributions.</span>
+          </a>
+          <a class="link-card" href="emergency-fund-calculator.html">
+            <strong>Emergency Fund Calculator</strong>
+            <span>Plan a cash buffer before or alongside aggressive payoff.</span>
+          </a>
+          <a class="link-card" href="savings-goal-calculator.html">
+            <strong>Savings Goal Calculator</strong>
+            <span>Set a monthly target to reach a goal by a deadline.</span>
+          </a>
+          <a class="link-card" href="apr-vs-apy.html">
+            <strong>APR vs APY</strong>
+            <span>Understand interest basics and what each rate means.</span>
+          </a>
+          <a class="link-card" href="inflation-calculator.html">
+            <strong>Inflation Calculator</strong>
+            <span>Estimate how purchasing power changes over time.</span>
+          </a>
+        </div>
+      </section>
+    </section>
+
     <footer>
       Educational use only · Not financial advice. Results are estimates.
-      <div class="links" aria-label="Internal links">
-        <a href="compound-interest-calculator.html">Compound Interest Calculator</a>
-        <a href="loan-payment-calculator.html">Loan Payment Calculator</a>
-        <a href="mortgage-calculator.html">Mortgage Calculator</a>
-        <a href="savings-goal-calculator.html">Savings Goal Calculator</a>
-        <a href="inflation-calculator.html">Inflation Calculator</a>
-        <a href="retirement-savings-calculator.html">Retirement Savings Calculator</a>
+      <div class="bottom-links" aria-label="Internal links">
+        <a href="compound-interest-calculator.html">Compound Interest</a>
+        <a href="loan-payment-calculator.html">Loan Payment</a>
+        <a href="mortgage-calculator.html">Mortgage</a>
+        <a href="savings-goal-calculator.html">Savings Goal</a>
+        <a href="inflation-calculator.html">Inflation</a>
+        <a href="retirement-savings-calculator.html">Retirement Savings</a>
         <a href="how-to-build-an-emergency-fund.html">Emergency Fund Guide</a>
         <a href="how-inflation-erodes-your-money.html">Inflation Guide</a>
         <a href="apr-vs-apy.html">APR vs APY</a>
@@ -498,15 +905,11 @@
       let totalPaid = 0;
       let totalInterest = 0;
 
-      // Safety limit to avoid infinite loops
-      const MAX_MONTHS = 1200; // 100 years
+      const MAX_MONTHS = 1200; // 100 years safety cap
 
       while (balance > 0.005 && month < MAX_MONTHS) {
         month++;
 
-        // Interest timing assumption
-        // - "end": interest accrues first, then payment
-        // - "start": payment first, then interest on remaining (slightly better)
         let interestThisMonth = 0;
 
         if (paymentTiming === "start") {
@@ -527,8 +930,6 @@
           totalPaid += pay;
         }
 
-        // Payment must at least reduce balance eventually; otherwise it grows or stalls
-        // (We still keep sim, but caller should pre-check for negative amortization.)
         if (!isFiniteNumber(balance) || balance > 1e12) break;
       }
 
@@ -542,12 +943,11 @@
       };
     }
 
-    function buildSchedule({
+    function buildScheduleRowsFull({
       balance,
       monthlyRate,
       monthlyPayment,
       paymentTiming,
-      currency,
       maxRows
     }) {
       const rows = [];
@@ -574,16 +974,12 @@
           b -= payment;
         }
 
-        // For end-of-month timing, principal can be slightly off if payment < interest
-        // Clamp for display
-        const principalDisplay = Math.max(0, principal);
-
         rows.push({
           n: i,
-          payment: formatMoney(payment, currency),
-          interest: formatMoney(interest, currency),
-          principal: formatMoney(principalDisplay, currency),
-          balance: formatMoney(Math.max(0, b), currency)
+          payment,
+          interest,
+          principal: Math.max(0, principal),
+          balance: Math.max(0, b)
         });
 
         if (!isFiniteNumber(b)) break;
@@ -591,6 +987,42 @@
 
       return rows;
     }
+
+    function rowsToCsv(rows, currencyLabel) {
+      const esc = (s) => {
+        const str = String(s ?? "");
+        if (/[",\n]/.test(str)) return '"' + str.replace(/"/g, '""') + '"';
+        return str;
+      };
+
+      const header = ["Payment #", "Payment", "Interest", "Principal", "Balance", "Currency"].map(esc).join(",");
+      const lines = rows.map(r => ([
+        r.n,
+        r.payment.toFixed(2),
+        r.interest.toFixed(2),
+        r.principal.toFixed(2),
+        r.balance.toFixed(2),
+        currencyLabel || ""
+      ].map(esc).join(",")));
+
+      return [header, ...lines].join("\n");
+    }
+
+    function downloadTextFile(filename, text) {
+      const blob = new Blob([text], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    // Holds the latest full schedule for CSV export
+    let latestFullSchedule = [];
+    let latestCurrency = "USD";
 
     function calculateDebtPayoff() {
       const balance = parseFloat($("balance").value || "0");
@@ -605,12 +1037,17 @@
       const scheduleBody = $("scheduleBody");
       const scheduleMeta = $("scheduleMeta");
       const savingsNote = $("savingsNote");
+      const csvBtn = $("csvBtn");
 
       errorEl.textContent = "";
       resultsEl.style.display = "none";
       scheduleBody.innerHTML = "";
       scheduleMeta.textContent = "";
       savingsNote.textContent = "";
+      csvBtn.disabled = true;
+
+      latestFullSchedule = [];
+      latestCurrency = currency || "USD";
 
       if (!(balance > 0) || isNaN(balance)) {
         errorEl.textContent = "Please enter a valid current balance.";
@@ -688,17 +1125,19 @@
           "Tip: adding even a small extra payment each month can reduce your payoff time and total interest significantly.";
       }
 
-      // Schedule (first 24)
-      const rows = buildSchedule({
+      // Build FULL schedule for CSV (up to payoff months, safety capped)
+      latestFullSchedule = buildScheduleRowsFull({
         balance,
         monthlyRate,
         monthlyPayment,
         paymentTiming,
-        currency,
-        maxRows: 24
+        maxRows: Math.min(months, 1200)
       });
 
-      for (const r of rows) {
+      // Preview schedule (first 24 rows)
+      const preview = latestFullSchedule.slice(0, 24);
+
+      for (const r of preview) {
         const tr = document.createElement("tr");
         const td = (txt) => {
           const c = document.createElement("td");
@@ -706,10 +1145,10 @@
           return c;
         };
         tr.appendChild(td(String(r.n)));
-        tr.appendChild(td(r.payment));
-        tr.appendChild(td(r.interest));
-        tr.appendChild(td(r.principal));
-        tr.appendChild(td(r.balance));
+        tr.appendChild(td(formatMoney(r.payment, currency)));
+        tr.appendChild(td(formatMoney(r.interest, currency)));
+        tr.appendChild(td(formatMoney(r.principal, currency)));
+        tr.appendChild(td(formatMoney(r.balance, currency)));
         scheduleBody.appendChild(tr);
       }
 
@@ -717,10 +1156,31 @@
         "APR " + apr.toFixed(2) + "% · Payment " + formatMoney(monthlyPayment, currency) +
         (extra > 0 ? " (includes extra)" : "");
 
+      csvBtn.disabled = latestFullSchedule.length === 0;
+
       resultsEl.style.display = "block";
     }
 
     $("calcBtn").addEventListener("click", calculateDebtPayoff);
+
+    $("jumpGuideBtn").addEventListener("click", () => {
+      const guide = document.getElementById("debt-payoff-guide");
+      if (guide) guide.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    $("csvBtn").addEventListener("click", () => {
+      if (!latestFullSchedule || latestFullSchedule.length === 0) return;
+
+      const currency = latestCurrency || "USD";
+      const csv = rowsToCsv(latestFullSchedule, currency);
+
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, "0");
+      const d = String(now.getDate()).padStart(2, "0");
+
+      downloadTextFile(`debt-payoff-schedule_${y}-${m}-${d}.csv`, csv);
+    });
 
     // Run once with defaults
     calculateDebtPayoff();
