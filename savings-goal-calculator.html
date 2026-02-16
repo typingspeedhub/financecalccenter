@@ -37,8 +37,7 @@
       --text: #e5e7eb;
       --muted: #9ca3af;
       --border: #1e293b;
-      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * { box-sizing: border-box; }
@@ -49,10 +48,11 @@
       background: radial-gradient(circle at top, #1f2937 0, #020617 45%);
       color: var(--text);
       padding: 20px 12px 32px;
+      line-height: 1.6;
     }
 
     .wrapper {
-      max-width: 820px;
+      max-width: 920px;
       margin: 0 auto;
     }
 
@@ -66,9 +66,7 @@
       text-decoration: none;
     }
 
-    .back:hover {
-      text-decoration: underline;
-    }
+    .back:hover { text-decoration: underline; }
 
     h1 {
       margin: 0.6rem 0 0.2rem;
@@ -78,19 +76,18 @@
     .subtitle {
       font-size: 0.9rem;
       color: var(--muted);
-      max-width: 620px;
+      max-width: 720px;
     }
 
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
       gap: 1.2rem;
+      align-items: flex-start;
     }
 
     @media (max-width: 880px) {
-      .layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .layout { grid-template-columns: minmax(0, 1fr); }
     }
 
     .card {
@@ -115,9 +112,7 @@
     }
 
     @media (max-width: 640px) {
-      .row {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .row { grid-template-columns: minmax(0, 1fr); }
     }
 
     input, select {
@@ -156,6 +151,26 @@
       box-shadow: none;
     }
 
+    /* Secondary button (guide jump) */
+    .secondary-btn{
+      width: 100%;
+      margin-top: 0.65rem;
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.45);
+      background: rgba(15, 23, 42, 0.65);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(2, 6, 23, 0.35);
+    }
+
+    .secondary-btn:hover{
+      border-color: rgba(34, 197, 94, 0.75);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
     .hint {
       font-size: 0.8rem;
       color: var(--muted);
@@ -174,6 +189,7 @@
       background: radial-gradient(circle at top left, #052e16 0, #020617 55%);
       border: 1px solid rgba(34, 197, 94, 0.5);
       margin-bottom: 1rem;
+      display: none;
     }
 
     .results h2 {
@@ -188,9 +204,7 @@
     }
 
     @media (max-width: 640px) {
-      .results-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .results-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
     .res-item {
@@ -226,6 +240,7 @@
     .breakdown span {
       display: inline-block;
       margin-right: 0.8rem;
+      margin-top: 0.2rem;
     }
 
     .explainer h2 {
@@ -246,28 +261,71 @@
       margin: 0.4rem 0;
     }
 
-    .explainer li + li {
-      margin-top: 0.2rem;
+    .explainer li + li { margin-top: 0.2rem; }
+
+    /* Below layout (full width guide) */
+    .below-layout { margin-top: 1.2rem; }
+
+    .calculator-guide hr {
+      border: 0;
+      height: 1px;
+      background: rgba(30, 41, 59, 0.9);
+      margin: 1.2rem 0;
     }
 
-    .related-links {
-      margin-top: 1.4rem;
-      font-size: 0.86rem;
-    }
+    .calculator-guide h3 { margin-top: 1.1rem; }
+    .calculator-guide h4 { margin-top: 0.9rem; }
 
-    .related-links h2 {
-      font-size: 0.95rem;
-      margin: 0 0 0.4rem;
+    .calculator-guide details {
+      border: 1px solid var(--border);
+      border-radius: 0.9rem;
+      padding: 0.6rem 0.75rem;
+      background: rgba(15, 23, 42, 0.75);
     }
+    .calculator-guide details + details { margin-top: 0.6rem; }
 
-    .related-links ul {
+    .calculator-guide summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text);
       list-style: none;
-      padding-left: 0;
-      margin: 0.3rem 0 0;
+    }
+    .calculator-guide summary::-webkit-details-marker { display: none; }
+    .calculator-guide details p { margin: 0.45rem 0 0; }
+
+    .links-grid {
+      margin-top: 0.8rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+    @media (max-width: 640px) {
+      .links-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
-    .related-links li + li {
-      margin-top: 0.25rem;
+    .link-card {
+      display: block;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 0.9rem;
+      border: 1px solid var(--border);
+      padding: 0.7rem 0.75rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      transition: border-color 0.14s ease, background 0.14s ease, transform 0.12s ease;
+    }
+
+    .link-card strong {
+      display: block;
+      margin-bottom: 0.1rem;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .link-card:hover {
+      border-color: rgba(34, 197, 94, 0.7);
+      background: rgba(15, 23, 42, 0.98);
+      transform: translateY(-1px);
+      text-decoration: none;
     }
 
     footer {
@@ -277,14 +335,8 @@
       text-align: center;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
 
   <!-- Structured data -->
@@ -305,6 +357,48 @@
     }
   }
   </script>
+
+  <!-- FAQ structured data (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much should I save each month to reach a goal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This calculator estimates a monthly amount based on your goal, current savings, timeframe, and optional interest rate. It assumes monthly contributions and monthly compounding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What interest rate should I use in a savings goal calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you plan to keep the money in a savings account, you can use that account's approximate APY. If you're using the calculator for planning only, you can set the rate to 0% to see a simple no-growth baseline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I already have enough saved?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If your current savings meet or exceed your goal, the calculator shows the required monthly savings as 0 for that specific target."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this calculator financial advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This tool provides educational estimates using simplified assumptions and does not provide personalized financial advice."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -314,7 +408,7 @@
       <h1>Savings Goal Calculator</h1>
       <p class="subtitle">
         Find out how much you should save each month to hit a specific savings target on time,
-        with optional investment growth.
+        with optional interest growth.
       </p>
     </header>
 
@@ -351,16 +445,20 @@
         </div>
 
         <button id="calcBtn" type="button">Calculate required monthly savings</button>
+
+        <button id="jumpGuideBtn" type="button" class="secondary-btn">
+          Read the full guide ↓
+        </button>
+
         <p class="hint">
-          This calculator assumes monthly contributions and monthly compounding based on the
-          annual interest rate you enter.
+          This calculator assumes monthly contributions and monthly compounding based on the annual interest rate you enter.
         </p>
         <div id="error" class="error"></div>
       </div>
 
-      <!-- Results & explainer -->
+      <!-- Results & short explainer -->
       <div>
-        <div id="results" class="results" style="display:none;">
+        <div id="results" class="results">
           <h2>Savings plan summary</h2>
           <div class="results-grid">
             <div class="res-item">
@@ -384,56 +482,158 @@
           <div class="breakdown" id="detailBreakdown"></div>
 
           <p class="res-note">
-            This is an estimate only. Real returns depend on market performance, taxes,
-            fees and how consistently you follow the savings plan.
+            This is an estimate only. Real returns depend on market performance, taxes, fees and how consistently you follow the plan.
           </p>
         </div>
 
         <div class="card explainer">
           <h2>How this savings goal calculator works</h2>
           <p>
-            This tool calculates the monthly amount you need to save to reach a target
-            balance by a certain time, using:
+            This tool estimates the monthly amount needed to reach a target balance by a certain time,
+            based on your goal, current savings, timeframe, and an optional interest rate.
           </p>
           <ul>
-            <li>Your savings goal amount</li>
-            <li>Your current savings</li>
-            <li>The number of years you want to save</li>
-            <li>An expected annual interest rate (optional)</li>
+            <li><strong>Goal amount:</strong> the final target you want to reach.</li>
+            <li><strong>Current savings:</strong> what you already have saved today.</li>
+            <li><strong>Timeframe:</strong> how long you plan to save (in years).</li>
+            <li><strong>Interest rate:</strong> optional growth assumption (set 0% for a simple baseline).</li>
           </ul>
           <p>
-            It assumes monthly contributions and monthly compounding. If the result shows
-            that your current savings already meet or exceed your goal, the required monthly
-            saving will be shown as zero.
-          </p>
-          <p>
-            Use this calculator to plan an emergency fund, a down payment, a big purchase or
-            any other medium- to long-term savings goal.
+            It assumes monthly contributions and monthly compounding. If your current savings already meet your goal,
+            the required monthly saving will be shown as zero.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- 🔗 Related internal links for SEO -->
-    <section class="card related-links">
-      <h2>Related calculators &amp; articles</h2>
-      <ul>
-        <!-- Calculators -->
-        <li><a href="https://financecalccenter.com/compound-interest-calculator.html">Compound Interest Calculator</a> – see how your savings can grow faster.</li>
-        <li><a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a> – check how rising prices affect your goal.</li>
-        <li><a href="https://financecalccenter.com/loan-payment-calculator.html">Loan Payment Calculator</a> – compare saving vs. borrowing.</li>
-        <li><a href="https://financecalccenter.com/mortgage-calculator.html">Mortgage Calculator</a> – plan for a future home purchase.</li>
+    <!-- FULL-WIDTH GUIDE (appears under the calculator/results area) -->
+    <section class="below-layout">
+      <section id="savings-goal-guide" class="card explainer calculator-guide" aria-labelledby="savings-goal-guide-title">
+        <h2 id="savings-goal-guide-title">Savings Goal Planning: How Much Should You Save Each Month?</h2>
 
-        <!-- Articles – csak létezők -->
-        <li><a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a></li>
-        <li><a href="https://financecalccenter.com/what-is-compound-interest.html">What Is Compound Interest?</a></li>
-        <li><a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What's the Difference?</a></li>
-      </ul>
+        <p>
+          A <strong>savings goal calculator</strong> helps you turn a vague plan (“I want to save more”) into a measurable monthly target.
+          Instead of guessing a number, you can estimate how much you need to set aside each month to reach a specific goal by a deadline.
+          This is useful for things like a <strong>down payment</strong>, <strong>travel</strong>, <strong>car purchase</strong>, or building a
+          <strong>starter emergency fund</strong>.
+        </p>
+
+        <p>
+          The goal here is <strong>clarity</strong>: once you know the monthly amount, you can compare it to your budget and decide whether to
+          adjust the timeline, the target, or your monthly contribution.
+        </p>
+
+        <hr />
+
+        <h3>What this calculator is best for</h3>
+        <ul>
+          <li><strong>Short- to medium-term goals:</strong> saving for a planned expense over months or a few years.</li>
+          <li><strong>Budget planning:</strong> translating a goal into a monthly line item.</li>
+          <li><strong>Comparing scenarios:</strong> “What if I save for 3 years instead of 5?”</li>
+          <li><strong>Baseline vs growth:</strong> set the interest rate to 0% to see a pure saving-only plan, then test small rates.</li>
+        </ul>
+
+        <hr />
+
+        <h3>How the math works (simple explanation)</h3>
+        <p>
+          The calculator uses two building blocks:
+        </p>
+        <ul>
+          <li><strong>Your current savings growth:</strong> existing savings may grow over time if you assume a positive annual rate.</li>
+          <li><strong>Your monthly contributions:</strong> repeated monthly deposits accumulate and may also compound.</li>
+        </ul>
+        <p>
+          In practice, the biggest driver is usually the <strong>monthly contribution</strong> and the <strong>timeframe</strong>.
+          The interest rate can help, but it rarely replaces consistent saving.
+        </p>
+
+        <h4>Quick rule of thumb</h4>
+        <p>
+          If you set the rate to <strong>0%</strong>, you get the simplest planning baseline:
+          <strong>(Goal − Current savings) ÷ Months</strong>. Then you can optionally model growth by entering a rate.
+        </p>
+
+        <hr />
+
+        <h3>Choosing an interest rate (and when to use 0%)</h3>
+        <p>
+          If you’re saving in a standard savings account, your “interest rate” is usually small. If you’re planning only and you want to be
+          conservative, using <strong>0%</strong> can be a smart baseline because it avoids overestimating growth.
+        </p>
+        <p>
+          If you want to explore compounding in more detail, use our
+          <a href="compound-interest-calculator.html">Compound Interest Calculator</a>.
+        </p>
+
+        <hr />
+
+        <h3>Common mistakes when setting a savings goal</h3>
+        <ul>
+          <li><strong>Picking a deadline that forces an unrealistic monthly amount:</strong> if the result is too high, extend the timeline or reduce the target.</li>
+          <li><strong>Ignoring inflation for multi-year goals:</strong> prices can rise; check your purchasing power with the <a href="inflation-calculator.html">Inflation Calculator</a>.</li>
+          <li><strong>Not separating savings from spending:</strong> a dedicated “goal account” helps reduce accidental spending.</li>
+          <li><strong>Trying to optimize the rate instead of the habit:</strong> consistent monthly saving usually matters more than small rate differences.</li>
+        </ul>
+
+        <hr />
+
+        <h3>Related calculators & guides</h3>
+        <div class="links-grid">
+          <a class="link-card" href="emergency-fund-calculator.html">
+            <strong>Emergency Fund Calculator</strong>
+            <span>Estimate a recommended emergency fund target (3–12 months) and timeline.</span>
+          </a>
+          <a class="link-card" href="compound-interest-calculator.html">
+            <strong>Compound Interest Calculator</strong>
+            <span>See how monthly contributions + compounding can grow over time.</span>
+          </a>
+          <a class="link-card" href="loan-payment-calculator.html">
+            <strong>Loan Payment Calculator</strong>
+            <span>Compare borrowing costs vs. saving up for the purchase.</span>
+          </a>
+          <a class="link-card" href="mortgage-calculator.html">
+            <strong>Mortgage Calculator</strong>
+            <span>Plan housing payments and test different scenarios.</span>
+          </a>
+          <a class="link-card" href="apr-vs-apy.html">
+            <strong>APR vs APY</strong>
+            <span>Understand interest rate terms used in loans and savings.</span>
+          </a>
+          <a class="link-card" href="how-much-should-you-save-each-month.html">
+            <strong>How Much Should You Save Each Month?</strong>
+            <span>Practical guide for choosing a monthly savings rate.</span>
+          </a>
+        </div>
+
+        <hr />
+
+        <h3>Educational disclaimer</h3>
+        <p>
+          <strong>Educational use only:</strong> This calculator provides estimates based on the numbers you enter and simplified assumptions
+          (monthly contributions and monthly compounding). It does not provide personalized financial advice.
+        </p>
+
+        <details>
+          <summary>FAQ: What if the result feels too high?</summary>
+          <p>
+            Try extending the timeframe, lowering the goal amount, or starting with a smaller “starter goal” milestone.
+            Even small consistent contributions can build momentum.
+          </p>
+        </details>
+
+        <details>
+          <summary>FAQ: Should I save or pay off debt first?</summary>
+          <p>
+            Many people start with a small emergency buffer, then prioritize high-interest debt.
+            You can explore payoff speed using the <a href="debt-payoff-calculator.html">Debt Payoff Calculator</a>.
+          </p>
+        </details>
+      </section>
     </section>
 
     <footer>
-      This savings calculator is for educational purposes only and does not
-      constitute financial advice.
+      This savings calculator is for educational purposes only and does not constitute financial advice.
     </footer>
   </div>
 
@@ -480,9 +680,10 @@
         errorEl.textContent = "Please enter a valid time period in years.";
         return;
       }
+
+      const currencyLabel = currency || "USD";
+
       if (current >= goal) {
-        // Already at or above goal
-        const currencyLabel = currency || "USD";
         monthlySavingEl.textContent = formatMoney(0, currencyLabel);
         totalContributedEl.textContent = formatMoney(0, currencyLabel);
         interestEarnedEl.textContent = formatMoney(0, currencyLabel);
@@ -522,11 +723,9 @@
       }
 
       const totalContributed = monthly * n;
-      const estimatedFinal = goal; // by construction, we aim at the goal
+      const estimatedFinal = goal; // by construction
       const totalInvested = current + totalContributed;
       const interestEarned = estimatedFinal - totalInvested;
-
-      const currencyLabel = currency || "USD";
 
       monthlySavingEl.textContent = formatMoney(monthly, currencyLabel);
       totalContributedEl.textContent = formatMoney(totalContributed, currencyLabel);
@@ -534,17 +733,25 @@
       finalBalanceEl.textContent = formatMoney(estimatedFinal, currencyLabel);
 
       breakdownEl.innerHTML =
-        "<span>Goal amount: " + formatMoney(goal, currencyLabel) +
-        "</span><span>Timeframe: " + years.toFixed(1) + " years" +
-        (rate ? "</span><span>Assumed annual return: " + rate.toFixed(2) + "%</span>" : "</span>");
+        "<span>Goal amount: " + formatMoney(goal, currencyLabel) + "</span>" +
+        "<span>Timeframe: " + years.toFixed(1) + " years</span>" +
+        "<span>Current savings: " + formatMoney(current, currencyLabel) + "</span>" +
+        (rate ? "<span>Assumed annual return: " + rate.toFixed(2) + "%</span>" : "<span>Assumed annual return: 0%</span>");
 
       resultsEl.style.display = "block";
     }
 
     $("calcBtn").addEventListener("click", calculateSavingsGoal);
 
+    $("jumpGuideBtn").addEventListener("click", () => {
+      const guide = document.getElementById("savings-goal-guide");
+      if (guide) guide.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
     // Default example on load
     calculateSavingsGoal();
   </script>
 </body>
 </html>
+
+
