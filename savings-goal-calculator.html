@@ -16,7 +16,7 @@
   <title>Savings Goal Calculator | How Much Should You Save Monthly?</title>
   <meta
     name="description"
-    content="Find out how much you need to save each month to reach your financial goals. Supports custom timeframes, interest rates, and existing savings. Ideal for emergency funds, big purchases, and long-term planning."
+    content="Calculate how much you need to save each month to reach a goal. Includes real examples (e.g., $20,000 in 3 years), interest assumptions, a by-age savings section, and a practical step-by-step guide."
   />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://financecalccenter.com/savings-goal-calculator.html" />
@@ -48,7 +48,7 @@
       background: radial-gradient(circle at top, #1f2937 0, #020617 45%);
       color: var(--text);
       padding: 20px 12px 32px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .wrapper {
@@ -71,12 +71,14 @@
     h1 {
       margin: 0.6rem 0 0.2rem;
       font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1.25;
     }
 
     .subtitle {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--muted);
-      max-width: 720px;
+      max-width: 760px;
+      margin: 0.25rem 0 0;
     }
 
     .layout {
@@ -140,7 +142,7 @@
       border: none;
       background: linear-gradient(135deg, #22c55e, #16a34a);
       color: #022c22;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
       cursor: pointer;
       box-shadow: 0 16px 32px rgba(34, 197, 94, 0.4);
@@ -160,7 +162,7 @@
       border: 1px solid rgba(34, 197, 94, 0.45);
       background: rgba(15, 23, 42, 0.65);
       color: var(--text);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.92rem;
       cursor: pointer;
       box-shadow: 0 10px 22px rgba(2, 6, 23, 0.35);
@@ -221,7 +223,7 @@
 
     .res-value {
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 800;
       margin-top: 0.15rem;
     }
 
@@ -249,16 +251,16 @@
     }
 
     .explainer p {
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       color: var(--muted);
-      margin: 0.25rem 0;
+      margin: 0.35rem 0;
     }
 
     .explainer ul {
-      font-size: 0.86rem;
+      font-size: 0.88rem;
       color: var(--muted);
       padding-left: 1.2rem;
-      margin: 0.4rem 0;
+      margin: 0.45rem 0;
     }
 
     .explainer li + li { margin-top: 0.2rem; }
@@ -273,8 +275,48 @@
       margin: 1.2rem 0;
     }
 
-    .calculator-guide h3 { margin-top: 1.1rem; }
-    .calculator-guide h4 { margin-top: 0.9rem; }
+    .calculator-guide h2 { margin: 0 0 0.6rem; }
+    .calculator-guide h3 { margin-top: 1.15rem; }
+    .calculator-guide h4 { margin-top: 0.95rem; }
+
+    .callout {
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      background: rgba(34, 197, 94, 0.08);
+      border-radius: 0.95rem;
+      padding: 0.85rem 0.9rem;
+      margin: 0.85rem 0;
+    }
+    .callout strong { color: var(--text); }
+
+    .steps {
+      margin: 0.55rem 0 0;
+      padding-left: 1.2rem;
+    }
+    .steps li { margin: 0.25rem 0; }
+
+    .mini-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.65rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      overflow: hidden;
+      border-radius: 0.85rem;
+      border: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.25);
+    }
+    .mini-table th, .mini-table td {
+      padding: 0.55rem 0.6rem;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.6);
+      vertical-align: top;
+    }
+    .mini-table th {
+      text-align: left;
+      color: var(--text);
+      font-weight: 800;
+      background: rgba(15, 23, 42, 0.55);
+    }
+    .mini-table tr:last-child td { border-bottom: 0; }
 
     .calculator-guide details {
       border: 1px solid var(--border);
@@ -286,7 +328,7 @@
 
     .calculator-guide summary {
       cursor: pointer;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text);
       list-style: none;
     }
@@ -349,12 +391,33 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "inLanguage": "en",
-    "description": "Find out how much you need to save each month to reach your financial goals. Supports custom timeframes, interest rates, and contributions. Ideal for emergency funds, big purchases, and long-term planning.",
+    "description": "Calculate how much you need to save each month to reach a goal. Includes real examples, interest assumptions, by-age guidance, and a step-by-step planning guide.",
     "publisher": {
       "@type": "Organization",
       "name": "FinanceCalcCenter",
       "url": "https://financecalccenter.com/"
     }
+  }
+  </script>
+
+  <!-- Article structured data (helps for long-form guide content) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Savings Goal Calculator: How Much Should You Save Each Month?",
+    "mainEntityOfPage":"https://financecalccenter.com/savings-goal-calculator.html",
+    "inLanguage":"en",
+    "author":{
+      "@type":"Organization",
+      "name":"FinanceCalcCenter"
+    },
+    "publisher":{
+      "@type":"Organization",
+      "name":"FinanceCalcCenter",
+      "url":"https://financecalccenter.com/"
+    },
+    "description":"A practical guide to savings goal planning with concrete examples, scenario tables, a by-age savings section, and a calculator to estimate monthly contributions."
   }
   </script>
 
@@ -369,7 +432,15 @@
         "name": "How much should I save each month to reach a goal?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "This calculator estimates a monthly amount based on your goal, current savings, timeframe, and optional interest rate. It assumes monthly contributions and monthly compounding."
+          "text": "Enter your goal amount, current savings, timeframe, and an optional interest rate. The calculator estimates the monthly savings needed under monthly contributions and monthly compounding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "If I want to save $20,000 in 3 years with 5% interest, how much should I save per month?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "With monthly contributions and monthly compounding at 5% annually, the required monthly savings is approximately $516.08 to reach $20,000 in 3 years (assuming $0 current savings)."
         }
       },
       {
@@ -377,7 +448,7 @@
         "name": "What interest rate should I use in a savings goal calculator?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "If you plan to keep the money in a savings account, you can use that account's approximate APY. If you're using the calculator for planning only, you can set the rate to 0% to see a simple no-growth baseline."
+          "text": "Use a conservative estimate: for a savings account, you can use a rough APY; for planning only, set the rate to 0% to see a no-growth baseline. If investing, use a cautious long-term estimate and expect variability."
         }
       },
       {
@@ -385,7 +456,31 @@
         "name": "What if I already have enough saved?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "If your current savings meet or exceed your goal, the calculator shows the required monthly savings as 0 for that specific target."
+          "text": "If your current savings meet or exceed your goal, the calculator shows the required monthly savings as 0 for that target."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I reach a savings goal faster?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The biggest levers are increasing monthly contributions, extending the timeframe, reducing the goal amount, or adding an initial lump-sum. Small interest differences help, but consistent saving usually matters more."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long will it take to save a certain amount?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Time depends on your monthly contribution, starting balance, and assumed rate. You can estimate it by testing different timeframes in the calculator until the required monthly number matches what you can afford."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this calculator account for inflation or taxes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. It provides simplified estimates. For purchasing power, use an inflation tool; for investing and taxes, results may differ based on your situation."
         }
       },
       {
@@ -393,7 +488,7 @@
         "name": "Is this calculator financial advice?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. This tool provides educational estimates using simplified assumptions and does not provide personalized financial advice."
+          "text": "No. This tool provides educational estimates and does not provide personalized financial advice."
         }
       }
     ]
@@ -407,8 +502,8 @@
       <a class="back" href="index.html">← Back to FinanceCalcCenter</a>
       <h1>Savings Goal Calculator</h1>
       <p class="subtitle">
-        Find out how much you should save each month to hit a specific savings target on time,
-        with optional interest growth.
+        Calculate how much you should save per month to hit a specific target on time — with optional interest growth,
+        concrete examples, and a practical planning guide.
       </p>
     </header>
 
@@ -451,7 +546,8 @@
         </button>
 
         <p class="hint">
-          This calculator assumes monthly contributions and monthly compounding based on the annual interest rate you enter.
+          Assumes monthly contributions and monthly compounding based on the annual interest rate you enter.
+          For a conservative baseline, set the rate to 0%.
         </p>
         <div id="error" class="error"></div>
       </div>
@@ -482,14 +578,14 @@
           <div class="breakdown" id="detailBreakdown"></div>
 
           <p class="res-note">
-            This is an estimate only. Real returns depend on market performance, taxes, fees and how consistently you follow the plan.
+            Estimate only. Real returns depend on account type, market performance, taxes, fees, and how consistently you contribute.
           </p>
         </div>
 
         <div class="card explainer">
           <h2>How this savings goal calculator works</h2>
           <p>
-            This tool estimates the monthly amount needed to reach a target balance by a certain time,
+            This tool estimates the monthly amount needed to reach a target balance by a specific date,
             based on your goal, current savings, timeframe, and an optional interest rate.
           </p>
           <ul>
@@ -506,74 +602,250 @@
       </div>
     </section>
 
-    <!-- FULL-WIDTH GUIDE (appears under the calculator/results area) -->
+    <!-- FULL-WIDTH GUIDE -->
     <section class="below-layout">
       <section id="savings-goal-guide" class="card explainer calculator-guide" aria-labelledby="savings-goal-guide-title">
         <h2 id="savings-goal-guide-title">Savings Goal Planning: How Much Should You Save Each Month?</h2>
 
         <p>
-          A <strong>savings goal calculator</strong> helps you turn a vague plan (“I want to save more”) into a measurable monthly target.
-          Instead of guessing a number, you can estimate how much you need to set aside each month to reach a specific goal by a deadline.
-          This is useful for things like a <strong>down payment</strong>, <strong>travel</strong>, <strong>car purchase</strong>, or building a
-          <strong>starter emergency fund</strong>.
+          A <strong>savings goal calculator</strong> turns a vague intention (“I should save more”) into a concrete monthly number.
+          Once your target becomes measurable, it becomes easier to plan: you can compare the monthly amount to your budget,
+          adjust the timeline, or choose a more realistic goal amount.
         </p>
 
         <p>
-          The goal here is <strong>clarity</strong>: once you know the monthly amount, you can compare it to your budget and decide whether to
-          adjust the timeline, the target, or your monthly contribution.
+          This page is designed to answer not only “<strong>savings goal calculator</strong>”, but also common planning questions like:
+          <strong>how much should I save per month</strong>, <strong>how to reach a savings goal faster</strong>,
+          <strong>how much to save for 10000 in 2 years</strong>, <strong>saving goal with interest example</strong>,
+          and <strong>how long will it take to save X amount</strong>.
         </p>
+
+        <div class="callout">
+          <strong>Featured snippet-friendly steps:</strong>
+          <ol class="steps">
+            <li><strong>Define your goal amount</strong> (what balance you want to reach).</li>
+            <li><strong>Choose your timeframe</strong> (how many months/years you have).</li>
+            <li><strong>Estimate your interest rate</strong> (or use 0% for a conservative baseline).</li>
+            <li><strong>Use the formula or calculator</strong> to compute the monthly contribution needed.</li>
+          </ol>
+        </div>
 
         <hr />
 
         <h3>What this calculator is best for</h3>
         <ul>
-          <li><strong>Short- to medium-term goals:</strong> saving for a planned expense over months or a few years.</li>
-          <li><strong>Budget planning:</strong> translating a goal into a monthly line item.</li>
-          <li><strong>Comparing scenarios:</strong> “What if I save for 3 years instead of 5?”</li>
-          <li><strong>Baseline vs growth:</strong> set the interest rate to 0% to see a pure saving-only plan, then test small rates.</li>
+          <li><strong>Short- to medium-term goals:</strong> a planned expense over months or a few years (travel, car, down payment).</li>
+          <li><strong>Budget planning:</strong> translating a goal into a monthly line item you can actually follow.</li>
+          <li><strong>Scenario comparison:</strong> “What if I save for 3 years instead of 5?”</li>
+          <li><strong>Baseline vs growth:</strong> set interest to 0% for simple saving-only math, then test a small rate.</li>
         </ul>
 
         <hr />
 
         <h3>How the math works (simple explanation)</h3>
         <p>
-          The calculator uses two building blocks:
+          The calculator combines two ideas:
+          (1) your current savings may grow over time if you assume a positive rate, and
+          (2) your monthly contributions accumulate and may also compound.
         </p>
-        <ul>
-          <li><strong>Your current savings growth:</strong> existing savings may grow over time if you assume a positive annual rate.</li>
-          <li><strong>Your monthly contributions:</strong> repeated monthly deposits accumulate and may also compound.</li>
-        </ul>
         <p>
-          In practice, the biggest driver is usually the <strong>monthly contribution</strong> and the <strong>timeframe</strong>.
-          The interest rate can help, but it rarely replaces consistent saving.
+          In most real-life goals, the biggest drivers are <strong>monthly contribution</strong> and <strong>timeframe</strong>.
+          Interest can help, but small rate differences rarely compensate for inconsistent saving.
         </p>
 
-        <h4>Quick rule of thumb</h4>
+        <h4>Quick rule of thumb (0% baseline)</h4>
         <p>
-          If you set the rate to <strong>0%</strong>, you get the simplest planning baseline:
-          <strong>(Goal − Current savings) ÷ Months</strong>. Then you can optionally model growth by entering a rate.
+          If you set the interest rate to <strong>0%</strong>, the monthly amount is simply:
+          <strong>(Goal − Current savings) ÷ Months</strong>.
+          This is a helpful baseline because it avoids relying on growth assumptions.
         </p>
 
         <hr />
 
-        <h3>Choosing an interest rate (and when to use 0%)</h3>
+        <h3>Concrete examples with real numbers</h3>
         <p>
-          If you’re saving in a standard savings account, your “interest rate” is usually small. If you’re planning only and you want to be
-          conservative, using <strong>0%</strong> can be a smart baseline because it avoids overestimating growth.
+          Google (and humans) like specific examples because they clarify what the monthly target actually means.
+          Here are a few scenario calculations using the same assumptions as the calculator:
+          monthly contributions and monthly compounding (when a rate is used).
         </p>
+
+        <h4>Example 1: Save $20,000 in 3 years with 5% interest</h4>
+        <div class="callout">
+          <p style="margin:0;">
+            If you want to save <strong>$20,000</strong> in <strong>3 years</strong> with <strong>5% annual interest</strong>,
+            you need to invest approximately <strong>$516.08 per month</strong> (assuming $0 current savings).
+          </p>
+          <p style="margin:0.45rem 0 0;">
+            If the result feels high, your best levers are extending the timeframe (more months)
+            or increasing your starting amount (a one-time deposit).
+          </p>
+        </div>
+
+        <h4>Example 2: How much to save for $10,000 in 2 years (0% baseline)</h4>
         <p>
-          If you want to explore compounding in more detail, use our
+          A simple plan with no interest is often the most conservative approach:
+          $10,000 over 24 months is <strong>$416.67 per month</strong>. If you can afford that amount consistently,
+          you have a realistic path even without growth.
+        </p>
+
+        <h4>Example 3: $10,000 goal, $1,000 already saved, 2 years, 4% interest</h4>
+        <p>
+          Starting with some savings helps. With <strong>$1,000 current savings</strong>, a <strong>$10,000 goal</strong>,
+          <strong>2 years</strong>, and <strong>4% annual interest</strong>, the required monthly savings is approximately
+          <strong>$357.49</strong>.
+        </p>
+
+        <h4>Scenario table (quick comparison)</h4>
+        <table class="mini-table" aria-label="Savings goal examples table">
+          <thead>
+            <tr>
+              <th>Goal</th>
+              <th>Time</th>
+              <th>Rate</th>
+              <th>Current</th>
+              <th>Approx. Monthly Needed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$20,000</td>
+              <td>3 years</td>
+              <td>5%</td>
+              <td>$0</td>
+              <td>$516.08</td>
+            </tr>
+            <tr>
+              <td>$10,000</td>
+              <td>2 years</td>
+              <td>0%</td>
+              <td>$0</td>
+              <td>$416.67</td>
+            </tr>
+            <tr>
+              <td>$10,000</td>
+              <td>2 years</td>
+              <td>4%</td>
+              <td>$1,000</td>
+              <td>$357.49</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          Use these as reality checks. If your calculated monthly amount is higher than what you can afford,
+          that’s not failure — it’s information. Adjust the goal, timeline, or starting balance until the plan fits your life.
+        </p>
+
+        <hr />
+
+        <h3>How much should I save per month?</h3>
+        <p>
+          There isn’t a universal “right” number because it depends on your goal and timeframe. But there are simple ways to start:
+        </p>
+        <ul>
+          <li><strong>Start with a baseline:</strong> set the interest rate to 0% and compute a no-growth plan.</li>
+          <li><strong>Pressure-test your budget:</strong> can you realistically set aside that amount every month?</li>
+          <li><strong>Build an automated habit:</strong> auto-transfer the monthly amount right after payday.</li>
+          <li><strong>Use milestones:</strong> if the full goal is overwhelming, set a smaller first milestone (e.g., $1,000 buffer).</li>
+        </ul>
+        <p>
+          If you want deeper compounding projections (especially for longer time horizons), use our
           <a href="compound-interest-calculator.html">Compound Interest Calculator</a>.
         </p>
 
         <hr />
 
+        <h3>How to reach a savings goal faster</h3>
+        <p>
+          If you want to reach your savings goal faster, focus on levers that reliably move the needle:
+        </p>
+        <ul>
+          <li><strong>Increase your monthly amount:</strong> even +$25 to +$100 per month matters over time.</li>
+          <li><strong>Add a one-time deposit:</strong> starting with more reduces the monthly requirement immediately.</li>
+          <li><strong>Extend the timeframe slightly:</strong> adding 6–12 months can drop the monthly amount a lot.</li>
+          <li><strong>Reduce the goal amount:</strong> aim for “good enough” first, then upgrade the goal later.</li>
+          <li><strong>Protect the plan:</strong> keep goal savings in a separate account so it doesn’t leak into spending.</li>
+        </ul>
+        <div class="callout">
+          <strong>Reality check:</strong> Optimizing a small rate difference often matters less than consistency.
+          A plan you follow beats a perfect plan you abandon.
+        </div>
+
+        <hr />
+
+        <h3>Saving goal with interest: what rate should you use?</h3>
+        <p>
+          The “interest rate” field is a planning assumption. A few practical approaches:
+        </p>
+        <ul>
+          <li><strong>Conservative baseline:</strong> use <strong>0%</strong> if you want to avoid overestimating growth.</li>
+          <li><strong>Savings account planning:</strong> use a small rate that roughly reflects your expected APY.</li>
+          <li><strong>Investing for longer goals:</strong> you can test a higher rate, but remember returns vary year to year.</li>
+        </ul>
+        <p>
+          For multi-year goals, also consider purchasing power. Inflation can make the “same” goal more expensive over time.
+          You can explore this with the <a href="inflation-calculator.html">Inflation Calculator</a>.
+        </p>
+
+        <hr />
+
+        <h3>How long will it take to save X amount?</h3>
+        <p>
+          If your monthly saving amount is fixed (because that’s what your budget allows), you can solve the problem in reverse:
+          find the timeframe that makes the plan feasible.
+        </p>
+        <ul>
+          <li><strong>Step 1:</strong> Pick a monthly amount you can truly commit to (e.g., $250/month).</li>
+          <li><strong>Step 2:</strong> Enter your goal and current savings.</li>
+          <li><strong>Step 3:</strong> Try a timeframe (e.g., 2 years, 3 years, 4 years) until the “required monthly” matches your budget.</li>
+          <li><strong>Step 4:</strong> Add a conservative interest rate only after your baseline plan works at 0%.</li>
+        </ul>
+        <p>
+          This is often how real planning works: you set a monthly amount first, then adjust the timeline.
+          If your goal is urgent and the monthly number is too high, consider a temporary income boost or a smaller milestone goal.
+        </p>
+
+        <hr />
+
+        <h3>How much should you have saved by age?</h3>
+        <p>
+          “By age” benchmarks can help with long-tail planning searches, but they are not rules. Your location, income,
+          cost of living, family situation, and student loans matter a lot. The best benchmark is one that fits your reality.
+        </p>
+
+        <h4>How much should you have saved by 30?</h4>
+        <p>
+          A practical approach is to aim for a <strong>starter emergency buffer</strong> first (often $1,000 to one month of expenses),
+          then build toward a larger emergency fund. If you can consistently save even a small percentage of income, you’re building the habit.
+        </p>
+
+        <h4>By 40?</h4>
+        <p>
+          By 40, many people focus on having a stable emergency fund and making steady progress on long-term goals
+          (retirement, home upgrades, education). If your savings are behind, a realistic monthly goal matters more than a perfect benchmark.
+        </p>
+
+        <h4>By 50?</h4>
+        <p>
+          By 50, the goal is usually resilience: less reliance on high-interest debt, a stronger emergency fund,
+          and consistent contributions toward long-term accounts. If you’re planning a major purchase, run multiple scenarios here and
+          consider tradeoffs with debt payoff.
+        </p>
+
+        <div class="callout">
+          <strong>Tip:</strong> If you want a dedicated emergency fund plan, try the
+          <a href="emergency-fund-calculator.html">Emergency Fund Calculator</a>.
+        </div>
+
+        <hr />
+
         <h3>Common mistakes when setting a savings goal</h3>
         <ul>
-          <li><strong>Picking a deadline that forces an unrealistic monthly amount:</strong> if the result is too high, extend the timeline or reduce the target.</li>
-          <li><strong>Ignoring inflation for multi-year goals:</strong> prices can rise; check your purchasing power with the <a href="inflation-calculator.html">Inflation Calculator</a>.</li>
+          <li><strong>Picking a deadline that forces an unrealistic monthly amount:</strong> extend the timeline or reduce the target.</li>
+          <li><strong>Ignoring inflation for multi-year goals:</strong> prices can rise; check purchasing power with the <a href="inflation-calculator.html">Inflation Calculator</a>.</li>
           <li><strong>Not separating savings from spending:</strong> a dedicated “goal account” helps reduce accidental spending.</li>
-          <li><strong>Trying to optimize the rate instead of the habit:</strong> consistent monthly saving usually matters more than small rate differences.</li>
+          <li><strong>Overestimating returns:</strong> use 0% baseline first; treat interest as a bonus, not a guarantee.</li>
+          <li><strong>Not planning for interruptions:</strong> leave room for 1–2 “missed months” per year and still be okay.</li>
         </ul>
 
         <hr />
@@ -617,16 +889,25 @@
         <details>
           <summary>FAQ: What if the result feels too high?</summary>
           <p>
-            Try extending the timeframe, lowering the goal amount, or starting with a smaller “starter goal” milestone.
-            Even small consistent contributions can build momentum.
+            Try extending the timeframe, lowering the goal amount, or starting with a smaller milestone (for example, a $1,000 buffer first).
+            You can also add a one-time deposit to reduce the monthly requirement. The key is choosing a monthly amount you can maintain.
           </p>
         </details>
 
         <details>
           <summary>FAQ: Should I save or pay off debt first?</summary>
           <p>
-            Many people start with a small emergency buffer, then prioritize high-interest debt.
-            You can explore payoff speed using the <a href="debt-payoff-calculator.html">Debt Payoff Calculator</a>.
+            Many people start with a small emergency buffer, then prioritize high-interest debt. If your debt interest is high,
+            paying it down can be a guaranteed “return.” You can explore payoff timelines using the
+            <a href="debt-payoff-calculator.html">Debt Payoff Calculator</a>.
+          </p>
+        </details>
+
+        <details>
+          <summary>FAQ: Should I assume interest for short-term goals?</summary>
+          <p>
+            For short-term goals, it’s often better to be conservative: use 0% or a small savings-account rate.
+            For longer goals, you can model growth, but remember the goal of the calculator is planning, not prediction.
           </p>
         </details>
       </section>
