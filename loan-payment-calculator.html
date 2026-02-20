@@ -13,10 +13,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Loan Payment Calculator | Monthly Payment & Total Interest</title>
+  <title>Loan Payment Calculator | Monthly Payment, Total Interest & Extra Principal</title>
   <meta
     name="description"
-    content="Calculate your monthly loan payments, total interest, and a sample amortization schedule. Works for auto loans, personal loans, and any fixed-rate installment loan. Fast, accurate, and free."
+    content="Calculate loan payments, total interest, and see what happens if you pay extra toward principal. Includes interest breakdown, APR vs rate mini guide, refinancing example, and amortization preview."
   />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://financecalccenter.com/loan-payment-calculator.html" />
@@ -37,8 +37,7 @@
       --text: #e5e7eb;
       --muted: #9ca3af;
       --border: #1e293b;
-      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * { box-sizing: border-box; }
@@ -52,7 +51,7 @@
     }
 
     .wrapper {
-      max-width: 720px;
+      max-width: 780px;
       margin: 0 auto;
     }
 
@@ -66,9 +65,7 @@
       text-decoration: none;
     }
 
-    .back:hover {
-      text-decoration: underline;
-    }
+    .back:hover { text-decoration: underline; }
 
     h1 {
       margin: 0.6rem 0 0.2rem;
@@ -78,7 +75,7 @@
     .subtitle {
       font-size: 0.9rem;
       color: var(--muted);
-      max-width: 560px;
+      max-width: 640px;
       line-height: 1.45;
     }
 
@@ -104,9 +101,7 @@
     }
 
     @media (max-width: 640px) {
-      .row {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .row { grid-template-columns: minmax(0, 1fr); }
     }
 
     input, select {
@@ -126,6 +121,20 @@
       box-shadow: 0 0 0 1px var(--accent-soft);
     }
 
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      background: rgba(34, 197, 94, 0.08);
+      color: #b7f7ce;
+      font-size: 0.78rem;
+      margin-top: 0.4rem;
+      line-height: 1.2;
+    }
+
     button {
       width: 100%;
       margin-top: 1.1rem;
@@ -134,7 +143,7 @@
       border: none;
       background: linear-gradient(135deg, #22c55e, #16a34a);
       color: #022c22;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
       cursor: pointer;
       box-shadow: 0 16px 32px rgba(34, 197, 94, 0.4);
@@ -160,16 +169,13 @@
 
     .results {
       margin-top: 1.2rem;
-      padding: 1rem 0.9rem 0.5rem;
+      padding: 1rem 0.9rem 0.6rem;
       border-radius: 0.9rem;
       background: radial-gradient(circle at top left, #052e16 0, #020617 55%);
       border: 1px solid rgba(34, 197, 94, 0.5);
     }
 
-    .results h2 {
-      font-size: 1rem;
-      margin: 0 0 0.5rem;
-    }
+    .results h2 { font-size: 1rem; margin: 0 0 0.55rem; }
 
     .results-grid {
       display: grid;
@@ -178,9 +184,7 @@
     }
 
     @media (max-width: 640px) {
-      .results-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .results-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
     .res-item {
@@ -190,23 +194,31 @@
       padding: 0.6rem 0.7rem;
     }
 
-    .res-label {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
+    .res-label { font-size: 0.78rem; color: var(--muted); }
+    .res-value { font-size: 0.98rem; font-weight: 700; margin-top: 0.15rem; }
+    .res-note { margin-top: 0.65rem; font-size: 0.78rem; color: var(--muted); line-height: 1.45; }
 
-    .res-value {
-      font-size: 0.98rem;
-      font-weight: 600;
-      margin-top: 0.15rem;
+    .split {
+      margin-top: 0.85rem;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 0.85rem;
+      align-items: start;
     }
+    @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
 
-    .res-note {
-      margin-top: 0.6rem;
-      font-size: 0.78rem;
-      color: var(--muted);
-      line-height: 1.45;
+    .box {
+      border: 1px solid var(--border);
+      border-radius: 0.9rem;
+      padding: 0.85rem 0.85rem 0.75rem;
+      background: rgba(15, 23, 42, 0.7);
     }
+    .box h3 {
+      margin: 0 0 0.35rem;
+      font-size: 0.95rem;
+    }
+    .box p, .box li { color: var(--muted); font-size: 0.84rem; line-height: 1.55; }
+    .box ul { margin: 0.35rem 0 0; padding-left: 1.05rem; }
 
     .amort {
       margin-top: 1rem;
@@ -244,9 +256,7 @@
       white-space: nowrap;
     }
 
-    th:first-child, td:first-child {
-      text-align: left;
-    }
+    th:first-child, td:first-child { text-align: left; }
 
     th {
       position: sticky;
@@ -257,33 +267,31 @@
       font-weight: 500;
     }
 
-    tr:nth-child(even) td {
-      background: rgba(15, 23, 42, 0.95);
+    tr:nth-child(even) td { background: rgba(15, 23, 42, 0.95); }
+
+    /* Readability improvements for educational section */
+    .card h2 { margin-top: 0; }
+    .card h3 { margin-top: 1rem; margin-bottom: 0.35rem; font-size: 1rem; }
+    .card p { line-height: 1.6; }
+    .card ul { margin: 0.4rem 0 0.9rem; padding-left: 1.1rem; }
+    .card li { margin: 0.25rem 0; }
+
+    .comparison {
+      margin-top: 0.75rem;
+      border-radius: 0.9rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
     }
 
-    /* ✅ Readability improvements for the educational section */
-    .card h2 { margin-top: 0; }
-    .card h3 {
-      margin-top: 1rem;
-      margin-bottom: 0.35rem;
-      font-size: 1rem;
-    }
-    .card p { line-height: 1.55; }
-    .card ul {
-      margin: 0.4rem 0 0.9rem;
-      padding-left: 1.1rem;
-    }
-    .card li { margin: 0.25rem 0; }
+    .comparison table { font-size: 0.82rem; }
+    .comparison th, .comparison td { padding: 0.5rem 0.6rem; }
 
     .related-links {
       margin-top: 1.4rem;
       font-size: 0.86rem;
     }
 
-    .related-links h2 {
-      font-size: 0.95rem;
-      margin: 0 0 0.4rem;
-    }
+    .related-links h2 { font-size: 0.95rem; margin: 0 0 0.4rem; }
 
     .related-links ul {
       list-style: none;
@@ -291,9 +299,7 @@
       margin: 0.3rem 0 0;
     }
 
-    .related-links li + li {
-      margin-top: 0.25rem;
-    }
+    .related-links li + li { margin-top: 0.25rem; }
 
     footer {
       margin-top: 1.8rem;
@@ -303,13 +309,14 @@
       line-height: 1.45;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    a:hover {
-      text-decoration: underline;
+    .divider {
+      height: 1px;
+      background: rgba(148, 163, 184, 0.18);
+      margin: 1rem 0;
+      border-radius: 999px;
     }
   </style>
 
@@ -323,12 +330,42 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "inLanguage": "en",
-    "description": "Calculate your monthly loan payments, total interest, and a sample amortization schedule. Works for auto loans, personal loans, and any fixed-rate installment loan. Fast, accurate, and free.",
+    "description": "Calculate your loan payments, total interest, and see scenarios like extra principal payments. Includes interest breakdown, refinancing example, and amortization preview.",
     "publisher": {
       "@type": "Organization",
       "name": "FinanceCalcCenter",
       "url": "https://financecalccenter.com/"
     }
+  }
+  </script>
+
+  <!-- FAQ structured data (matches the FAQ section below) -->
+  <script type="application/ld+json" id="faqJson">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What happens if I pay extra toward principal?",
+        "acceptedAnswer":{"@type":"Answer","text":"Extra principal reduces your balance faster, which can shorten the payoff timeline and reduce total interest. The impact depends on how often you pay extra and whether your lender applies it immediately to principal."}
+      },
+      {
+        "@type":"Question",
+        "name":"Is APR the same as the interest rate?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. The interest rate is the cost of borrowing on the principal, while APR can include certain fees and reflects a broader annualized cost. For apples-to-apples comparisons, APR is often more informative."}
+      },
+      {
+        "@type":"Question",
+        "name":"Do weekly or bi-weekly payments always save interest?",
+        "acceptedAnswer":{"@type":"Answer","text":"Not always. Savings depend on lender rules. If payments are applied each period and reduce the balance sooner, interest can drop. If the lender holds payments and applies them monthly, savings may be smaller."}
+      },
+      {
+        "@type":"Question",
+        "name":"How does refinancing change the math?",
+        "acceptedAnswer":{"@type":"Answer","text":"Refinancing replaces a loan with a new one. If the new rate is lower (and fees are reasonable), total interest may fall. Resetting the term longer can lower the payment but may increase total interest."}
+      }
+    ]
   }
   </script>
 </head>
@@ -340,8 +377,11 @@
       <h1>Loan Payment Calculator</h1>
       <p class="subtitle">
         Estimate your periodic loan payment, total amount repaid, and total interest over the life of a fixed-rate loan.
-        Use it for personal loans, auto loans, and most standard installment loans.
+        Now includes an <strong>extra principal</strong> scenario so you can see how paying a little more can change your payoff timeline.
       </p>
+      <div class="pill" title="Math-first, not advice">
+        ✅ Educational math · Fixed-rate amortization · Compare scenarios
+      </div>
     </header>
 
     <section class="card" aria-label="Loan payment calculator">
@@ -371,36 +411,139 @@
         </div>
       </div>
 
+      <div class="divider"></div>
+
+      <!-- Extra principal inputs -->
+      <div class="row">
+        <div>
+          <label for="extra">Extra principal per payment (optional)</label>
+          <input id="extra" type="number" min="0" step="0.01" value="0" />
+          <p class="hint">Example: add $100 to each payment to reduce interest and shorten payoff time.</p>
+        </div>
+        <div>
+          <label for="lump">One-time lump-sum principal (optional)</label>
+          <input id="lump" type="number" min="0" step="0.01" value="0" />
+          <p class="hint">Example: apply a tax refund as a one-time principal reduction.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label for="lumpWhen">Apply lump sum at payment # (optional)</label>
+          <input id="lumpWhen" type="number" min="1" step="1" value="12" />
+          <p class="hint">Payment #1 is your first scheduled payment after origination.</p>
+        </div>
+        <div>
+          <label for="roundingMode">Rounding (display only)</label>
+          <select id="roundingMode">
+            <option value="2">2 decimals</option>
+            <option value="0">No decimals</option>
+          </select>
+          <p class="hint">Real lenders may round differently; this setting affects display only.</p>
+        </div>
+      </div>
+
       <button id="calcBtn" type="button">Calculate payment</button>
       <p class="hint">
         This calculator uses a standard amortizing loan formula and assumes a fixed interest rate for the entire term.
-        Results are estimates and may differ from lender statements due to fees, rounding, or payment rules.
+        Results are estimates and may differ from lender statements due to fees, rounding, escrow, or payment rules.
       </p>
       <div id="error" class="error"></div>
 
       <div id="results" class="results" style="display:none;">
         <h2>Loan summary</h2>
+
         <div class="results-grid">
           <div class="res-item">
             <div class="res-label">Periodic payment</div>
             <div id="payment" class="res-value">—</div>
           </div>
           <div class="res-item">
-            <div class="res-label">Total repaid</div>
+            <div class="res-label">Total repaid (scheduled)</div>
             <div id="totalPaid" class="res-value">—</div>
           </div>
           <div class="res-item">
-            <div class="res-label">Total interest</div>
+            <div class="res-label">Total interest (scheduled)</div>
             <div id="totalInterest" class="res-value">—</div>
           </div>
         </div>
+
+        <div class="split">
+          <div class="box" aria-label="Interest breakdown">
+            <h3>Total interest breakdown (scheduled)</h3>
+            <p>
+              Interest cost is not evenly distributed through time. With amortizing loans, a bigger share of early payments
+              goes to interest because the balance is still high. As the balance falls, interest generally falls too.
+            </p>
+            <ul>
+              <li><strong>Interest in first 12 payments:</strong> <span id="intFirst12">—</span></li>
+              <li><strong>Interest in first half of payments:</strong> <span id="intFirstHalf">—</span></li>
+              <li><strong>Interest in second half of payments:</strong> <span id="intSecondHalf">—</span></li>
+              <li><strong>Share of total interest paid in first half:</strong> <span id="intFirstHalfPct">—</span></li>
+            </ul>
+            <p class="hint">
+              Want to see how small changes add up? Try the <a href="https://financecalccenter.com/compound-interest-calculator.html">Compound Interest Calculator</a>
+              to compare paying down debt versus investing extra cash.
+            </p>
+          </div>
+
+          <div class="box" aria-label="Extra payment results">
+            <h3>Extra principal scenario (if added)</h3>
+            <p>
+              If you add extra principal, your scheduled payment stays the same, but you may finish earlier and pay less interest.
+              Below shows an <em>estimated</em> side-by-side summary.
+            </p>
+            <ul>
+              <li><strong>Payoff timeline (scheduled):</strong> <span id="baseTimeline">—</span></li>
+              <li><strong>Payoff timeline (with extra):</strong> <span id="extraTimeline">—</span></li>
+              <li><strong>Interest saved (with extra):</strong> <span id="interestSaved">—</span></li>
+              <li><strong>Total repaid (with extra):</strong> <span id="totalPaidExtra">—</span></li>
+            </ul>
+            <p class="hint">
+              If your goal is a faster payoff strategy across multiple debts, use the
+              <a href="https://financecalccenter.com/debt-payoff-calculator.html">Debt Payoff Calculator</a>.
+            </p>
+          </div>
+        </div>
+
+        <div class="comparison" aria-label="Normal vs extra payment comparison table">
+          <table>
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Payment</th>
+                <th>Payoff (payments)</th>
+                <th>Total interest</th>
+                <th>Total repaid</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Scheduled (no extra)</td>
+                <td id="cmpPayment">—</td>
+                <td id="cmpNBase">—</td>
+                <td id="cmpIntBase">—</td>
+                <td id="cmpTotalBase">—</td>
+              </tr>
+              <tr>
+                <td>With extra principal</td>
+                <td id="cmpPaymentExtra">—</td>
+                <td id="cmpNExtra">—</td>
+                <td id="cmpIntExtra">—</td>
+                <td id="cmpTotalExtra">—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <p class="res-note">
-          Payments are estimates only and do not include taxes, insurance, late fees, or other charges your lender may apply.
+          The “extra principal” scenario assumes your lender applies extra money directly to principal immediately.
+          Some lenders apply extra differently unless you specify “principal-only.” Always verify your lender’s rules.
         </p>
 
         <div class="amort">
           <div class="amort-head">
-            <span>Amortization schedule (first 12 payments)</span>
+            <span>Amortization schedule (first 12 payments · scheduled)</span>
             <span id="scheduleMeta"></span>
           </div>
           <div class="amort-body">
@@ -426,22 +569,24 @@
       <h2>How This Loan Payment Calculator Works</h2>
 
       <p>
-        This loan payment calculator helps you estimate how much you may pay on a fixed-rate installment loan over time.
-        Enter your loan amount, annual interest rate, loan term, and payment frequency to see an estimated periodic payment,
-        the total amount repaid, and the total interest cost across the full term.
+        This loan payment calculator estimates how much you may pay on a <strong>fixed-rate, amortizing installment loan</strong>.
+        You enter a loan amount, annual interest rate, loan term, and payment frequency. The calculator then estimates:
+        (1) your periodic payment (monthly / bi-weekly / weekly), (2) total amount repaid, and (3) total interest cost.
+        It also displays a preview of the first 12 payments so you can see how principal and interest change over time.
       </p>
 
       <p>
-        It can be useful for planning and comparison: for example, testing how a longer loan term changes the payment size,
-        or how a lower interest rate affects the total cost of borrowing. The goal is to explain loan math in a clear,
-        beginner-friendly way—so you can understand what the numbers mean before you make decisions.
+        Why does that principal/interest split matter? Because it explains a common surprise: early payments often feel like they
+        “barely reduce the balance.” That’s not a trick—it's how amortization works. Interest is calculated on the remaining balance.
+        When the balance is high, interest is higher. As the balance decreases, interest usually decreases too, and more of each payment
+        can go toward principal.
       </p>
 
       <h3>What Is a Loan Payment?</h3>
       <p>
         A loan payment is the amount you pay to a lender on a schedule—most commonly monthly, but sometimes bi-weekly or weekly.
         Each payment is generally split into two components:
-        <strong>principal</strong> (the amount that reduces the loan balance) and <strong>interest</strong> (the cost of borrowing).
+        <strong>principal</strong> (the part that reduces your loan balance) and <strong>interest</strong> (the cost of borrowing).
       </p>
 
       <ul>
@@ -459,16 +604,16 @@
       <p>
         This calculator is designed for fixed-rate loans, meaning the interest rate does not change over the life of the loan.
         That’s why fixed-rate loans often feel more predictable: the periodic payment is calculated up front and remains the same
-        across the entire schedule (again, assuming no fees and no payment rule changes).
+        across the entire schedule (assuming no fees, no escrow, and no rule changes).
       </p>
 
       <p>
         Many personal loans and auto loans are fixed-rate installment loans. Some mortgages are fixed-rate as well.
-        If you’re working with a variable or adjustable rate, the payment may change when the rate changes,
+        If you’re working with a variable or adjustable rate, your payment can change when the rate changes,
         so a fixed-rate calculator may not match future lender statements.
       </p>
 
-      <h3>How the Monthly (or Periodic) Payment Is Calculated</h3>
+      <h3>How the Periodic Payment Is Calculated</h3>
       <p>
         The calculator uses a standard amortization formula to compute your periodic payment. It converts your annual interest rate
         into a periodic rate by dividing it by the number of payments per year (monthly = 12, bi-weekly = 26, weekly = 52).
@@ -477,66 +622,241 @@
 
       <p>
         If your interest rate is set to 0%, the calculation becomes simpler: the loan balance is split evenly across all payments.
-        In real life, a “0% APR” offer may still include fees or conditions, so treat it as a math scenario rather than a guarantee.
+        In real life, “0% APR” offers may still include fees or conditions—so treat it as a math scenario rather than a guarantee.
       </p>
 
       <h3>What an Amortization Schedule Shows</h3>
       <p>
-        An amortization schedule is a table that breaks down each payment into principal and interest and shows how the remaining balance changes.
-        In this tool, you’ll see a preview of the first 12 payments. This quick snapshot is helpful because it demonstrates an important concept:
+        An amortization schedule breaks down each payment into principal and interest and shows how the remaining balance changes.
+        On this page, you’ll see a preview of the first 12 payments for the scheduled plan. It’s a quick way to spot the key pattern:
         even when payments are equal, the interest portion is typically larger at the beginning and smaller later on.
       </p>
 
       <p>
-        If you want a deeper comparison, try changing the term (for example, 3 years vs. 5 years) and observe how the total interest changes.
-        Shorter terms usually mean higher payments but lower total interest, while longer terms can lower the payment but raise the interest cost.
+        If you want to compare borrowing scenarios, try adjusting the term (for example, 3 years vs. 5 years). Shorter terms usually mean
+        higher payments but lower total interest, while longer terms can lower the payment but raise the overall interest cost.
+        For mortgage-style comparisons, you can also use the
+        <a href="https://financecalccenter.com/mortgage-calculator.html">Mortgage Calculator</a>.
       </p>
+    </section>
 
-      <h3>Payment Frequency: Monthly vs. Bi-weekly vs. Weekly</h3>
+    <!-- ✅ NEW H2 #1 -->
+    <section id="apr-mini-guide" class="card" style="margin-top:1.5rem;">
+      <h2>APR vs Interest Rate: Mini Guide (Fast, Practical, and Math-First)</h2>
+
       <p>
-        Payment frequency changes how often you pay and how the interest rate is applied per period.
-        With more frequent payments, the periodic interest rate is smaller, and the balance can decrease more often.
-        Depending on the loan’s rules and the exact schedule, this may slightly reduce total interest over the life of the loan.
+        People often use “APR” and “interest rate” as if they’re the same thing. They’re related, but not identical.
+        If you want to compare loans fairly—especially offers that include fees—understanding the difference can save you from
+        comparing apples to oranges.
       </p>
 
+      <h3>Interest rate (simple definition)</h3>
       <p>
-        That said, lenders may handle “bi-weekly” setups differently (some collect payments and apply them monthly, while others apply immediately).
-        This calculator assumes regular payments applied each period based on the selected frequency.
-        Use it as a consistent comparison tool rather than an exact replica of every lender’s processing method.
+        The <strong>interest rate</strong> is the percentage used to calculate interest on your remaining balance.
+        It’s the core borrowing cost in the amortization math. In a typical fixed-rate installment loan, the interest rate is the main driver
+        of how much interest you pay over time.
       </p>
 
-      <h3>How to Use This Loan Calculator Effectively</h3>
+      <h3>APR (what it tries to capture)</h3>
+      <p>
+        <strong>APR</strong> (Annual Percentage Rate) is meant to reflect a broader annualized cost of borrowing. In many lending contexts,
+        APR can include certain fees in addition to the interest rate. That matters because two loans with the same stated rate can still have
+        different “all-in” costs if one has higher fees.
+      </p>
+
       <ul>
-        <li><strong>Compare terms:</strong> Test different loan lengths to balance affordability and total cost.</li>
-        <li><strong>Compare rates:</strong> Small interest rate differences can have a noticeable impact over time.</li>
-        <li><strong>Check affordability:</strong> Use the periodic payment as a starting point for budgeting.</li>
-        <li><strong>Understand total interest:</strong> Focus on how much borrowing costs over the full term, not just the payment size.</li>
+        <li><strong>Use interest rate</strong> to understand the core amortization math: payment split, payoff curve, interest timing.</li>
+        <li><strong>Use APR</strong> to compare offers when fees differ (origination fees, points, certain closing costs, etc.).</li>
       </ul>
 
       <p>
-        Remember that real loans can include additional costs (origination fees, documentation fees, insurance, taxes, or penalties).
-        Those items can change the true “out-the-door” monthly payment and the effective borrowing cost.
-        If you need a more complete picture, you can use this calculator alongside tools like an inflation calculator or savings goal calculator
-        to understand the broader impact of payments on your budget.
+        On this page, the calculator’s payment math is based on the interest rate you enter. If you want a dedicated explainer,
+        see <a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What’s the Difference?</a>.
+        For budget planning around the full household picture (not just principal and interest),
+        you may also find <a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a> useful for “real cost” thinking.
       </p>
 
-      <h3>FAQ</h3>
-      <p><strong>Is this loan payment calculator accurate?</strong><br>
-        It uses standard amortization math and is accurate for typical fixed-rate loans. Differences can occur due to lender fees, rounding rules,
-        or how payments are applied.</p>
+      <p class="hint">
+        Educational note: APR rules can vary by product and jurisdiction, and what fees are included can differ by lender and loan type.
+        Always read the loan estimate or disclosure documents for the specific definition used in your offer.
+      </p>
+    </section>
 
-      <p><strong>What is the difference between principal and interest?</strong><br>
-        Principal reduces the amount you borrowed. Interest is the borrowing cost calculated from the rate and remaining balance.</p>
+    <!-- ✅ NEW H2 #2 -->
+    <section id="refinance-example" class="card" style="margin-top:1.5rem;">
+      <h2>Refinancing Example: When a Lower Rate Changes the Math</h2>
 
-      <p><strong>Why is total interest higher on longer loan terms?</strong><br>
-        Even with a lower payment, interest has more time to accumulate. Longer terms often increase the total interest paid.</p>
+      <p>
+        Refinancing means replacing an existing loan with a new loan. Most refinance decisions boil down to two math questions:
+        (1) does the new loan reduce total interest enough to justify any refinance costs, and (2) does changing the term
+        (shorter or longer) help or hurt your overall plan?
+      </p>
 
-      <p><strong>Does paying weekly or bi-weekly always save interest?</strong><br>
-        Not always. It depends on how the lender applies payments. More frequent payments can reduce the balance sooner, which may reduce interest,
-        but lender rules can vary.</p>
+      <h3>A simple scenario (numbers you can visualize)</h3>
+      <p>
+        Imagine you still owe $15,000 on a fixed-rate loan and have 3 years left. If you refinance into a new loan with a lower rate,
+        your monthly payment might drop, and your remaining interest might drop too. But if you refinance into a longer term
+        (for example, restarting a 5-year term), your payment could drop while <em>total interest across the new life</em> could increase
+        because interest has more time to accumulate.
+      </p>
+
+      <ul>
+        <li><strong>Lower rate + same remaining term</strong> often reduces total interest (fees aside).</li>
+        <li><strong>Lower rate + longer new term</strong> can lower the payment but may increase total interest.</li>
+        <li><strong>Refi fees matter</strong>: a fee can offset some or all of the interest savings.</li>
+      </ul>
+
+      <p>
+        A practical way to explore the math is to compare two calculator runs:
+        run your current remaining balance and remaining time at the current rate, then run the new rate and new term.
+        If you’re trying to “win back” a longer term by paying extra anyway, consider combining refinancing with the
+        <a href="#extra-principal">extra principal section</a> below.
+      </p>
+
+      <p class="hint">
+        This is educational modeling, not a recommendation. Real refinance offers can include fees, prepayment rules,
+        and timing details that affect the final numbers.
+      </p>
+    </section>
+
+    <!-- ✅ NEW H2 #3 (+700+ words section requirement) -->
+    <section id="extra-principal" class="card" style="margin-top:1.5rem;">
+      <h2>What Happens If You Pay Extra Toward Principal?</h2>
+
+      <p>
+        Paying extra toward principal is one of the simplest “loan math levers” you can pull. It doesn’t require a new lender, a new rate,
+        or a new product. It’s just an extra amount applied to the loan balance. When the balance drops faster, two things can happen:
+        <strong>(1) the payoff timeline can shrink</strong> and <strong>(2) total interest paid can drop</strong>.
+      </p>
+
+      <p>
+        The reason is mechanical. Interest for each period is calculated from the remaining balance. If you reduce the balance earlier,
+        there’s less balance to charge interest on in future periods. That doesn’t necessarily change your scheduled payment amount—
+        your lender may keep the scheduled payment the same—but it can reduce the number of payments required to reach a zero balance.
+      </p>
+
+      <h3>How extra principal can shorten the loan term</h3>
+      <p>
+        In a typical amortizing loan, each scheduled payment is designed so the loan reaches zero exactly at the end of the term.
+        If you add extra principal each period, you are paying the balance down faster than the original plan. That generally means:
+      </p>
+      <ul>
+        <li>You reach a smaller balance sooner, so interest portions shrink sooner.</li>
+        <li>More of each scheduled payment begins going to principal earlier in the timeline.</li>
+        <li>The loan can end before the original number of payments is completed.</li>
+      </ul>
+
+      <h3>How extra principal can reduce total interest</h3>
+      <p>
+        Interest is the cost of time applied to a balance. If you reduce the “balance × time” exposure, total interest can decrease.
+        That’s why two loans with the same rate can have very different total interest costs depending on the term, frequency,
+        and whether the borrower makes extra principal payments. (If you like modeling long-term tradeoffs, the
+        <a href="https://financecalccenter.com/compound-interest-calculator.html">Compound Interest Calculator</a> can help you compare
+        what happens if extra money goes to debt payoff versus investing.)
+      </p>
+
+      <h3>A concrete example: adding +$100 per month</h3>
+      <p>
+        Here’s a real, calculated example using standard amortization math (monthly payments):
+      </p>
+
+      <ul>
+        <li><strong>Loan:</strong> $20,000</li>
+        <li><strong>Rate:</strong> 6.5% APR (interest rate entered as 6.5%)</li>
+        <li><strong>Term:</strong> 5 years (60 payments)</li>
+        <li><strong>Scheduled payment:</strong> about <strong>$391.32</strong> per month</li>
+      </ul>
+
+      <p>
+        If you pay only the scheduled amount, the loan runs the full 60 payments and total interest is about <strong>$3,479.38</strong>.
+        Now add <strong>+$100 extra principal each month</strong>. You would pay roughly $491.32 total each month (scheduled payment + extra principal),
+        and the loan payoff timeline in the model shrinks to about <strong>47 payments</strong> instead of 60.
+        Total interest drops to about <strong>$2,655.51</strong>.
+        That’s an estimated interest savings of about <strong>$823.87</strong> and roughly <strong>13 fewer monthly payments</strong>.
+      </p>
+
+      <p class="hint">
+        Your exact results can differ due to lender rounding and how “extra” is applied. The calculator above assumes extra money reduces principal immediately.
+      </p>
+
+      <h3>Lump sum vs monthly extra: what’s the difference?</h3>
+      <p>
+        There are two common patterns for paying extra:
+      </p>
+
+      <ul>
+        <li><strong>Monthly extra:</strong> You add a consistent amount to principal every payment (e.g., +$25, +$100).</li>
+        <li><strong>Lump sum:</strong> You make a one-time principal reduction (e.g., $1,000 at payment #12).</li>
+      </ul>
+
+      <p>
+        Monthly extra is predictable and often powerful because it reduces the balance repeatedly. Lump sums can still help,
+        especially when applied earlier in the schedule. Earlier reductions generally have more time to reduce future interest,
+        so timing matters. If you receive irregular cash (bonus, refund), the lump-sum approach can be a practical way to model
+        “what if I drop the balance once?” using the inputs above.
+      </p>
+
+      <h3>Early payoff timeline example (how it looks in practice)</h3>
+      <p>
+        Think of your payoff timeline as a countdown measured in payments. A standard 5-year monthly loan is 60 steps.
+        Extra principal can remove steps from the end because the balance hits zero sooner. In the +$100 example above,
+        the model ends at ~47 payments, which means the last ~13 scheduled payment slots disappear.
+      </p>
+
+      <p>
+        If your lender keeps the payment amount the same, the “win” often shows up as fewer payments (shorter term).
+        If your lender re-amortizes after extra payments (not always), you might see a lower future required payment instead.
+        This is why it’s helpful to ask: “Does extra reduce my term, reduce my payment, or both?” The math outcome changes
+        depending on the contract rules.
+      </p>
+
+      <h3>Table: normal vs extra payment (quick comparison)</h3>
+      <p>
+        The calculator’s comparison table summarizes the two scenarios side-by-side using the same inputs and interest rate,
+        then applying your extra principal assumptions. If you’re optimizing multiple goals (debt payoff plus saving),
+        it can help to pair this with the
+        <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a> so you can see what steady saving looks like
+        at the same time as steady payoff.
+      </p>
+
+      <p>
+        Want a broader payoff plan across multiple balances? Use the
+        <a href="https://financecalccenter.com/debt-payoff-calculator.html">Debt Payoff Calculator</a> to model snowball/avalanche strategies.
+        If your debt is a home loan specifically, compare structures with the
+        <a href="https://financecalccenter.com/mortgage-calculator.html">Mortgage Calculator</a>.
+      </p>
+
+      <h3>Key takeaways (math, not advice)</h3>
+      <ul>
+        <li><strong>Extra principal tends to reduce interest</strong> because it reduces the balance sooner.</li>
+        <li><strong>Extra principal can shorten the term</strong> if the scheduled payment stays the same.</li>
+        <li><strong>Earlier extra is usually more impactful</strong> than later extra, because it affects more future periods.</li>
+        <li><strong>Lender rules matter</strong>: confirm how extra payments are applied (principal-only vs advance payment, etc.).</li>
+      </ul>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="card" style="margin-top:1.5rem;">
+      <h2>FAQ</h2>
+
+      <p><strong>What happens if I pay extra toward principal?</strong><br>
+        Extra principal reduces your balance faster, which can shorten the payoff timeline and reduce total interest.
+        The impact depends on the size and timing of extra payments and how your lender applies them.</p>
+
+      <p><strong>Is APR the same as the interest rate?</strong><br>
+        Not always. The interest rate drives the amortization math. APR is intended to reflect a broader annualized cost
+        and may include certain fees. For loan comparisons, APR can be more apples-to-apples when fees differ.</p>
+
+      <p><strong>Do weekly or bi-weekly payments always save interest?</strong><br>
+        Not always. If payments are applied each period and reduce the balance sooner, interest can drop.
+        But if the lender holds payments and applies them monthly, savings may be smaller.</p>
+
+      <p><strong>How does refinancing change the math?</strong><br>
+        Refinancing replaces the loan. A lower rate can reduce interest, but restarting a longer term can increase total interest
+        even if the payment drops. Fees also affect the break-even point.</p>
 
       <p><strong>Does this include fees, taxes, or insurance?</strong><br>
-        No. The calculator estimates principal and interest only. Any fees or required extras should be checked with your lender.</p>
+        No. This calculator estimates principal and interest only. Fees, taxes, insurance, escrow, and penalties can change the real payment.</p>
 
       <h3>Educational Use Only</h3>
       <p>
@@ -550,12 +870,11 @@
     <section class="card related-links">
       <h2>Related calculators &amp; articles</h2>
       <ul>
-        <!-- Calculators -->
+        <li><a href="https://financecalccenter.com/debt-payoff-calculator.html">Debt Payoff Calculator</a> – build a payoff strategy across multiple debts.</li>
         <li><a href="https://financecalccenter.com/mortgage-calculator.html">Mortgage Calculator</a> – compare home loan payments.</li>
-        <li><a href="https://financecalccenter.com/compound-interest-calculator.html">Compound Interest Calculator</a> – see how investing extra can offset interest costs.</li>
-        <li><a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a> – plan how much you need to save before taking a loan.</li>
-        <li><a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a> – see how inflation affects real loan cost.</li>
-        <!-- Article – only if live -->
+        <li><a href="https://financecalccenter.com/compound-interest-calculator.html">Compound Interest Calculator</a> – compare payoff vs investing extra.</li>
+        <li><a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a> – plan savings alongside payments.</li>
+        <li><a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a> – understand real purchasing power over time.</li>
         <li><a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What's the Difference?</a></li>
       </ul>
     </section>
@@ -568,12 +887,96 @@
   <script>
     const $ = (id) => document.getElementById(id);
 
+    function clamp(n, min, max) {
+      return Math.max(min, Math.min(max, n));
+    }
+
+    function getDecimals() {
+      const v = parseInt($("roundingMode").value, 10);
+      return isFinite(v) ? v : 2;
+    }
+
     function formatMoney(value) {
       if (!isFinite(value)) return "—";
+      const decimals = getDecimals();
       return value.toLocaleString(undefined, {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
       });
+    }
+
+    function fmtUSD(value) {
+      return "$" + formatMoney(value);
+    }
+
+    function formatTimeline(payments, freq) {
+      if (!isFinite(payments) || payments <= 0) return "—";
+      const years = payments / freq;
+      const yearsRounded = years.toLocaleString(undefined, { maximumFractionDigits: 2 });
+      return `≈ ${yearsRounded} years (${payments} payments)`;
+    }
+
+    function computePayment(amount, rateAnnualPct, years, freq) {
+      const periods = Math.round(years * freq);
+      const r = (rateAnnualPct / 100) / freq;
+      let payment;
+      if (r === 0) payment = amount / periods;
+      else {
+        const factor = Math.pow(1 + r, periods);
+        payment = amount * (r * factor) / (factor - 1);
+      }
+      return { payment, periods, r };
+    }
+
+    function buildSchedule(params) {
+      const { amount, payment, r, periods, extraPerPayment, lumpSum, lumpWhen } = params;
+
+      let balance = amount;
+      const schedule = [];
+      let i = 0;
+
+      while (balance > 1e-9 && i < 200000) {
+        i++;
+
+        const interest = balance * r;
+        const principal = payment - interest;
+
+        let extra = extraPerPayment;
+        if (lumpSum > 0 && lumpWhen > 0 && i === lumpWhen) extra += lumpSum;
+
+        let principalTotal = principal + extra;
+        if (principalTotal > balance) principalTotal = balance;
+
+        balance -= principalTotal;
+
+        schedule.push({
+          n: i,
+          payment,
+          principal,
+          interest,
+          extra,
+          balance: Math.max(0, balance)
+        });
+
+        // Safety: if payment doesn't cover interest (negative amortization), stop.
+        if (r > 0 && payment <= interest && extraPerPayment <= 0 && !(lumpSum > 0)) {
+          break;
+        }
+
+        // If user chooses an extremely long payoff via extra=0 and weird term rounding, cap around original periods * 10
+        if (i > periods * 10 && extraPerPayment <= 0 && lumpSum <= 0) break;
+      }
+
+      const totalInterest = schedule.reduce((s, row) => s + row.interest, 0);
+      const totalPaid = schedule.reduce((s, row) => s + row.payment + row.extra, 0);
+
+      return { schedule, totalInterest, totalPaid, payoffPayments: schedule.length };
+    }
+
+    function sumInterestRange(schedule, startIdx, endIdxInclusive) {
+      let s = 0;
+      for (let i = startIdx; i <= endIdxInclusive; i++) s += schedule[i].interest;
+      return s;
     }
 
     function calculateLoan() {
@@ -581,6 +984,10 @@
       const rate = parseFloat($("rate").value || "0");
       const years = parseFloat($("years").value || "0");
       const freq = parseInt($("frequency").value, 10);
+
+      const extraPerPayment = parseFloat($("extra").value || "0");
+      const lumpSum = parseFloat($("lump").value || "0");
+      const lumpWhen = parseInt($("lumpWhen").value || "0", 10);
 
       const errorEl = $("error");
       const resultsEl = $("results");
@@ -604,28 +1011,48 @@
         errorEl.textContent = "Please enter a valid loan term.";
         return;
       }
-
-      const periods = Math.round(years * freq);
-      const periodRate = rate / 100 / freq;
-
-      let payment;
-      if (periodRate === 0) {
-        payment = amount / periods;
-      } else {
-        const factor = Math.pow(1 + periodRate, periods);
-        payment = amount * (periodRate * factor) / (factor - 1);
+      if (![12, 26, 52].includes(freq)) {
+        errorEl.textContent = "Please select a valid payment frequency.";
+        return;
+      }
+      if (extraPerPayment < 0 || isNaN(extraPerPayment)) {
+        errorEl.textContent = "Extra principal must be 0 or more.";
+        return;
+      }
+      if (lumpSum < 0 || isNaN(lumpSum)) {
+        errorEl.textContent = "Lump sum must be 0 or more.";
+        return;
+      }
+      if (lumpSum > 0 && (!isFinite(lumpWhen) || lumpWhen < 1)) {
+        errorEl.textContent = "If you enter a lump sum, set a valid payment number (1 or higher).";
+        return;
       }
 
-      // Build amortization schedule (first 12 payments)
-      let balance = amount;
+      const base = computePayment(amount, rate, years, freq);
+      const baseRun = buildSchedule({
+        amount,
+        payment: base.payment,
+        r: base.r,
+        periods: base.periods,
+        extraPerPayment: 0,
+        lumpSum: 0,
+        lumpWhen: 0
+      });
 
-      const maxRows = Math.min(12, periods);
+      const extraRun = buildSchedule({
+        amount,
+        payment: base.payment,
+        r: base.r,
+        periods: base.periods,
+        extraPerPayment: extraPerPayment,
+        lumpSum: lumpSum,
+        lumpWhen: lumpWhen
+      });
 
-      for (let i = 1; i <= maxRows; i++) {
-        const interestPortion = balance * periodRate;
-        const principalPortion = payment - interestPortion;
-        balance -= principalPortion;
-
+      // Show base amortization preview (first 12)
+      const maxRows = Math.min(12, baseRun.schedule.length);
+      for (let i = 0; i < maxRows; i++) {
+        const rowData = baseRun.schedule[i];
         const row = document.createElement("tr");
 
         function td(text) {
@@ -634,31 +1061,67 @@
           return cell;
         }
 
-        row.appendChild(td(i.toString()));
-        row.appendChild(td(formatMoney(payment)));
-        row.appendChild(td(formatMoney(principalPortion)));
-        row.appendChild(td(formatMoney(interestPortion)));
-        row.appendChild(td(formatMoney(balance > 0 ? balance : 0)));
+        row.appendChild(td(String(rowData.n)));
+        row.appendChild(td(formatMoney(rowData.payment)));
+        row.appendChild(td(formatMoney(rowData.principal)));
+        row.appendChild(td(formatMoney(rowData.interest)));
+        row.appendChild(td(formatMoney(rowData.balance)));
 
         scheduleBody.appendChild(row);
       }
 
-      // Total over full term
-      const totalPaidFull = payment * periods;
-      const totalInterestFull = totalPaidFull - amount;
+      // Totals (scheduled base uses original periods-based totals like before; but schedule-based is more robust)
+      $("payment").textContent = fmtUSD(base.payment);
+      $("totalPaid").textContent = fmtUSD(baseRun.totalPaid);
+      $("totalInterest").textContent = fmtUSD(baseRun.totalInterest);
 
-      $("payment").textContent = "$" + formatMoney(payment);
-      $("totalPaid").textContent = "$" + formatMoney(totalPaidFull);
-      $("totalInterest").textContent = "$" + formatMoney(totalInterestFull);
+      scheduleMeta.textContent = `${base.periods} scheduled payments · ${years} years · ${freq}/yr`;
 
-      scheduleMeta.textContent = periods + " payments · " + years + " years";
+      // Interest breakdown
+      const baseSchedule = baseRun.schedule;
+      const first12Interest = sumInterestRange(baseSchedule, 0, Math.min(11, baseSchedule.length - 1));
+      const halfIndex = Math.floor(baseSchedule.length / 2) - 1;
+      const firstHalfInterest = sumInterestRange(baseSchedule, 0, Math.max(0, halfIndex));
+      const secondHalfInterest = baseRun.totalInterest - firstHalfInterest;
+      const firstHalfPct = baseRun.totalInterest > 0 ? (firstHalfInterest / baseRun.totalInterest) * 100 : 0;
+
+      $("intFirst12").textContent = fmtUSD(first12Interest);
+      $("intFirstHalf").textContent = fmtUSD(firstHalfInterest);
+      $("intSecondHalf").textContent = fmtUSD(secondHalfInterest);
+      $("intFirstHalfPct").textContent = `${firstHalfPct.toLocaleString(undefined, { maximumFractionDigits: 1 })}%`;
+
+      // Extra scenario summary
+      $("baseTimeline").textContent = formatTimeline(baseRun.payoffPayments, freq);
+      $("extraTimeline").textContent = formatTimeline(extraRun.payoffPayments, freq);
+
+      const interestSaved = baseRun.totalInterest - extraRun.totalInterest;
+      $("interestSaved").textContent = interestSaved > 0 ? fmtUSD(interestSaved) : fmtUSD(0);
+      $("totalPaidExtra").textContent = fmtUSD(extraRun.totalPaid);
+
+      // Comparison table
+      $("cmpPayment").textContent = fmtUSD(base.payment);
+      $("cmpNBase").textContent = `${baseRun.payoffPayments}`;
+      $("cmpIntBase").textContent = fmtUSD(baseRun.totalInterest);
+      $("cmpTotalBase").textContent = fmtUSD(baseRun.totalPaid);
+
+      $("cmpPaymentExtra").textContent = fmtUSD(base.payment) + (extraPerPayment > 0 || lumpSum > 0 ? " + extra" : "");
+      $("cmpNExtra").textContent = `${extraRun.payoffPayments}`;
+      $("cmpIntExtra").textContent = fmtUSD(extraRun.totalInterest);
+      $("cmpTotalExtra").textContent = fmtUSD(extraRun.totalPaid);
+
+      // Guardrail: negative amortization warning
+      if (base.r > 0 && base.payment <= amount * base.r) {
+        errorEl.textContent = "Warning: payment may not cover interest (negative amortization). Check inputs.";
+      }
 
       resultsEl.style.display = "block";
     }
 
     $("calcBtn").addEventListener("click", calculateLoan);
+    $("roundingMode").addEventListener("change", calculateLoan);
+    $("frequency").addEventListener("change", calculateLoan);
 
-    // Basic defaults – run once
+    // Run once
     calculateLoan();
   </script>
 </body>
