@@ -16,10 +16,11 @@
   <title>Mortgage Calculator | Monthly Payment, Interest & Amortization</title>
   <meta
     name="description"
-    content="Estimate your mortgage payment, interest, taxes, insurance, and full amortization. Compare scenarios and understand the true long-term cost of a home loan with a simple, fast, and reliable calculator."
+    content="Estimate your mortgage payment including principal & interest, property taxes, insurance, and HOA fees. Compare scenarios, see total interest, and understand the long-term cost of a home loan."
   />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://financecalccenter.com/mortgage-calculator.html" />
+  <meta name="theme-color" content="#020617" />
 
   <!-- Favicon & PWA icons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -27,6 +28,12 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mortgage Calculator | Monthly Payment, Interest & Amortization" />
+  <meta property="og:description" content="Estimate your mortgage payment including principal & interest, property taxes, insurance, and HOA fees. Compare scenarios and total interest." />
+  <meta property="og:url" content="https://financecalccenter.com/mortgage-calculator.html" />
 
   <style>
     :root {
@@ -37,8 +44,7 @@
       --text: #e5e7eb;
       --muted: #9ca3af;
       --border: #1e293b;
-      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * { box-sizing: border-box; }
@@ -52,12 +58,12 @@
     }
 
     .wrapper {
-      max-width: 820px;
+      max-width: 980px;
       margin: 0 auto;
     }
 
     header {
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.2rem;
     }
 
     .back {
@@ -66,9 +72,7 @@
       text-decoration: none;
     }
 
-    .back:hover {
-      text-decoration: underline;
-    }
+    .back:hover { text-decoration: underline; }
 
     h1 {
       margin: 0.6rem 0 0.2rem;
@@ -78,19 +82,19 @@
     .subtitle {
       font-size: 0.9rem;
       color: var(--muted);
-      max-width: 620px;
+      max-width: 760px;
+      margin: 0.25rem 0 0;
     }
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
       gap: 1.2rem;
+      align-items: start;
     }
 
     @media (max-width: 880px) {
-      .layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .layout { grid-template-columns: minmax(0, 1fr); }
     }
 
     .card {
@@ -99,6 +103,10 @@
       padding: 1.4rem 1.3rem 1.5rem;
       border: 1px solid var(--border);
       box-shadow: 0 16px 32px rgba(15, 23, 42, 0.7);
+    }
+
+    .full {
+      margin-top: 1.2rem;
     }
 
     label {
@@ -115,9 +123,7 @@
     }
 
     @media (max-width: 640px) {
-      .row {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .row { grid-template-columns: minmax(0, 1fr); }
     }
 
     input, select {
@@ -145,7 +151,7 @@
       border: none;
       background: linear-gradient(135deg, #22c55e, #16a34a);
       color: #022c22;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
       cursor: pointer;
       box-shadow: 0 16px 32px rgba(34, 197, 94, 0.4);
@@ -160,20 +166,22 @@
       font-size: 0.8rem;
       color: var(--muted);
       margin-top: 0.5rem;
+      line-height: 1.45;
     }
 
     .error {
       margin-top: 0.5rem;
       color: #f97373;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
     }
 
+    /* Results box */
     .results {
       border-radius: 1.05rem;
       padding: 1.1rem 1rem 1rem;
       background: radial-gradient(circle at top left, #052e16 0, #020617 55%);
       border: 1px solid rgba(34, 197, 94, 0.5);
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
     }
 
     .results h2 {
@@ -188,9 +196,7 @@
     }
 
     @media (max-width: 640px) {
-      .results-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      .results-grid { grid-template-columns: minmax(0, 1fr); }
     }
 
     .res-item {
@@ -207,7 +213,7 @@
 
     .res-value {
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 700;
       margin-top: 0.15rem;
     }
 
@@ -215,59 +221,60 @@
       margin-top: 0.6rem;
       font-size: 0.78rem;
       color: var(--muted);
+      line-height: 1.45;
     }
 
     .breakdown {
-      margin-top: 0.6rem;
-      font-size: 0.8rem;
+      margin-top: 0.65rem;
+      font-size: 0.82rem;
       color: var(--muted);
+      line-height: 1.5;
     }
 
     .breakdown span {
       display: inline-block;
-      margin-right: 0.8rem;
+      margin-right: 0.9rem;
+      margin-bottom: 0.25rem;
     }
 
-    .explainer h2 {
-      font-size: 1rem;
+    .tips {
+      margin-top: 0.9rem;
+      padding: 0.85rem 0.9rem;
+      border-radius: 0.95rem;
+      border: 1px solid rgba(30, 41, 59, 0.9);
+      background: rgba(2, 6, 23, 0.25);
+    }
+
+    .tips h3 {
       margin: 0 0 0.4rem;
+      font-size: 0.98rem;
     }
 
-    .explainer p {
-      font-size: 0.86rem;
+    .tips ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
       color: var(--muted);
-      margin: 0.25rem 0;
-    }
-
-    .explainer ul {
       font-size: 0.86rem;
-      color: var(--muted);
-      padding-left: 1.2rem;
-      margin: 0.4rem 0;
     }
 
-    .explainer li + li {
-      margin-top: 0.2rem;
-    }
+    .tips li + li { margin-top: 0.25rem; }
 
-    /* NEW: SEO info-section similar to compound interest page */
+    /* Long-form explanation section */
     .info-section {
-      margin-top: 1.2rem;
+      margin-top: 0.1rem;
       font-size: 0.92rem;
       color: #cbd5f5;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     .info-section h2 {
-      font-size: 1.05rem;
-      margin-top: 1.1rem;
+      font-size: 1.08rem;
+      margin-top: 1.15rem;
       margin-bottom: 0.45rem;
       color: var(--text);
     }
 
-    .info-section h2:first-child {
-      margin-top: 0;
-    }
+    .info-section h2:first-child { margin-top: 0; }
 
     .info-section h3 {
       font-size: 0.98rem;
@@ -279,56 +286,94 @@
     .info-section p {
       margin: 0.35rem 0;
       color: #cbd5f5;
-      opacity: 0.95;
+      opacity: 0.96;
     }
 
     .info-section ul {
       padding-left: 1.15rem;
       margin: 0.35rem 0 0.9rem;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
-    .info-section li {
-      margin-bottom: 0.25rem;
+    .info-section li { margin-bottom: 0.25rem; }
+
+    .toc {
+      margin: 1rem 0 0;
+      padding: 0.95rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.25);
     }
+    .toc strong { display: block; margin-bottom: 0.5rem; }
+    .toc ul { list-style: none; padding-left: 0; margin: 0; }
+    .toc li { margin: 0.25rem 0; }
+    .toc a { color: var(--text); text-decoration: none; }
+    .toc a:hover { color: var(--accent); text-decoration: none; }
+
+    .faq details {
+      border: 1px solid rgba(55,65,81,0.85);
+      border-radius: 0.95rem;
+      padding: 0.75rem 0.9rem;
+      background: rgba(2, 6, 23, 0.18);
+      margin: 0.65rem 0;
+    }
+    .faq summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text);
+      list-style: none;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
 
     .related-links {
-      margin-top: 1.4rem;
-      font-size: 0.86rem;
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
     }
 
     .related-links h2 {
-      font-size: 0.95rem;
-      margin: 0 0 0.4rem;
+      font-size: 1rem;
+      margin: 0 0 0.45rem;
     }
 
     .related-links ul {
       list-style: none;
       padding-left: 0;
       margin: 0.3rem 0 0;
+      color: var(--muted);
     }
 
-    .related-links li + li {
-      margin-top: 0.25rem;
-    }
+    .related-links li + li { margin-top: 0.3rem; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     footer {
-      margin-top: 1.8rem;
+      margin-top: 1.6rem;
       font-size: 0.78rem;
       color: var(--muted);
       text-align: center;
+      line-height: 1.45;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
+    /* Ad-ready placeholders (kept commented until AdSense approved) */
+    .ad-slot {
+      margin: 1.2rem 0;
+      border: 1px dashed rgba(55, 65, 81, 0.7);
+      border-radius: 0.95rem;
+      padding: 0.85rem 0.9rem;
+      background: rgba(2, 6, 23, 0.14);
     }
-
-    a:hover {
-      text-decoration: underline;
+    .ad-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
     }
   </style>
 
-  <!-- Structured data -->
+  <!-- Structured data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -338,12 +383,54 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "inLanguage": "en",
-    "description": "Estimate your mortgage payment, interest, taxes, insurance, and full amortization. Compare scenarios and understand the true long-term cost of a home loan with a simple, fast, and reliable calculator.",
+    "description": "Estimate your mortgage payment including principal & interest, property taxes, insurance, and HOA fees. Compare scenarios and see total interest.",
     "publisher": {
       "@type": "Organization",
       "name": "FinanceCalcCenter",
       "url": "https://financecalccenter.com/"
     }
+  }
+  </script>
+
+  <!-- Structured data: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does a mortgage payment include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A mortgage payment often includes principal and interest (P&I). Many homeowners also pay property taxes and insurance monthly through an escrow account, plus optional HOA fees."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between P&I and total monthly payment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "P&I is the loan payment for principal and interest only. Total monthly payment adds estimated property taxes, homeowner’s insurance, and any HOA fees."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this calculator include PMI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. PMI (mortgage insurance) is not included. If your down payment is low, your lender may require PMI as an additional monthly cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this accurate for adjustable-rate mortgages (ARMs)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This calculator estimates fixed-rate mortgages. ARMs can change rate over time, so your payment may change after the initial period."
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -354,12 +441,24 @@
       <a class="back" href="index.html">← Back to FinanceCalcCenter</a>
       <h1>Mortgage Calculator</h1>
       <p class="subtitle">
-        Estimate your monthly mortgage payment including principal, interest,
-        property taxes, homeowner’s insurance and HOA fees.
+        Estimate your monthly mortgage payment including principal, interest, property taxes,
+        homeowner’s insurance and HOA fees. Compare scenarios and see total interest over the full term.
       </p>
+
+      <div class="toc" aria-label="Table of contents">
+        <strong>On this page</strong>
+        <ul>
+          <li><a href="#calculator">Mortgage calculator</a></li>
+          <li><a href="#results-block">Results and payment breakdown</a></li>
+          <li><a href="#how-it-works">How mortgage payments work</a></li>
+          <li><a href="#example">Example: interpreting the results</a></li>
+          <li><a href="#tips">Tips to lower your payment</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
     </header>
 
-    <section class="layout">
+    <section class="layout" id="calculator">
       <!-- Calculator -->
       <div class="card" aria-label="Mortgage calculator">
         <div class="row">
@@ -407,20 +506,29 @@
         </div>
 
         <button id="calcBtn" type="button">Calculate mortgage payment</button>
+
         <p class="hint">
-          This calculator uses a standard fixed-rate mortgage formula and assumes
-          that taxes and insurance are paid evenly over 12 months.
+          Uses a standard fixed-rate amortization formula. Taxes and insurance are estimated as monthly amounts (annual ÷ 12).
+          PMI/mortgage insurance and closing costs are not included.
         </p>
-        <div id="error" class="error"></div>
+
+        <p class="hint">
+          Want to compare a generic loan payment (without taxes/insurance)? Try the
+          <a href="loan-payment-calculator.html">loan payment calculator</a>.
+        </p>
+
+        <div id="error" class="error" role="status" aria-live="polite"></div>
       </div>
 
-      <!-- Results & explainer -->
-      <div>
+      <!-- Results column: ONLY results + short tips.
+           The long explanation is moved BELOW this grid (as requested). -->
+      <div id="results-block" aria-label="Mortgage results">
         <div id="results" class="results" style="display:none;">
           <h2>Payment breakdown</h2>
+
           <div class="results-grid">
             <div class="res-item">
-              <div class="res-label">Monthly payment (P&I)</div>
+              <div class="res-label">Monthly payment (P&amp;I)</div>
               <div id="piPayment" class="res-value">—</div>
             </div>
             <div class="res-item">
@@ -432,7 +540,7 @@
               <div id="totalPaid" class="res-value">—</div>
             </div>
             <div class="res-item">
-              <div class="res-label">Total interest</div>
+              <div class="res-label">Total interest (P&amp;I only)</div>
               <div id="totalInterest" class="res-value">—</div>
             </div>
           </div>
@@ -440,136 +548,137 @@
           <div class="breakdown" id="detailBreakdown"></div>
 
           <p class="res-note">
-            This is an estimate only and does not include closing costs, mortgage
-            insurance (PMI) or other fees your lender may charge.
+            Estimate only. Does not include closing costs, PMI/mortgage insurance, points, lender fees,
+            or local escrow rules. Taxes/insurance can vary significantly by location and provider.
           </p>
         </div>
 
-        <div class="card explainer">
-          <h2>How this mortgage calculator works</h2>
-          <p>
-            The principal and interest part of your payment is calculated using a
-            standard amortizing loan formula:
-          </p>
+        <!-- Ad-ready placeholder (keep commented until AdSense approved)
+        <div class="ad-slot" aria-label="Advertisement">
+          <div class="ad-label">Advertisement</div>
+          <div class="hint">Ad space reserved (will load after AdSense approval).</div>
+        </div>
+        -->
+
+        <div class="tips" id="tips">
+          <h3>Quick ways to change the payment</h3>
           <ul>
-            <li><strong>Principal:</strong> home price minus down payment</li>
-            <li><strong>Interest rate:</strong> fixed annual rate for the full term</li>
-            <li><strong>Term:</strong> number of years of the mortgage</li>
+            <li><strong>Higher down payment</strong> → lower loan amount and usually less interest.</li>
+            <li><strong>Lower rate</strong> → can reduce total interest dramatically over 30 years.</li>
+            <li><strong>Shorter term</strong> → higher monthly payment, but often far less total interest.</li>
+            <li><strong>Taxes/insurance</strong> matter: “affordable P&amp;I” can still be expensive monthly.</li>
           </ul>
-          <p>
-            Property taxes and homeowner’s insurance are converted to monthly
-            amounts and added on top of the principal &amp; interest payment, along
-            with any HOA fees you enter.
-          </p>
-          <p>
-            Use this tool to compare scenarios (for example different down payment
-            sizes or interest rates) and see how they change your monthly budget.
-          </p>
-
-          <!-- NEW: SEO / explanation section, similar structure to compound interest page -->
-          <section class="info-section" aria-label="Mortgage calculator explanation">
-            <h2>What Is a Mortgage Calculator?</h2>
-            <p>
-              A mortgage calculator estimates your monthly home loan payment based on your home price, down payment,
-              interest rate, and loan term. It helps you understand how much you may pay each month and what the total
-              cost of borrowing could be over time.
-            </p>
-            <p>
-              This page includes taxes, insurance, and HOA fees (if applicable) to give a more realistic monthly estimate.
-              Enter your numbers, click <strong>Calculate mortgage payment</strong>, and review the payment breakdown.
-            </p>
-
-            <h2>What This Calculator Includes</h2>
-            <p>This mortgage payment calculator separates your costs into clear components:</p>
-            <ul>
-              <li><strong>Principal &amp; interest (P&amp;I):</strong> the core loan payment based on the amortization formula.</li>
-              <li><strong>Property taxes:</strong> estimated from an annual tax rate and spread evenly across 12 months.</li>
-              <li><strong>Homeowner’s insurance:</strong> an annual amount divided into a monthly estimate.</li>
-              <li><strong>HOA fees:</strong> optional monthly fees added on top of the mortgage payment.</li>
-            </ul>
-
-            <h2>How Mortgage Payments Work (Simple Explanation)</h2>
-            <p>
-              Most mortgages are amortizing loans. That means your payment is designed so the loan balance reaches zero
-              by the end of the term. Early in the loan, a larger share of each payment typically goes to interest.
-              Over time, more of your payment goes toward the principal balance.
-            </p>
-            <p>
-              Even small changes to the interest rate or term can significantly change the total interest you pay, which
-              is why comparing scenarios can be useful before you commit.
-            </p>
-
-            <h2>Example Mortgage Calculation</h2>
-            <p>
-              Suppose you buy a <strong>$350,000</strong> home with a <strong>$70,000</strong> down payment (loan amount:
-              <strong>$280,000</strong>), a <strong>5%</strong> interest rate, and a <strong>30-year</strong> term.
-              Your principal &amp; interest payment is calculated from those inputs, and then estimated taxes, insurance,
-              and HOA fees (if any) are added to estimate your total monthly housing cost.
-            </p>
-            <p>
-              Try changing the down payment or term to see how the monthly payment moves—and how the total interest paid
-              over the full term changes.
-            </p>
-
-            <h2>Tips for Using This Mortgage Calculator</h2>
-            <ul>
-              <li><strong>Compare interest rates:</strong> even a 0.25% difference can add up over decades.</li>
-              <li><strong>Test different down payments:</strong> a larger down payment reduces the loan amount (and often the interest).</li>
-              <li><strong>Include realistic taxes &amp; insurance:</strong> these can materially affect affordability.</li>
-              <li><strong>Watch total cost:</strong> a lower monthly payment (longer term) can mean higher total interest.</li>
-            </ul>
-
-            <h2>Frequently Asked Questions</h2>
-
-            <h3>Is this mortgage calculator accurate?</h3>
-            <p>
-              It provides an estimate based on the values you enter and a standard fixed-rate mortgage formula.
-              Your actual payment may differ due to lender fees, escrow policies, rounding, and local tax/insurance costs.
-            </p>
-
-            <h3>Does this include PMI (mortgage insurance)?</h3>
-            <p>
-              No. This estimate does not include PMI. If your down payment is below a lender’s threshold (often 20%),
-              you may need to add PMI to your monthly cost.
-            </p>
-
-            <h3>Does this include closing costs?</h3>
-            <p>
-              No. Closing costs are typically paid upfront (or rolled into the loan in some cases) and are not included
-              in the monthly estimate.
-            </p>
-
-            <h3>What is the difference between “monthly payment (P&amp;I)” and “total monthly payment”?</h3>
-            <p>
-              <strong>P&amp;I</strong> is just principal plus interest. <strong>Total monthly payment</strong> adds estimated
-              property taxes, homeowner’s insurance, and any HOA fees you enter.
-            </p>
-
-            <p class="disclaimer" style="font-size: 0.95em; opacity: 0.85; margin-top: 0.75rem;">
-              <strong>Note:</strong> This calculator is for educational purposes only and does not provide financial advice.
-            </p>
-          </section>
         </div>
       </div>
     </section>
 
-    <!-- 🔗 Related internal links for SEO -->
-    <section class="card related-links">
+    <!-- Full-width explanation BELOW results (this is the main change you asked for) -->
+    <section class="card full" id="how-it-works" aria-label="Mortgage calculator explanation">
+      <div class="info-section">
+        <h2>How this mortgage calculator works</h2>
+        <p>
+          Most mortgages are <strong>amortizing loans</strong>. That means each payment is structured so the balance reaches zero
+          by the end of the term. Your monthly payment is built from a few key inputs:
+        </p>
+        <ul>
+          <li><strong>Loan amount:</strong> home price minus down payment</li>
+          <li><strong>Interest rate:</strong> annual rate converted to a monthly rate</li>
+          <li><strong>Term:</strong> total number of monthly payments (years × 12)</li>
+        </ul>
+        <p>
+          This page also estimates a more realistic “all-in” monthly housing cost by adding:
+          property taxes, homeowner’s insurance, and HOA fees (if any).
+        </p>
+
+        <h2>What your results mean</h2>
+        <h3>Monthly payment (P&amp;I)</h3>
+        <p>
+          This is the core loan payment: <strong>principal + interest</strong>. It does not include taxes, insurance, or HOA fees.
+          If you want the clean “loan-only” math, compare with the
+          <a href="loan-payment-calculator.html">loan payment calculator</a>.
+        </p>
+
+        <h3>Total monthly payment</h3>
+        <p>
+          This is your estimated monthly housing cost:
+          <strong>P&amp;I + taxes + insurance + HOA</strong>. Many borrowers pay taxes and insurance through escrow, so the “total” number
+          is often closer to what you see leaving your bank account each month.
+        </p>
+
+        <h3>Total interest</h3>
+        <p>
+          This is the total interest paid on the loan over the full term (principal &amp; interest portion). It’s one of the best numbers
+          to compare when you’re deciding between a 30-year vs 15-year term or shopping rates.
+          For rate terminology, see <a href="apr-vs-apy.html">APR vs APY</a>.
+        </p>
+
+        <h2 id="example">Example: interpret a common scenario</h2>
+        <p>
+          Example inputs (you can use the defaults above): a <strong>$350,000</strong> home with <strong>$70,000</strong> down payment
+          (loan amount <strong>$280,000</strong>), <strong>5%</strong> interest, <strong>30 years</strong>, plus estimated taxes and insurance.
+        </p>
+        <ul>
+          <li>If you increase the down payment, your loan amount drops, and both monthly payment and total interest usually fall.</li>
+          <li>If you shorten the term (e.g., 30 → 15 years), monthly payment usually rises, but total interest often drops significantly.</li>
+          <li>If taxes/insurance are higher than expected, your “true” monthly cost can be much higher than P&amp;I alone.</li>
+        </ul>
+
+        <h2>Practical tips before you commit</h2>
+        <ul>
+          <li><strong>Stress test the payment:</strong> try higher taxes/insurance and see if it still fits your budget.</li>
+          <li><strong>Compare scenarios:</strong> save multiple runs (down payment, term, rate) and compare total interest.</li>
+          <li><strong>Think opportunity cost:</strong> a larger down payment lowers the mortgage, but ties up cash you might invest or keep as a buffer.</li>
+          <li><strong>Keep a safety buffer:</strong> many households aim to keep a cash reserve. If you’re building one, use the <a href="savings-goal-calculator.html">savings goal calculator</a>.</li>
+        </ul>
+
+        <h2 id="faq">FAQ</h2>
+        <div class="faq" aria-label="Frequently asked questions">
+          <details>
+            <summary>What does a mortgage payment include?</summary>
+            <p>
+              At minimum, principal and interest (P&amp;I). Many borrowers also pay property taxes and homeowner’s insurance monthly through escrow,
+              plus HOA fees if applicable.
+            </p>
+          </details>
+          <details>
+            <summary>Does this mortgage calculator include PMI?</summary>
+            <p>
+              No. PMI/mortgage insurance is not included. If your down payment is low, your lender may require PMI as an additional monthly cost.
+            </p>
+          </details>
+          <details>
+            <summary>Is this accurate for adjustable-rate mortgages (ARMs)?</summary>
+            <p>
+              This calculator estimates fixed-rate mortgages. ARMs may change interest rate after the initial period, which can change your payment.
+            </p>
+          </details>
+          <details>
+            <summary>Why does total interest look so high on a 30-year mortgage?</summary>
+            <p>
+              Interest is paid over a long time horizon. Early payments typically have a larger interest portion, and you pay interest for more months overall.
+              Comparing a shorter term or a lower rate often reduces total interest significantly.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related internal links -->
+    <section class="card related-links" aria-label="Related calculators and articles">
       <h2>Related calculators &amp; articles</h2>
       <ul>
-        <!-- Calculators -->
-        <li><a href="https://financecalccenter.com/loan-payment-calculator.html">Loan Payment Calculator</a> – compare a generic loan to your mortgage.</li>
-        <li><a href="https://financecalccenter.com/compound-interest-calculator.html">Compound Interest Calculator</a> – see how investing compares to borrowing.</li>
-        <li><a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a> – plan your down payment or emergency fund.</li>
-        <li><a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a> – understand how inflation affects long-term housing costs.</li>
-        <!-- Articles -->
-        <li><a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What's the Difference?</a></li>
+        <li><a href="loan-payment-calculator.html">Loan Payment Calculator</a> – compare a generic loan to your mortgage.</li>
+        <li><a href="compound-interest-calculator.html">Compound Interest Calculator</a> – compare borrowing costs vs long-term growth.</li>
+        <li><a href="savings-goal-calculator.html">Savings Goal Calculator</a> – plan your down payment or buffer fund.</li>
+        <li><a href="inflation-calculator.html">Inflation Calculator</a> – understand long-term purchasing power and costs.</li>
+        <li><a href="apr-vs-apy.html">APR vs APY – What's the Difference?</a></li>
+        <li><a href="what-is-compound-interest.html">What Is Compound Interest?</a></li>
       </ul>
     </section>
 
     <footer>
-      This mortgage calculator is for educational purposes only and does not
-      constitute financial advice or a mortgage offer.
+      This mortgage calculator is for educational purposes only and does not constitute financial advice or a mortgage offer.
+      Results are estimates and may differ from lender calculations and local costs.
     </footer>
   </div>
 
@@ -642,7 +751,11 @@
       const monthlyHOA = hoa;
 
       const totalMonthly = piPayment + monthlyTax + monthlyInsurance + monthlyHOA;
+
+      // "Total paid over term" here is totalMonthly * n (includes estimated taxes/insurance/HOA each month)
       const totalPaid = totalMonthly * n;
+
+      // Total interest is computed on P&I only (standard definition for loan cost)
       const totalInterest = piPayment * n - principal;
 
       piPaymentEl.textContent = formatMoney(piPayment, currency);
@@ -667,4 +780,3 @@
   </script>
 </body>
 </html>
-
