@@ -6,6 +6,20 @@
     <loc>https://financecalccenter.com/</loc>
   </url>
 
+  <!-- Category hubs -->
+  <url>
+    <loc>https://financecalccenter.com/investing/</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/debt/</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/home-finance/</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/savings/</loc>
+  </url>
+
   <!-- Calculators -->
   <url>
     <loc>https://financecalccenter.com/compound-interest-calculator.html</loc>
@@ -45,10 +59,10 @@
   <url>
     <loc>https://financecalccenter.com/how-much-should-you-save-each-month.html</loc>
   </url>
-<url>
-  <loc>https://financecalccenter.com/what-is-apr-and-apy.html</loc>
+  <url>
+    <loc>https://financecalccenter.com/what-is-apr-and-apy.html</loc>
   </url>
-    <url>
+  <url>
     <loc>https://financecalccenter.com/apr-vs-apy.html</loc>
   </url>
   <url>
@@ -75,31 +89,24 @@
   <url>
     <loc>https://financecalccenter.com/should-you-save-monthly-or-invest-monthly.html</loc>
   </url>
-  
   <url>
     <loc>https://financecalccenter.com/how-much-emergency-fund-do-you-really-need.html</loc>
   </url>
-
-<url>
-  <loc>https://financecalccenter.com/where-should-you-keep-your-emergency-fund.html</loc>
-</url>
-
-<url>
-  <loc>https://financecalccenter.com/fixed-vs-variable-interest-rates-explained.html</loc>
-</url>
-
+  <url>
+    <loc>https://financecalccenter.com/where-should-you-keep-your-emergency-fund.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/fixed-vs-variable-interest-rates-explained.html</loc>
+  </url>
   <url>
     <loc>https://financecalccenter.com/what-is-an-emergency-fund.html</loc>
   </url>
-  
-<url>
-  <loc>https://financecalccenter.com/how-interest-rates-affect-monthly-payments.html</loc>
-</url>
-
-<url>
-  <loc>https://financecalccenter.com/how-loan-interest-is-calculated.html</loc>
-</url>
-
+  <url>
+    <loc>https://financecalccenter.com/how-interest-rates-affect-monthly-payments.html</loc>
+  </url>
+  <url>
+    <loc>https://financecalccenter.com/how-loan-interest-is-calculated.html</loc>
+  </url>
 
   <!-- Utility pages -->
   <url>
