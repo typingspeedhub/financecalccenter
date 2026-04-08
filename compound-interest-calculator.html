@@ -11,194 +11,516 @@
   </script>
 
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020617" />
+
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <title>Compound Interest Calculator | Future Value & Growth Over Time</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compound Interest Calculator | Monthly Contributions, Future Value & Interest Growth</title>
   <meta
     name="description"
-    content="Calculate compound interest and see how your savings can grow over time. Compare compounding frequency, add monthly contributions, view examples, Rule of 72, and FAQs."
+    content="Use this compound interest calculator to estimate future value, total contributions, and interest earned. Compare monthly, weekly, daily, and annual compounding with optional monthly deposits."
   />
   <link rel="canonical" href="https://financecalccenter.com/compound-interest-calculator.html" />
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Compound Interest Calculator | Monthly Contributions, Future Value & Interest Growth" />
+  <meta property="og:description" content="Estimate future value, total contributions, and interest earned with optional monthly deposits and adjustable compounding frequency." />
+  <meta property="og:url" content="https://financecalccenter.com/compound-interest-calculator.html" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Compound Interest Calculator | Monthly Contributions, Future Value & Interest Growth" />
+  <meta name="twitter:description" content="Estimate future value, total contributions, and interest earned with optional monthly deposits and adjustable compounding frequency." />
+
   <style>
+    :root {
+      --bg: #020617;
+      --panel: #0f172a;
+      --panel-2: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --line: #1e293b;
+      --line-2: #334155;
+      --green: #22c55e;
+      --green-dark: #16a34a;
+      --green-soft: rgba(34, 197, 94, 0.08);
+      --green-border: rgba(34, 197, 94, 0.35);
+      --focus: #38bdf8;
+      --warning-bg: rgba(250, 204, 21, 0.08);
+      --warning-border: rgba(250, 204, 21, 0.28);
+      --warning-text: #fde68a;
+      --radius: 14px;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #020617;
-      color: #e5e7eb;
-      padding: 20px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #020617 0%, #06111f 100%);
+      color: var(--text);
+      line-height: 1.65;
     }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 0.5rem;
+    a {
+      color: var(--green);
+      text-decoration: none;
     }
 
-    .page-intro {
-      max-width: 640px;
-      margin: 0 auto 1.25rem;
-      text-align: center;
-      font-size: 0.95rem;
-      color: #9ca3af;
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
     }
 
-    .container {
-      max-width: 640px;
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -48px;
+      background: #fff;
+      color: #000;
+      padding: 10px 14px;
+      border-radius: 8px;
+      z-index: 999;
+      font-weight: 600;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .site-wrap {
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 20px;
-      background: #0f172a;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      border: 1px solid #1e293b;
+      padding: 20px 16px 56px;
+    }
+
+    .breadcrumbs {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 4px 0 14px;
+    }
+
+    .breadcrumbs a {
+      color: #cbd5e1;
+    }
+
+    .hero {
+      max-width: 860px;
+      margin: 0 auto 22px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 760px;
+      color: #cbd5e1;
+      font-size: 1.02rem;
+    }
+
+    .top-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+
+    .calculator-card {
+      padding: 22px;
+    }
+
+    .content-card {
+      padding: 22px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1.3rem;
+      line-height: 1.25;
+    }
+
+    .card h3 {
+      margin-top: 1.2rem;
+      margin-bottom: 0.35rem;
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    .intro-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
     }
 
     label {
       display: block;
-      margin-top: 12px;
-      font-size: 0.9rem;
+      margin-bottom: 6px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .help-text {
+      margin-top: 5px;
+      font-size: 0.82rem;
+      color: var(--muted);
     }
 
     input,
     select {
       width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #334155;
-      background: #1e293b;
-      color: #e5e7eb;
-      margin-top: 4px;
+      padding: 12px 13px;
+      border-radius: 10px;
+      border: 1px solid var(--line-2);
+      background: #0b1220;
+      color: var(--text);
+      margin-top: 0;
       font-size: 1rem;
+      min-height: 46px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
     }
 
     button {
-      width: 100%;
-      margin-top: 16px;
-      padding: 12px;
-      border-radius: 8px;
-      background: #22c55e;
-      color: #022c22;
-      font-weight: 600;
+      appearance: none;
       border: none;
+      border-radius: 10px;
+      padding: 12px 16px;
       cursor: pointer;
+      font-weight: 700;
       font-size: 1rem;
+      transition: transform 0.06s ease, background 0.15s ease, opacity 0.15s ease;
     }
 
     button:hover {
-      background: #16a34a;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      flex: 1 1 220px;
+      background: var(--green);
+      color: #052e16;
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+    }
+
+    .btn-secondary {
+      flex: 1 1 180px;
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid var(--line-2);
+    }
+
+    .btn-secondary:hover {
+      background: #273449;
+    }
+
+    .trust-strip {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--line);
+      color: #cbd5e1;
+      font-size: 0.9rem;
     }
 
     .result-box {
-      margin-top: 20px;
-      padding: 20px;
+      margin-top: 18px;
+      padding: 18px;
       background: #020617;
-      border-radius: 10px;
-      border: 1px solid #334155;
+      border-radius: 12px;
+      border: 1px solid var(--line-2);
+      display: none;
+    }
+
+    .result-box h2 {
+      font-size: 1.22rem;
+      margin: 0 0 12px;
     }
 
     .result-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.35rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
       margin-top: 0.75rem;
     }
 
-    .note {
-      margin-top: 0.75rem;
+    .result-item {
+      background: #0b1220;
+      border: 1px solid #1f2d44;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .result-label {
+      display: block;
+      font-size: 0.82rem;
+      color: #9fb0c7;
+      margin-bottom: 4px;
+    }
+
+    .result-value {
+      display: block;
+      font-size: 1.22rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #f8fafc;
+    }
+
+    .note,
+    .muted,
+    .small {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .assumption-box {
+      margin-top: 14px;
+      padding: 14px 15px;
+      border-radius: 12px;
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: var(--warning-text);
       font-size: 0.92rem;
-      color: #cbd5f5;
-      line-height: 1.55;
-      opacity: 0.95;
     }
 
-    .info-section {
-      margin-top: 24px;
-      font-size: 0.92rem;
-      color: #cbd5f5;
-      line-height: 1.55;
+    .toc {
+      margin: 0 0 1rem;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #0b1220;
+      border: 1px solid var(--line);
     }
 
-    .info-section h2 {
-      font-size: 1.1rem;
-      margin-top: 1.2rem;
-      margin-bottom: 0.5rem;
+    .toc-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+      color: #f8fafc;
     }
 
-    .info-section h2:first-child {
-      margin-top: 0;
+    .toc ul {
+      margin: 0;
+      padding-left: 1rem;
     }
 
-    .info-section h3 {
-      font-size: 1rem;
-      margin-top: 0.9rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .info-section p {
-      margin: 0.35rem 0;
-    }
-
-    .info-section ul {
-      padding-left: 1.1rem;
-      margin: 0.3rem 0 0.8rem;
-    }
-
-    .info-section li {
-      margin-bottom: 0.25rem;
+    .toc li {
+      margin-bottom: 0.28rem;
     }
 
     .callout {
-      margin: 0.9rem 0;
-      padding: 0.9rem 1rem;
-      border-radius: 10px;
-      border: 1px solid rgba(34,197,94,0.35);
-      background: rgba(34,197,94,0.08);
-      color: #e5e7eb;
+      margin: 1rem 0;
+      padding: 0.95rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--green-border);
+      background: var(--green-soft);
+      color: #ecfdf5;
     }
 
-    .callout a {
-      color: #22c55e;
-      text-decoration: none;
-      font-weight: 650;
+    .callout strong {
+      color: #ffffff;
     }
 
-    .callout a:hover { text-decoration: underline; }
+    .comparison-table-wrap {
+      overflow-x: auto;
+      margin: 0.9rem 0 0.2rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      background: #0b1220;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+
+    th {
+      color: #f8fafc;
+      background: #111827;
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 1rem;
+    }
+
+    .mini-card {
+      background: #0b1220;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #f8fafc;
+    }
+
+    .faq-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
 
     .related-links {
       margin-top: 1.5rem;
       padding-top: 1rem;
-      border-top: 1px solid #1f2937;
-      font-size: 0.9rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.96rem;
+    }
+
+    .related-links .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin-top: 0.75rem;
     }
 
     .related-links a {
       display: inline-block;
-      color: #22c55e;
-      text-decoration: none;
-      margin-right: 0.75rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .related-links a:hover {
-      text-decoration: underline;
     }
 
     .back-link {
-      display: block;
-      margin-top: 20px;
-      text-align: center;
-      color: #22c55e;
-      text-decoration: none;
-      font-size: 0.9rem;
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--green);
+      font-size: 0.95rem;
+      font-weight: 600;
     }
 
-    .back-link:hover {
-      text-decoration: underline;
+    .disclaimer {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      opacity: 0.92;
+    }
+
+    .footer-note {
+      max-width: 860px;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .top-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .content-card {
+        order: 2;
+      }
+
+      .calculator-card {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-wrap {
+        padding: 16px 12px 42px;
+      }
+
+      .calculator-card,
+      .content-card {
+        padding: 18px;
+      }
+
+      .field-grid,
+      .result-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
     }
   </style>
 
@@ -212,7 +534,7 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "inLanguage": "en",
-    "description": "Calculate compound interest with monthly contributions and compare compounding frequency to estimate future value and interest earned.",
+    "description": "Calculate compound interest with optional monthly contributions and compare compounding frequency to estimate future value, total contributions, and interest earned.",
     "publisher": {
       "@type": "Organization",
       "name": "FinanceCalcCenter",
@@ -221,7 +543,29 @@
   }
   </script>
 
-  <!-- FAQPage Schema (matches the FAQ content below) -->
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://financecalccenter.com/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Compound Interest Calculator",
+        "item": "https://financecalccenter.com/compound-interest-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -232,7 +576,7 @@
         "name": "Is this compound interest calculator accurate?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It provides an estimate based on the inputs you enter. Real-world outcomes can differ due to fees, taxes, variable rates, and market volatility."
+          "text": "It provides an estimate based on the inputs you enter. Real-world outcomes can differ due to fees, taxes, variable rates, inflation, and market volatility."
         }
       },
       {
@@ -240,7 +584,7 @@
         "name": "Are monthly contributions added monthly even if I choose daily compounding?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. This calculator treats contributions as monthly deposits. The compounding frequency affects how interest accrues, but deposits occur monthly."
+          "text": "Yes. This calculator treats contributions as monthly end-of-month deposits. The compounding frequency affects how interest accrues, but deposits occur monthly."
         }
       },
       {
@@ -248,7 +592,7 @@
         "name": "Does this calculator include inflation?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Results are shown in nominal dollars. To estimate real purchasing power, compare your results against an assumed inflation rate."
+          "text": "No. Results are shown in nominal dollars. To estimate real purchasing power, compare your result against an inflation assumption."
         }
       },
       {
@@ -256,7 +600,7 @@
         "name": "What interest rate should I use?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Use the rate from your savings product, or test multiple conservative long-term rates for investments. Comparing scenarios is often more helpful than choosing a single optimistic rate."
+          "text": "Use the rate from your savings account, CD, or projection scenario. For investments, comparing several conservative long-term assumptions is usually more useful than choosing one optimistic rate."
         }
       },
       {
@@ -264,7 +608,7 @@
         "name": "Does compounding frequency matter a lot?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "More frequent compounding can increase the final balance slightly, but time and consistent contributions usually have a much larger impact."
+          "text": "More frequent compounding can raise the ending balance slightly, but time and consistent monthly contributions usually have a much larger impact."
         }
       },
       {
@@ -272,7 +616,7 @@
         "name": "What is the Rule of 72?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Rule of 72 is a shortcut to estimate how long it takes to double your money: 72 divided by your annual rate (in percent) gives an approximate number of years."
+          "text": "The Rule of 72 is a shortcut for estimating how long it takes to double your money. Divide 72 by your annual rate in percent to get an approximate number of years."
         }
       },
       {
@@ -280,7 +624,7 @@
         "name": "Why is my result different from a bank or brokerage projection?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Institutions may use different assumptions (timing of deposits, effective rate/APY vs APR, fees, taxes, or variable rates). This calculator uses a simplified fixed-rate model."
+          "text": "Banks and brokerages may use APY instead of APR, different deposit timing assumptions, variable rates, fees, taxes, or promotional yields. This tool uses a simplified fixed-rate model."
         }
       },
       {
@@ -288,7 +632,7 @@
         "name": "Can compound interest apply to debt as well?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Many credit cards and some loans compound interest, which can cause balances to grow faster than expected if you only make minimum payments."
+          "text": "Yes. Credit card balances and some loans can compound, which makes debt grow faster when balances are carried over time."
         }
       }
     ]
@@ -297,277 +641,479 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <h1>Compound Interest Calculator</h1>
-  <p class="page-intro">
-    See how your savings or investments can grow over time with compound interest.
-    Adjust the rate, time and contributions to explore different long-term scenarios in USD.
-  </p>
+  <div class="site-wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://financecalccenter.com/index.html">Home</a> &raquo;
+      <span aria-current="page">Compound Interest Calculator</span>
+    </nav>
 
-  <div class="container">
-    <!-- Calculator form -->
-    <label for="principal">Initial Amount ($)</label>
-    <input type="number" id="principal" value="10000" />
+    <header class="hero">
+      <h1>Compound Interest Calculator</h1>
+      <p>
+        Estimate how your money can grow over time with compound interest. Enter your starting balance,
+        optional monthly contributions, annual rate, and time horizon to calculate future value, total contributions,
+        and interest earned.
+      </p>
+    </header>
 
-    <label for="contribution">Monthly Contribution ($)</label>
-    <input type="number" id="contribution" value="0" />
+    <main id="main-content">
+      <div class="top-grid">
+        <section class="card calculator-card" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading">Calculate your future balance</h2>
+          <p class="intro-note">
+            This calculator uses a fixed annual rate and assumes monthly contributions are made at the end of each month.
+          </p>
 
-    <label for="rate">Annual Interest Rate (%)</label>
-    <input type="number" id="rate" value="6" />
+          <form id="calculatorForm" novalidate>
+            <div class="field-grid">
+              <div class="field">
+                <label for="principal">Initial Amount ($)</label>
+                <input type="number" id="principal" inputmode="decimal" min="0" step="0.01" value="10000" />
+                <div class="help-text">The amount you already have invested or saved today.</div>
+              </div>
 
-    <label for="years">Years</label>
-    <input type="number" id="years" value="20" />
+              <div class="field">
+                <label for="contribution">Monthly Contribution ($)</label>
+                <input type="number" id="contribution" inputmode="decimal" min="0" step="0.01" value="0" />
+                <div class="help-text">Optional monthly deposit added after interest each month.</div>
+              </div>
 
-    <label for="frequency">Compounding Frequency</label>
-    <select id="frequency">
-      <option value="1">Annually</option>
-      <option value="12" selected>Monthly</option>
-      <option value="52">Weekly</option>
-      <option value="365">Daily</option>
-    </select>
+              <div class="field">
+                <label for="rate">Annual Interest Rate (%)</label>
+                <input type="number" id="rate" inputmode="decimal" min="0" step="0.01" value="6" />
+                <div class="help-text">Examples: 4.25 for savings, 7 for a long-term growth scenario.</div>
+              </div>
 
-    <button type="button" onclick="calculate()">Calculate</button>
+              <div class="field">
+                <label for="years">Years</label>
+                <input type="number" id="years" inputmode="decimal" min="0" step="0.1" value="20" />
+                <div class="help-text">How long the money remains invested or saved.</div>
+              </div>
 
-    <div id="result" class="result-box" style="display:none;"></div>
+              <div class="field full">
+                <label for="frequency">Compounding Frequency</label>
+                <select id="frequency">
+                  <option value="1">Annually</option>
+                  <option value="12" selected>Monthly</option>
+                  <option value="52">Weekly</option>
+                  <option value="365">Daily</option>
+                </select>
+                <div class="help-text">How often interest is applied to the balance.</div>
+              </div>
+            </div>
 
-    <!-- Explanation / SEO content -->
-    <section class="info-section">
+            <div class="actions">
+              <button type="submit" class="btn-primary">Calculate</button>
+              <button type="button" class="btn-secondary" id="resetBtn">Reset to defaults</button>
+            </div>
+          </form>
 
-      <!-- Internal linking (top-of-page context) -->
-      <div class="callout">
-        New to the topic? Read the full guide:
-        <a href="https://financecalccenter.com/what-is-compound-interest.html">What Is Compound Interest?</a>
-        · Compare approaches:
-        <a href="https://financecalccenter.com/simple-vs-compound-interest.html">Simple vs. Compound Interest</a>
+          <div class="trust-strip">
+            Designed for quick estimates and scenario planning. Results do not include taxes, fees, inflation, or changing rates.
+          </div>
+
+          <div id="result" class="result-box" aria-live="polite"></div>
+
+          <div class="assumption-box">
+            <strong>Assumption:</strong> Monthly contributions are modeled as end-of-month deposits. If a bank or brokerage uses a different deposit timing, APY, or fee structure, your result may differ.
+          </div>
+        </section>
+
+        <article class="card content-card">
+          <div class="toc" aria-labelledby="toc-heading">
+            <div class="toc-title" id="toc-heading">On this page</div>
+            <ul>
+              <li><a href="#what-is-compound-interest-calculator">What this calculator does</a></li>
+              <li><a href="#how-to-use">How to use it</a></li>
+              <li><a href="#formula">Compound interest formula</a></li>
+              <li><a href="#examples">Example scenarios</a></li>
+              <li><a href="#frequency-comparison">Compounding frequency comparison</a></li>
+              <li><a href="#rule-of-72">Rule of 72</a></li>
+              <li><a href="#inflation">Inflation and real value</a></li>
+              <li><a href="#mistakes">Common mistakes</a></li>
+              <li><a href="#faq">Frequently asked questions</a></li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            <strong>New to the topic?</strong>
+            Read <a href="https://financecalccenter.com/what-is-compound-interest.html">What Is Compound Interest?</a>
+            and compare methods with
+            <a href="https://financecalccenter.com/simple-vs-compound-interest.html">Simple vs. Compound Interest</a>.
+          </div>
+
+          <section id="what-is-compound-interest-calculator">
+            <h2>What Is a Compound Interest Calculator?</h2>
+            <p>
+              A compound interest calculator estimates how your balance can grow when interest is earned not only on your
+              original amount, but also on the interest that has already been added over time. This is the core idea behind
+              compound growth: your balance can begin growing faster as the years pass.
+            </p>
+            <p>
+              This page helps you estimate <strong>future value</strong>, <strong>total contributions</strong>, and
+              <strong>interest earned</strong> using a simple fixed-rate model. It is useful for savings goals,
+              long-term investing scenarios, and educational comparisons between annual, monthly, weekly, and daily compounding.
+            </p>
+          </section>
+
+          <section id="how-to-use">
+            <h2>How to Use This Calculator</h2>
+            <ul>
+              <li><strong>Initial amount:</strong> the balance you start with today.</li>
+              <li><strong>Monthly contribution:</strong> the amount you plan to add every month.</li>
+              <li><strong>Annual interest rate:</strong> the yearly rate used for the estimate.</li>
+              <li><strong>Years:</strong> the length of time the money remains invested or saved.</li>
+              <li><strong>Compounding frequency:</strong> how often interest is applied during the year.</li>
+            </ul>
+            <p>
+              After you click <strong>Calculate</strong>, the tool shows the ending balance, how much money you contributed in total,
+              and how much growth came from interest rather than deposits.
+            </p>
+          </section>
+
+          <section id="formula">
+            <h2>Compound Interest Formula Breakdown</h2>
+            <p>The classic one-time deposit formula is:</p>
+            <p><strong>FV = P × (1 + r / n)<sup>(n × t)</sup></strong></p>
+            <ul>
+              <li><strong>FV</strong> = future value</li>
+              <li><strong>P</strong> = principal or initial amount</li>
+              <li><strong>r</strong> = annual interest rate as a decimal</li>
+              <li><strong>n</strong> = number of compounding periods per year</li>
+              <li><strong>t</strong> = number of years</li>
+            </ul>
+            <p>
+              With monthly contributions, the math becomes a series of repeated deposits, each with its own compounding period.
+              That is why regular contributions can transform the final result even when the interest rate stays the same.
+            </p>
+          </section>
+
+          <section id="examples">
+            <h2>Example Scenarios</h2>
+
+            <h3>Example 1: $10,000 at 7% for 25 years with no contributions</h3>
+            <p>
+              A one-time investment can grow meaningfully if left alone long enough. At 7% for 25 years,
+              $10,000 may grow to roughly <strong>$54,000+</strong>, depending on compounding frequency.
+            </p>
+
+            <h3>Example 2: $10,000 plus $200 per month at 7% for 25 years</h3>
+            <p>
+              Adding consistent monthly contributions usually has a bigger impact than changing from monthly to daily compounding.
+              In this type of scenario, the final value can rise to roughly <strong>$190,000+</strong>.
+            </p>
+
+            <div class="mini-grid">
+              <div class="mini-card">
+                <strong>Time matters</strong>
+                The longer your money compounds, the larger the effect of growth on growth.
+              </div>
+              <div class="mini-card">
+                <strong>Consistency matters</strong>
+                Regular monthly contributions can outweigh small differences in frequency.
+              </div>
+              <div class="mini-card">
+                <strong>Rate matters</strong>
+                Even modest changes in the annual rate can significantly shift the ending balance over decades.
+              </div>
+            </div>
+          </section>
+
+          <section id="frequency-comparison">
+            <h2>Annual vs. Monthly vs. Weekly vs. Daily Compounding</h2>
+            <p>
+              More frequent compounding means interest is added more often, which can slightly increase your final balance.
+              In real life, however, the biggest drivers are usually your rate, your time horizon, and how consistently you contribute.
+            </p>
+
+            <div class="comparison-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Frequency</th>
+                    <th>How it works</th>
+                    <th>Typical use</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Annual</strong></td>
+                    <td>Interest is added once per year.</td>
+                    <td>Simple long-term illustrations and basic educational comparisons.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Monthly</strong></td>
+                    <td>Interest is added 12 times per year.</td>
+                    <td>Common for savings products and many projection tools.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Weekly</strong></td>
+                    <td>Interest is added 52 times per year.</td>
+                    <td>Less common for personal savings, but useful for comparison.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Daily</strong></td>
+                    <td>Interest is added 365 times per year.</td>
+                    <td>Sometimes used by banks; usually only slightly above monthly compounding.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="rule-of-72">
+            <h2>The Rule of 72</h2>
+            <p>
+              The Rule of 72 is a shortcut for estimating how long it takes to double your money:
+              <strong>72 ÷ annual rate (%) ≈ years to double</strong>.
+            </p>
+            <p>
+              For example, at 6% annual growth, your money may double in about <strong>12 years</strong>.
+              It is only an estimate, but it is useful for building intuition quickly.
+            </p>
+          </section>
+
+          <section id="inflation">
+            <h2>Inflation and “Real” Buying Power</h2>
+            <p>
+              This calculator shows <strong>nominal dollars</strong>, not inflation-adjusted dollars.
+              That means the future balance may look large in absolute terms while still buying less than you expect in today’s prices.
+            </p>
+            <p>
+              To estimate purchasing power more realistically, compare your result with an inflation assumption using the
+              <a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a>.
+            </p>
+          </section>
+
+          <section id="mistakes">
+            <h2>Common Mistakes When Using a Compound Interest Calculator</h2>
+            <ul>
+              <li><strong>Mixing APR and APY:</strong> APY includes compounding and can produce different results than APR.</li>
+              <li><strong>Using aggressive return assumptions:</strong> long-term planning usually benefits from conservative scenarios.</li>
+              <li><strong>Ignoring fees and taxes:</strong> both reduce the amount that actually compounds.</li>
+              <li><strong>Forgetting inflation:</strong> nominal growth is not the same as real purchasing power.</li>
+              <li><strong>Stopping contributions early:</strong> consistency often matters more than trying to time the market.</li>
+            </ul>
+          </section>
+
+          <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+              <h3>Is this compound interest calculator accurate?</h3>
+              <p>
+                It provides an estimate based on the values you enter. Actual results can differ because of taxes, fees,
+                changing rates, market volatility, and product-specific rules.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Are monthly contributions added monthly even if I choose daily compounding?</h3>
+              <p>
+                Yes. Contributions are modeled as monthly end-of-month deposits. The compounding frequency only changes
+                how interest accrues between deposits.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Does this calculator include inflation?</h3>
+              <p>
+                No. Results are shown in nominal dollars. To estimate real purchasing power, compare your result against
+                an inflation assumption or use the
+                <a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a>.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>What interest rate should I use?</h3>
+              <p>
+                For savings, use the rate offered by your account. For investments, test several conservative long-term scenarios
+                rather than relying on a single optimistic estimate.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Does compounding frequency matter a lot?</h3>
+              <p>
+                It matters, but often less than people think. In most long-term scenarios, time and consistent monthly contributions
+                have a larger impact than moving from monthly to daily compounding.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>What is the Rule of 72?</h3>
+              <p>
+                It is a quick way to estimate doubling time. Divide 72 by the annual rate in percent to get an approximate number of years.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Why is my result different from a bank or brokerage projection?</h3>
+              <p>
+                Different tools may use different assumptions about APY vs APR, deposit timing, fees, taxes, promotional rates,
+                or variable returns. This page uses a simplified fixed-rate model for clarity.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Can compound interest apply to debt as well?</h3>
+              <p>
+                Yes. Credit cards and some loans can compound interest, which can make balances grow faster than expected.
+                To explore debt payments, try the
+                <a href="https://financecalccenter.com/loan-payment-calculator.html">Loan Payment Calculator</a>.
+              </p>
+            </div>
+
+            <p class="disclaimer">
+              <strong>Note:</strong> This calculator is for educational purposes only and does not provide financial, tax, or investment advice.
+            </p>
+          </section>
+
+          <section class="related-links" aria-labelledby="related-links-heading">
+            <h2 id="related-links-heading">Related articles and calculators</h2>
+            <div class="links">
+              <a href="https://financecalccenter.com/what-is-compound-interest.html">What Is Compound Interest?</a>
+              <a href="https://financecalccenter.com/simple-vs-compound-interest.html">Simple vs. Compound Interest</a>
+              <a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What's the Difference?</a>
+              <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
+              <a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a>
+              <a href="https://financecalccenter.com/mortgage-calculator.html">Mortgage Calculator</a>
+              <a href="https://financecalccenter.com/loan-payment-calculator.html">Loan Payment Calculator</a>
+              <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
+              <a href="https://financecalccenter.com/index.html">Browse all calculators →</a>
+            </div>
+          </section>
+
+          <a class="back-link" href="index.html">← Back to home</a>
+        </article>
       </div>
+    </main>
 
-      <h2>What Is a Compound Interest Calculator?</h2>
-      <p>
-        A compound interest calculator estimates how your money can grow over time when interest is added to both your
-        original deposit and the interest you’ve already earned. This “interest on interest” effect is the reason
-        long-term saving and investing can accelerate after enough time passes.
-      </p>
-      <p>
-        To use this calculator, enter your starting amount, optional monthly contributions, an annual interest rate,
-        and a time period. Then choose how often interest compounds (monthly, daily, etc.) and click
-        <strong>Calculate</strong>.
-      </p>
-
-      <h2>How to Use This Calculator</h2>
-      <ul>
-        <li><strong>Initial amount:</strong> what you start with today.</li>
-        <li><strong>Monthly contribution:</strong> how much you add each month (optional).</li>
-        <li><strong>Annual interest rate:</strong> the expected yearly return (or savings rate).</li>
-        <li><strong>Years:</strong> your time horizon.</li>
-        <li><strong>Compounding frequency:</strong> how often interest is applied (annually, monthly, weekly, daily).</li>
-      </ul>
-      <p>
-        The results show your estimated <strong>final balance</strong>, how much you contributed in total, and how much
-        <strong>interest was earned</strong>.
-      </p>
-      <p class="note">
-        <strong>Deposit timing assumption:</strong> Monthly contributions are modeled as deposits once per month (at the end of each month).
-        Interest is applied according to your selected compounding frequency.
-      </p>
-
-      <h2>Compound Interest Formula Breakdown</h2>
-      <p>The classic compound interest formula is:</p>
-      <p><strong>FV = P × (1 + r / n)<sup>(n × t)</sup></strong></p>
-      <ul>
-        <li><strong>FV</strong> = future value (ending balance)</li>
-        <li><strong>P</strong> = principal (initial amount)</li>
-        <li><strong>r</strong> = annual interest rate (as a decimal)</li>
-        <li><strong>n</strong> = compounding periods per year (12 monthly, 365 daily, 1 yearly)</li>
-        <li><strong>t</strong> = years</li>
-      </ul>
-      <p>
-        When you add monthly contributions, each deposit has its own time to compound. That’s why consistent
-        contributions can increase the final value dramatically over long horizons.
-      </p>
-
-      <h2>Example Scenarios</h2>
-
-      <h3>Example 1: $10,000 at 7% for 25 years (no contributions)</h3>
-      <p>
-        A one-time deposit can still grow significantly with time. At 7% annually for 25 years, $10,000 can grow to
-        roughly <strong>$54,000+</strong> depending on compounding frequency.
-      </p>
-
-      <h3>Example 2: $10,000 + $200/month at 7% for 25 years</h3>
-      <p>
-        Adding a consistent monthly contribution often matters more than minor differences in compounding frequency.
-        In many scenarios, this can push the final value to <strong>$190,000+</strong> over 25 years.
-      </p>
-
-      <h2>Annual vs. Monthly vs. Daily Compounding</h2>
-      <p>
-        Compounding more frequently means interest is applied more often. That can slightly increase the final balance,
-        but for most people the bigger drivers are <strong>time</strong> and <strong>consistent monthly contributions</strong>.
-      </p>
-      <ul>
-        <li><strong>Annual compounding:</strong> simplest model (interest added once per year).</li>
-        <li><strong>Monthly compounding:</strong> common for many savings products.</li>
-        <li><strong>Daily compounding:</strong> sometimes used by banks; the difference vs monthly is usually modest.</li>
-      </ul>
-
-      <h2>The Rule of 72</h2>
-      <p>
-        The Rule of 72 estimates how long it takes to double your money:
-        <strong>72 ÷ annual rate (%)</strong> ≈ years to double.
-      </p>
-      <p>
-        At 6%, doubling takes about <strong>12 years</strong> (72 ÷ 6 = 12). This is a quick mental shortcut — not an exact
-        forecast — but it helps build intuition.
-      </p>
-
-      <h2>Inflation and “Real” Buying Power</h2>
-      <p>
-        This calculator shows results in <strong>nominal dollars</strong> (not inflation-adjusted). Inflation reduces
-        purchasing power over time, so the “real” value of the ending balance may be lower.
-      </p>
-      <p class="muted">
-        To estimate real buying power, compare against an inflation assumption using the
-        <a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a>.
-      </p>
-
-      <h2>Common Mistakes</h2>
-      <ul>
-        <li><strong>Mixing APR and APY:</strong> APY includes compounding; APR may not.</li>
-        <li><strong>Using unrealistic rates:</strong> compare conservative and optimistic scenarios.</li>
-        <li><strong>Ignoring fees and taxes:</strong> they reduce what actually compounds.</li>
-        <li><strong>Stopping contributions too early:</strong> consistency often beats short-term intensity.</li>
-        <li><strong>Forgetting inflation:</strong> nominal gains aren’t the same as real purchasing power.</li>
-      </ul>
-
-      <h2>Frequently Asked Questions</h2>
-
-      <h3>Is this compound interest calculator accurate?</h3>
-      <p>
-        It provides an estimate based on the values you enter. Real-world results may differ due to fees, taxes,
-        changing interest rates, and market performance.
-      </p>
-
-      <h3>Are monthly contributions added monthly even if I choose daily compounding?</h3>
-      <p>
-        Yes. Contributions are treated as monthly deposits. Compounding frequency controls how interest accrues, but
-        deposits occur monthly in this model.
-      </p>
-
-      <h3>Does this calculator include inflation?</h3>
-      <p>
-        No. Results are shown in nominal dollars and do not adjust for inflation. Use the
-        <a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a> to estimate real buying power.
-      </p>
-
-      <h3>What interest rate should I use?</h3>
-      <p>
-        For a savings account, use the rate your bank provides. For investments, try a few conservative long-term rates
-        to compare scenarios rather than relying on short-term performance.
-      </p>
-
-      <h3>Does compounding frequency matter a lot?</h3>
-      <p>
-        More frequent compounding can slightly increase the final balance—especially over long horizons. But time and
-        consistent monthly contributions usually have a bigger effect.
-      </p>
-
-      <h3>What is the Rule of 72?</h3>
-      <p>
-        It’s a quick estimate of how long it takes to double your money: 72 divided by your annual rate (in percent)
-        gives an approximate number of years.
-      </p>
-
-      <h3>Why is my result different from a bank or brokerage projection?</h3>
-      <p>
-        Different tools may assume different deposit timing, use APY vs APR, include fees, taxes, or use variable rates.
-        This calculator uses a simplified fixed-rate model for clarity.
-      </p>
-
-      <h3>Can compound interest apply to debt as well?</h3>
-      <p>
-        Yes. Many credit cards and some loans compound interest, which can cause balances to grow faster than expected.
-        If you want to see how loan payments and total interest work, try the
-        <a href="https://financecalccenter.com/loan-payment-calculator.html">Loan Payment Calculator</a>.
-      </p>
-
-      <p class="disclaimer" style="font-size: 0.95em; opacity: 0.85;">
-        <strong>Note:</strong> This calculator is for educational purposes only and does not provide financial advice.
-      </p>
-
-      <!-- 🔗 SEO optimalizált belső link blokk -->
-      <section class="related-links">
-        <p><strong>Related articles & calculators</strong></p>
-        <!-- Articles -->
-        <a href="https://financecalccenter.com/what-is-compound-interest.html">What Is Compound Interest?</a>
-        <a href="https://financecalccenter.com/simple-vs-compound-interest.html">Simple vs. Compound Interest</a>
-        <a href="https://financecalccenter.com/apr-vs-apy.html">APR vs APY – What's the Difference?</a>
-        <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
-        <!-- Calculators -->
-        <a href="https://financecalccenter.com/inflation-calculator.html">Inflation Calculator</a>
-        <a href="https://financecalccenter.com/mortgage-calculator.html">Mortgage Calculator</a>
-        <a href="https://financecalccenter.com/loan-payment-calculator.html">Loan Payment Calculator</a>
-        <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
-        <a href="https://financecalccenter.com/index.html">Browse all calculators →</a>
-      </section>
-    </section>
-
-    <a class="back-link" href="index.html">← Back to home</a>
+    <p class="footer-note">
+      FinanceCalcCenter provides educational calculators and plain-English financial explainers designed to help users compare scenarios more clearly.
+    </p>
   </div>
 
   <script>
     function fmtMoney(x) {
       if (!isFinite(x)) return "0.00";
-      return x.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      return x.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function getInputValues() {
+      const P = Math.max(0, parseFloat(document.getElementById("principal").value) || 0);
+      const monthly = Math.max(0, parseFloat(document.getElementById("contribution").value) || 0);
+      const annualRate = Math.max(0, parseFloat(document.getElementById("rate").value) || 0);
+      const years = Math.max(0, parseFloat(document.getElementById("years").value) || 0);
+      const n = Math.max(1, parseInt(document.getElementById("frequency").value, 10) || 1);
+
+      return {
+        P,
+        monthly,
+        annualRate,
+        r: annualRate / 100,
+        years,
+        n
+      };
     }
 
     function calculate() {
-      const principalEl = document.getElementById("principal");
-      const contributionEl = document.getElementById("contribution");
-      const rateEl = document.getElementById("rate");
-      const yearsEl = document.getElementById("years");
-      const frequencyEl = document.getElementById("frequency");
+      const { P, monthly, annualRate, r, years, n } = getInputValues();
+      const resultBox = document.getElementById("result");
 
-      const P = Math.max(0, parseFloat(principalEl.value) || 0);
-      const monthly = Math.max(0, parseFloat(contributionEl.value) || 0);
-      const r = (parseFloat(rateEl.value) || 0) / 100;
-      const years = Math.max(0, parseFloat(yearsEl.value) || 0);
-      const n = Math.max(1, parseInt(frequencyEl.value, 10) || 1);
+      if (years === 0) {
+        const investedNow = P;
+        resultBox.style.display = "block";
+        resultBox.innerHTML = `
+          <h2>Results</h2>
+          <div class="result-grid">
+            <div class="result-item">
+              <span class="result-label">Final balance</span>
+              <span class="result-value">$${fmtMoney(investedNow)}</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Total contributions</span>
+              <span class="result-value">$${fmtMoney(investedNow)}</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Interest earned</span>
+              <span class="result-value">$0.00</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Estimated monthly rate</span>
+              <span class="result-value">0.00%</span>
+            </div>
+          </div>
+          <p class="note">
+            Since the time horizon is 0 years, the ending balance equals your starting amount.
+          </p>
+        `;
+        return;
+      }
 
       const months = Math.round(years * 12);
-
-      // Convert nominal annual rate with n compounding periods to an effective monthly rate.
-      // This keeps "Monthly Contribution" truly monthly while compounding follows selected frequency.
-      // Effective monthly factor = (1 + r/n)^(n/12)
       const monthlyFactor = Math.pow(1 + (r / n), (n / 12));
       const monthlyRate = monthlyFactor - 1;
 
       let balance = P;
 
-      // Assume contributions happen at the end of each month
       for (let m = 1; m <= months; m++) {
         balance = balance * (1 + monthlyRate);
         balance += monthly;
       }
 
-      const invested = P + monthly * months;
+      const invested = P + (monthly * months);
       const interestEarned = balance - invested;
 
-      const resultBox = document.getElementById("result");
       resultBox.style.display = "block";
       resultBox.innerHTML = `
         <h2>Results</h2>
         <div class="result-grid">
-          <p><strong>Final balance:</strong> $${fmtMoney(balance)}</p>
-          <p><strong>Total contributions:</strong> $${fmtMoney(invested)}</p>
-          <p><strong>Interest earned:</strong> $${fmtMoney(interestEarned)}</p>
+          <div class="result-item">
+            <span class="result-label">Final balance</span>
+            <span class="result-value">$${fmtMoney(balance)}</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Total contributions</span>
+            <span class="result-value">$${fmtMoney(invested)}</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Interest earned</span>
+            <span class="result-value">$${fmtMoney(interestEarned)}</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Estimated monthly rate</span>
+            <span class="result-value">${(monthlyRate * 100).toFixed(4)}%</span>
+          </div>
         </div>
         <p class="note">
-          Assumes a fixed annual rate and monthly deposits (end of month). Results are estimates and do not include fees, taxes, or rate changes.
+          Assumes a fixed annual rate, monthly end-of-month deposits, and no fees, taxes, inflation, or rate changes.
+          Results are estimates for educational use.
         </p>
       `;
     }
-  </script>
 
+    function resetCalculator() {
+      document.getElementById("principal").value = "10000";
+      document.getElementById("contribution").value = "0";
+      document.getElementById("rate").value = "6";
+      document.getElementById("years").value = "20";
+      document.getElementById("frequency").value = "12";
+      document.getElementById("result").style.display = "none";
+      document.getElementById("result").innerHTML = "";
+    }
+
+    document.getElementById("calculatorForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      calculate();
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", resetCalculator);
+  </script>
 </body>
 </html>
-
