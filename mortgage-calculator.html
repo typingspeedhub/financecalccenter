@@ -13,12 +13,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Mortgage Calculator | Monthly Payment, Interest & Amortization</title>
+  <title>Mortgage Calculator | Monthly Payment, Interest, Taxes & Amortization</title>
   <meta
     name="description"
-    content="Estimate your mortgage payment including principal & interest, property taxes, insurance, and HOA fees. Compare scenarios, see total interest, and understand the long-term cost of a home loan."
+    content="Use this mortgage calculator to estimate monthly payment, total interest, taxes, insurance, HOA costs, and long-term loan cost. Compare scenarios and understand what changes your mortgage payment."
   />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://financecalccenter.com/mortgage-calculator.html" />
   <meta name="theme-color" content="#020617" />
 
@@ -31,39 +31,114 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Mortgage Calculator | Monthly Payment, Interest & Amortization" />
-  <meta property="og:description" content="Estimate your mortgage payment including principal & interest, property taxes, insurance, and HOA fees. Compare scenarios and total interest." />
+  <meta property="og:title" content="Mortgage Calculator | Monthly Payment, Interest, Taxes & Amortization" />
+  <meta property="og:description" content="Estimate mortgage payment including principal, interest, taxes, insurance, and HOA fees. Compare scenarios and understand total loan cost." />
   <meta property="og:url" content="https://financecalccenter.com/mortgage-calculator.html" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mortgage Calculator | Monthly Payment, Interest, Taxes & Amortization" />
+  <meta name="twitter:description" content="Estimate your mortgage payment and see total interest, taxes, insurance, and long-term loan cost." />
 
   <style>
     :root {
       --bg: #020617;
       --card: #0f172a;
+      --card-soft: rgba(15, 23, 42, 0.75);
       --accent: #22c55e;
+      --accent-dark: #16a34a;
       --accent-soft: rgba(34, 197, 94, 0.12);
       --text: #e5e7eb;
       --muted: #9ca3af;
+      --muted-2: #cbd5e1;
       --border: #1e293b;
+      --line: rgba(148, 163, 184, 0.12);
+      --warning: #fbbf24;
+      --danger: #f97373;
       --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       font-family: var(--font);
       background: radial-gradient(circle at top, #1f2937 0, #020617 45%);
       color: var(--text);
-      padding: 20px 12px 32px;
+      padding: 20px 12px 36px;
+      line-height: 1.55;
     }
 
     .wrapper {
-      max-width: 980px;
+      max-width: 1040px;
       margin: 0 auto;
     }
 
-    header {
-      margin-bottom: 1.2rem;
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip-link:focus {
+      left: 12px;
+      top: 12px;
+      width: auto;
+      height: auto;
+      padding: 0.7rem 0.9rem;
+      background: #fff;
+      color: #111827;
+      border-radius: 0.75rem;
+      z-index: 9999;
+      text-decoration: none;
+    }
+
+    .breadcrumbs {
+      margin-bottom: 0.9rem;
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    .breadcrumbs ol {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .breadcrumbs li {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .breadcrumbs li:not(:last-child)::after {
+      content: "›";
+      color: #64748b;
+    }
+
+    header.hero {
+      margin-bottom: 1.25rem;
     }
 
     .back {
@@ -75,26 +150,49 @@
     .back:hover { text-decoration: underline; }
 
     h1 {
-      margin: 0.6rem 0 0.2rem;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin: 0.65rem 0 0.3rem;
+      font-size: clamp(1.75rem, 3vw, 2.45rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
     }
 
     .subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 760px;
-      margin: 0.25rem 0 0;
+      font-size: 0.97rem;
+      color: var(--muted-2);
+      max-width: 820px;
+      margin: 0.35rem 0 0.85rem;
     }
 
-    .layout {
+    .hero-summary {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
-      gap: 1.2rem;
-      align-items: start;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
     }
 
-    @media (max-width: 880px) {
-      .layout { grid-template-columns: minmax(0, 1fr); }
+    @media (max-width: 760px) {
+      .hero-summary {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .summary-box {
+      background: rgba(2, 6, 23, 0.38);
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 0.9rem 0.95rem;
+    }
+
+    .summary-box strong {
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 0.28rem;
+      color: var(--text);
+    }
+
+    .summary-box span {
+      color: var(--muted);
+      font-size: 0.88rem;
     }
 
     .card {
@@ -109,11 +207,27 @@
       margin-top: 1.2rem;
     }
 
-    label {
-      display: block;
-      margin-top: 0.75rem;
-      font-size: 0.88rem;
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.25fr);
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+
+    .section-title {
+      margin: 0 0 0.75rem;
+      font-size: 1.08rem;
+      line-height: 1.25;
+    }
+
+    .section-intro {
       color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0 0 1rem;
     }
 
     .row {
@@ -123,38 +237,68 @@
     }
 
     @media (max-width: 640px) {
-      .row { grid-template-columns: minmax(0, 1fr); }
+      .row { grid-template-columns: 1fr; }
+    }
+
+    label {
+      display: block;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      font-weight: 600;
     }
 
     input, select {
       width: 100%;
-      padding: 0.6rem 0.7rem;
-      margin-top: 0.25rem;
-      border-radius: 0.7rem;
+      padding: 0.68rem 0.75rem;
+      margin-top: 0.28rem;
+      border-radius: 0.72rem;
       border: 1px solid var(--border);
       background: #020617;
       color: var(--text);
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       outline: none;
     }
 
-    input:focus, select:focus {
+    input::placeholder {
+      color: #64748b;
+    }
+
+    input:focus,
+    select:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 1px var(--accent-soft);
     }
 
+    .button-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.75rem;
+      margin-top: 1.1rem;
+      align-items: center;
+    }
+
+    @media (max-width: 640px) {
+      .button-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
     button {
       width: 100%;
-      margin-top: 1.1rem;
-      padding: 0.7rem 1rem;
+      padding: 0.78rem 1rem;
       border-radius: 999px;
       border: none;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
       color: #022c22;
-      font-weight: 700;
-      font-size: 0.95rem;
+      font-weight: 800;
+      font-size: 0.97rem;
       cursor: pointer;
-      box-shadow: 0 16px 32px rgba(34, 197, 94, 0.4);
+      box-shadow: 0 16px 32px rgba(34, 197, 94, 0.35);
+    }
+
+    button:hover {
+      filter: brightness(1.03);
     }
 
     button:active {
@@ -162,20 +306,72 @@
       box-shadow: none;
     }
 
+    .secondary-btn {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .secondary-btn:hover {
+      border-color: #334155;
+      background: rgba(255,255,255,0.02);
+    }
+
     .hint {
-      font-size: 0.8rem;
+      font-size: 0.83rem;
       color: var(--muted);
-      margin-top: 0.5rem;
-      line-height: 1.45;
+      margin-top: 0.6rem;
+      line-height: 1.5;
     }
 
     .error {
-      margin-top: 0.5rem;
-      color: #f97373;
-      font-size: 0.82rem;
+      margin-top: 0.6rem;
+      color: var(--danger);
+      font-size: 0.84rem;
+      min-height: 1.2em;
     }
 
-    /* Results box */
+    .toc {
+      margin: 1rem 0 0;
+      padding: 0.95rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.25);
+    }
+
+    .toc strong {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .toc ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+      columns: 2;
+      column-gap: 1.25rem;
+    }
+
+    @media (max-width: 700px) {
+      .toc ul { columns: 1; }
+    }
+
+    .toc li {
+      margin: 0.3rem 0;
+      break-inside: avoid;
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+    }
+
     .results {
       border-radius: 1.05rem;
       padding: 1.1rem 1rem 1rem;
@@ -186,7 +382,13 @@
 
     .results h2 {
       font-size: 1rem;
-      margin: 0 0 0.5rem;
+      margin: 0 0 0.35rem;
+    }
+
+    .results-subtitle {
+      margin: 0 0 0.8rem;
+      font-size: 0.84rem;
+      color: var(--muted);
     }
 
     .results-grid {
@@ -196,174 +398,233 @@
     }
 
     @media (max-width: 640px) {
-      .results-grid { grid-template-columns: minmax(0, 1fr); }
+      .results-grid { grid-template-columns: 1fr; }
     }
 
     .res-item {
       background: rgba(15, 23, 42, 0.96);
       border-radius: 0.9rem;
       border: 1px solid rgba(30, 64, 175, 0.45);
-      padding: 0.6rem 0.7rem;
+      padding: 0.7rem 0.75rem;
     }
 
     .res-label {
-      font-size: 0.78rem;
+      font-size: 0.79rem;
       color: var(--muted);
     }
 
     .res-value {
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: 1.03rem;
+      font-weight: 800;
       margin-top: 0.15rem;
+      line-height: 1.25;
     }
 
-    .res-note {
-      margin-top: 0.6rem;
-      font-size: 0.78rem;
+    .breakdown,
+    .affordability-note {
+      margin-top: 0.7rem;
+      font-size: 0.83rem;
       color: var(--muted);
-      line-height: 1.45;
-    }
-
-    .breakdown {
-      margin-top: 0.65rem;
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     .breakdown span {
       display: inline-block;
       margin-right: 0.9rem;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .res-note {
+      margin-top: 0.72rem;
+      font-size: 0.79rem;
+      color: var(--muted);
+      line-height: 1.48;
     }
 
     .tips {
       margin-top: 0.9rem;
-      padding: 0.85rem 0.9rem;
+      padding: 0.9rem;
       border-radius: 0.95rem;
       border: 1px solid rgba(30, 41, 59, 0.9);
       background: rgba(2, 6, 23, 0.25);
     }
 
     .tips h3 {
-      margin: 0 0 0.4rem;
+      margin: 0 0 0.45rem;
       font-size: 0.98rem;
     }
 
     .tips ul {
-      margin: 0.4rem 0 0;
+      margin: 0.35rem 0 0;
       padding-left: 1.1rem;
       color: var(--muted);
-      font-size: 0.86rem;
+      font-size: 0.87rem;
     }
 
     .tips li + li { margin-top: 0.25rem; }
 
-    /* Long-form explanation section */
+    .mini-card {
+      margin-top: 0.9rem;
+      padding: 0.9rem;
+      border-radius: 0.95rem;
+      border: 1px solid rgba(30, 41, 59, 0.9);
+      background: rgba(2, 6, 23, 0.25);
+    }
+
+    .mini-card h3 {
+      margin: 0 0 0.45rem;
+      font-size: 0.96rem;
+    }
+
+    .mini-card p,
+    .mini-card ul {
+      margin: 0.3rem 0 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .mini-card ul {
+      padding-left: 1.1rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+
     .info-section {
-      margin-top: 0.1rem;
-      font-size: 0.92rem;
+      font-size: 0.93rem;
       color: #cbd5f5;
-      line-height: 1.6;
+      line-height: 1.68;
     }
 
     .info-section h2 {
-      font-size: 1.08rem;
-      margin-top: 1.15rem;
+      font-size: 1.14rem;
+      margin-top: 1.2rem;
       margin-bottom: 0.45rem;
       color: var(--text);
+      line-height: 1.3;
     }
 
     .info-section h2:first-child { margin-top: 0; }
 
     .info-section h3 {
-      font-size: 0.98rem;
-      margin-top: 0.85rem;
+      font-size: 1rem;
+      margin-top: 0.95rem;
       margin-bottom: 0.25rem;
       color: var(--text);
     }
 
     .info-section p {
-      margin: 0.35rem 0;
+      margin: 0.45rem 0;
       color: #cbd5f5;
-      opacity: 0.96;
+      opacity: 0.97;
     }
 
-    .info-section ul {
+    .info-section ul,
+    .info-section ol {
       padding-left: 1.15rem;
-      margin: 0.35rem 0 0.9rem;
-      color: var(--muted);
-      font-size: 0.9rem;
+      margin: 0.35rem 0 0.95rem;
+      color: var(--muted-2);
+      font-size: 0.91rem;
     }
 
-    .info-section li { margin-bottom: 0.25rem; }
+    .info-section li { margin-bottom: 0.3rem; }
 
-    .toc {
-      margin: 1rem 0 0;
-      padding: 0.95rem 1rem;
-      border: 1px solid var(--border);
+    .formula-box,
+    .callout {
+      border: 1px solid var(--line);
       border-radius: 1rem;
-      background: rgba(2, 6, 23, 0.25);
+      padding: 0.95rem 1rem;
+      background: rgba(2, 6, 23, 0.24);
+      margin: 0.9rem 0;
     }
-    .toc strong { display: block; margin-bottom: 0.5rem; }
-    .toc ul { list-style: none; padding-left: 0; margin: 0; }
-    .toc li { margin: 0.25rem 0; }
-    .toc a { color: var(--text); text-decoration: none; }
-    .toc a:hover { color: var(--accent); text-decoration: none; }
+
+    .formula-box code {
+      display: block;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #dcfce7;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .callout strong {
+      color: var(--text);
+    }
 
     .faq details {
-      border: 1px solid rgba(55,65,81,0.85);
+      border: 1px solid rgba(55, 65, 81, 0.85);
       border-radius: 0.95rem;
-      padding: 0.75rem 0.9rem;
+      padding: 0.8rem 0.95rem;
       background: rgba(2, 6, 23, 0.18);
-      margin: 0.65rem 0;
+      margin: 0.7rem 0;
     }
+
     .faq summary {
       cursor: pointer;
       font-weight: 700;
       color: var(--text);
       list-style: none;
+      line-height: 1.4;
     }
+
     .faq summary::-webkit-details-marker { display: none; }
 
-    .related-links {
-      margin-top: 1.2rem;
-      font-size: 0.9rem;
+    .faq p {
+      margin-top: 0.55rem;
     }
 
-    .related-links h2 {
+    .related-links h2,
+    .more-reading h2 {
       font-size: 1rem;
-      margin: 0 0 0.45rem;
+      margin: 0 0 0.5rem;
     }
 
-    .related-links ul {
+    .related-links ul,
+    .more-reading ul {
       list-style: none;
       padding-left: 0;
       margin: 0.3rem 0 0;
       color: var(--muted);
     }
 
-    .related-links li + li { margin-top: 0.3rem; }
+    .related-links li + li,
+    .more-reading li + li {
+      margin-top: 0.35rem;
+    }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    .disclaimer {
+      margin-top: 1.15rem;
+      padding: 0.9rem 1rem;
+      border-radius: 0.95rem;
+      border: 1px solid rgba(251, 191, 36, 0.22);
+      background: rgba(251, 191, 36, 0.06);
+      color: #fde68a;
+      font-size: 0.84rem;
+      line-height: 1.55;
+    }
 
     footer {
-      margin-top: 1.6rem;
-      font-size: 0.78rem;
+      margin-top: 1.7rem;
+      font-size: 0.79rem;
       color: var(--muted);
       text-align: center;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
-    /* Ad-ready placeholders (kept commented until AdSense approved) */
+    /* Ad-ready placeholders kept intentionally far from action buttons/results.
+       Keep disabled until AdSense approval and real implementation. */
     .ad-slot {
-      margin: 1.2rem 0;
+      margin: 1.25rem 0;
       border: 1px dashed rgba(55, 65, 81, 0.7);
       border-radius: 0.95rem;
-      padding: 0.85rem 0.9rem;
+      padding: 0.9rem;
       background: rgba(2, 6, 23, 0.14);
     }
+
     .ad-label {
       font-size: 0.75rem;
       color: var(--muted);
@@ -372,6 +633,28 @@
       margin-bottom: 0.35rem;
     }
   </style>
+
+  <!-- Structured data: Breadcrumb -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "FinanceCalcCenter",
+        "item": "https://financecalccenter.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Mortgage Calculator",
+        "item": "https://financecalccenter.com/mortgage-calculator.html"
+      }
+    ]
+  }
+  </script>
 
   <!-- Structured data: WebApplication -->
   <script type="application/ld+json">
@@ -383,11 +666,16 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "inLanguage": "en",
-    "description": "Estimate your mortgage payment including principal & interest, property taxes, insurance, and HOA fees. Compare scenarios and see total interest.",
+    "description": "Calculate mortgage payment, total interest, taxes, insurance, HOA fees, and long-term housing cost for a fixed-rate mortgage.",
     "publisher": {
       "@type": "Organization",
       "name": "FinanceCalcCenter",
       "url": "https://financecalccenter.com/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
     }
   }
   </script>
@@ -403,7 +691,7 @@
         "name": "What does a mortgage payment include?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A mortgage payment often includes principal and interest (P&I). Many homeowners also pay property taxes and insurance monthly through an escrow account, plus optional HOA fees."
+          "text": "A mortgage payment usually includes principal and interest. Many homeowners also pay property taxes and homeowner’s insurance monthly through escrow, and some properties include HOA fees."
         }
       },
       {
@@ -411,7 +699,7 @@
         "name": "What is the difference between P&I and total monthly payment?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "P&I is the loan payment for principal and interest only. Total monthly payment adds estimated property taxes, homeowner’s insurance, and any HOA fees."
+          "text": "P&I means principal and interest only. Total monthly payment adds estimated taxes, homeowner’s insurance, and any HOA fees."
         }
       },
       {
@@ -419,15 +707,23 @@
         "name": "Does this calculator include PMI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. PMI (mortgage insurance) is not included. If your down payment is low, your lender may require PMI as an additional monthly cost."
+          "text": "No. Private mortgage insurance (PMI) is not included. If your down payment is low, your lender may require PMI as an extra monthly cost."
         }
       },
       {
         "@type": "Question",
-        "name": "Is this accurate for adjustable-rate mortgages (ARMs)?",
+        "name": "Is this calculator accurate for adjustable-rate mortgages?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "This calculator estimates fixed-rate mortgages. ARMs can change rate over time, so your payment may change after the initial period."
+          "text": "This tool estimates a fixed-rate mortgage. Adjustable-rate mortgages can change after the initial period, so the payment may rise or fall later."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is total interest so high on a 30-year mortgage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "With a 30-year mortgage, interest is paid over a long period. Early payments usually go more toward interest than principal, which increases total interest paid over time."
         }
       }
     ]
@@ -436,14 +732,39 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <div class="wrapper">
-    <header>
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Mortgage Calculator</li>
+      </ol>
+    </nav>
+
+    <header class="hero">
       <a class="back" href="index.html">← Back to FinanceCalcCenter</a>
       <h1>Mortgage Calculator</h1>
       <p class="subtitle">
         Estimate your monthly mortgage payment including principal, interest, property taxes,
-        homeowner’s insurance and HOA fees. Compare scenarios and see total interest over the full term.
+        homeowner’s insurance, and HOA fees. Use it to compare scenarios, understand total interest,
+        and see the full long-term cost of a home loan.
       </p>
+
+      <div class="hero-summary" aria-label="Key highlights">
+        <div class="summary-box">
+          <strong>Monthly payment estimate</strong>
+          <span>See both principal-and-interest payment and a more realistic all-in monthly cost.</span>
+        </div>
+        <div class="summary-box">
+          <strong>Scenario comparison</strong>
+          <span>Test how down payment, rate, and loan term change affordability and total interest.</span>
+        </div>
+        <div class="summary-box">
+          <strong>Long-term cost visibility</strong>
+          <span>Understand what you may pay over decades, not just what the first month looks like.</span>
+        </div>
+      </div>
 
       <div class="toc" aria-label="Table of contents">
         <strong>On this page</strong>
@@ -451,234 +772,381 @@
           <li><a href="#calculator">Mortgage calculator</a></li>
           <li><a href="#results-block">Results and payment breakdown</a></li>
           <li><a href="#how-it-works">How mortgage payments work</a></li>
-          <li><a href="#example">Example: interpreting the results</a></li>
-          <li><a href="#tips">Tips to lower your payment</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#formula">Mortgage formula</a></li>
+          <li><a href="#example">Example scenario</a></li>
+          <li><a href="#affordability">How to judge affordability</a></li>
+          <li><a href="#tips">Ways to lower your payment</a></li>
+          <li><a href="#faq">Mortgage calculator FAQ</a></li>
+          <li><a href="#related">Related calculators and articles</a></li>
         </ul>
       </div>
     </header>
 
-    <section class="layout" id="calculator">
-      <!-- Calculator -->
-      <div class="card" aria-label="Mortgage calculator">
-        <div class="row">
-          <div>
-            <label for="homePrice">Home price</label>
-            <input id="homePrice" type="number" min="0" step="0.01" value="350000" />
-          </div>
-          <div>
-            <label for="downPayment">Down payment</label>
-            <input id="downPayment" type="number" min="0" step="0.01" value="70000" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="rate">Interest rate (annual %)</label>
-            <input id="rate" type="number" min="0" max="100" step="0.01" value="5" />
-          </div>
-          <div>
-            <label for="years">Term (years)</label>
-            <input id="years" type="number" min="5" max="40" step="1" value="30" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="taxRate">Property tax (annual % of home price)</label>
-            <input id="taxRate" type="number" min="0" max="10" step="0.01" value="1.2" />
-          </div>
-          <div>
-            <label for="insuranceYear">Homeowner’s insurance (per year)</label>
-            <input id="insuranceYear" type="number" min="0" step="1" value="1200" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="hoa">HOA fees (per month)</label>
-            <input id="hoa" type="number" min="0" step="1" value="0" />
-          </div>
-          <div>
-            <label for="currencyLabel">Currency label (optional)</label>
-            <input id="currencyLabel" type="text" maxlength="5" placeholder="USD" />
-          </div>
-        </div>
-
-        <button id="calcBtn" type="button">Calculate mortgage payment</button>
-
-        <p class="hint">
-          Uses a standard fixed-rate amortization formula. Taxes and insurance are estimated as monthly amounts (annual ÷ 12).
-          PMI/mortgage insurance and closing costs are not included.
-        </p>
-
-        <p class="hint">
-          Want to compare a generic loan payment (without taxes/insurance)? Try the
-          <a href="loan-payment-calculator.html">loan payment calculator</a>.
-        </p>
-
-        <div id="error" class="error" role="status" aria-live="polite"></div>
-      </div>
-
-      <!-- Results column: ONLY results + short tips.
-           The long explanation is moved BELOW this grid (as requested). -->
-      <div id="results-block" aria-label="Mortgage results">
-        <div id="results" class="results" style="display:none;">
-          <h2>Payment breakdown</h2>
-
-          <div class="results-grid">
-            <div class="res-item">
-              <div class="res-label">Monthly payment (P&amp;I)</div>
-              <div id="piPayment" class="res-value">—</div>
-            </div>
-            <div class="res-item">
-              <div class="res-label">Total monthly payment</div>
-              <div id="totalPayment" class="res-value">—</div>
-            </div>
-            <div class="res-item">
-              <div class="res-label">Total paid over term</div>
-              <div id="totalPaid" class="res-value">—</div>
-            </div>
-            <div class="res-item">
-              <div class="res-label">Total interest (P&amp;I only)</div>
-              <div id="totalInterest" class="res-value">—</div>
-            </div>
-          </div>
-
-          <div class="breakdown" id="detailBreakdown"></div>
-
-          <p class="res-note">
-            Estimate only. Does not include closing costs, PMI/mortgage insurance, points, lender fees,
-            or local escrow rules. Taxes/insurance can vary significantly by location and provider.
+    <main id="main-content">
+      <section class="layout" id="calculator">
+        <div class="card" aria-label="Mortgage calculator">
+          <h2 class="section-title">Calculate your mortgage payment</h2>
+          <p class="section-intro">
+            Enter your estimated home price, down payment, rate, and loan term. Then add expected taxes,
+            insurance, and HOA fees for a more realistic monthly housing cost.
           </p>
+
+          <div class="row">
+            <div>
+              <label for="homePrice">Home price</label>
+              <input id="homePrice" type="number" min="0" step="0.01" value="350000" />
+            </div>
+            <div>
+              <label for="downPayment">Down payment</label>
+              <input id="downPayment" type="number" min="0" step="0.01" value="70000" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="rate">Interest rate (annual %)</label>
+              <input id="rate" type="number" min="0" max="100" step="0.01" value="5" />
+            </div>
+            <div>
+              <label for="years">Term (years)</label>
+              <input id="years" type="number" min="5" max="40" step="1" value="30" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="taxRate">Property tax (annual % of home price)</label>
+              <input id="taxRate" type="number" min="0" max="10" step="0.01" value="1.2" />
+            </div>
+            <div>
+              <label for="insuranceYear">Homeowner’s insurance (per year)</label>
+              <input id="insuranceYear" type="number" min="0" step="1" value="1200" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="hoa">HOA fees (per month)</label>
+              <input id="hoa" type="number" min="0" step="1" value="0" />
+            </div>
+            <div>
+              <label for="currencyLabel">Currency label (optional)</label>
+              <input id="currencyLabel" type="text" maxlength="5" placeholder="USD" value="USD" />
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button id="calcBtn" type="button">Calculate mortgage payment</button>
+            <button id="resetBtn" type="button" class="secondary-btn">Reset</button>
+          </div>
+
+          <p class="hint">
+            This calculator uses a standard fixed-rate amortization formula. Taxes and insurance are
+            estimated as monthly amounts using annual cost ÷ 12. PMI, mortgage insurance, closing costs,
+            discount points, and lender fees are not included.
+          </p>
+
+          <p class="hint">
+            Looking for a general loan calculation without housing costs? Try the
+            <a href="loan-payment-calculator.html">loan payment calculator</a>.
+          </p>
+
+          <div id="error" class="error" role="status" aria-live="polite"></div>
         </div>
 
-        <!-- Ad-ready placeholder (keep commented until AdSense approved)
-        <div class="ad-slot" aria-label="Advertisement">
-          <div class="ad-label">Advertisement</div>
-          <div class="hint">Ad space reserved (will load after AdSense approval).</div>
-        </div>
-        -->
+        <aside id="results-block" aria-label="Mortgage results">
+          <div id="results" class="results" style="display:none;">
+            <h2>Payment breakdown</h2>
+            <p class="results-subtitle">
+              These estimates help separate the loan itself from the full monthly housing cost.
+            </p>
 
-        <div class="tips" id="tips">
-          <h3>Quick ways to change the payment</h3>
-          <ul>
-            <li><strong>Higher down payment</strong> → lower loan amount and usually less interest.</li>
-            <li><strong>Lower rate</strong> → can reduce total interest dramatically over 30 years.</li>
-            <li><strong>Shorter term</strong> → higher monthly payment, but often far less total interest.</li>
-            <li><strong>Taxes/insurance</strong> matter: “affordable P&amp;I” can still be expensive monthly.</li>
-          </ul>
-        </div>
+            <div class="results-grid">
+              <div class="res-item">
+                <div class="res-label">Monthly payment (P&amp;I)</div>
+                <div id="piPayment" class="res-value">—</div>
+              </div>
+              <div class="res-item">
+                <div class="res-label">Total monthly payment</div>
+                <div id="totalPayment" class="res-value">—</div>
+              </div>
+              <div class="res-item">
+                <div class="res-label">Total paid over term</div>
+                <div id="totalPaid" class="res-value">—</div>
+              </div>
+              <div class="res-item">
+                <div class="res-label">Total interest (P&amp;I only)</div>
+                <div id="totalInterest" class="res-value">—</div>
+              </div>
+            </div>
+
+            <div class="breakdown" id="detailBreakdown"></div>
+            <div class="affordability-note" id="affordabilityNote"></div>
+
+            <p class="res-note">
+              Estimate only. Does not include PMI, closing costs, points, maintenance, utilities,
+              lender-specific fees, or local escrow practices. Actual housing cost can be higher.
+            </p>
+          </div>
+
+          <div class="tips" id="tips">
+            <h3>Quick ways to change the payment</h3>
+            <ul>
+              <li><strong>Higher down payment</strong> lowers the loan amount and often reduces total interest.</li>
+              <li><strong>Lower interest rate</strong> can make a large difference over a 15- or 30-year term.</li>
+              <li><strong>Shorter term</strong> usually raises the monthly payment but cuts long-term interest.</li>
+              <li><strong>Taxes and insurance</strong> can materially change affordability even when P&amp;I looks manageable.</li>
+            </ul>
+          </div>
+
+          <div class="mini-card" aria-label="What this tool helps with">
+            <h3>What this tool is best for</h3>
+            <ul>
+              <li>Comparing two home prices or down payment amounts</li>
+              <li>Testing a 15-year versus 30-year mortgage</li>
+              <li>Estimating full monthly housing cost before talking to a lender</li>
+              <li>Understanding how much of the cost comes from interest versus taxes and insurance</li>
+            </ul>
+          </div>
+
+          <div class="mini-card" aria-label="Important note">
+            <h3>Important note</h3>
+            <p>
+              A mortgage that seems affordable on principal and interest alone may feel very different after
+              taxes, insurance, HOA fees, maintenance, and repairs. Always evaluate the full monthly picture.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Ad-ready placeholder: keep disabled until AdSense approval
+      <div class="ad-slot" aria-label="Advertisement">
+        <div class="ad-label">Advertisement</div>
+        <div class="hint">Reserved space for a future in-content ad unit.</div>
       </div>
-    </section>
+      -->
 
-    <!-- Full-width explanation BELOW results (this is the main change you asked for) -->
-    <section class="card full" id="how-it-works" aria-label="Mortgage calculator explanation">
-      <div class="info-section">
-        <h2>How this mortgage calculator works</h2>
-        <p>
-          Most mortgages are <strong>amortizing loans</strong>. That means each payment is structured so the balance reaches zero
-          by the end of the term. Your monthly payment is built from a few key inputs:
-        </p>
-        <ul>
-          <li><strong>Loan amount:</strong> home price minus down payment</li>
-          <li><strong>Interest rate:</strong> annual rate converted to a monthly rate</li>
-          <li><strong>Term:</strong> total number of monthly payments (years × 12)</li>
-        </ul>
-        <p>
-          This page also estimates a more realistic “all-in” monthly housing cost by adding:
-          property taxes, homeowner’s insurance, and HOA fees (if any).
-        </p>
+      <div class="content-grid">
+        <section class="card full info-section" id="how-it-works" aria-label="How mortgage payments work">
+          <h2>How this mortgage calculator works</h2>
+          <p>
+            Most home loans are <strong>amortizing mortgages</strong>. That means each monthly payment is designed so the
+            balance reaches zero by the end of the loan term. The payment is based on three core variables:
+            your <strong>loan amount</strong>, <strong>interest rate</strong>, and <strong>repayment period</strong>.
+          </p>
+          <p>
+            In practice, homeowners usually care about more than the base loan payment. That is why this calculator
+            shows both:
+          </p>
+          <ul>
+            <li><strong>Principal and interest (P&amp;I)</strong> — the loan payment only</li>
+            <li><strong>Total monthly payment</strong> — P&amp;I plus estimated property taxes, insurance, and HOA fees</li>
+          </ul>
+          <p>
+            This gives a more realistic view of your likely monthly housing cost, especially when you are deciding
+            whether a home price actually fits your budget.
+          </p>
 
-        <h2>What your results mean</h2>
-        <h3>Monthly payment (P&amp;I)</h3>
-        <p>
-          This is the core loan payment: <strong>principal + interest</strong>. It does not include taxes, insurance, or HOA fees.
-          If you want the clean “loan-only” math, compare with the
-          <a href="loan-payment-calculator.html">loan payment calculator</a>.
-        </p>
+          <h2>What your mortgage results mean</h2>
 
-        <h3>Total monthly payment</h3>
-        <p>
-          This is your estimated monthly housing cost:
-          <strong>P&amp;I + taxes + insurance + HOA</strong>. Many borrowers pay taxes and insurance through escrow, so the “total” number
-          is often closer to what you see leaving your bank account each month.
-        </p>
+          <h3>Monthly payment (P&amp;I)</h3>
+          <p>
+            This is the core loan payment. It includes only the portion that goes toward repaying the balance
+            and the interest charged by the lender. It is useful for comparing mortgage structures, but it is
+            not the whole housing picture.
+          </p>
 
-        <h3>Total interest</h3>
-        <p>
-          This is the total interest paid on the loan over the full term (principal &amp; interest portion). It’s one of the best numbers
-          to compare when you’re deciding between a 30-year vs 15-year term or shopping rates.
-          For rate terminology, see <a href="apr-vs-apy.html">APR vs APY</a>.
-        </p>
+          <h3>Total monthly payment</h3>
+          <p>
+            This adds estimated property taxes, homeowner’s insurance, and HOA fees. For many households, this
+            number is closer to what actually leaves the bank account each month than the P&amp;I figure alone.
+          </p>
 
-        <h2 id="example">Example: interpret a common scenario</h2>
-        <p>
-          Example inputs (you can use the defaults above): a <strong>$350,000</strong> home with <strong>$70,000</strong> down payment
-          (loan amount <strong>$280,000</strong>), <strong>5%</strong> interest, <strong>30 years</strong>, plus estimated taxes and insurance.
-        </p>
-        <ul>
-          <li>If you increase the down payment, your loan amount drops, and both monthly payment and total interest usually fall.</li>
-          <li>If you shorten the term (e.g., 30 → 15 years), monthly payment usually rises, but total interest often drops significantly.</li>
-          <li>If taxes/insurance are higher than expected, your “true” monthly cost can be much higher than P&amp;I alone.</li>
-        </ul>
+          <h3>Total paid over term</h3>
+          <p>
+            This estimate shows how large the long-term commitment can become when monthly costs continue for
+            many years. It includes the recurring monthly housing components entered in the calculator.
+          </p>
 
-        <h2>Practical tips before you commit</h2>
-        <ul>
-          <li><strong>Stress test the payment:</strong> try higher taxes/insurance and see if it still fits your budget.</li>
-          <li><strong>Compare scenarios:</strong> save multiple runs (down payment, term, rate) and compare total interest.</li>
-          <li><strong>Think opportunity cost:</strong> a larger down payment lowers the mortgage, but ties up cash you might invest or keep as a buffer.</li>
-          <li><strong>Keep a safety buffer:</strong> many households aim to keep a cash reserve. If you’re building one, use the <a href="savings-goal-calculator.html">savings goal calculator</a>.</li>
-        </ul>
+          <h3>Total interest</h3>
+          <p>
+            This is one of the most useful comparison metrics. It shows how much interest is paid over the full
+            life of the mortgage on the loan portion alone. Even small changes in interest rate can have a large
+            effect over 15 to 30 years.
+          </p>
 
-        <h2 id="faq">FAQ</h2>
-        <div class="faq" aria-label="Frequently asked questions">
+          <h2 id="formula">Mortgage formula used by the calculator</h2>
+          <p>
+            For a fixed-rate mortgage, the standard monthly payment formula is:
+          </p>
+
+          <div class="formula-box" aria-label="Mortgage formula">
+            <code>
+M = P × [ r(1 + r)^n ] ÷ [ (1 + r)^n − 1 ]
+
+Where:
+M = monthly principal and interest payment
+P = loan principal
+r = monthly interest rate
+n = total number of monthly payments
+            </code>
+          </div>
+
+          <p>
+            In this tool, the monthly interest rate is the annual rate divided by 12, and the total number of
+            payments is the loan term in years multiplied by 12.
+          </p>
+
+          <h2 id="example">Example: interpreting a common mortgage scenario</h2>
+          <p>
+            Suppose you are considering a <strong>$350,000</strong> home with a <strong>$70,000</strong> down payment,
+            a <strong>5%</strong> interest rate, and a <strong>30-year</strong> term. Your loan amount is
+            <strong>$280,000</strong>.
+          </p>
+          <ul>
+            <li>If you increase the down payment, the loan amount falls, which usually lowers both monthly payment and total interest.</li>
+            <li>If you reduce the rate, the impact may seem small monthly but can be significant across hundreds of payments.</li>
+            <li>If you shorten the term, your monthly payment usually rises, but your total interest often drops materially.</li>
+            <li>If property taxes and insurance are higher than expected, your true monthly cost may rise faster than you planned.</li>
+          </ul>
+
+          <div class="callout">
+            <strong>Useful mindset:</strong> do not evaluate a mortgage using only the number that looks best. A realistic housing decision
+            usually comes from comparing loan cost, monthly cash flow, emergency savings, and future flexibility together.
+          </div>
+
+          <h2 id="affordability">How to think about affordability</h2>
+          <p>
+            A mortgage can be technically approvable and still feel uncomfortable in everyday life. The safer question
+            is not only “Can I qualify?” but also “Will this payment still feel manageable after normal life expenses,
+            maintenance, and financial surprises?”
+          </p>
+          <p>
+            Before committing, it is worth checking:
+          </p>
+          <ul>
+            <li>Whether the total monthly payment still works after utilities, repairs, and maintenance</li>
+            <li>Whether you can keep an emergency fund after making the down payment</li>
+            <li>Whether a slightly higher tax or insurance estimate still fits your budget</li>
+            <li>Whether you are comfortable with the trade-off between a lower monthly payment and higher lifetime interest</li>
+          </ul>
+
+          <h2>Ways to lower your mortgage payment</h2>
+          <ol id="tips">
+            <li><strong>Increase the down payment.</strong> This reduces the amount borrowed and may lower other loan-related costs.</li>
+            <li><strong>Shop for a better rate.</strong> Even modest rate improvements can matter over the full term.</li>
+            <li><strong>Choose a less expensive home.</strong> This lowers multiple housing cost components at once.</li>
+            <li><strong>Review tax and insurance assumptions.</strong> A home in a lower-cost area may be more affordable even at a similar purchase price.</li>
+            <li><strong>Compare terms carefully.</strong> A 15-year mortgage may save interest, but only if the higher payment fits your broader plan.</li>
+          </ol>
+
+          <h2>What this calculator does not include</h2>
+          <p>
+            This tool is meant to provide a practical estimate, not a lender quote. It does <strong>not</strong> include:
+          </p>
+          <ul>
+            <li>Private mortgage insurance (PMI)</li>
+            <li>Closing costs</li>
+            <li>Discount points</li>
+            <li>Maintenance and repair costs</li>
+            <li>Utilities</li>
+            <li>Variable-rate adjustments for ARMs</li>
+            <li>Lender-specific underwriting or escrow policies</li>
+          </ul>
+          <p>
+            That makes it useful for planning and comparison, but final loan disclosures can differ.
+          </p>
+        </section>
+
+        <section class="card full info-section faq" id="faq" aria-label="Frequently asked questions">
+          <h2>Mortgage calculator FAQ</h2>
+
           <details>
             <summary>What does a mortgage payment include?</summary>
             <p>
-              At minimum, principal and interest (P&amp;I). Many borrowers also pay property taxes and homeowner’s insurance monthly through escrow,
-              plus HOA fees if applicable.
+              At minimum, principal and interest. Many borrowers also pay property taxes and homeowner’s insurance
+              monthly through escrow, and some properties include HOA fees as well.
             </p>
           </details>
+
+          <details>
+            <summary>What is the difference between P&amp;I and total monthly payment?</summary>
+            <p>
+              P&amp;I is principal and interest only. Total monthly payment adds estimated taxes, insurance,
+              and HOA fees to show a more realistic monthly housing cost.
+            </p>
+          </details>
+
           <details>
             <summary>Does this mortgage calculator include PMI?</summary>
             <p>
-              No. PMI/mortgage insurance is not included. If your down payment is low, your lender may require PMI as an additional monthly cost.
+              No. PMI or other mortgage insurance is not included. If your down payment is low, your lender may
+              require it as an additional monthly cost.
             </p>
           </details>
-          <details>
-            <summary>Is this accurate for adjustable-rate mortgages (ARMs)?</summary>
-            <p>
-              This calculator estimates fixed-rate mortgages. ARMs may change interest rate after the initial period, which can change your payment.
-            </p>
-          </details>
-          <details>
-            <summary>Why does total interest look so high on a 30-year mortgage?</summary>
-            <p>
-              Interest is paid over a long time horizon. Early payments typically have a larger interest portion, and you pay interest for more months overall.
-              Comparing a shorter term or a lower rate often reduces total interest significantly.
-            </p>
-          </details>
-        </div>
-      </div>
-    </section>
 
-    <!-- Related internal links -->
-    <section class="card related-links" aria-label="Related calculators and articles">
-      <h2>Related calculators &amp; articles</h2>
-      <ul>
-        <li><a href="loan-payment-calculator.html">Loan Payment Calculator</a> – compare a generic loan to your mortgage.</li>
-        <li><a href="compound-interest-calculator.html">Compound Interest Calculator</a> – compare borrowing costs vs long-term growth.</li>
-        <li><a href="savings-goal-calculator.html">Savings Goal Calculator</a> – plan your down payment or buffer fund.</li>
-        <li><a href="inflation-calculator.html">Inflation Calculator</a> – understand long-term purchasing power and costs.</li>
-        <li><a href="apr-vs-apy.html">APR vs APY – What's the Difference?</a></li>
-        <li><a href="what-is-compound-interest.html">What Is Compound Interest?</a></li>
-      </ul>
-    </section>
+          <details>
+            <summary>Is this calculator accurate for adjustable-rate mortgages (ARMs)?</summary>
+            <p>
+              Not fully. This version is designed for fixed-rate mortgages. With an ARM, the rate can change later,
+              so future payments may be higher or lower than the initial estimate.
+            </p>
+          </details>
+
+          <details>
+            <summary>Why is total interest so high on a 30-year mortgage?</summary>
+            <p>
+              Because interest is paid across many years. Early payments usually contain a larger interest portion,
+              and the long repayment period increases the total amount paid in interest.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is the total monthly payment the same as what a lender will show?</summary>
+            <p>
+              Not necessarily. Lenders may use different insurance assumptions, escrow estimates, fees, and rounding methods.
+              This page is best used for planning, education, and scenario comparison.
+            </p>
+          </details>
+        </section>
+
+        <section class="card full more-reading" aria-label="More reading">
+          <h2>Why this page matters beyond the calculation</h2>
+          <p class="section-intro" style="margin-bottom:0.55rem;">
+            Many mortgage pages stop at the formula. A better decision usually comes from understanding how borrowing cost,
+            monthly cash flow, and long-term trade-offs connect.
+          </p>
+          <ul>
+            <li>A lower monthly payment is not always “cheaper” if it dramatically increases lifetime interest.</li>
+            <li>A larger down payment reduces debt, but it also ties up cash that could support an emergency fund or other goals.</li>
+            <li>Taxes and insurance can make two similar home prices feel very different in practice.</li>
+            <li>Understanding the structure of the payment helps you compare homes, rates, and terms more clearly.</li>
+          </ul>
+
+          <div class="disclaimer">
+            Educational use only. This page is designed to help you evaluate mortgage scenarios and improve financial understanding.
+            It is not financial advice, legal advice, or a mortgage offer.
+          </div>
+        </section>
+
+        <section class="card related-links" id="related" aria-label="Related calculators and articles">
+          <h2>Related calculators &amp; articles</h2>
+          <ul>
+            <li><a href="loan-payment-calculator.html">Loan Payment Calculator</a> – compare a generic loan payment without property taxes or insurance.</li>
+            <li><a href="compound-interest-calculator.html">Compound Interest Calculator</a> – compare the long-term cost of borrowing with the long-term power of investing.</li>
+            <li><a href="savings-goal-calculator.html">Savings Goal Calculator</a> – plan a down payment fund or emergency reserve.</li>
+            <li><a href="inflation-calculator.html">Inflation Calculator</a> – understand how future housing costs feel in real purchasing-power terms.</li>
+            <li><a href="apr-vs-apy.html">APR vs APY</a> – understand how borrowing and savings rates differ.</li>
+            <li><a href="what-is-compound-interest.html">What Is Compound Interest?</a> – learn the long-term math behind growth and cost.</li>
+            <li><a href="how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a> – think about affordability alongside savings capacity.</li>
+          </ul>
+        </section>
+      </div>
+    </main>
 
     <footer>
       This mortgage calculator is for educational purposes only and does not constitute financial advice or a mortgage offer.
-      Results are estimates and may differ from lender calculations and local costs.
+      Results are estimates and may differ from lender calculations, escrow practices, and local housing costs.
     </footer>
   </div>
 
@@ -694,6 +1162,19 @@
       return currency ? formatted + " " + currency : formatted;
     }
 
+    function resetCalculator() {
+      $("homePrice").value = "350000";
+      $("downPayment").value = "70000";
+      $("rate").value = "5";
+      $("years").value = "30";
+      $("taxRate").value = "1.2";
+      $("insuranceYear").value = "1200";
+      $("hoa").value = "0";
+      $("currencyLabel").value = "USD";
+      $("error").textContent = "";
+      calculateMortgage();
+    }
+
     function calculateMortgage() {
       const homePrice = parseFloat($("homePrice").value || "0");
       const downPayment = parseFloat($("downPayment").value || "0");
@@ -702,7 +1183,7 @@
       const taxRate = parseFloat($("taxRate").value || "0");
       const insuranceYear = parseFloat($("insuranceYear").value || "0");
       const hoa = parseFloat($("hoa").value || "0");
-      const currency = ($("currencyLabel").value || "USD").trim();
+      const currency = ($("currencyLabel").value || "USD").trim().toUpperCase();
 
       const errorEl = $("error");
       const resultsEl = $("results");
@@ -711,25 +1192,45 @@
       const totalPaidEl = $("totalPaid");
       const totalInterestEl = $("totalInterest");
       const breakdownEl = $("detailBreakdown");
+      const affordabilityNoteEl = $("affordabilityNote");
 
       errorEl.textContent = "";
       resultsEl.style.display = "none";
       breakdownEl.textContent = "";
+      affordabilityNoteEl.textContent = "";
 
       if (homePrice <= 0 || isNaN(homePrice)) {
         errorEl.textContent = "Please enter a valid home price.";
         return;
       }
+
       if (downPayment < 0 || isNaN(downPayment) || downPayment >= homePrice) {
         errorEl.textContent = "Please enter a valid down payment lower than the home price.";
         return;
       }
+
       if (years <= 0 || isNaN(years)) {
         errorEl.textContent = "Please enter a valid mortgage term.";
         return;
       }
+
       if (rate < 0 || isNaN(rate)) {
         errorEl.textContent = "Please enter a valid interest rate.";
+        return;
+      }
+
+      if (taxRate < 0 || isNaN(taxRate)) {
+        errorEl.textContent = "Please enter a valid property tax rate.";
+        return;
+      }
+
+      if (insuranceYear < 0 || isNaN(insuranceYear)) {
+        errorEl.textContent = "Please enter a valid annual insurance amount.";
+        return;
+      }
+
+      if (hoa < 0 || isNaN(hoa)) {
+        errorEl.textContent = "Please enter a valid HOA amount.";
         return;
       }
 
@@ -745,18 +1246,13 @@
         piPayment = principal * (monthlyRate * factor) / (factor - 1);
       }
 
-      // Monthly property tax and insurance
       const monthlyTax = (homePrice * (taxRate / 100)) / 12;
       const monthlyInsurance = insuranceYear / 12;
       const monthlyHOA = hoa;
-
       const totalMonthly = piPayment + monthlyTax + monthlyInsurance + monthlyHOA;
-
-      // "Total paid over term" here is totalMonthly * n (includes estimated taxes/insurance/HOA each month)
       const totalPaid = totalMonthly * n;
-
-      // Total interest is computed on P&I only (standard definition for loan cost)
-      const totalInterest = piPayment * n - principal;
+      const totalInterest = (piPayment * n) - principal;
+      const downPaymentPercent = (downPayment / homePrice) * 100;
 
       piPaymentEl.textContent = formatMoney(piPayment, currency);
       totalPaymentEl.textContent = formatMoney(totalMonthly, currency);
@@ -764,19 +1260,36 @@
       totalInterestEl.textContent = formatMoney(totalInterest, currency);
 
       breakdownEl.innerHTML =
-        "<span>Principal &amp; interest: " + formatMoney(piPayment, currency) +
-        "</span><span>Taxes: " + formatMoney(monthlyTax, currency) +
-        "</span><span>Insurance: " + formatMoney(monthlyInsurance, currency) +
-        (monthlyHOA ? "</span><span>HOA: " + formatMoney(monthlyHOA, currency) : "") +
-        "</span>";
+        "<span>Loan amount: " + formatMoney(principal, currency) + "</span>" +
+        "<span>Taxes: " + formatMoney(monthlyTax, currency) + "</span>" +
+        "<span>Insurance: " + formatMoney(monthlyInsurance, currency) + "</span>" +
+        (monthlyHOA ? "<span>HOA: " + formatMoney(monthlyHOA, currency) + "</span>" : "") +
+        "<span>Down payment: " + downPaymentPercent.toFixed(1) + "%</span>";
 
+      let affordabilityText = "";
+      if (downPaymentPercent < 20) {
+        affordabilityText = "Down payment is below 20%. In many cases, lenders may require PMI or another form of mortgage insurance, which is not included here.";
+      } else {
+        affordabilityText = "Down payment is 20% or more. That may reduce the chance of PMI, depending on the loan structure and lender rules.";
+      }
+
+      affordabilityNoteEl.textContent = affordabilityText;
       resultsEl.style.display = "block";
     }
 
     $("calcBtn").addEventListener("click", calculateMortgage);
+    $("resetBtn").addEventListener("click", resetCalculator);
 
-    // Default example on load
+    ["homePrice", "downPayment", "rate", "years", "taxRate", "insuranceYear", "hoa", "currencyLabel"].forEach((id) => {
+      $(id).addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+          calculateMortgage();
+        }
+      });
+    });
+
     calculateMortgage();
   </script>
 </body>
 </html>
+     
