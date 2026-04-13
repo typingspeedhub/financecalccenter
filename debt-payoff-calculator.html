@@ -12,17 +12,18 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020617" />
 
   <title>Debt Payoff Calculator | Payoff Time, Total Interest & Savings</title>
   <meta
     name="description"
-    content="Free debt payoff calculator: estimate payoff time, total interest, and an amortization schedule for credit cards and loans. Add extra monthly payments to see how much faster you can become debt-free."
+    content="Free debt payoff calculator to estimate payoff time, total interest, total paid, and an amortization schedule. Add extra monthly payments to see how much faster you can become debt-free."
   />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://financecalccenter.com/debt-payoff-calculator.html" />
 
-  <!-- Optional: page freshness hint -->
-  <meta name="last-modified" content="2026-02-23" />
+  <!-- Optional freshness hint -->
+  <meta name="last-modified" content="2026-04-10" />
 
   <!-- Favicon & PWA icons -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -33,9 +34,26 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Debt Payoff Calculator | Payoff Time & Total Interest" />
-  <meta property="og:description" content="Estimate how long it will take to pay off debt, total interest, and how extra payments reduce payoff time." />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+  <meta property="og:title" content="Debt Payoff Calculator | Payoff Time, Interest & Savings" />
+  <meta
+    property="og:description"
+    content="Estimate how long it will take to pay off debt, total interest, and how extra monthly payments can shorten your payoff timeline."
+  />
   <meta property="og:url" content="https://financecalccenter.com/debt-payoff-calculator.html" />
+  <meta property="og:image" content="https://financecalccenter.com/images/debt-payoff-calculator-og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Debt Payoff Calculator preview from FinanceCalcCenter" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Debt Payoff Calculator | Payoff Time, Interest & Savings" />
+  <meta
+    name="twitter:description"
+    content="Estimate payoff time, total interest, total paid, and how extra payments reduce debt faster."
+  />
+  <meta name="twitter:image" content="https://financecalccenter.com/images/debt-payoff-calculator-og.jpg" />
 
   <style>
     :root {
@@ -48,9 +66,13 @@
       --border: #1e293b;
       --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --danger: #f97373;
+      --info: #93c5fd;
+      --info-soft: rgba(147, 197, 253, 0.09);
     }
 
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -93,7 +115,6 @@
       color: rgba(156, 163, 175, 0.95);
     }
 
-    /* TOP: 2 columns (calculator + summary) */
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
@@ -175,7 +196,6 @@
 
     button:active { transform: translateY(1px); box-shadow: none; }
 
-    /* Secondary button (guide / CSV) */
     .secondary-btn{
       width: 100%;
       margin-top: 0.65rem;
@@ -202,14 +222,37 @@
       box-shadow: none;
     }
 
-    /* RIGHT summary panel */
+    .how-it-works {
+      margin-top: 1rem;
+      padding: 0.9rem 0.95rem;
+      border-radius: 0.95rem;
+      border: 1px solid rgba(147, 197, 253, 0.2);
+      background: var(--info-soft);
+    }
+
+    .how-it-works h2 {
+      margin: 0 0 0.45rem;
+      font-size: 0.98rem;
+      color: var(--text);
+    }
+
+    .how-it-works p,
+    .how-it-works li {
+      color: var(--muted);
+      font-size: 0.87rem;
+    }
+
+    .how-it-works ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.15rem;
+    }
+
     .summary-wrap {
       display: grid;
       gap: 1rem;
       align-items: start;
     }
 
-    /* Sticky on desktop only */
     @media (min-width: 921px) {
       .sticky-panel {
         position: sticky;
@@ -290,7 +333,6 @@
       justify-content: flex-end;
     }
 
-    /* small button inside header */
     .mini-btn{
       width: auto;
       margin: 0;
@@ -344,7 +386,6 @@
 
     tr:nth-child(even) td { background: rgba(15, 23, 42, 0.95); }
 
-    /* BELOW: full-width long guide */
     .below-layout { margin-top: 1.2rem; }
 
     .calculator-guide hr {
@@ -504,8 +545,13 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "inLanguage": "en",
-    "description": "Estimate debt payoff time, total interest, and see how extra payments reduce your payoff timeline.",
-    "dateModified": "2026-02-23",
+    "description": "Estimate debt payoff time, total interest, total paid, and see how extra payments reduce your payoff timeline.",
+    "dateModified": "2026-04-10",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
     "publisher": {
       "@type": "Organization",
       "name": "FinanceCalcCenter",
@@ -571,10 +617,10 @@
       <a class="back" href="index.html">← Back to FinanceCalcCenter</a>
       <h1>Debt Payoff Calculator</h1>
       <p class="subtitle">
-        Estimate payoff time, total interest, and see how extra monthly payments can make you debt-free faster.
-        Includes an amortization preview and CSV export (no signup).
+        Estimate payoff time, total interest, total paid, and see how extra monthly payments can help you become debt-free faster.
+        Includes an amortization preview and CSV export with no signup required.
       </p>
-      <div class="updated">Last updated: Feb 23, 2026</div>
+      <div class="updated">Last updated: Apr 10, 2026</div>
     </header>
 
     <section class="layout">
@@ -632,15 +678,28 @@
 
         <p class="hint">
           Assumes a fixed APR and one payment per month. Results are estimates.
-          If your payment doesn’t cover monthly interest, payoff isn’t possible until you increase the payment.
+          If your payment does not cover monthly interest, payoff is not possible until you increase the payment.
         </p>
 
-        <div id="error" class="error"></div>
+        <div class="how-it-works" aria-labelledby="how-it-works-title">
+          <h2 id="how-it-works-title">How this calculator works</h2>
+          <p>
+            This debt payoff calculator is designed for quick planning. It estimates your payoff timeline using simplified monthly compounding.
+          </p>
+          <ul>
+            <li><strong>Monthly rate:</strong> APR ÷ 12</li>
+            <li><strong>Assumption:</strong> fixed interest rate and one payment per month</li>
+            <li><strong>Extra payments:</strong> added directly to your monthly payment amount</li>
+            <li><strong>Not included:</strong> fees, new charges, late payments, or variable APR changes</li>
+          </ul>
+        </div>
+
+        <div id="error" class="error" aria-live="polite"></div>
       </div>
 
-      <!-- RIGHT: Summary (sticky on desktop) -->
+      <!-- RIGHT: Summary -->
       <div class="summary-wrap">
-        <div id="results" class="results sticky-panel">
+        <div id="results" class="results sticky-panel" aria-live="polite">
           <h2>Payoff summary</h2>
 
           <div class="results-grid">
@@ -691,22 +750,22 @@
           </div>
 
           <p class="res-note" id="csvNote" style="margin-top:0.6rem;">
-            CSV export includes the <strong>full payoff schedule</strong> (not just the preview), based on your inputs.
+            CSV export includes the <strong>full payoff schedule</strong> based on your inputs, not just the preview shown on the page.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- BELOW: full-width long guide -->
+    <!-- BELOW: full-width guide -->
     <section class="below-layout">
       <section id="debt-payoff-guide" class="card calculator-guide" aria-labelledby="debt-payoff-guide-title">
         <h2 id="debt-payoff-guide-title">Debt Payoff Calculator: How to Pay Off Debt Faster</h2>
 
         <p>
-          Paying off debt is mostly math and consistency. The math is simple: interest is charged on your balance,
-          and your payment reduces it. The hard part is staying consistent—and making small improvements that compound
+          Paying off debt is mostly math and consistency. The math is straightforward: interest is charged on your balance,
+          and your payment reduces it. The difficult part is staying consistent and making small improvements that compound
           over time. This guide explains how the <strong>Debt Payoff Calculator</strong> works, what the results mean,
-          and how to use them to build a realistic payoff plan.
+          and how to use them to build a payoff plan that is realistic for your budget.
         </p>
 
         <div class="toc" aria-label="Quick navigation">
@@ -720,7 +779,7 @@
           <a href="#faq">FAQ</a>
         </div>
 
-        <p class="pill-note">Tip: Use the calculator above, then compare scenarios by changing “Extra monthly payment”.</p>
+        <p class="pill-note">Tip: Use the calculator above, then compare multiple scenarios by changing “Extra monthly payment”.</p>
 
         <p>
           Related tools that pair well with debt payoff planning:
@@ -732,7 +791,7 @@
 
         <hr />
 
-        <h3 id="how-debt-interest-works">How Interest Works on Debt (Simple Explanation)</h3>
+        <h3 id="how-debt-interest-works">How Interest Works on Debt</h3>
         <p>
           Most loans and credit cards charge interest as a percentage of your balance. This calculator uses your APR
           (annual percentage rate) and converts it to a monthly rate:
@@ -741,7 +800,7 @@
         <p>
           Each month, interest is added to the balance, then your payment is applied. If your payment is large enough,
           the balance goes down and you move toward payoff. If your payment is too small to cover interest, the balance
-          can stall or even grow (called <strong>negative amortization</strong>).
+          can stall or even grow. This is commonly called <strong>negative amortization</strong>.
         </p>
 
         <hr />
@@ -749,32 +808,32 @@
         <h3 id="what-to-enter">What to Enter in the Calculator</h3>
         <ul>
           <li><strong>Current debt balance:</strong> what you owe right now.</li>
-          <li><strong>APR:</strong> your annual interest rate (credit cards can be high).</li>
+          <li><strong>APR:</strong> your annual interest rate.</li>
           <li><strong>Monthly payment:</strong> what you plan to pay every month.</li>
-          <li><strong>Extra monthly payment:</strong> optional—this is where payoff speed improves quickly.</li>
-          <li><strong>Payment timing:</strong> “start of month” assumes you pay earlier (less interest than end-of-month).</li>
+          <li><strong>Extra monthly payment:</strong> optional, but often the most powerful lever for faster payoff.</li>
+          <li><strong>Payment timing:</strong> “start of month” assumes you pay earlier, which slightly reduces interest versus end-of-month payment timing.</li>
         </ul>
 
         <hr />
 
         <h3 id="reading-results">How to Read the Results</h3>
         <ul>
-          <li><strong>Payoff time:</strong> how long it takes to bring the balance to (approximately) zero.</li>
-          <li><strong>Total interest:</strong> the cost of borrowing over the payoff period.</li>
-          <li><strong>Total paid:</strong> principal + interest combined.</li>
-          <li><strong>Amortization schedule:</strong> month-by-month breakdown of interest and principal.</li>
+          <li><strong>Payoff time:</strong> how long it takes to reduce the balance to approximately zero.</li>
+          <li><strong>Total interest:</strong> the estimated cost of borrowing over the full payoff period.</li>
+          <li><strong>Total paid:</strong> principal plus interest combined.</li>
+          <li><strong>Amortization schedule:</strong> a month-by-month breakdown of payment, interest, principal, and remaining balance.</li>
         </ul>
 
         <hr />
 
-        <h3 id="extra-payment-impact">Extra Payment Impact (How Much Faster + How Much Interest You Save)</h3>
+        <h3 id="extra-payment-impact">Extra Payment Impact</h3>
         <p>
           Extra payments work because interest is calculated on your remaining balance. When you reduce the balance earlier,
-          future interest is charged on a smaller number. That’s why small “micro-extra” amounts can create surprisingly
-          large savings over time.
+          future interest is charged on a smaller amount. That is why even modest “micro-extra” payments can create
+          meaningful savings over time.
         </p>
 
-        <p><strong>Numeric example (illustrative):</strong></p>
+        <p><strong>Illustrative example:</strong></p>
         <table aria-label="Extra payment impact example">
           <thead>
             <tr>
@@ -815,13 +874,13 @@
         </table>
 
         <p>
-          In many real situations, an extra $50–$100/month can cut <strong>months or years</strong> off your timeline and reduce
-          <strong>total interest paid</strong>. Use the calculator above to test what’s realistic for your budget.
+          In many real situations, an extra $50–$100 per month can cut <strong>months or even years</strong> off your payoff timeline and reduce
+          <strong>total interest paid</strong>. Use the calculator above to test what is realistic for your own budget.
         </p>
 
         <hr />
 
-        <h3 id="snowball-vs-avalanche">Snowball vs Avalanche (Two Popular Strategies)</h3>
+        <h3 id="snowball-vs-avalanche">Snowball vs Avalanche</h3>
         <table aria-label="Snowball vs Avalanche comparison">
           <thead>
             <tr>
@@ -834,18 +893,18 @@
             <tr>
               <td><strong>Avalanche</strong></td>
               <td>Pay extra toward the <strong>highest APR</strong> debt first.</td>
-              <td>Minimizing total interest (usually mathematically best).</td>
+              <td>Minimizing total interest paid.</td>
             </tr>
             <tr>
               <td><strong>Snowball</strong></td>
               <td>Pay extra toward the <strong>smallest balance</strong> first.</td>
-              <td>Motivation and quick wins to maintain consistency.</td>
+              <td>Motivation, momentum, and quick wins.</td>
             </tr>
           </tbody>
         </table>
 
         <p>
-          Want the deep dive? Read the dedicated guide:
+          Want the full breakdown? Read the dedicated guide:
           <a href="snowball-vs-avalanche.html"><strong>Snowball vs Avalanche: Month-by-Month Guide</strong></a>.
         </p>
 
@@ -853,11 +912,11 @@
 
         <h3 id="month-by-month-example">Full Month-by-Month Example (Snowball vs Avalanche)</h3>
         <p>
-          Here’s a realistic scenario with <strong>three debts</strong> and a fixed monthly budget.
+          Here is a realistic scenario with <strong>three debts</strong> and a fixed monthly budget.
           Numbers are rounded for readability. The goal is to show how the two strategies behave over time.
         </p>
 
-        <p><strong>Starting debts + minimums (example):</strong></p>
+        <p><strong>Starting debts and minimums:</strong></p>
         <table aria-label="Starting debts">
           <thead>
             <tr>
@@ -896,7 +955,7 @@
 
         <h4>Snowball (extra goes to the smallest balance first)</h4>
         <p>
-          Snowball sends the $245 extra to <strong>Card A</strong> first (quick win), then rolls that freed-up payment to the next debt.
+          Snowball sends the $245 extra to <strong>Card A</strong> first, then rolls the freed-up payment to the next debt.
         </p>
         <table aria-label="Snowball month-by-month schedule (first 12 months)">
           <thead>
@@ -929,7 +988,7 @@
 
         <h4>Avalanche (extra goes to the highest APR first)</h4>
         <p>
-          Avalanche sends the $245 extra to <strong>Card B (24% APR)</strong> first to minimize interest, while keeping minimums on the others.
+          Avalanche sends the $245 extra to <strong>Card B (24% APR)</strong> first to minimize interest while keeping minimums on the others.
         </p>
         <table aria-label="Avalanche month-by-month schedule (first 12 months)">
           <thead>
@@ -962,10 +1021,10 @@
 
         <hr />
 
-        <h3 id="total-interest-comparison">Total Interest Comparison (Snowball vs Avalanche)</h3>
+        <h3 id="total-interest-comparison">Total Interest Comparison</h3>
         <p>
-          In this example, both strategies use the same monthly budget. The difference is purely where the extra money goes first.
-          Results (approximate, based on monthly compounding and end-of-month payments):
+          In this example, both strategies use the same monthly budget. The difference is where the extra money goes first.
+          Results are approximate and based on monthly compounding and simplified payment timing assumptions.
         </p>
         <table aria-label="Total interest comparison">
           <thead>
@@ -981,47 +1040,45 @@
               <td><strong>Snowball</strong></td>
               <td>33 months</td>
               <td>$2,860</td>
-              <td>Motivation (quick win first)</td>
+              <td>Motivation and fast visible progress</td>
             </tr>
             <tr>
               <td><strong>Avalanche</strong></td>
               <td>32 months</td>
               <td>$2,609</td>
-              <td>Lower interest (math-first)</td>
+              <td>Lower total interest paid</td>
             </tr>
           </tbody>
         </table>
         <p>
-          Avalanche saves about <strong>$251</strong> in total interest in this specific setup. Your result can be larger or smaller
-          depending on balances, APRs, minimums, and your extra payment.
+          Avalanche saves about <strong>$251</strong> in total interest in this specific setup. Your result may be larger or smaller
+          depending on balances, APRs, minimum payments, and how much extra you can send each month.
         </p>
 
         <hr />
 
-        <h3 id="psych-vs-math">Psychological vs Mathematical Explanation (Why Both Can Be “Best”)</h3>
+        <h3 id="psych-vs-math">Psychological vs Mathematical Explanation</h3>
         <p>
           <strong>Mathematically</strong>, avalanche often wins because it attacks the most expensive interest rate first.
-          If you follow it perfectly, you typically pay the least total interest.
+          If you follow it consistently, you typically pay the least total interest.
         </p>
         <p>
           <strong>Psychologically</strong>, snowball can win because it creates early progress. For many people,
-          early wins increase adherence—meaning you’re more likely to keep paying extra and avoid new debt.
-          In real life, the best plan is the one you’ll execute consistently.
+          quick wins improve consistency and reduce the chance of giving up or adding new debt.
         </p>
         <p>
-          A simple hybrid approach: start with snowball until you knock out one small balance (confidence boost),
-          then switch to avalanche for long-run interest savings. (The full strategy breakdown is in the
-          <a href="snowball-vs-avalanche.html">Snowball vs Avalanche Guide</a>.)
+          In real life, the best debt payoff plan is usually the one you can execute consistently for months or years.
+          A simple hybrid approach is to start with snowball for one early win, then switch to avalanche for better long-term savings.
         </p>
 
         <hr />
 
-        <h3 id="common-mistakes">Common Mistakes (and How to Avoid Them)</h3>
+        <h3 id="common-mistakes">Common Mistakes</h3>
         <ul>
-          <li><strong>Only paying the minimum forever:</strong> minimum payments can keep you in debt for a long time.</li>
-          <li><strong>Ignoring fees/new spending:</strong> new purchases or fees can change payoff time materially.</li>
-          <li><strong>No emergency buffer:</strong> without one, surprises can push you back into debt.</li>
-          <li><strong>Choosing an “impossible” plan:</strong> a smaller plan you stick with beats a perfect plan you quit.</li>
+          <li><strong>Only paying the minimum forever:</strong> minimum payments can keep you in debt for a very long time.</li>
+          <li><strong>Ignoring fees or new spending:</strong> new purchases, balance transfers, or penalties can materially change your payoff timeline.</li>
+          <li><strong>No emergency buffer:</strong> without one, small surprises can push you back into debt.</li>
+          <li><strong>Choosing an unrealistic plan:</strong> a smaller plan you stick with beats a perfect plan you abandon after a month.</li>
         </ul>
         <p>
           If you need a starter buffer, use our <a href="emergency-fund-calculator.html">Emergency Fund Calculator</a>.
@@ -1034,41 +1091,41 @@
         <details>
           <summary>What if my payment is lower than monthly interest?</summary>
           <p>
-            Then your balance won’t decrease (and can even grow). Increase your payment, lower the APR (e.g., refinance),
-            or reduce the balance. The calculator will warn you when payoff is not possible with the current payment.
+            Then your balance will not meaningfully decrease and can even grow. Increase your payment, lower the APR if possible,
+            or reduce the balance. The calculator warns you when payoff is not possible with the current payment.
           </p>
         </details>
 
         <details>
           <summary>Should I build an emergency fund while paying off debt?</summary>
           <p>
-            Often yes—at least a starter buffer. Even $500–$1,000 can prevent new debt from surprises.
-            You can estimate a target using our <a href="emergency-fund-calculator.html">Emergency Fund Calculator</a>.
+            Often yes, at least a small starter buffer. Even $500–$1,000 can help prevent new debt from unexpected expenses.
+            You can estimate a target with our <a href="emergency-fund-calculator.html">Emergency Fund Calculator</a>.
           </p>
         </details>
 
         <details>
           <summary>Is snowball or avalanche better?</summary>
           <p>
-            Avalanche usually minimizes total interest, while snowball often improves motivation by creating quick wins.
-            If you want the detailed breakdown with more scenarios, see
+            Avalanche usually minimizes total interest, while snowball often improves motivation through quick wins.
+            If you want a deeper breakdown with more examples, see
             <a href="snowball-vs-avalanche.html">Snowball vs Avalanche: Month-by-Month Guide</a>.
           </p>
         </details>
 
         <details>
-          <summary>Does this calculator include changing interest rates or credit card fees?</summary>
+          <summary>Does this calculator include changing interest rates or fees?</summary>
           <p>
-            No. It assumes a fixed APR and one payment per month. Real credit cards can change APR, add fees,
-            or accrue interest differently. Treat results as a planning estimate.
+            No. It assumes a fixed APR and one payment per month. Real credit cards and loans can change rates,
+            add fees, or behave differently, so treat the results as planning estimates rather than exact forecasts.
           </p>
         </details>
 
         <details>
           <summary>Is paying at the start of the month really better?</summary>
           <p>
-            Usually slightly. Paying earlier reduces the balance sooner, so less interest accrues. The difference isn’t massive,
-            but it can help over long timelines.
+            Usually slightly. Paying earlier reduces the balance sooner, so less interest accrues. The difference is not huge in every case,
+            but over longer timelines it can help.
           </p>
         </details>
 
@@ -1076,19 +1133,19 @@
 
         <h3 id="disclaimer">Educational Disclaimer</h3>
         <p>
-          <strong>Educational use only:</strong> FinanceCalcCenter calculators and content are for general informational purposes.
+          <strong>Educational use only:</strong> FinanceCalcCenter calculators and content are for general informational purposes only.
           Results are <strong>estimates</strong> based on simplified assumptions.
         </p>
         <p>
-          <strong>Not financial advice:</strong> This website does not provide personalized financial, legal, or tax advice.
-          Consider speaking with a qualified professional for guidance tailored to your situation.
+          <strong>Not financial advice:</strong> This website does not provide personalized financial, legal, tax, or credit advice.
+          Consider speaking with a qualified professional if you need guidance tailored to your situation.
         </p>
 
         <h2>Related tools & guides</h2>
         <div class="links-grid">
           <a class="link-card" href="snowball-vs-avalanche.html">
             <strong>Snowball vs Avalanche Guide</strong>
-            <span>Deep numeric examples, behavioral finance, hybrid strategy, and real-world scenarios.</span>
+            <span>Deep numeric examples, behavioral finance, hybrid strategy ideas, and real-world scenarios.</span>
           </a>
           <a class="link-card" href="loan-payment-calculator.html">
             <strong>Loan Payment Calculator</strong>
@@ -1096,26 +1153,26 @@
           </a>
           <a class="link-card" href="apr-vs-apy.html">
             <strong>APR vs APY</strong>
-            <span>Understand rate basics, compounding, and effective annual rate (EAR).</span>
+            <span>Understand rate basics, compounding, and effective annual rate concepts.</span>
           </a>
           <a class="link-card" href="emergency-fund-calculator.html">
             <strong>Emergency Fund Calculator</strong>
-            <span>Plan a cash buffer before or alongside aggressive payoff.</span>
+            <span>Plan a cash buffer before or alongside aggressive debt payoff.</span>
           </a>
           <a class="link-card" href="compound-interest-calculator.html">
             <strong>Compound Interest Calculator</strong>
-            <span>See how savings can grow over time with contributions.</span>
+            <span>See how savings can grow over time with recurring contributions.</span>
           </a>
           <a class="link-card" href="savings-goal-calculator.html">
             <strong>Savings Goal Calculator</strong>
-            <span>Set a monthly target to reach a goal by a deadline.</span>
+            <span>Set a monthly target to reach a savings goal by a deadline.</span>
           </a>
         </div>
       </section>
     </section>
 
     <footer>
-      Educational use only · Not financial advice. Results are estimates.
+      Educational use only · Not financial advice · Results are estimates
       <div class="bottom-links" aria-label="Internal links">
         <a href="debt-payoff-calculator.html">Debt Payoff</a>
         <a href="snowball-vs-avalanche.html">Snowball vs Avalanche</a>
@@ -1159,7 +1216,6 @@
       const d = new Date(date.getTime());
       const day = d.getDate();
       d.setMonth(d.getMonth() + months);
-      // handle month rollover (e.g., Jan 31 -> Mar 2). clamp to last day
       if (d.getDate() < day) d.setDate(0);
       return d;
     }
@@ -1174,7 +1230,7 @@
       let totalPaid = 0;
       let totalInterest = 0;
 
-      const MAX_MONTHS = 1200; // 100 years safety cap
+      const MAX_MONTHS = 1200;
 
       while (balance > 0.005 && month < MAX_MONTHS) {
         month++;
@@ -1289,7 +1345,6 @@
       URL.revokeObjectURL(url);
     }
 
-    // Holds the latest full schedule for CSV export
     let latestFullSchedule = [];
     let latestCurrency = "USD";
 
@@ -1338,17 +1393,15 @@
       const monthlyPayment = paymentBase + extra;
       const monthlyRate = apr / 100 / 12;
 
-      // Negative amortization check (end-of-month typical)
       if (paymentTiming === "end" && monthlyRate > 0) {
         const firstMonthInterest = balance * monthlyRate;
         if (monthlyPayment <= firstMonthInterest + 0.005) {
           errorEl.textContent =
-            "Your monthly payment is too low to cover monthly interest. Increase the payment (or add extra) to reach payoff.";
+            "Your monthly payment is too low to cover monthly interest. Increase the payment or add extra to reach payoff.";
           return;
         }
       }
 
-      // Baseline (no extra) for “savings” note
       const baseline = simulatePayoff({
         balance,
         monthlyRate,
@@ -1380,21 +1433,19 @@
       $("totalPaid").textContent = formatMoney(scenario.totalPaid, currency);
       $("totalInterest").textContent = formatMoney(scenario.totalInterest, currency);
 
-      // Savings note if extra payment is used and baseline is valid
       if (extra > 0 && baseline.paidOff) {
         const monthsSaved = Math.max(0, baseline.months - scenario.months);
         const interestSaved = Math.max(0, baseline.totalInterest - scenario.totalInterest);
 
         savingsNote.textContent =
-          "With an extra " + formatMoney(extra, currency) + " per month, you could become debt-free " +
-          (monthsSaved ? (monthsSaved + " months") : "faster") +
-          " sooner and save about " + formatMoney(interestSaved, currency) + " in interest (estimate).";
+          "With an extra " + formatMoney(extra, currency) + " per month, you could become debt-free about " +
+          (monthsSaved ? (monthsSaved + " months") : "a bit") +
+          " sooner and save roughly " + formatMoney(interestSaved, currency) + " in interest.";
       } else {
         savingsNote.textContent =
-          "Tip: adding even a small extra payment each month can reduce your payoff time and total interest significantly.";
+          "Tip: even a small extra payment each month can reduce your payoff time and total interest noticeably.";
       }
 
-      // Build FULL schedule for CSV (up to payoff months, safety capped)
       latestFullSchedule = buildScheduleRowsFull({
         balance,
         monthlyRate,
@@ -1403,7 +1454,6 @@
         maxRows: Math.min(months, 1200)
       });
 
-      // Preview schedule (first 24 rows)
       const preview = latestFullSchedule.slice(0, 24);
 
       for (const r of preview) {
@@ -1426,7 +1476,6 @@
         (extra > 0 ? " (includes extra)" : "");
 
       csvBtn.disabled = latestFullSchedule.length === 0;
-
       resultsEl.style.display = "block";
     }
 
@@ -1456,7 +1505,14 @@
       downloadTextFile(`debt-payoff-schedule_${y}-${m}-${d}.csv`, csv);
     });
 
-    // Run once with defaults
+    ["balance", "apr", "payment", "extra", "currency"].forEach((id) => {
+      $(id).addEventListener("keydown", (e) => {
+        if (e.key === "Enter") calculateDebtPayoff();
+      });
+    });
+
+    $("paymentDay").addEventListener("change", calculateDebtPayoff);
+
     calculateDebtPayoff();
   </script>
 </body>
