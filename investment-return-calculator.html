@@ -11,195 +11,354 @@
   </script>
 
   <meta charset="UTF-8" />
-  <title>Investment Return Calculator | Annualized Return (CAGR) Estimator</title>
-
-  <meta name="description"
-    content="Use this investment return calculator to estimate your annualized return (CAGR) based on starting balance, contributions, years invested and current value. Learn how to interpret results with examples and compare saving vs investing." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="index, follow" />
+
+  <title>Investment Return Calculator | CAGR & Annualized Return Estimator</title>
+  <meta
+    name="description"
+    content="Use this investment return calculator to estimate annualized return (CAGR) from your starting balance, monthly contributions, time invested, and current value. Includes clear examples, interpretation, FAQs, and related planning tools."
+  />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://financecalccenter.com/investment-return-calculator.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Investment Return Calculator | Annualized Return (CAGR)" />
-  <meta property="og:description"
-    content="Find your real investment return (CAGR) from starting amount, contributions and final value. Includes total gain, average yearly and monthly return estimates." />
+  <meta property="og:title" content="Investment Return Calculator | CAGR & Annualized Return Estimator" />
+  <meta
+    property="og:description"
+    content="Estimate your annualized investment return (CAGR) using your starting amount, monthly contributions, years invested, and current value."
+  />
   <meta property="og:url" content="https://financecalccenter.com/investment-return-calculator.html" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Investment Return Calculator | CAGR & Annualized Return Estimator" />
+  <meta
+    name="twitter:description"
+    content="Estimate annualized return (CAGR) from your investment history, contributions, time horizon, and current value."
+  />
 
   <style>
     :root {
       --bg: #020617;
       --card: #0f172a;
+      --card-2: rgba(15, 23, 42, 0.88);
       --accent: #22c55e;
+      --accent-2: #16a34a;
       --accent-soft: rgba(34, 197, 94, 0.12);
       --text: #e5e7eb;
-      --muted: #9ca3af;
+      --muted: #94a3b8;
       --border: #1e293b;
+      --danger: #f87171;
       --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
+      --radius: 18px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       font-family: var(--font);
-      background: radial-gradient(circle at top, #1f2937 0, #020617 45%);
+      background:
+        radial-gradient(circle at top, #1f2937 0, #020617 46%),
+        linear-gradient(180deg, #020617 0%, #020617 100%);
       color: var(--text);
-      padding: 20px 12px 32px;
-      line-height: 1.6;
+      line-height: 1.65;
+      padding: 20px 12px 36px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
     }
 
     .wrapper {
-      max-width: 980px;
+      max-width: 1040px;
       margin: 0 auto;
     }
 
-    header {
-      margin-bottom: 1.2rem;
-    }
-
-    .back {
-      font-size: 0.85rem;
-      color: var(--muted);
+    a {
+      color: var(--accent);
       text-decoration: none;
     }
 
-    .back:hover {
+    a:hover,
+    a:focus {
       text-decoration: underline;
     }
 
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip-link:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      display: inline-block;
+      background: #fff;
+      color: #000;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .back {
+      display: inline-block;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .breadcrumbs {
+      margin-bottom: 0.85rem;
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .breadcrumbs a {
+      color: var(--muted);
+    }
+
+    header.hero {
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-card,
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 1.45rem 1.35rem 1.35rem;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.14) 0, rgba(15, 23, 42, 0.98) 30%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
+    }
+
     h1 {
-      margin: 0.6rem 0 0.2rem;
-      font-size: clamp(1.8rem, 3.1vw, 2.4rem);
+      margin: 0.2rem 0 0.55rem;
+      font-size: clamp(1.9rem, 3.3vw, 2.7rem);
       line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      margin: 1.45rem 0 0.45rem;
+      font-size: 1.18rem;
+      line-height: 1.28;
+    }
+
+    h3 {
+      margin: 1rem 0 0.35rem;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    p {
+      margin: 0.5rem 0;
     }
 
     .subtitle {
-      font-size: 0.95rem;
+      max-width: 800px;
       color: var(--muted);
-      max-width: 760px;
-      margin: 0.35rem 0 0;
+      font-size: 1rem;
+      margin: 0;
     }
 
-    /* TOP AREA: calculator + results side-by-side on desktop */
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.44rem 0.7rem;
+      font-size: 0.82rem;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 999px;
+      background: rgba(2, 6, 23, 0.5);
+      color: var(--muted);
+    }
+
+    .quick-answer {
+      margin-top: 1rem;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      background: rgba(5, 46, 22, 0.28);
+      border-radius: 1rem;
+      padding: 0.95rem 1rem;
+    }
+
+    .quick-answer strong {
+      color: var(--text);
+    }
+
     .top-grid {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
-      gap: 1.2rem;
-      align-items: flex-start;
-      margin-bottom: 1.1rem;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: 1.15rem;
+      align-items: start;
+      margin-bottom: 1.15rem;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 920px) {
       .top-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
     }
 
     .card {
-      background: var(--card);
-      border-radius: 1.1rem;
-      padding: 1.4rem 1.3rem 1.5rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.7);
+      padding: 1.3rem 1.2rem 1.35rem;
     }
 
-    label {
-      display: block;
-      margin-top: 0.75rem;
-      font-size: 0.88rem;
+    .tool-title {
+      margin: 0 0 0.25rem;
+      font-size: 1.05rem;
+    }
+
+    .tool-subtitle {
+      margin: 0 0 0.7rem;
+      font-size: 0.9rem;
       color: var(--muted);
     }
 
     .row {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.85rem;
+      gap: 0.9rem;
     }
 
     @media (max-width: 640px) {
       .row {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
     }
 
-    input, select {
+    label {
+      display: block;
+      margin-top: 0.78rem;
+      font-size: 0.89rem;
+      color: var(--muted);
+    }
+
+    input,
+    select,
+    button,
+    textarea {
+      font: inherit;
+    }
+
+    input,
+    select {
       width: 100%;
-      padding: 0.6rem 0.7rem;
-      margin-top: 0.25rem;
-      border-radius: 0.7rem;
+      padding: 0.72rem 0.8rem;
+      margin-top: 0.28rem;
+      border-radius: 0.8rem;
       border: 1px solid var(--border);
       background: #020617;
       color: var(--text);
-      font-size: 0.95rem;
       outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
     }
 
-    input:focus, select:focus {
+    input:focus,
+    select:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 1px var(--accent-soft);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.12);
     }
 
     button {
       width: 100%;
-      margin-top: 1.1rem;
-      padding: 0.7rem 1rem;
+      margin-top: 1rem;
+      border: 0;
       border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #022c22;
-      font-weight: 700;
-      font-size: 0.95rem;
+      padding: 0.82rem 1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #062c18;
+      font-weight: 800;
       cursor: pointer;
-      box-shadow: 0 16px 32px rgba(34, 197, 94, 0.4);
+      box-shadow: 0 14px 28px rgba(34, 197, 94, 0.28);
+      transition: transform 0.1s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 34px rgba(34, 197, 94, 0.34);
     }
 
     button:active {
-      transform: translateY(1px);
-      box-shadow: none;
+      transform: translateY(0);
+      box-shadow: 0 10px 20px rgba(34, 197, 94, 0.24);
+    }
+
+    .hint,
+    .muted {
+      color: var(--muted);
     }
 
     .hint {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.5rem;
+      margin-top: 0.65rem;
+      font-size: 0.83rem;
     }
 
     .error {
-      margin-top: 0.5rem;
-      color: #f97373;
-      font-size: 0.82rem;
+      margin-top: 0.6rem;
+      color: var(--danger);
+      font-size: 0.85rem;
+      min-height: 1.2em;
     }
 
     .results {
+      display: none;
       border-radius: 1.05rem;
-      padding: 1.1rem 1rem 1rem;
-      background: radial-gradient(circle at top left, #052e16 0, #020617 55%);
-      border: 1px solid rgba(34, 197, 94, 0.5);
+      padding: 1.08rem 1rem 1rem;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.15) 0, rgba(2, 6, 23, 0.96) 58%);
+      border: 1px solid rgba(34, 197, 94, 0.42);
     }
 
     .results h2 {
+      margin: 0 0 0.55rem;
       font-size: 1rem;
-      margin: 0 0 0.5rem;
     }
 
     .results-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
+      gap: 0.78rem;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 620px) {
       .results-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
     }
 
     .res-item {
-      background: rgba(15, 23, 42, 0.96);
-      border-radius: 0.9rem;
-      border: 1px solid rgba(30, 64, 175, 0.45);
-      padding: 0.6rem 0.7rem;
+      padding: 0.72rem 0.78rem;
+      border-radius: 0.95rem;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.18);
     }
 
     .res-label {
@@ -208,20 +367,16 @@
     }
 
     .res-value {
-      font-size: 1rem;
-      font-weight: 650;
-      margin-top: 0.15rem;
+      margin-top: 0.18rem;
+      font-size: 1.06rem;
+      font-weight: 750;
+      letter-spacing: -0.01em;
     }
 
+    .breakdown,
     .res-note {
-      margin-top: 0.65rem;
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    .breakdown {
-      margin-top: 0.6rem;
-      font-size: 0.8rem;
+      margin-top: 0.72rem;
+      font-size: 0.82rem;
       color: var(--muted);
     }
 
@@ -231,96 +386,131 @@
       margin-top: 0.25rem;
     }
 
-    /* ARTICLE / EXPLAINER under the results */
-    .article {
-      margin-top: 1.15rem;
+    .mini-card {
+      margin-top: 1rem;
+      background: rgba(15, 23, 42, 0.6);
     }
 
-    .article h2 {
-      margin: 1.4rem 0 0.35rem;
-      font-size: 1.1rem;
-    }
-
-    .article h3 {
+    .toc {
       margin: 1rem 0 0.25rem;
-      font-size: 0.98rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: rgba(2, 6, 23, 0.35);
     }
 
-    .article p, .article li {
-      font-size: 0.95rem;
-      color: var(--text);
+    .toc h2 {
+      margin-top: 0;
+      font-size: 1rem;
     }
 
-    .article p {
-      margin: 0.45rem 0;
+    .toc ul {
+      margin: 0.45rem 0 0;
+      padding-left: 1.1rem;
     }
 
-    .article ul, .article ol {
+    .toc li {
+      margin: 0.25rem 0;
+    }
+
+    .article {
+      margin-top: 1.1rem;
+    }
+
+    .article p,
+    .article li {
+      font-size: 0.97rem;
+    }
+
+    .article ul,
+    .article ol {
+      margin: 0.5rem 0;
       padding-left: 1.2rem;
-      margin: 0.45rem 0;
-      color: var(--text);
     }
 
-    .muted {
-      color: var(--muted);
+    .callout,
+    .example,
+    .trust-box {
+      margin-top: 0.95rem;
+      border-radius: 1rem;
+      padding: 0.95rem 1rem;
     }
 
     .callout {
-      margin-top: 0.9rem;
-      border: 1px solid rgba(34, 197, 94, 0.45);
-      background: rgba(5, 46, 22, 0.25);
-      padding: 0.9rem 0.95rem;
-      border-radius: 1rem;
-    }
-
-    .callout strong {
-      color: var(--text);
+      border: 1px solid rgba(34, 197, 94, 0.42);
+      background: rgba(5, 46, 22, 0.24);
     }
 
     .example {
-      margin-top: 0.9rem;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      background: rgba(15, 23, 42, 0.75);
-      padding: 0.9rem 0.95rem;
-      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      background: rgba(15, 23, 42, 0.68);
+    }
+
+    .trust-box {
+      border: 1px solid rgba(59, 130, 246, 0.28);
+      background: rgba(15, 23, 42, 0.74);
+    }
+
+    .formula {
+      margin-top: 0.65rem;
+      padding: 0.7rem 0.85rem;
+      border-radius: 0.9rem;
+      background: rgba(2, 6, 23, 0.55);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92rem;
+      overflow-x: auto;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 0.85rem;
+    }
+
+    @media (max-width: 760px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 0.8rem;
+      margin-top: 0.85rem;
       overflow: hidden;
-      border-radius: 0.9rem;
-      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 0.95rem;
+      border: 1px solid rgba(148, 163, 184, 0.24);
     }
 
-    th, td {
-      padding: 0.65rem 0.7rem;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-      font-size: 0.92rem;
+    th,
+    td {
       text-align: left;
       vertical-align: top;
+      padding: 0.7rem 0.75rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+      font-size: 0.93rem;
     }
 
     th {
+      background: rgba(2, 6, 23, 0.68);
       color: var(--text);
-      background: rgba(2, 6, 23, 0.65);
-      font-weight: 650;
+      font-weight: 700;
     }
 
     td {
-      color: var(--text);
-      background: rgba(15, 23, 42, 0.55);
+      background: rgba(15, 23, 42, 0.56);
     }
 
     .links-grid {
-      margin-top: 0.8rem;
+      margin-top: 0.9rem;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.6rem;
+      gap: 0.7rem;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 920px) {
       .links-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -328,70 +518,74 @@
 
     @media (max-width: 640px) {
       .links-grid {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
     }
 
     .link-card {
       display: block;
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: 0.9rem;
+      background: rgba(15, 23, 42, 0.92);
       border: 1px solid var(--border);
-      padding: 0.75rem 0.8rem;
-      font-size: 0.86rem;
+      border-radius: 0.95rem;
+      padding: 0.82rem 0.85rem;
       color: var(--muted);
-      transition: border-color 0.14s ease, background 0.14s ease, transform 0.12s ease;
+      transition: border-color 0.14s ease, transform 0.12s ease, background 0.14s ease;
     }
 
     .link-card strong {
       display: block;
-      margin-bottom: 0.2rem;
       color: var(--text);
+      margin-bottom: 0.22rem;
       font-size: 0.95rem;
     }
 
-    .link-card:hover {
-      border-color: rgba(34, 197, 94, 0.7);
+    .link-card:hover,
+    .link-card:focus {
+      border-color: rgba(34, 197, 94, 0.62);
       background: rgba(15, 23, 42, 0.98);
       transform: translateY(-1px);
       text-decoration: none;
     }
 
     details {
-      border: 1px solid rgba(148, 163, 184, 0.22);
+      margin-top: 0.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 0.95rem;
       background: rgba(15, 23, 42, 0.6);
-      border-radius: 0.9rem;
-      padding: 0.7rem 0.85rem;
-      margin-top: 0.55rem;
+      padding: 0.75rem 0.88rem;
     }
 
     summary {
       cursor: pointer;
-      font-weight: 650;
+      font-weight: 700;
       color: var(--text);
     }
 
     details p {
-      margin: 0.5rem 0 0;
+      margin: 0.6rem 0 0;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.93rem;
+    }
+
+    .ad-note {
+      margin-top: 0.8rem;
+      padding: 0.75rem 0.85rem;
+      border-radius: 0.9rem;
+      background: rgba(2, 6, 23, 0.38);
+      border: 1px dashed rgba(148, 163, 184, 0.26);
+      color: var(--muted);
+      font-size: 0.82rem;
     }
 
     footer {
-      margin-top: 1.8rem;
-      font-size: 0.78rem;
-      color: var(--muted);
+      margin-top: 1.9rem;
       text-align: center;
+      color: var(--muted);
+      font-size: 0.79rem;
     }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover { text-decoration: underline; }
   </style>
 
+  <!-- WebApplication schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -401,7 +595,7 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "inLanguage": "en",
-    "description": "Calculate your annualized investment return (CAGR) from starting balance, contributions, years invested and final value.",
+    "description": "Calculate annualized investment return (CAGR) using starting balance, monthly contributions, years invested, and current value.",
     "publisher": {
       "@type": "Organization",
       "name": "FinanceCalcCenter",
@@ -410,7 +604,40 @@
   }
   </script>
 
-  <!-- FAQ Schema (matches the FAQ section below) -->
+  <!-- Organization schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FinanceCalcCenter",
+    "url": "https://financecalccenter.com/",
+    "logo": "https://financecalccenter.com/favicon.ico"
+  }
+  </script>
+
+  <!-- Breadcrumb schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "FinanceCalcCenter",
+        "item": "https://financecalccenter.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Investment Return Calculator",
+        "item": "https://financecalccenter.com/investment-return-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQ schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -421,39 +648,31 @@
         "name": "What is CAGR and why is it useful?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "CAGR (compound annual growth rate) is the constant yearly rate that would turn your starting value into your ending value over a given number of years. It is useful because it lets you compare investments with different time periods using one comparable annual percentage."
+          "text": "CAGR, or compound annual growth rate, is the constant yearly rate that would turn a starting value into an ending value over a given period. It is useful because it helps compare investments across different time frames using one annualized percentage."
         }
       },
       {
         "@type": "Question",
-        "name": "Does this investment return calculator include monthly contributions?",
+        "name": "Does this calculator include monthly contributions?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. If you enter a monthly contribution, the calculator estimates an annualized internal rate of return assuming equal monthly deposits. This gives a more realistic annualized return when you regularly add money."
+          "text": "Yes. If you enter a monthly contribution, the calculator estimates an annualized return using an IRR-style approximation that assumes equal monthly deposits."
         }
       },
       {
         "@type": "Question",
-        "name": "Why can my annualized return look lower even if my account balance grew a lot?",
+        "name": "Why can my annualized return look lower than expected?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "If you contributed regularly, much of the ending balance may come from your own deposits rather than investment growth. Annualized return measures growth on invested capital over time, not just the final account value."
+          "text": "A large ending balance can come partly from your own contributions rather than investment growth. Annualized return measures performance over time, not just the final account size."
         }
       },
       {
         "@type": "Question",
-        "name": "Is CAGR the same as average yearly return?",
+        "name": "Does this calculator include inflation, fees, or taxes?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Not exactly. CAGR is a geometric rate that accounts for compounding. A simple average return can be misleading when returns vary year to year."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does the calculator include fees, taxes, or inflation?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. The calculator focuses on investment performance based on what you put in and what you have now. Fees, taxes, and inflation can reduce your real return. You can estimate inflation impact using the Inflation Calculator."
+          "text": "No. The calculator estimates investment performance based on what you put in and what you have now. Inflation, fees, and taxes can reduce your real return."
         }
       }
     ]
@@ -461,357 +680,508 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
   <div class="wrapper">
-    <header>
-      <a class="back" href="index.html">← Back to FinanceCalcCenter</a>
-      <h1>Investment Return Calculator</h1>
-      <p class="subtitle">
-        Estimate your real investment return (CAGR) based on what you invested and what it’s worth today.
-        Enter your starting balance, optional monthly contributions, how long you invested, and your current value.
-      </p>
+    <a class="back" href="index.html">← Back to FinanceCalcCenter</a>
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">Home</a> / <span>Investment Return Calculator</span>
+    </nav>
+
+    <header class="hero" aria-label="Page introduction">
+      <div class="hero-card">
+        <h1>Investment Return Calculator</h1>
+        <p class="subtitle">
+          Estimate your <strong>annualized investment return (CAGR)</strong> from your starting amount,
+          monthly contributions, years invested, and current value. This tool helps you separate
+          <strong>portfolio growth</strong> from the money you personally added over time.
+        </p>
+
+        <div class="meta-row" aria-label="Content details">
+          <span class="meta-badge">Updated: <span id="lastUpdatedText">April 21, 2026</span></span>
+          <span class="meta-badge">Topic: Investing basics</span>
+          <span class="meta-badge">Use case: CAGR / annualized return</span>
+          <span class="meta-badge">Educational content</span>
+        </div>
+
+        <div class="quick-answer">
+          <strong>Quick answer:</strong> If you want to know whether your account grew because of
+          <em>investment performance</em> or simply because you kept depositing money, this calculator gives
+          you a clearer annualized return estimate than looking at the ending balance alone.
+        </div>
+      </div>
     </header>
 
-    <!-- TOP: calculator + results -->
-    <section class="top-grid" aria-label="Investment return tool and results">
-      <!-- Calculator -->
-      <div class="card" aria-label="Investment return calculator">
-        <div class="row">
-          <div>
-            <label for="startAmount">Starting amount</label>
-            <input id="startAmount" type="number" min="0" step="0.01" value="10000" />
-          </div>
-          <div>
-            <label for="finalAmount">Current value</label>
-            <input id="finalAmount" type="number" min="0" step="0.01" value="16500" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="years">Years invested</label>
-            <input id="years" type="number" min="0.1" step="0.1" value="5" />
-          </div>
-          <div>
-            <label for="monthlyContribution">Average monthly contribution (optional)</label>
-            <input id="monthlyContribution" type="number" min="0" step="0.01" value="0" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div>
-            <label for="currencyLabel">Currency label (optional)</label>
-            <input id="currencyLabel" type="text" maxlength="5" placeholder="USD" />
-          </div>
-        </div>
-
-        <button id="calcBtn" type="button">Calculate investment return</button>
-        <p class="hint">
-          This tool estimates an annualized return (CAGR). With monthly contributions, the result uses an
-          approximate internal rate of return based on equal monthly deposits.
-        </p>
-        <div id="error" class="error" aria-live="polite"></div>
-      </div>
-
-      <!-- Results -->
-      <div class="results-wrap">
-        <div id="results" class="results" style="display:none;">
-          <h2>Return summary</h2>
-          <div class="results-grid">
-            <div class="res-item">
-              <div class="res-label">Annualized return (CAGR)</div>
-              <div id="annualReturn" class="res-value">—</div>
-            </div>
-            <div class="res-item">
-              <div class="res-label">Approx. monthly return</div>
-              <div id="monthlyReturn" class="res-value">—</div>
-            </div>
-            <div class="res-item">
-              <div class="res-label">Total invested</div>
-              <div id="totalInvested" class="res-value">—</div>
-            </div>
-            <div class="res-item">
-              <div class="res-label">Total gain / loss</div>
-              <div id="totalGain" class="res-value">—</div>
-            </div>
-          </div>
-
-          <div class="breakdown" id="detailBreakdown"></div>
-
-          <p class="res-note">
-            Educational use only. Actual investment returns depend on the timing of deposits, fees, taxes, inflation
-            and market changes.
+    <main id="main-content">
+      <section class="top-grid" aria-label="Calculator and results">
+        <div class="card" aria-label="Investment return calculator">
+          <h2 class="tool-title">Calculate your annualized return</h2>
+          <p class="tool-subtitle">
+            Enter your starting balance, current value, time invested, and optional monthly contribution.
           </p>
-        </div>
 
-        <div class="card" style="margin-top:1rem;">
-          <p class="muted" style="margin:0;">
-            Tip: Want to plan future growth instead of measuring past performance? Try the
-            <a href="compound-interest-calculator.html">Compound Interest Calculator</a>.
+          <form id="calculatorForm" novalidate>
+            <div class="row">
+              <div>
+                <label for="startAmount">Starting amount</label>
+                <input id="startAmount" type="number" min="0" step="0.01" inputmode="decimal" value="10000" />
+              </div>
+              <div>
+                <label for="finalAmount">Current value</label>
+                <input id="finalAmount" type="number" min="0" step="0.01" inputmode="decimal" value="16500" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="years">Years invested</label>
+                <input id="years" type="number" min="0.1" step="0.1" inputmode="decimal" value="5" />
+              </div>
+              <div>
+                <label for="monthlyContribution">Average monthly contribution (optional)</label>
+                <input id="monthlyContribution" type="number" min="0" step="0.01" inputmode="decimal" value="0" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="currencyLabel">Currency label (optional)</label>
+                <input id="currencyLabel" type="text" maxlength="8" placeholder="USD" value="USD" />
+              </div>
+              <div>
+                <label for="contributionTiming">Monthly deposits assumed</label>
+                <select id="contributionTiming">
+                  <option value="end" selected>End of each month</option>
+                  <option value="beginning">Beginning of each month</option>
+                </select>
+              </div>
+            </div>
+
+            <button id="calcBtn" type="submit">Calculate investment return</button>
+          </form>
+
+          <p class="hint">
+            With no monthly contributions, the result uses the standard CAGR formula.
+            With contributions, the tool estimates an IRR-style annualized return using equal monthly deposits.
           </p>
+
+          <div id="error" class="error" aria-live="polite"></div>
+
+          <div class="ad-note">
+            Note for site layout: keep any future ad placements clearly separated from the calculator button,
+            inputs, and result cards to avoid accidental clicks and preserve usability.
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ARTICLE UNDER THE TABLE/RESULTS -->
-    <section class="card article" aria-label="Investment return calculator explanation">
-      <h2>How to calculate investment return (CAGR) from your starting amount, contributions, and current value</h2>
-      <p>
-        If you’ve ever looked at an investing account and wondered, “What is my real return?”, you’re not alone.
-        Your balance can grow because the market went up, but it can also grow because you added money every month.
-        This page helps you separate those two effects by calculating an <strong>annualized investment return</strong>.
-        In other words, this <strong>investment return calculator</strong> estimates the yearly growth rate that best explains your results.
-      </p>
-      <p>
-        The key output is <strong>CAGR</strong> (compound annual growth rate). It answers a practical question:
-        <em>“If my investment had grown at one steady rate each year, what rate would turn my starting amount and contributions into today’s value?”</em>
-        This is especially useful when you want to compare different investments, time periods, or strategies using one number.
-      </p>
+        <div>
+          <div id="results" class="results" aria-live="polite">
+            <h2>Return summary</h2>
 
-      <h2>What this investment return calculator includes (and what it does not)</h2>
-      <p>
-        This tool is designed for real-life inputs: a starting balance, an optional monthly contribution, a time period,
-        and a current value. It then estimates your annualized return.
-      </p>
-      <ul>
-        <li><strong>Starting amount</strong> is treated as your initial deposit at the beginning.</li>
-        <li><strong>Monthly contributions</strong> are treated as equal deposits each month (simple, consistent schedule).</li>
-        <li><strong>Years invested</strong> is the time your money has been invested.</li>
-        <li><strong>Current value</strong> is what your account is worth now.</li>
-      </ul>
-      <p class="muted">
-        Note: This calculator does not automatically subtract <strong>fees</strong>, <strong>taxes</strong>, or <strong>inflation</strong>.
-        To understand purchasing power, use the <a href="inflation-calculator.html">Inflation Calculator</a>.
-      </p>
+            <div class="results-grid">
+              <div class="res-item">
+                <div class="res-label">Annualized return (CAGR)</div>
+                <div id="annualReturn" class="res-value">—</div>
+              </div>
 
-      <h2>How to interpret the results</h2>
-      <p>
-        The results section shows four numbers. Here’s how to read them like an investor (not just as math):
-      </p>
-      <ul>
-        <li><strong>Annualized return (CAGR):</strong> Your estimated yearly compounded return. This is the most comparable performance metric.</li>
-        <li><strong>Approx. monthly return:</strong> The monthly equivalent of the annualized rate (useful for intuition, not forecasting).</li>
-        <li><strong>Total invested:</strong> Your starting amount plus all monthly contributions over the period.</li>
-        <li><strong>Total gain / loss:</strong> Current value minus total invested. This shows whether you’re ahead or behind overall.</li>
-      </ul>
+              <div class="res-item">
+                <div class="res-label">Approx. monthly return</div>
+                <div id="monthlyReturn" class="res-value">—</div>
+              </div>
 
-      <div class="callout">
-        <strong>Important:</strong> A large current value does not automatically mean a high return.
-        If you contributed regularly, the account may be bigger mainly because you deposited more money.
-        Annualized return is what tells you how efficiently your invested money grew over time.
-      </div>
+              <div class="res-item">
+                <div class="res-label">Total invested</div>
+                <div id="totalInvested" class="res-value">—</div>
+              </div>
 
-      <h2>Investment return example with numbers (CAGR calculation)</h2>
-      <p>
-        Let’s walk through a simple example without monthly contributions first, because it shows the core idea of CAGR.
-      </p>
-      <div class="example">
-        <p><strong>Example A (no contributions):</strong></p>
+              <div class="res-item">
+                <div class="res-label">Total gain / loss</div>
+                <div id="totalGain" class="res-value">—</div>
+              </div>
+            </div>
+
+            <div id="detailBreakdown" class="breakdown"></div>
+
+            <p id="interpretationText" class="res-note"></p>
+          </div>
+
+          <div class="card mini-card">
+            <p class="muted" style="margin:0;">
+              Prefer forward-looking planning instead of measuring past performance?
+              Use the <a href="compound-interest-calculator.html">Compound Interest Calculator</a>
+              to model future growth from recurring contributions.
+            </p>
+          </div>
+
+          <div class="card mini-card">
+            <p class="muted" style="margin:0;">
+              Want to see how inflation changes the real value of returns?
+              Try the <a href="inflation-calculator.html">Inflation Calculator</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card toc" aria-label="Table of contents">
+        <h2>On this page</h2>
         <ul>
-          <li>Starting amount: <strong>$10,000</strong></li>
-          <li>Current value: <strong>$16,500</strong></li>
-          <li>Years invested: <strong>5</strong></li>
+          <li><a href="#how-it-works">How the calculator works</a></li>
+          <li><a href="#what-it-includes">What it includes and excludes</a></li>
+          <li><a href="#how-to-read-results">How to interpret the results</a></li>
+          <li><a href="#examples">Worked examples</a></li>
+          <li><a href="#mistakes">Common mistakes</a></li>
+          <li><a href="#benchmarks">Benchmarks and inflation</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#related-tools">Related tools</a></li>
         </ul>
-        <p class="muted">
-          CAGR formula: CAGR = (Final / Start)^(1/Years) − 1
-        </p>
-        <p>
-          In this case: (16,500 / 10,000)^(1/5) − 1 ≈ <strong>10.5% per year</strong>.
-          That means a steady 10.5% compounded yearly growth would take $10,000 to about $16,500 in five years.
-        </p>
-      </div>
+      </section>
 
-      <p>
-        Now let’s add the realistic part: regular monthly deposits. When you add money each month, the “true performance”
-        should consider the timing of deposits. A deposit made last month has less time to grow than a deposit made five years ago.
-        That’s why the calculator estimates an <strong>internal rate of return</strong> (IRR-style) when contributions are included.
-      </p>
+      <article class="card article" aria-label="Investment return explainer article">
+        <section class="trust-box" aria-label="Editorial note">
+          <strong>Editorial note:</strong>
+          This page is designed for educational use. It explains what the calculator measures,
+          when CAGR is useful, where it can mislead, and how to compare your results more carefully.
+          It does not provide investment, tax, or legal advice.
+        </section>
 
-      <div class="example">
-        <p><strong>Example B (with contributions):</strong></p>
-        <ul>
-          <li>Starting amount: <strong>$10,000</strong></li>
-          <li>Monthly contribution: <strong>$200</strong></li>
-          <li>Years invested: <strong>5</strong> (≈ 60 deposits)</li>
-          <li>Current value: <strong>$26,000</strong></li>
-        </ul>
-        <p>
-          Total invested ≈ $10,000 + $200 × 60 = <strong>$22,000</strong>. Total gain ≈ $26,000 − $22,000 = <strong>$4,000</strong>.
-          Your annualized return is the rate that makes those monthly deposits compound to roughly $26,000 by the end.
-        </p>
-        <p class="muted">
-          Tip: If your CAGR looks “lower than expected” here, it may be because much of the ending balance came from contributions,
-          not market growth.
-        </p>
-      </div>
+        <section id="how-it-works">
+          <h2>How this investment return calculator works</h2>
+          <p>
+            Many people check an account balance and assume that a bigger number automatically means a better
+            investment result. But that is not always true. Your account may be larger simply because you added
+            money every month. This page helps you estimate a more meaningful performance number:
+            <strong>annualized return</strong>.
+          </p>
+          <p>
+            When there are <strong>no monthly contributions</strong>, the calculator uses the standard
+            <strong>CAGR formula</strong>. When you do make regular deposits, it switches to an
+            <strong>IRR-style estimate</strong> so the timing of those monthly contributions is reflected more realistically.
+          </p>
 
-      <h2>Common mistakes when calculating investment returns</h2>
-      <ul>
-        <li><strong>Comparing only final balances:</strong> Two investors can end with the same balance but have different returns if one invested more money.</li>
-        <li><strong>Ignoring time:</strong> A 20% gain in one year is not the same as a 20% gain over five years.</li>
-        <li><strong>Using a simple average instead of CAGR:</strong> CAGR is a compounding-aware metric; simple averages can mislead.</li>
-        <li><strong>Forgetting fees and taxes:</strong> Net returns can be noticeably lower than “headline” returns.</li>
-        <li><strong>Mixing saving and investing goals:</strong> Short-term goals usually need safer saving; long-term goals can tolerate volatility.</li>
-      </ul>
+          <div class="formula" aria-label="CAGR formula">
+            CAGR = (Final Value / Starting Value)^(1 / Years) - 1
+          </div>
 
-      <h2>When should you use this tool?</h2>
-      <p>
-        This <strong>annualized return calculator</strong> is best when you want a clear “apples-to-apples” number for performance.
-        Use it when you want to:
-      </p>
-      <ul>
-        <li>Estimate your <strong>investment CAGR</strong> from account history and contributions</li>
-        <li>Compare your results with a benchmark like the <a href="average-stock-market-return-explained.html">average stock market return</a></li>
-        <li>Understand whether <strong>more contributions</strong> or <strong>higher return</strong> drove your growth</li>
-        <li>Decide between <a href="savings-vs-investing-which-comes-first.html">saving vs investing</a> for your next financial step</li>
-      </ul>
+          <p>
+            In plain English: CAGR answers this question —
+            <em>“What single yearly rate would turn my starting value into my ending value over this time period?”</em>
+          </p>
+        </section>
 
-      <h2>Benchmarking your return (and why inflation matters)</h2>
-      <p>
-        Many people search for “average stock market return” to judge whether they are doing well. Benchmarks are useful,
-        but remember: benchmarks are not guarantees, and your real-life return depends on what you invested in and when.
-        To understand your <strong>real return</strong> (purchasing power), consider inflation too.
-      </p>
-      <p>
-        If your annualized return is 8% but inflation is 3%, your inflation-adjusted return is closer to 5%.
-        You can explore this effect with the <a href="inflation-calculator.html">Inflation Calculator</a>.
-      </p>
+        <section id="what-it-includes">
+          <h2>What this calculator includes and what it does not</h2>
+          <p>
+            This tool is intentionally simple enough to be useful, but detailed enough to be more realistic than
+            a basic ending-balance comparison.
+          </p>
 
-      <h2>Planning next steps: saving goals, debt payoff, and compounding</h2>
-      <p>
-        Measuring return is one part of the story. The next step is using that insight to plan.
-        If you’re building toward a target amount, the <a href="savings-goal-calculator.html">Savings Goal Calculator</a>
-        helps you calculate how much to save monthly. If you’re paying down high-interest debt, improving your cash flow can
-        sometimes beat chasing higher returns — use the <a href="debt-payoff-calculator.html">Debt Payoff Calculator</a>
-        to see the impact of extra payments.
-      </p>
-      <p>
-        And if your goal is forward-looking growth, the <a href="compound-interest-calculator.html">Compound Interest Calculator</a>
-        helps you model future value under different contribution schedules and compounding assumptions.
-      </p>
+          <div class="two-col">
+            <div class="example">
+              <h3>Included</h3>
+              <ul>
+                <li>Starting amount</li>
+                <li>Current value</li>
+                <li>Years invested</li>
+                <li>Optional equal monthly contributions</li>
+                <li>Annualized return estimate</li>
+                <li>Monthly equivalent return estimate</li>
+              </ul>
+            </div>
 
-      <h2>Quick comparison: CAGR vs total gain</h2>
-      <table aria-label="CAGR vs total gain comparison table">
-        <thead>
-          <tr>
-            <th>Metric</th>
-            <th>What it tells you</th>
-            <th>Best used for</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Total gain / loss</strong></td>
-            <td>How much you are up or down compared to what you deposited.</td>
-            <td>“Am I ahead overall?” and goal tracking.</td>
-          </tr>
-          <tr>
-            <td><strong>CAGR (annualized return)</strong></td>
-            <td>Your estimated yearly compounded performance over time.</td>
-            <td>Comparing investments and performance across different time periods.</td>
-          </tr>
-          <tr>
-            <td><strong>Monthly return (approx.)</strong></td>
-            <td>A monthly equivalent of your annualized rate (for intuition).</td>
-            <td>Understanding what “8% yearly” roughly feels like month-to-month.</td>
-          </tr>
-        </tbody>
-      </table>
+            <div class="example">
+              <h3>Not included automatically</h3>
+              <ul>
+                <li>Taxes</li>
+                <li>Fund or platform fees</li>
+                <li>Inflation adjustment</li>
+                <li>Irregular deposits and withdrawals</li>
+                <li>Dividend timing details</li>
+                <li>Different contribution amounts by month</li>
+              </ul>
+            </div>
+          </div>
 
-      <div class="callout">
-        <strong>Educational reminder:</strong> This calculator provides estimates. Real-world investing includes volatility,
-        changing contribution amounts, deposits made at different times, and costs (fees/taxes). Use the output as a planning aid,
-        not as financial advice.
-      </div>
+          <p class="muted">
+            For real purchasing-power analysis, compare your result with inflation using the
+            <a href="inflation-calculator.html">Inflation Calculator</a>.
+          </p>
+        </section>
 
-      <h2>Investment Return Calculator FAQ</h2>
+        <section id="how-to-read-results">
+          <h2>How to interpret the results</h2>
+          <p>
+            The result cards show four numbers. Each one answers a different question:
+          </p>
+          <ul>
+            <li><strong>Annualized return (CAGR):</strong> your best “apples-to-apples” comparison metric.</li>
+            <li><strong>Approx. monthly return:</strong> the monthly rate consistent with that annualized number.</li>
+            <li><strong>Total invested:</strong> the amount you personally contributed over the full period.</li>
+            <li><strong>Total gain / loss:</strong> how far above or below total deposits your account currently is.</li>
+          </ul>
 
-      <details>
-        <summary>What is CAGR and why is it useful?</summary>
-        <p>
-          CAGR (compound annual growth rate) is the constant yearly rate that would turn your starting value into your ending value
-          over a given number of years. It’s useful because it makes different investments comparable using a single annual percentage.
-        </p>
-      </details>
+          <div class="callout">
+            <strong>Important:</strong> a high ending balance does not automatically mean strong performance.
+            If your total invested amount is also high, your annualized return may still be modest.
+          </div>
 
-      <details>
-        <summary>Does this calculator include monthly contributions?</summary>
-        <p>
-          Yes. If you enter a monthly contribution, the calculator estimates an annualized return assuming equal monthly deposits.
-          This is more realistic for people who invest regularly (for example, monthly index fund contributions).
-        </p>
-      </details>
+          <p>
+            This is why many investors are surprised when their account “grew a lot” but their annualized return looks
+            lower than expected. Often the missing piece is contribution math.
+          </p>
+        </section>
 
-      <details>
-        <summary>Why is my annualized return lower than I expected?</summary>
-        <p>
-          Often it’s because contributions make the ending balance larger even if market growth was modest. Annualized return focuses on
-          performance (growth), while total balance reflects both growth and how much you deposited.
-        </p>
-      </details>
+        <section id="examples">
+          <h2>Worked examples</h2>
 
-      <details>
-        <summary>Is CAGR the same as average yearly return?</summary>
-        <p>
-          Not exactly. CAGR is a compounding-aware (geometric) measure. A simple average can overstate performance when returns vary.
-          CAGR is usually the better metric for long-term comparisons.
-        </p>
-      </details>
+          <div class="example">
+            <h3>Example A: no monthly contributions</h3>
+            <ul>
+              <li>Starting amount: <strong>$10,000</strong></li>
+              <li>Current value: <strong>$16,500</strong></li>
+              <li>Years invested: <strong>5</strong></li>
+            </ul>
+            <p>
+              Using the CAGR formula, the annualized return is about <strong>10.54% per year</strong>.
+              That means a steady compounded yearly return of roughly 10.54% would take $10,000 to about $16,500 in five years.
+            </p>
+          </div>
 
-      <details>
-        <summary>Does the calculator include inflation, fees, or taxes?</summary>
-        <p>
-          No. Those factors can reduce your real return. To estimate how inflation affects purchasing power, use the
-          <a href="inflation-calculator.html">Inflation Calculator</a>. Fees and taxes depend on your platform and jurisdiction.
-        </p>
-      </details>
+          <div class="example">
+            <h3>Example B: with monthly contributions</h3>
+            <ul>
+              <li>Starting amount: <strong>$10,000</strong></li>
+              <li>Monthly contribution: <strong>$200</strong></li>
+              <li>Years invested: <strong>5</strong></li>
+              <li>Current value: <strong>$26,000</strong></li>
+            </ul>
+            <p>
+              Total invested is about <strong>$22,000</strong>. The total gain is about <strong>$4,000</strong>.
+              Your annualized return is the rate that would reasonably grow the initial deposit plus recurring
+              monthly deposits into today’s value.
+            </p>
+            <p class="muted">
+              This example shows why “ending balance only” can be misleading. A large portion of the total value
+              may come from your own deposits.
+            </p>
+          </div>
 
-      <h2>Related tools & guides</h2>
-      <div class="links-grid">
-        <a class="link-card" href="compound-interest-calculator.html">
-          <strong>Compound Interest Calculator</strong>
-          <span>Project future value with regular contributions and different compounding frequencies.</span>
-        </a>
-        <a class="link-card" href="savings-goal-calculator.html">
-          <strong>Savings Goal Calculator</strong>
-          <span>See how much you need to save each month to hit a target amount by a deadline.</span>
-        </a>
-        <a class="link-card" href="inflation-calculator.html">
-          <strong>Inflation Calculator</strong>
-          <span>Estimate how inflation changes purchasing power over time.</span>
-        </a>
-        <a class="link-card" href="average-stock-market-return-explained.html">
-          <strong>Average Stock Market Return Explained</strong>
-          <span>Understand typical long-term market returns with clear examples.</span>
-        </a>
-        <a class="link-card" href="savings-vs-investing-which-comes-first.html">
-          <strong>Savings vs Investing: Which Comes First?</strong>
-          <span>Learn how to prioritize your emergency fund, debt payoff and investing.</span>
-        </a>
-        <a class="link-card" href="debt-payoff-calculator.html">
-          <strong>Debt Payoff Calculator</strong>
-          <span>See how extra payments can help you become debt-free faster.</span>
-        </a>
-        <a class="link-card" href="what-is-compound-interest.html">
-          <strong>What Is Compound Interest?</strong>
-          <span>A clear guide to compounding and why time matters.</span>
-        </a>
-        <a class="link-card" href="loan-payment-calculator.html">
-          <strong>Loan Payment Calculator</strong>
-          <span>Estimate monthly payments and total cost of a loan.</span>
-        </a>
-        <a class="link-card" href="retirement-calculator.html">
-          <strong>Retirement Calculator</strong>
-          <span>Estimate how much you may need to retire and how contributions affect your goal.</span>
-        </a>
-      </div>
+          <div class="callout">
+            <strong>Practical takeaway:</strong> If you are comparing your results with market averages,
+            compare your <strong>annualized return</strong>, not just your final balance.
+          </div>
+        </section>
 
-      <p class="muted" style="margin-top:1rem;">
-        Looking for a different planning tool? Browse from the <a href="index.html">FinanceCalcCenter home page</a>.
-      </p>
-    </section>
+        <section id="mistakes">
+          <h2>Common mistakes when calculating investment return</h2>
+          <ul>
+            <li><strong>Comparing balances instead of returns:</strong> higher balance can simply mean higher deposits.</li>
+            <li><strong>Ignoring time:</strong> a 20% gain in one year is very different from a 20% gain over five years.</li>
+            <li><strong>Using simple averages instead of CAGR:</strong> simple averages ignore compounding effects.</li>
+            <li><strong>Forgetting costs:</strong> fees and taxes can reduce real-world returns materially.</li>
+            <li><strong>Ignoring inflation:</strong> nominal return is not the same as real purchasing-power growth.</li>
+            <li><strong>Mixing saving and investing decisions:</strong> short-term money needs often require lower-risk choices.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>When should you use this calculator?</h2>
+          <p>
+            This tool is useful when you want to evaluate past performance in a clearer, more comparable way.
+            It works especially well if you want to:
+          </p>
+          <ul>
+            <li>estimate your account’s <strong>annualized performance</strong></li>
+            <li>compare your own results with long-term market benchmarks</li>
+            <li>see whether growth came mostly from <strong>returns</strong> or from <strong>contributions</strong></li>
+            <li>decide whether you should focus next on saving, investing, or debt payoff</li>
+          </ul>
+        </section>
+
+        <section id="benchmarks">
+          <h2>Benchmarking your return and why inflation matters</h2>
+          <p>
+            Many people search for the “average stock market return” to judge whether they are doing well.
+            That can be useful, but your personal result depends on what you invested in, how long you stayed invested,
+            how regularly you contributed, and what costs you paid along the way.
+          </p>
+          <p>
+            Inflation matters too. A portfolio that grows at 8% in a year does not increase your real purchasing power
+            by the full 8% if inflation is 3%. In that case, your rough inflation-adjusted return is closer to 5%.
+          </p>
+          <p>
+            For a clearer comparison, read
+            <a href="average-stock-market-return-explained.html">Average Stock Market Return Explained</a>
+            and compare that with the output from this page.
+          </p>
+        </section>
+
+        <section>
+          <h2>What this page is meant to help you do next</h2>
+          <p>
+            Measuring return is only one part of better financial planning. After understanding how your money has grown,
+            the next question is usually what to do with that information.
+          </p>
+          <ul>
+            <li>
+              If you want to project future growth, use the
+              <a href="compound-interest-calculator.html">Compound Interest Calculator</a>.
+            </li>
+            <li>
+              If you are working toward a specific target amount, use the
+              <a href="savings-goal-calculator.html">Savings Goal Calculator</a>.
+            </li>
+            <li>
+              If high-interest debt is competing with investing, compare trade-offs with the
+              <a href="debt-payoff-calculator.html">Debt Payoff Calculator</a>.
+            </li>
+            <li>
+              If you want to explore purchasing power, use the
+              <a href="inflation-calculator.html">Inflation Calculator</a>.
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Quick comparison: CAGR vs total gain</h2>
+          <table aria-label="CAGR vs total gain comparison table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>What it tells you</th>
+                <th>Best used for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Total gain / loss</strong></td>
+                <td>How much you are ahead or behind relative to everything you deposited.</td>
+                <td>Checking whether you are up overall.</td>
+              </tr>
+              <tr>
+                <td><strong>CAGR / annualized return</strong></td>
+                <td>Your estimated yearly compounded performance over the full period.</td>
+                <td>Comparing performance across investments and time frames.</td>
+              </tr>
+              <tr>
+                <td><strong>Approx. monthly return</strong></td>
+                <td>The monthly rate that matches your annualized rate.</td>
+                <td>Building intuition about compounding pace.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="callout">
+          <strong>Educational reminder:</strong>
+          Real-world returns depend on contribution timing, market volatility, fees, taxes, inflation,
+          and whether money was added or withdrawn irregularly. Use this tool as a planning and interpretation aid,
+          not as personal financial advice.
+        </section>
+
+        <section id="faq">
+          <h2>Investment Return Calculator FAQ</h2>
+
+          <details>
+            <summary>What is CAGR and why is it useful?</summary>
+            <p>
+              CAGR stands for compound annual growth rate. It gives you one steady yearly rate that would
+              transform the starting value into the ending value over the chosen time period.
+              It is useful because it makes different investments easier to compare.
+            </p>
+          </details>
+
+          <details>
+            <summary>Does this calculator include monthly contributions?</summary>
+            <p>
+              Yes. If you enter a monthly contribution, the calculator estimates an IRR-style annualized return
+              assuming equal deposits every month.
+            </p>
+          </details>
+
+          <details>
+            <summary>Why does my return sometimes look lower than expected?</summary>
+            <p>
+              Because total balance and investment performance are not the same thing.
+              A large ending value may reflect strong saving behavior rather than especially strong market returns.
+            </p>
+          </details>
+
+          <details>
+            <summary>Is CAGR the same as average yearly return?</summary>
+            <p>
+              Not exactly. CAGR is compounding-aware, while a simple average can overstate or distort performance
+              when returns vary from one period to another.
+            </p>
+          </details>
+
+          <details>
+            <summary>Does the calculator include inflation, fees, or taxes?</summary>
+            <p>
+              No. Those factors are not automatically included. That means your real-world, after-cost return
+              may be lower than the estimate shown here.
+            </p>
+          </details>
+        </section>
+
+        <section id="related-tools">
+          <h2>Related tools and guides</h2>
+          <div class="links-grid">
+            <a class="link-card" href="compound-interest-calculator.html">
+              <strong>Compound Interest Calculator</strong>
+              <span>Model future value with recurring contributions and compounding.</span>
+            </a>
+
+            <a class="link-card" href="savings-goal-calculator.html">
+              <strong>Savings Goal Calculator</strong>
+              <span>See how much you need to save monthly to reach a target amount.</span>
+            </a>
+
+            <a class="link-card" href="inflation-calculator.html">
+              <strong>Inflation Calculator</strong>
+              <span>Estimate how inflation affects purchasing power over time.</span>
+            </a>
+
+            <a class="link-card" href="average-stock-market-return-explained.html">
+              <strong>Average Stock Market Return Explained</strong>
+              <span>Understand how long-term market averages are usually discussed.</span>
+            </a>
+
+            <a class="link-card" href="savings-vs-investing-which-comes-first.html">
+              <strong>Savings vs Investing: Which Comes First?</strong>
+              <span>Learn how to prioritize emergency savings, debt, and investing.</span>
+            </a>
+
+            <a class="link-card" href="debt-payoff-calculator.html">
+              <strong>Debt Payoff Calculator</strong>
+              <span>See whether improving cash flow may beat chasing returns.</span>
+            </a>
+
+            <a class="link-card" href="what-is-compound-interest.html">
+              <strong>What Is Compound Interest?</strong>
+              <span>A beginner-friendly guide to long-term compounding.</span>
+            </a>
+
+            <a class="link-card" href="loan-payment-calculator.html">
+              <strong>Loan Payment Calculator</strong>
+              <span>Estimate monthly loan payments and long-term borrowing cost.</span>
+            </a>
+
+            <a class="link-card" href="retirement-calculator.html">
+              <strong>Retirement Calculator</strong>
+              <span>Estimate how your long-term contributions affect retirement planning.</span>
+            </a>
+          </div>
+
+          <p class="muted" style="margin-top:1rem;">
+            Looking for other personal finance tools? Browse the
+            <a href="index.html">FinanceCalcCenter home page</a>.
+          </p>
+        </section>
+      </article>
+    </main>
 
     <footer>
-      © <span id="year"></span> FinanceCalcCenter — Educational use only. Not financial advice.
+      © <span id="year"></span> FinanceCalcCenter — Educational use only. Not financial, tax, or legal advice.
     </footer>
   </div>
 
@@ -824,49 +1194,104 @@
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
       });
-      return currency ? formatted + " " + currency : formatted;
+      return currency ? `${formatted} ${currency}` : formatted;
     }
 
     function formatPercent(value) {
       if (!isFinite(value)) return "—";
-      return value.toFixed(2) + " %";
+      return `${value.toFixed(2)} %`;
     }
 
-    function futureValueWithMonthly(rateAnnual, years, start, monthly) {
+    function sanitizeCurrencyLabel(value) {
+      return (value || "")
+        .trim()
+        .replace(/[^A-Za-z$€£¥0-9]/g, "")
+        .slice(0, 8);
+    }
+
+    function futureValueWithMonthly(rateAnnual, years, start, monthly, timing) {
       const n = Math.round(years * 12);
       const r = rateAnnual / 12;
-      if (n === 0) return start;
-      if (Math.abs(r) < 1e-10) {
+
+      if (n <= 0) return start;
+
+      if (Math.abs(r) < 1e-12) {
         return start + monthly * n;
       }
+
       const factor = Math.pow(1 + r, n);
-      return start * factor + monthly * (factor - 1) / r;
+
+      // ordinary annuity: end of month
+      let contributionFV = monthly * ((factor - 1) / r);
+
+      // annuity due: beginning of month
+      if (timing === "beginning") {
+        contributionFV *= (1 + r);
+      }
+
+      return start * factor + contributionFV;
     }
 
-    function estimateIrrAnnual(years, start, monthly, finalAmount) {
+    function estimateAnnualizedReturn(years, start, monthly, finalAmount, timing) {
       const n = Math.round(years * 12);
-      if (n <= 0) return NaN;
+      if (n <= 0 || years <= 0) return NaN;
 
-      // If no monthly contributions, use CAGR directly
+      // Pure CAGR if there are no monthly contributions
       if (monthly <= 0) {
         if (start <= 0 || finalAmount <= 0) return NaN;
         return Math.pow(finalAmount / start, 1 / years) - 1;
       }
 
-      // Binary search for rate that matches final amount under equal monthly deposits
-      let low = -0.99;    // -99% per year
-      let high = 5;       // 500% per year
-      for (let i = 0; i < 60; i++) {
+      // Binary search for annual rate
+      let low = -0.999;
+      let high = 10;
+
+      for (let i = 0; i < 120; i++) {
         const mid = (low + high) / 2;
-        const fv = futureValueWithMonthly(mid, years, start, monthly);
-        if (isNaN(fv)) return NaN;
+        const fv = futureValueWithMonthly(mid, years, start, monthly, timing);
+
+        if (!isFinite(fv)) return NaN;
+
         if (fv > finalAmount) {
           high = mid;
         } else {
           low = mid;
         }
       }
+
       return (low + high) / 2;
+    }
+
+    function getInterpretation(annualRate, totalGain, totalInvested, finalAmount, monthlyContribution) {
+      if (!isFinite(annualRate)) return "";
+
+      const pct = annualRate * 100;
+
+      if (finalAmount < totalInvested) {
+        return "Your current value is below total invested, so the result reflects an overall loss relative to deposits.";
+      }
+
+      if (monthlyContribution > 0 && pct < 5) {
+        return "Your balance may have grown meaningfully, but much of that growth likely came from regular contributions rather than a high investment return.";
+      }
+
+      if (pct < 0) {
+        return "The estimated annualized return is negative, which means the portfolio value did not keep up with the money invested over this period.";
+      }
+
+      if (pct < 4) {
+        return "This is a modest annualized return. Compare it with inflation and with your portfolio risk level before drawing conclusions.";
+      }
+
+      if (pct < 8) {
+        return "This is a moderate annualized return. It may be reasonable depending on the period, asset mix, and contribution pattern.";
+      }
+
+      if (pct < 12) {
+        return "This is a relatively strong annualized return over the measured period, assuming the inputs reflect your actual investment history.";
+      }
+
+      return "This is a high annualized return estimate. Double-check the inputs, especially time invested and contribution amounts, to make sure the result matches reality.";
     }
 
     function calculateReturn() {
@@ -874,7 +1299,8 @@
       const finalAmount = parseFloat($("finalAmount").value || "0");
       const years = parseFloat($("years").value || "0");
       const monthlyContribution = parseFloat($("monthlyContribution").value || "0");
-      const currency = ($("currencyLabel").value || "USD").trim();
+      const currency = sanitizeCurrencyLabel($("currencyLabel").value) || "USD";
+      const contributionTiming = $("contributionTiming").value;
 
       const errorEl = $("error");
       const resultsEl = $("results");
@@ -883,52 +1309,88 @@
       const totalInvestedEl = $("totalInvested");
       const totalGainEl = $("totalGain");
       const breakdownEl = $("detailBreakdown");
+      const interpretationEl = $("interpretationText");
 
       errorEl.textContent = "";
       resultsEl.style.display = "none";
-      breakdownEl.textContent = "";
+      breakdownEl.innerHTML = "";
+      interpretationEl.textContent = "";
 
-      if ((startAmount <= 0 && monthlyContribution <= 0) || isNaN(startAmount)) {
+      if ((startAmount <= 0 && monthlyContribution <= 0) || isNaN(startAmount) || isNaN(monthlyContribution)) {
         errorEl.textContent = "Please enter a valid starting amount or monthly contribution.";
         return;
       }
+
       if (finalAmount <= 0 || isNaN(finalAmount)) {
         errorEl.textContent = "Please enter a valid current value.";
         return;
       }
+
       if (years <= 0 || isNaN(years)) {
-        errorEl.textContent = "Please enter how many years you were invested.";
+        errorEl.textContent = "Please enter a valid number of years invested.";
+        return;
+      }
+
+      if (monthlyContribution < 0) {
+        errorEl.textContent = "Monthly contribution cannot be negative.";
+        return;
+      }
+
+      if (startAmount < 0) {
+        errorEl.textContent = "Starting amount cannot be negative.";
         return;
       }
 
       const nMonths = Math.round(years * 12);
-      const totalContributions = startAmount + monthlyContribution * nMonths;
+      const totalContributions = startAmount + (monthlyContribution * nMonths);
       const totalGain = finalAmount - totalContributions;
 
-      const irrAnnual = estimateIrrAnnual(years, startAmount, monthlyContribution, finalAmount);
-      if (!isFinite(irrAnnual)) {
+      const annualRate = estimateAnnualizedReturn(
+        years,
+        startAmount,
+        monthlyContribution,
+        finalAmount,
+        contributionTiming
+      );
+
+      if (!isFinite(annualRate)) {
         errorEl.textContent = "Could not estimate a consistent annualized return with these inputs.";
         return;
       }
-      const irrMonthly = Math.pow(1 + irrAnnual, 1 / 12) - 1;
 
-      annualEl.textContent = formatPercent(irrAnnual * 100);
-      monthlyEl.textContent = formatPercent(irrMonthly * 100);
+      const monthlyRate = Math.pow(1 + annualRate, 1 / 12) - 1;
+
+      annualEl.textContent = formatPercent(annualRate * 100);
+      monthlyEl.textContent = formatPercent(monthlyRate * 100);
       totalInvestedEl.textContent = formatMoney(totalContributions, currency);
       totalGainEl.textContent = formatMoney(totalGain, currency);
 
       breakdownEl.innerHTML =
-        "<span>Total invested: " + formatMoney(totalContributions, currency) +
-        "</span><span>Current value: " + formatMoney(finalAmount, currency) +
-        "</span><span>Time invested: " + years.toFixed(1) + " years" +
-        (monthlyContribution ? "</span><span>Monthly contribution: " + formatMoney(monthlyContribution, currency) : "") +
-        "</span>";
+        `<span>Total invested: ${formatMoney(totalContributions, currency)}</span>` +
+        `<span>Current value: ${formatMoney(finalAmount, currency)}</span>` +
+        `<span>Time invested: ${years.toFixed(1)} years</span>` +
+        (monthlyContribution > 0
+          ? `<span>Monthly contribution: ${formatMoney(monthlyContribution, currency)}</span>`
+          : "") +
+        `<span>Deposit timing: ${contributionTiming === "beginning" ? "Beginning of month" : "End of month"}</span>`;
+
+      interpretationEl.textContent = getInterpretation(
+        annualRate,
+        totalGain,
+        totalContributions,
+        finalAmount,
+        monthlyContribution
+      );
 
       resultsEl.style.display = "block";
     }
 
-    $("calcBtn").addEventListener("click", calculateReturn);
-    document.getElementById("year").textContent = new Date().getFullYear();
+    $("calculatorForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      calculateReturn();
+    });
+
+    $("year").textContent = new Date().getFullYear();
 
     // Example on load
     calculateReturn();
