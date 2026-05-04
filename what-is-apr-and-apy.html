@@ -2,23 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>What Is APR and APY? A Simple Explanation | FinanceCalcCenter</title>
+  <title>What Is APR and APY? APR vs APY Explained Simply | FinanceCalcCenter</title>
 
-  <meta name="description" content="Learn the difference between APR and APY, how they work, when each one matters, and how to compare loans and savings correctly. Simple explanations with clear examples." />
+  <meta name="description" content="Understand APR vs APY in simple terms. Learn what APR means, what APY means, how compounding changes interest, and how to compare loans, credit cards, savings accounts, and investments." />
+  <meta name="keywords" content="APR, APY, APR vs APY, annual percentage rate, annual percentage yield, compound interest, savings interest, loan interest, finance basics" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://financecalccenter.com/what-is-apr-and-apy.html" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="What Is APR and APY? A Simple Explanation" />
-  <meta property="og:description" content="Understand APR vs APY, how interest really works, and how to compare loans and savings the right way." />
+  <meta property="og:title" content="What Is APR and APY? APR vs APY Explained Simply" />
+  <meta property="og:description" content="APR and APY both describe interest, but they are not the same. Learn the difference with clear examples for loans, credit cards, savings, and investments." />
   <meta property="og:url" content="https://financecalccenter.com/what-is-apr-and-apy.html" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="What Is APR and APY? A Simple Explanation" />
-  <meta name="twitter:description" content="APR vs APY explained in plain English with practical examples." />
+  <meta name="twitter:title" content="What Is APR and APY? APR vs APY Explained Simply" />
+  <meta name="twitter:description" content="APR vs APY explained in plain English with practical examples and simple comparison tips." />
 
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -40,70 +42,474 @@
     gtag('config', 'G-68ZVCW4FWK');
   </script>
 
-  <!-- Schema -->
+  <!-- Schema: Article + FAQ + Breadcrumb -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "What Is APR and APY? A Simple Explanation",
-    "description": "Learn the difference between APR and APY, how they work, and when each one matters.",
-    "author": {
-      "@type": "Organization",
-      "name": "FinanceCalcCenter"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "FinanceCalcCenter"
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://financecalccenter.com/what-is-apr-and-apy.html"
-    },
-    "inLanguage": "en"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://financecalccenter.com/#organization",
+        "name": "FinanceCalcCenter",
+        "url": "https://financecalccenter.com/"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://financecalccenter.com/#website",
+        "name": "FinanceCalcCenter",
+        "url": "https://financecalccenter.com/",
+        "publisher": {
+          "@id": "https://financecalccenter.com/#organization"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://financecalccenter.com/what-is-apr-and-apy.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://financecalccenter.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Finance Guides",
+            "item": "https://financecalccenter.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "What Is APR and APY?",
+            "item": "https://financecalccenter.com/what-is-apr-and-apy.html"
+          }
+        ]
+      },
+      {
+        "@type": "Article",
+        "@id": "https://financecalccenter.com/what-is-apr-and-apy.html#article",
+        "headline": "What Is APR and APY? APR vs APY Explained Simply",
+        "description": "Understand the difference between APR and APY, how compounding affects interest, and how to compare loans, savings accounts, credit cards, and investments.",
+        "author": {
+          "@type": "Organization",
+          "name": "FinanceCalcCenter"
+        },
+        "publisher": {
+          "@id": "https://financecalccenter.com/#organization"
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://financecalccenter.com/what-is-apr-and-apy.html"
+        },
+        "datePublished": "2025-01-01",
+        "dateModified": "2026-05-04",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://financecalccenter.com/what-is-apr-and-apy.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is APR the same as APY?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. APR usually describes the yearly cost of borrowing money, while APY describes the yearly return earned on savings or investments after compounding is included."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which is better, APR or APY?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It depends on the situation. For loans and credit cards, a lower APR is usually better. For savings accounts and interest-bearing accounts, a higher APY is usually better."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is APY higher than APR?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "APY can be higher than APR because APY includes the effect of compound interest. The more often interest compounds, the more interest can be earned on previous interest."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I compare loan offers by APR or monthly payment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Both matter. APR helps compare the yearly borrowing cost, while monthly payment shows affordability. A longer loan may have a lower monthly payment but a higher total interest cost over time."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 
   <style>
-    /* SAME DESIGN AS PREVIOUS ARTICLE */
     :root {
-      --bg:#020617;--card:rgba(15,23,42,.9);--accent:#22c55e;
-      --text:#e5e7eb;--muted:#9ca3af;--border:#1f2937;
+      --bg:#020617;
+      --card:rgba(15,23,42,.9);
+      --card2:rgba(2,6,23,.72);
+      --accent:#22c55e;
+      --accent2:#86efac;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --border:#1f2937;
+      --warning:#facc15;
       --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       --max:1120px;
     }
+
     *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
     body{
-      margin:0;font-family:var(--font);color:var(--text);
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
       background:radial-gradient(circle at top,#1f2937 0,#020617 45%) fixed;
-      line-height:1.6
+      line-height:1.65;
     }
+
     a{color:inherit;text-decoration:none}
-    .wrapper{max-width:var(--max);margin:0 auto;padding:1.75rem 1.25rem 3rem}
-    header{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-    .brand{display:flex;gap:.75rem;align-items:center}
+    a:hover{text-decoration:underline}
+
+    .wrapper{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:1.75rem 1.25rem 3rem;
+    }
+
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+      flex-wrap:wrap;
+      margin-bottom:1.5rem;
+    }
+
+    .brand{
+      display:flex;
+      gap:.75rem;
+      align-items:center;
+    }
+
     .logo{
-      width:2.6rem;height:2.6rem;border-radius:.9rem;
+      width:2.6rem;
+      height:2.6rem;
+      border-radius:.9rem;
       background:radial-gradient(circle at 30% 20%,#22c55e,#16a34a,#052e16);
-      display:flex;align-items:center;justify-content:center;font-weight:800
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      color:#ecfdf5;
+      box-shadow:0 10px 25px rgba(34,197,94,.2);
     }
-    nav{display:flex;gap:.6rem;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
-    .nav-link{padding:.3rem .6rem;border-radius:999px;background:rgba(15,23,42,.9)}
-    .article-shell{max-width:820px;margin-top:1.5rem}
+
+    nav{
+      display:flex;
+      gap:.55rem;
+      flex-wrap:wrap;
+      font-size:.8rem;
+      color:var(--muted);
+    }
+
+    .nav-link{
+      padding:.35rem .65rem;
+      border-radius:999px;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.15);
+    }
+
+    .nav-link:hover{
+      border-color:rgba(34,197,94,.55);
+      color:#dcfce7;
+      text-decoration:none;
+    }
+
+    .article-shell{
+      max-width:860px;
+      margin-top:1rem;
+    }
+
+    .breadcrumb{
+      font-size:.78rem;
+      color:var(--muted);
+      margin-bottom:.85rem;
+    }
+
+    .breadcrumb a{
+      color:#bbf7d0;
+    }
+
     .hero{
-      padding:1.3rem;border-radius:1.3rem;
-      background:radial-gradient(circle at top left,#052e16,#020617);
-      border:1px solid rgba(34,197,94,.45)
+      padding:1.45rem;
+      border-radius:1.35rem;
+      background:
+        radial-gradient(circle at top left,rgba(34,197,94,.25),transparent 38%),
+        radial-gradient(circle at bottom right,rgba(59,130,246,.18),transparent 32%),
+        #020617;
+      border:1px solid rgba(34,197,94,.45);
+      box-shadow:0 20px 50px rgba(0,0,0,.25);
     }
-    h1{margin:.2rem 0;font-size:clamp(2rem,3vw,2.5rem)}
-    .lead{color:var(--muted);max-width:70ch}
+
+    .eyebrow{
+      display:inline-flex;
+      gap:.4rem;
+      align-items:center;
+      font-size:.75rem;
+      color:#bbf7d0;
+      background:rgba(22,101,52,.28);
+      border:1px solid rgba(34,197,94,.35);
+      border-radius:999px;
+      padding:.25rem .6rem;
+      margin-bottom:.7rem;
+    }
+
+    h1{
+      margin:.2rem 0 .6rem;
+      font-size:clamp(2.05rem,3vw,2.65rem);
+      line-height:1.15;
+      letter-spacing:-.03em;
+    }
+
+    h2{
+      margin-top:1.7rem;
+      color:#f9fafb;
+      font-size:1.25rem;
+      line-height:1.3;
+    }
+
+    h3{
+      margin-top:1.2rem;
+      color:#f3f4f6;
+      font-size:1.02rem;
+    }
+
+    .lead{
+      color:#cbd5e1;
+      max-width:72ch;
+      font-size:1rem;
+      margin-bottom:.8rem;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      font-size:.8rem;
+      color:var(--muted);
+      margin-top:.9rem;
+    }
+
+    .pill{
+      border:1px solid rgba(148,163,184,.18);
+      background:rgba(15,23,42,.65);
+      padding:.22rem .55rem;
+      border-radius:999px;
+    }
+
     .content{
-      margin-top:1.2rem;padding:1.2rem;border-radius:1.2rem;
-      background:rgba(15,23,42,.86);border:1px solid var(--border)
+      margin-top:1.2rem;
+      padding:1.25rem;
+      border-radius:1.2rem;
+      background:rgba(15,23,42,.88);
+      border:1px solid var(--border);
     }
-    .content h2{margin-top:1.1rem;font-size:1.05rem}
-    .content p,.content li{font-size:.92rem;color:var(--muted)}
-    ul{padding-left:1.1rem}
-    footer{margin-top:2.5rem;font-size:.78rem;color:var(--muted)}
+
+    .content p,
+    .content li{
+      font-size:.95rem;
+      color:var(--muted);
+    }
+
+    .content strong{
+      color:#f3f4f6;
+    }
+
+    .content a{
+      color:#bbf7d0;
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    ul,ol{
+      padding-left:1.15rem;
+    }
+
+    .toc{
+      margin-top:1.2rem;
+      padding:1rem;
+      border-radius:1rem;
+      background:rgba(2,6,23,.55);
+      border:1px solid rgba(148,163,184,.14);
+    }
+
+    .toc strong{
+      display:block;
+      margin-bottom:.45rem;
+      color:#f9fafb;
+    }
+
+    .toc ul{
+      margin:.3rem 0 0;
+      columns:2;
+      column-gap:1.5rem;
+    }
+
+    .toc li{
+      break-inside:avoid;
+      margin:.2rem 0;
+      font-size:.88rem;
+    }
+
+    .summary-box,
+    .example-box,
+    .warning-box,
+    .calculator-box,
+    .faq-item{
+      margin:1rem 0;
+      padding:1rem;
+      border-radius:1rem;
+      background:var(--card2);
+      border:1px solid rgba(148,163,184,.14);
+    }
+
+    .summary-box{
+      border-color:rgba(34,197,94,.35);
+    }
+
+    .warning-box{
+      border-color:rgba(250,204,21,.35);
+      background:rgba(113,63,18,.16);
+    }
+
+    .comparison-table{
+      width:100%;
+      border-collapse:collapse;
+      margin:1rem 0;
+      overflow:hidden;
+      border-radius:.9rem;
+      font-size:.9rem;
+    }
+
+    .comparison-table th,
+    .comparison-table td{
+      padding:.8rem;
+      border:1px solid rgba(148,163,184,.16);
+      text-align:left;
+      vertical-align:top;
+    }
+
+    .comparison-table th{
+      background:rgba(34,197,94,.12);
+      color:#dcfce7;
+    }
+
+    .comparison-table td{
+      color:var(--muted);
+      background:rgba(2,6,23,.35);
+    }
+
+    .formula{
+      display:block;
+      margin:.8rem 0;
+      padding:.8rem;
+      border-radius:.8rem;
+      background:#020617;
+      border:1px solid rgba(148,163,184,.16);
+      color:#e5e7eb;
+      overflow-x:auto;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-size:.88rem;
+    }
+
+    .ad-note{
+      margin:1.25rem 0;
+      padding:.8rem;
+      border-radius:.9rem;
+      border:1px dashed rgba(148,163,184,.28);
+      color:#94a3b8;
+      font-size:.78rem;
+      text-align:center;
+      background:rgba(2,6,23,.35);
+    }
+
+    .related-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:.75rem;
+      margin-top:.85rem;
+    }
+
+    .related-card{
+      padding:.9rem;
+      border-radius:.95rem;
+      background:rgba(2,6,23,.55);
+      border:1px solid rgba(148,163,184,.14);
+    }
+
+    .related-card strong{
+      display:block;
+      margin-bottom:.25rem;
+      color:#dcfce7;
+    }
+
+    .related-card p{
+      margin:.2rem 0 0;
+      font-size:.84rem;
+    }
+
+    .disclaimer{
+      margin-top:1.5rem;
+      padding:1rem;
+      border-radius:1rem;
+      background:rgba(2,6,23,.55);
+      border:1px solid rgba(148,163,184,.16);
+      font-size:.85rem;
+      color:var(--muted);
+    }
+
+    footer{
+      margin-top:2.5rem;
+      padding-top:1.2rem;
+      border-top:1px solid rgba(148,163,184,.16);
+      font-size:.78rem;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+
+    footer a{
+      color:#bbf7d0;
+    }
+
+    @media (max-width:720px){
+      .toc ul{
+        columns:1;
+      }
+
+      .related-grid{
+        grid-template-columns:1fr;
+      }
+
+      .comparison-table{
+        font-size:.84rem;
+      }
+
+      .comparison-table th,
+      .comparison-table td{
+        padding:.65rem;
+      }
+    }
   </style>
 </head>
 
@@ -111,114 +517,451 @@
 <div class="wrapper">
 
 <header>
-  <a class="brand" href="index.html">
+  <a class="brand" href="index.html" aria-label="FinanceCalcCenter home">
     <div class="logo">F</div>
     <div>
       <strong>FinanceCalcCenter</strong><br>
       <small style="color:var(--muted)">Free online financial calculators</small>
     </div>
   </a>
-  <nav>
+
+  <nav aria-label="Main navigation">
     <a href="loan-payment-calculator.html" class="nav-link">Loan</a>
-    <a href="compound-interest-calculator.html" class="nav-link">Compound</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound Interest</a>
     <a href="savings-goal-calculator.html" class="nav-link">Savings</a>
     <a href="mortgage-calculator.html" class="nav-link">Mortgage</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
   </nav>
 </header>
 
-<div class="article-shell">
+<main class="article-shell">
 
-  <div class="hero">
-    <h1>What Is <span style="color:#22c55e">APR</span> and <span style="color:#22c55e">APY</span>?</h1>
-    <p class="lead">
-      APR and APY both describe interest — but they are used in different situations.
-      This simple guide explains what each one means, how they work, and when you should pay attention to them.
-    </p>
-    <p style="font-size:.8rem;color:var(--muted)">Educational use only · Not financial advice</p>
+  <div class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> › Finance Guides › APR vs APY
   </div>
+
+  <section class="hero">
+    <div class="eyebrow">Finance basics · Interest rates explained</div>
+
+    <h1>What Is <span style="color:#22c55e">APR</span> and <span style="color:#22c55e">APY</span>?</h1>
+
+    <p class="lead">
+      APR and APY both describe interest, but they are used in different ways.
+      APR usually helps you understand the cost of borrowing money, while APY helps you understand how much your money can grow when interest compounds.
+    </p>
+
+    <div class="meta">
+      <span class="pill">Updated: May 4, 2026</span>
+      <span class="pill">Reading time: 7–9 minutes</span>
+      <span class="pill">Educational use only</span>
+    </div>
+  </section>
 
   <article class="content">
 
-    <h2>What Is APR?</h2>
     <p>
-      <strong>APR (Annual Percentage Rate)</strong> shows the yearly cost of borrowing money.
-      It includes the interest rate and certain fees, expressed as a percentage.
-    </p>
-    <p>
-      APR is most commonly used for <strong>loans, credit cards, and mortgages</strong>.
-      It helps you understand how expensive borrowing really is.
+      Interest rates can be confusing because banks, lenders, credit card companies, and savings platforms do not always describe interest in the same way.
+      Two of the most common terms are <strong>APR</strong> and <strong>APY</strong>.
+      They look similar, but they answer different questions.
     </p>
 
-    <h2>What Is APY?</h2>
+    <div class="summary-box">
+      <p>
+        <strong>Simple summary:</strong> APR is mainly about what borrowing costs you.
+        APY is mainly about what saving or investing can earn you after compounding.
+        When you borrow, lower is usually better. When you save, higher is usually better.
+      </p>
+    </div>
+
+    <nav class="toc" aria-label="Table of contents">
+      <strong>In this guide</strong>
+      <ul>
+        <li><a href="#what-is-apr">What is APR?</a></li>
+        <li><a href="#what-is-apy">What is APY?</a></li>
+        <li><a href="#apr-vs-apy">APR vs APY</a></li>
+        <li><a href="#compounding">Why compounding matters</a></li>
+        <li><a href="#examples">Practical examples</a></li>
+        <li><a href="#compare">How to compare offers</a></li>
+        <li><a href="#mistakes">Common mistakes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <h2 id="what-is-apr">What Is APR?</h2>
+
     <p>
-      <strong>APY (Annual Percentage Yield)</strong> shows how much money you earn on savings or investments in one year,
-      including the effect of <strong>compound interest</strong>.
-    </p>
-    <p>
-      APY is typically used for <strong>savings accounts, interest-bearing accounts, and investments</strong>.
+      <strong>APR</strong> stands for <strong>Annual Percentage Rate</strong>.
+      It represents the yearly cost of borrowing money, shown as a percentage.
+      APR is commonly used with loans, credit cards, mortgages, auto loans, and personal loans.
     </p>
 
-    <h2>APR vs APY: The Key Difference</h2>
+    <p>
+      A loan’s APR may include the interest rate and certain required fees.
+      This makes APR useful because it can show a broader borrowing cost than the interest rate alone.
+      For example, two loans might advertise the same interest rate, but if one has higher fees, its APR may be higher.
+    </p>
+
+    <h3>Where you usually see APR</h3>
     <ul>
-      <li><strong>APR</strong> focuses on borrowing costs</li>
-      <li><strong>APY</strong> focuses on earning interest</li>
-      <li>APY includes compounding; APR usually does not</li>
+      <li>Credit card offers</li>
+      <li>Personal loans</li>
+      <li>Auto loans</li>
+      <li>Mortgages</li>
+      <li>Student loans</li>
+      <li>Buy now, pay later or installment financing offers</li>
     </ul>
 
-    <h2>Why Compounding Matters</h2>
+    <div class="example-box">
+      <p>
+        <strong>Example:</strong> If a credit card has a 24% APR, that does not mean you automatically pay 24% every month.
+        It means the annualized borrowing rate is 24%. The actual interest charged depends on your balance, billing cycle, repayment behavior, and card terms.
+      </p>
+    </div>
+
+    <h2 id="what-is-apy">What Is APY?</h2>
+
     <p>
-      Compounding means you earn interest on your interest.
-      The more frequently interest compounds, the higher your APY will be.
-    </p>
-    <p>
-      You can see how this works using the
-      <a href="compound-interest-calculator.html" style="color:#bbf7d0;text-decoration:underline;">Compound Interest Calculator</a>.
+      <strong>APY</strong> stands for <strong>Annual Percentage Yield</strong>.
+      It shows how much money you can earn in one year from interest, including the effect of <strong>compound interest</strong>.
     </p>
 
-    <h2>When APR Matters Most</h2>
-    <ul>
-      <li>Comparing credit cards</li>
-      <li>Choosing between loan offers</li>
-      <li>Understanding total borrowing cost</li>
-    </ul>
     <p>
-      To estimate real payments, try the
-      <a href="loan-payment-calculator.html" style="color:#bbf7d0;text-decoration:underline;">Loan Payment Calculator</a>.
+      APY is most often used for savings accounts, certificates of deposit, money market accounts, and other interest-bearing accounts.
+      Because APY includes compounding, it can give a more realistic view of how much your balance may grow over a year.
     </p>
 
-    <h2>When APY Matters Most</h2>
+    <h3>Where you usually see APY</h3>
     <ul>
-      <li>Comparing savings accounts</li>
-      <li>Evaluating long-term growth</li>
-      <li>Understanding compounding impact</li>
+      <li>Savings accounts</li>
+      <li>High-yield savings accounts</li>
+      <li>Certificates of deposit</li>
+      <li>Money market accounts</li>
+      <li>Some investment and cash management accounts</li>
     </ul>
+
+    <div class="example-box">
+      <p>
+        <strong>Example:</strong> If a savings account advertises 5.00% APY, that percentage already reflects the effect of compounding over one year, assuming the account terms remain the same and the money stays deposited.
+      </p>
+    </div>
+
+    <h2 id="apr-vs-apy">APR vs APY: The Key Difference</h2>
+
     <p>
-      For savings planning, the
-      <a href="savings-goal-calculator.html" style="color:#bbf7d0;text-decoration:underline;">Savings Goal Calculator</a>
-      can help estimate future balances.
+      The easiest way to remember the difference is this:
+      <strong>APR is commonly used when you pay interest</strong>, and
+      <strong>APY is commonly used when you earn interest</strong>.
     </p>
 
-    <h2>Common Mistakes to Avoid</h2>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>APR</th>
+          <th>APY</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Full name</td>
+          <td>Annual Percentage Rate</td>
+          <td>Annual Percentage Yield</td>
+        </tr>
+        <tr>
+          <td>Most common use</td>
+          <td>Loans, mortgages, credit cards</td>
+          <td>Savings accounts, CDs, interest-bearing accounts</td>
+        </tr>
+        <tr>
+          <td>Main purpose</td>
+          <td>Shows yearly borrowing cost</td>
+          <td>Shows yearly earning potential</td>
+        </tr>
+        <tr>
+          <td>Compounding included?</td>
+          <td>Usually not shown the same way as APY</td>
+          <td>Yes, APY includes compounding</td>
+        </tr>
+        <tr>
+          <td>What is usually better?</td>
+          <td>Lower APR when borrowing</td>
+          <td>Higher APY when saving</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="compounding">Why Compounding Matters</h2>
+
+    <p>
+      <strong>Compounding</strong> means interest can earn more interest.
+      Instead of earning interest only on your original deposit, you may also earn interest on the interest that has already been added to your balance.
+    </p>
+
+    <p>
+      The more often interest compounds, the more noticeable the difference can become.
+      Daily compounding usually produces a slightly higher APY than annual compounding at the same nominal interest rate.
+      Over short periods the difference may look small, but over many years it can become meaningful.
+    </p>
+
+    <span class="formula">APY = (1 + r / n)^n - 1</span>
+
+    <p>
+      In this simplified formula, <strong>r</strong> is the stated annual interest rate and <strong>n</strong> is the number of compounding periods per year.
+      This formula shows why compounding frequency matters.
+    </p>
+
+    <p>
+      To test different interest rates, deposits, and time periods, you can use the
+      <a href="compound-interest-calculator.html">Compound Interest Calculator</a>.
+    </p>
+
+    <div class="ad-note" aria-label="Advertisement notice">
+      Advertisement space may appear on this page. Ads should not interrupt the main explanation or navigation.
+    </div>
+
+    <h2 id="examples">APR and APY Examples</h2>
+
+    <h3>Example 1: Comparing two savings accounts</h3>
+
+    <p>
+      Imagine two savings accounts:
+    </p>
+
     <ul>
-      <li>Comparing APR to APY directly</li>
-      <li>Ignoring compounding frequency</li>
-      <li>Looking only at interest rate, not total cost</li>
+      <li>Account A offers 4.80% APY</li>
+      <li>Account B offers 5.10% APY</li>
     </ul>
+
+    <p>
+      If both accounts have similar fees, access rules, and safety features, Account B may help your money grow faster because its APY is higher.
+      However, the APY is not the only thing to check.
+      You should also look at minimum balance rules, withdrawal limits, monthly fees, promotional rate expiration dates, and whether the rate can change.
+    </p>
+
+    <h3>Example 2: Comparing two loans</h3>
+
+    <p>
+      Now imagine two personal loan offers:
+    </p>
+
+    <ul>
+      <li>Loan A has a 9.50% APR</li>
+      <li>Loan B has an 11.00% APR</li>
+    </ul>
+
+    <p>
+      If the loan amount and term are the same, Loan A will usually cost less because the APR is lower.
+      But you should still compare monthly payments, total interest, origination fees, prepayment penalties, and the length of the loan.
+    </p>
+
+    <p>
+      To estimate monthly payments and total interest, try the
+      <a href="loan-payment-calculator.html">Loan Payment Calculator</a>.
+    </p>
+
+    <h3>Example 3: Credit card APR</h3>
+
+    <p>
+      Credit card APR matters most when you carry a balance from one billing cycle to the next.
+      If you pay your full statement balance on time, you may avoid purchase interest because of the card’s grace period.
+      If you only make minimum payments, interest can grow quickly and make the debt harder to pay off.
+    </p>
+
+    <div class="warning-box">
+      <p>
+        <strong>Important:</strong> Credit cards can have different APRs for purchases, balance transfers, and cash advances.
+        Cash advances may also begin accruing interest immediately and may include extra fees.
+      </p>
+    </div>
+
+    <h2 id="compare">How to Compare Financial Offers Correctly</h2>
+
+    <p>
+      APR and APY are helpful, but they should not be the only numbers you compare.
+      A good financial comparison includes the rate, the fees, the term, the payment schedule, and the rules that affect your actual cost or return.
+    </p>
+
+    <h3>When comparing loans, check:</h3>
+    <ul>
+      <li>The APR</li>
+      <li>The monthly payment</li>
+      <li>The total interest paid over the full term</li>
+      <li>Origination fees or closing costs</li>
+      <li>Prepayment penalties</li>
+      <li>Whether the rate is fixed or variable</li>
+    </ul>
+
+    <h3>When comparing savings accounts, check:</h3>
+    <ul>
+      <li>The APY</li>
+      <li>Monthly maintenance fees</li>
+      <li>Minimum deposit requirements</li>
+      <li>Minimum balance rules</li>
+      <li>How often interest compounds</li>
+      <li>Whether the rate is promotional or ongoing</li>
+    </ul>
+
+    <p>
+      If you are planning a specific savings target, the
+      <a href="savings-goal-calculator.html">Savings Goal Calculator</a>
+      can help estimate how much you may need to save each month.
+    </p>
+
+    <h2 id="mistakes">Common APR and APY Mistakes to Avoid</h2>
+
+    <h3>1. Comparing APR and APY as if they were identical</h3>
+    <p>
+      APR and APY are related, but they are not the same measurement.
+      APR is generally used to describe borrowing cost.
+      APY is generally used to describe earning potential after compounding.
+    </p>
+
+    <h3>2. Ignoring fees</h3>
+    <p>
+      A low advertised rate may not be as attractive if the product includes high fees.
+      This is especially important for loans, mortgages, and accounts with monthly charges.
+    </p>
+
+    <h3>3. Looking only at monthly payment</h3>
+    <p>
+      A longer loan term can reduce the monthly payment but increase the total interest paid.
+      Lower monthly payments can feel easier in the short term, but the full cost may be higher.
+    </p>
+
+    <h3>4. Forgetting that rates can change</h3>
+    <p>
+      Some financial products have variable rates.
+      A savings APY can rise or fall, and a variable loan or credit card APR can also change depending on the terms.
+    </p>
+
+    <h3>5. Ignoring compounding frequency</h3>
+    <p>
+      Compounding frequency affects APY.
+      If two accounts have the same stated interest rate but one compounds more frequently, the APY may be different.
+    </p>
+
+    <h2>Quick Rule of Thumb</h2>
+
+    <div class="summary-box">
+      <ul>
+        <li><strong>Borrowing money?</strong> Look for a lower APR and check total repayment cost.</li>
+        <li><strong>Saving money?</strong> Look for a higher APY and check account fees.</li>
+        <li><strong>Comparing offers?</strong> Compare the same type of number: APR with APR, APY with APY.</li>
+      </ul>
+    </div>
+
+    <h2>Related Financial Calculators</h2>
+
+    <p>
+      Use these free calculators to explore how rates, time, and payments affect your money:
+    </p>
+
+    <div class="related-grid">
+      <a class="related-card" href="compound-interest-calculator.html">
+        <strong>Compound Interest Calculator</strong>
+        <p>Estimate how money can grow with interest and compounding over time.</p>
+      </a>
+
+      <a class="related-card" href="loan-payment-calculator.html">
+        <strong>Loan Payment Calculator</strong>
+        <p>Estimate monthly payments and total interest for a loan.</p>
+      </a>
+
+      <a class="related-card" href="savings-goal-calculator.html">
+        <strong>Savings Goal Calculator</strong>
+        <p>Find out how much you may need to save to reach a target amount.</p>
+      </a>
+
+      <a class="related-card" href="mortgage-calculator.html">
+        <strong>Mortgage Calculator</strong>
+        <p>Estimate home loan payments using loan amount, rate, and term.</p>
+      </a>
+    </div>
+
+    <h2 id="faq">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <h3>Is APR the same as APY?</h3>
+      <p>
+        No. APR usually describes the yearly cost of borrowing money.
+        APY describes the yearly return earned on savings or investments after compounding is included.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is a higher APY always better?</h3>
+      <p>
+        A higher APY is usually better for savings, but only if the account also has reasonable fees, clear terms, and access rules that fit your needs.
+        A high APY can be less useful if fees reduce your actual return.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Is a lower APR always better?</h3>
+      <p>
+        A lower APR is usually better when borrowing, but you should also check loan fees, repayment term, monthly payment, and total cost.
+        A loan with a slightly lower APR but a much longer term may still cost more overall.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Why do banks advertise APY for savings accounts?</h3>
+      <p>
+        APY gives savers a more complete estimate of yearly earnings because it includes compounding.
+        This makes it easier to compare accounts with different compounding schedules.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Why do lenders advertise APR for loans?</h3>
+      <p>
+        APR helps borrowers compare the annual cost of credit.
+        It can include interest and certain costs, making it more useful than looking at the interest rate alone.
+      </p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Can APR and APY change?</h3>
+      <p>
+        Yes. Variable-rate loans, credit cards, and savings accounts can change over time.
+        Always read the product terms before making a decision.
+      </p>
+    </div>
 
     <h2>Final Thoughts</h2>
+
     <p>
-      APR and APY measure interest in different ways.
-      Knowing which one applies — and when — helps you make smarter financial comparisons
-      and avoid costly misunderstandings.
+      APR and APY are both important financial terms, but they are used for different decisions.
+      APR helps you understand the cost of borrowing.
+      APY helps you understand the growth potential of savings or interest-bearing accounts.
     </p>
 
+    <p>
+      When comparing financial products, do not look at the headline rate alone.
+      Check the fees, repayment term, compounding rules, balance requirements, and whether the rate can change.
+      A few minutes of comparison can help you avoid expensive mistakes and make more confident money decisions.
+    </p>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> This page is for educational purposes only and is not financial, investment, tax, or legal advice.
+      Results from calculators and examples are estimates. Always review the terms of any financial product and consider speaking with a qualified professional before making major financial decisions.
+    </div>
+
   </article>
-</div>
+</main>
 
 <footer>
-  © <span id="year"></span> FinanceCalcCenter ·
-  <a href="privacy-policy.html">Privacy</a> ·
-  <a href="terms-and-conditions.html">Terms</a>
+  <div>
+    © <span id="year"></span> FinanceCalcCenter ·
+    <a href="privacy-policy.html">Privacy Policy</a> ·
+    <a href="terms-and-conditions.html">Terms</a> ·
+    <a href="contact.html">Contact</a> ·
+    <a href="about.html">About</a>
+  </div>
+  <div>
+    Free online financial calculators and educational guides.
+  </div>
 </footer>
 
 </div>
