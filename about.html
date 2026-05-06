@@ -2,155 +2,386 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>About FinanceCalcCenter</title>
-  <meta name="description" content="Learn about FinanceCalcCenter — a free collection of transparent, easy-to-use financial calculators and educational guides designed to help you make smarter money decisions." />
+  <title>About FinanceCalcCenter | Financial Calculators and Educational Guides</title>
+  <meta name="description" content="Learn about FinanceCalcCenter, an independent educational website offering free financial calculators, transparent formulas, examples, and beginner-friendly money guides." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://financecalccenter.com/about.html" />
 
   <style>
-    body {
-      margin: 0;
-      padding: 2rem 1rem 3rem;
-      background: #020617;
-      font-family: system-ui, sans-serif;
-      color: #e5e7eb;
-      max-width: 760px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
+    :root {
+      --bg:#020617;
+      --card:rgba(15,23,42,.88);
+      --accent:#22c55e;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --border:#1f2937;
+      --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      --max:900px;
     }
 
-    h1, h2 {
-      color: #fff;
+    * {
+      box-sizing:border-box;
+    }
+
+    body {
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:radial-gradient(circle at top,#1f2937 0,#020617 45%) fixed;
+      line-height:1.65;
     }
 
     a {
-      color: #22c55e;
-      text-decoration: none;
+      color:#86efac;
+      text-decoration:none;
     }
 
     a:hover {
-      text-decoration: underline;
+      text-decoration:underline;
+    }
+
+    .wrapper {
+      max-width:var(--max);
+      margin:0 auto;
+      padding:1.75rem 1.25rem 3rem;
+    }
+
+    header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+      flex-wrap:wrap;
+      margin-bottom:1.5rem;
+    }
+
+    .brand {
+      display:flex;
+      gap:.75rem;
+      align-items:center;
+      color:var(--text);
+    }
+
+    .logo {
+      width:2.6rem;
+      height:2.6rem;
+      border-radius:.9rem;
+      background:radial-gradient(circle at 30% 20%,#22c55e,#16a34a,#052e16);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      color:#ecfdf5;
+    }
+
+    nav {
+      display:flex;
+      gap:.55rem;
+      flex-wrap:wrap;
+      font-size:.82rem;
+      color:var(--muted);
+    }
+
+    .nav-link {
+      padding:.35rem .65rem;
+      border-radius:999px;
+      background:rgba(15,23,42,.9);
+      border:1px solid rgba(148,163,184,.15);
+    }
+
+    .nav-link:hover {
+      border-color:rgba(34,197,94,.55);
+      color:#dcfce7;
+      text-decoration:none;
+    }
+
+    .hero {
+      padding:1.5rem;
+      border-radius:1.25rem;
+      background:
+        radial-gradient(circle at top left,rgba(34,197,94,.2),transparent 38%),
+        #020617;
+      border:1px solid rgba(34,197,94,.35);
+      margin-bottom:1.25rem;
+    }
+
+    h1 {
+      margin:.2rem 0 .6rem;
+      font-size:clamp(2rem,3vw,2.55rem);
+      line-height:1.15;
+      letter-spacing:-.03em;
+    }
+
+    h2 {
+      margin-top:0;
+      color:#fff;
+      font-size:1.18rem;
+    }
+
+    p, li {
+      color:var(--muted);
+      font-size:.96rem;
+    }
+
+    strong {
+      color:#f3f4f6;
+    }
+
+    .lead {
+      max-width:72ch;
+      color:#cbd5e1;
     }
 
     .section {
-      margin: 1.8rem 0;
-      padding: 1.4rem;
-      background: rgba(255,255,255,0.05);
-      border-radius: 0.6rem;
-      border: 1px solid rgba(255,255,255,0.1);
+      margin:1rem 0;
+      padding:1.25rem;
+      background:var(--card);
+      border-radius:1rem;
+      border:1px solid var(--border);
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem;
+      margin-top:1rem;
+    }
+
+    .mini-card {
+      padding:1rem;
+      border-radius:.9rem;
+      border:1px solid rgba(148,163,184,.16);
+      background:rgba(2,6,23,.55);
+    }
+
+    .mini-card h3 {
+      margin:.1rem 0 .4rem;
+      font-size:1rem;
+      color:#dcfce7;
     }
 
     footer {
-      margin-top: 3rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #9ca3af;
+      margin-top:2.5rem;
+      padding-top:1.2rem;
+      border-top:1px solid rgba(148,163,184,.16);
+      font-size:.82rem;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      flex-wrap:wrap;
     }
 
-    .footer-links {
-      margin-bottom: 0.6rem;
+    footer a {
+      color:#86efac;
+    }
+
+    @media (max-width:720px) {
+      .grid {
+        grid-template-columns:1fr;
+      }
     }
   </style>
 </head>
 
 <body>
+<div class="wrapper">
 
-<h1>About FinanceCalcCenter</h1>
+<header>
+  <a class="brand" href="index.html" aria-label="FinanceCalcCenter home">
+    <div class="logo">F</div>
+    <div>
+      <strong>FinanceCalcCenter</strong><br>
+      <small style="color:var(--muted)">Free online financial calculators</small>
+    </div>
+  </a>
 
-<p>
-  FinanceCalcCenter is a collection of simple, fast and transparent financial calculators designed to make personal finance easier to understand.
-  No confusing jargon — just clear numbers, practical examples, and tools you can actually use.
-</p>
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="loan-payment-calculator.html" class="nav-link">Loan</a>
+    <a href="compound-interest-calculator.html" class="nav-link">Compound</a>
+    <a href="savings-goal-calculator.html" class="nav-link">Savings</a>
+    <a href="mortgage-calculator.html" class="nav-link">Mortgage</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </nav>
+</header>
 
-<div class="section">
-  <h2>Our Mission</h2>
-  <p>
-    Many people search for financial information online, but most tools are either too complex, filled with distractions, or unclear about how results are calculated.
-    FinanceCalcCenter was created to provide:
-  </p>
+<main>
 
-  <ul>
-    <li>easy-to-use financial calculators</li>
-    <li>clear explanations with real USD-based examples</li>
-    <li>tools that work instantly — without sign-up</li>
-    <li>educational content focused on financial basics</li>
-  </ul>
-</div>
+  <section class="hero">
+    <h1>About FinanceCalcCenter</h1>
+    <p class="lead">
+      FinanceCalcCenter is an independent educational website that provides free financial calculators and beginner-friendly money guides.
+      The goal is to make common financial calculations easier to understand with clear formulas, practical examples, and simple explanations.
+    </p>
+  </section>
 
-<div class="section">
-  <h2>What You Can Do Here</h2>
-  <p>Use calculators and guides to better understand:</p>
-  <ul>
-    <li>compound interest and long-term growth</li>
-    <li>loan payments and borrowing costs</li>
-    <li>mortgage affordability</li>
-    <li>savings goals and timelines</li>
-    <li>basic investing principles</li>
-  </ul>
-  <p>
-    New tools and articles are added and updated regularly to keep information relevant and practical.
-  </p>
-</div>
+  <section class="section">
+    <h2>Our Mission</h2>
+    <p>
+      Many financial decisions involve numbers that can feel confusing at first: loan payments, interest rates, savings goals, mortgage costs, compound growth, and emergency fund planning.
+      FinanceCalcCenter was created to help users understand these numbers before making decisions.
+    </p>
+    <p>
+      The website focuses on practical education. Instead of offering personalized advice, it explains common financial concepts and provides calculators that show how different inputs can affect estimated results.
+    </p>
+  </section>
 
-<div class="section">
-  <h2>Who Created FinanceCalcCenter?</h2>
-  <p>
-    FinanceCalcCenter was created as an independent educational project focused on making financial concepts easier to understand through simple tools and clear explanations.
-  </p>
-  <p>
-    The goal is not to predict markets or provide complex strategies, but to help users understand the numbers behind everyday financial decisions.
-  </p>
-</div>
+  <section class="section">
+    <h2>What You Can Use FinanceCalcCenter For</h2>
+    <div class="grid">
+      <div class="mini-card">
+        <h3>Loan Calculations</h3>
+        <p>
+          Estimate monthly payments, total interest, and how loan term or interest rate changes may affect repayment.
+        </p>
+      </div>
 
-<div class="section">
-  <h2>How We Approach Content</h2>
-  <p>
-    All calculators and articles are based on standard financial formulas and widely accepted principles.
-    The focus is on transparency — showing how results are calculated, not just displaying them.
-  </p>
-  <p>
-    Content is reviewed and updated regularly to reflect changes in financial environments and to improve clarity based on user needs.
-  </p>
-</div>
+      <div class="mini-card">
+        <h3>Savings Planning</h3>
+        <p>
+          Explore savings goals, monthly contributions, emergency fund targets, and basic account growth scenarios.
+        </p>
+      </div>
 
-<div class="section">
-  <h2>Transparency</h2>
-  <p>
-    FinanceCalcCenter does not require user accounts and does not provide personalized financial advice.
-  </p>
-  <p>
-    The website may display advertisements in the future to support ongoing development and maintenance.
-  </p>
-</div>
+      <div class="mini-card">
+        <h3>Compound Interest</h3>
+        <p>
+          Understand how time, interest rate, deposits, and compounding can affect long-term growth.
+        </p>
+      </div>
 
-<div class="section">
-  <h2>Educational Use Only</h2>
-  <p>
-    FinanceCalcCenter is not a financial advisor.  
-    All tools and calculations are simplified estimates for educational purposes only and should not be considered financial, investment, or legal advice.
-  </p>
-</div>
+      <div class="mini-card">
+        <h3>Mortgage Estimates</h3>
+        <p>
+          Review estimated mortgage payments and affordability factors using simplified calculator inputs.
+        </p>
+      </div>
+    </div>
+  </section>
 
-<div class="section">
-  <h2>Contact</h2>
-  <p>
-    If you have questions, feedback, or suggestions for future tools, feel free to reach out.
-  </p>
+  <section class="section">
+    <h2>How Our Calculators Work</h2>
+    <p>
+      FinanceCalcCenter calculators are built around standard financial formulas and simplified assumptions.
+      Each calculator is designed to show estimated results based on the numbers entered by the user.
+    </p>
+    <p>
+      For example, a loan payment calculator may use the standard amortization formula to estimate monthly payments.
+      A compound interest calculator may estimate growth based on starting balance, contribution amount, interest rate, compounding frequency, and time.
+    </p>
+    <p>
+      Calculator results are intended to be educational estimates. Actual financial results may differ because of taxes, fees, changing interest rates, lender rules, account terms, inflation, and other real-world factors.
+    </p>
+  </section>
 
-  <p><strong>Email:</strong> financecalccenter@gmail.com</p>
-</div>
+  <section class="section">
+    <h2>How We Create and Review Content</h2>
+    <p>
+      Articles and guides on FinanceCalcCenter are written to explain financial basics in plain language.
+      The content is organized around common user questions, such as how APR differs from APY, how compound interest works, or how much emergency savings may be useful.
+    </p>
+    <p>
+      When possible, guides include examples, tables, formulas, and links to related calculators.
+      Content is reviewed for clarity, consistency, and usefulness before publication.
+    </p>
+    <p>
+      Existing pages may be updated when explanations can be improved, when calculator methodology changes, or when additional examples would make the topic easier to understand.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Editorial Principles</h2>
+    <ul>
+      <li><strong>Clarity:</strong> We aim to explain financial topics in simple, direct language.</li>
+      <li><strong>Transparency:</strong> Calculators should make assumptions and formulas easy to understand.</li>
+      <li><strong>Practicality:</strong> Examples are designed around everyday financial situations.</li>
+      <li><strong>Independence:</strong> FinanceCalcCenter does not provide personalized financial advice or recommend specific financial products.</li>
+      <li><strong>Improvement:</strong> Pages may be revised when better explanations, examples, or calculator details are needed.</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Accuracy and Limitations</h2>
+    <p>
+      FinanceCalcCenter aims to provide clear and useful estimates, but no online calculator can account for every personal situation.
+      Financial products can include fees, taxes, promotional terms, variable rates, penalties, or rules that are not reflected in simplified calculators.
+    </p>
+    <p>
+      Users should review actual loan documents, account disclosures, mortgage estimates, credit card terms, and other official information before making financial decisions.
+      For important decisions, consider speaking with a qualified financial, tax, legal, or mortgage professional.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Corrections and Feedback</h2>
+    <p>
+      If you notice a calculation issue, unclear explanation, broken link, or outdated information, you are welcome to contact us.
+      Feedback helps improve calculator accuracy, page clarity, and the overall user experience.
+    </p>
+    <p>
+      Please include the page URL and a short description of the issue so it can be reviewed more easily.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Privacy and User Accounts</h2>
+    <p>
+      FinanceCalcCenter does not require users to create an account to use its calculators or read its guides.
+      Calculator inputs are processed in the browser where possible and are intended for educational calculations.
+    </p>
+    <p>
+      For more information about cookies, analytics, and data practices, please read the
+      <a href="privacy-policy.html">Privacy Policy</a>.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Educational Use Only</h2>
+    <p>
+      FinanceCalcCenter is not a bank, lender, broker, investment adviser, tax adviser, legal adviser, or financial planner.
+      The information on this website is provided for general educational purposes only and should not be treated as financial, investment, tax, legal, mortgage, or credit advice.
+    </p>
+    <p>
+      For a full explanation of limitations, please read the
+      <a href="disclaimer.html">Financial Disclaimer</a>.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Contact</h2>
+    <p>
+      Questions, suggestions, correction requests, and feedback are welcome.
+    </p>
+    <p>
+      <strong>Email:</strong> <a href="mailto:financecalccenter@gmail.com">financecalccenter@gmail.com</a>
+    </p>
+    <p>
+      You can also visit the <a href="contact.html">Contact page</a> for more details.
+    </p>
+  </section>
+
+</main>
 
 <footer>
-  <div class="footer-links">
-    <a href="about.html">About</a> |
-    <a href="privacy-policy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms</a>
+  <div>
+    © <span id="year"></span> FinanceCalcCenter
   </div>
-  <p>
-    © <script>document.write(new Date().getFullYear())</script> FinanceCalcCenter
-  </p>
+  <div>
+    <a href="about.html">About</a> ·
+    <a href="contact.html">Contact</a> ·
+    <a href="privacy-policy.html">Privacy Policy</a> ·
+    <a href="terms-and-conditions.html">Terms</a> ·
+    <a href="disclaimer.html">Disclaimer</a>
+  </div>
 </footer>
+
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
