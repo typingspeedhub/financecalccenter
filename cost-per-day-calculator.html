@@ -146,11 +146,23 @@
       font-size: 1.02rem;
     }
 
-    .top-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-      gap: 20px;
-      align-items: start;
+   .top-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.calculator-card {
+  max-width: 620px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.content-card {
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
     }
 
     .card {
@@ -488,17 +500,9 @@
       text-align: center;
     }
 
-    @media (max-width: 900px) {
-      .top-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .content-card {
-        order: 2;
-      }
-
-      .calculator-card {
-        order: 1;
+   @media (max-width: 900px) {
+  .top-grid {
+    grid-template-columns: 1fr;
       }
     }
 
@@ -917,7 +921,6 @@
           <section class="related-links" aria-labelledby="related-links-heading">
             <h2 id="related-links-heading">Related calculators and articles</h2>
             <div class="links">
-              <a href="https://financecalccenter.com/monthly-budget-calculator.html">Monthly Budget Calculator</a>
               <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
               <a href="https://financecalccenter.com/emergency-fund-calculator.html">Emergency Fund Calculator</a>
               <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
