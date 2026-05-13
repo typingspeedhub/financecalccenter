@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68ZVCW4FWK');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020617" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <title>Cost Per Day Calculator | Convert Monthly, Weekly & Yearly Costs</title>
+  <meta
+    name="description"
+    content="Use this cost per day calculator to convert monthly, weekly, and yearly expenses into daily, weekly, monthly, and annual costs. Great for subscriptions, bills, memberships, and everyday spending."
+  />
+  <link rel="canonical" href="https://financecalccenter.com/cost-per-day-calculator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cost Per Day Calculator | Convert Monthly, Weekly & Yearly Costs" />
+  <meta property="og:description" content="Convert monthly, weekly, and yearly costs into daily, weekly, monthly, and annual amounts. Useful for subscriptions, bills, and everyday money decisions." />
+  <meta property="og:url" content="https://financecalccenter.com/cost-per-day-calculator.html" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cost Per Day Calculator | Convert Monthly, Weekly & Yearly Costs" />
+  <meta name="twitter:description" content="Convert monthly, weekly, and yearly expenses into daily, weekly, monthly, and annual costs." />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0f172a;
+      --panel-2: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --line: #1e293b;
+      --line-2: #334155;
+      --green: #22c55e;
+      --green-dark: #16a34a;
+      --green-soft: rgba(34, 197, 94, 0.08);
+      --green-border: rgba(34, 197, 94, 0.35);
+      --focus: #38bdf8;
+      --warning-bg: rgba(250, 204, 21, 0.08);
+      --warning-border: rgba(250, 204, 21, 0.28);
+      --warning-text: #fde68a;
+      --radius: 14px;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #020617 0%, #06111f 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -48px;
+      background: #fff;
+      color: #000;
+      padding: 10px 14px;
+      border-radius: 8px;
+      z-index: 999;
+      font-weight: 600;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .site-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 16px 56px;
+    }
+
+    .breadcrumbs {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 4px 0 14px;
+    }
+
+    .breadcrumbs a {
+      color: #cbd5e1;
+    }
+
+    .hero {
+      max-width: 860px;
+      margin: 0 auto 22px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 760px;
+      color: #cbd5e1;
+      font-size: 1.02rem;
+    }
+
+    .top-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+
+    .calculator-card {
+      padding: 22px;
+    }
+
+    .content-card {
+      padding: 22px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1.3rem;
+      line-height: 1.25;
+    }
+
+    .card h3 {
+      margin-top: 1.2rem;
+      margin-bottom: 0.35rem;
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    .intro-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .help-text {
+      margin-top: 5px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px 13px;
+      border-radius: 10px;
+      border: 1px solid var(--line-2);
+      background: #0b1220;
+      color: var(--text);
+      margin-top: 0;
+      font-size: 1rem;
+      min-height: 46px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.06s ease, background 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      flex: 1 1 220px;
+      background: var(--green);
+      color: #052e16;
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+    }
+
+    .btn-secondary {
+      flex: 1 1 180px;
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid var(--line-2);
+    }
+
+    .btn-secondary:hover {
+      background: #273449;
+    }
+
+    .trust-strip {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--line);
+      color: #cbd5e1;
+      font-size: 0.9rem;
+    }
+
+    .result-box {
+      margin-top: 18px;
+      padding: 18px;
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid var(--line-2);
+      display: none;
+    }
+
+    .result-box h2 {
+      font-size: 1.22rem;
+      margin: 0 0 12px;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 0.75rem;
+    }
+
+    .result-item {
+      background: #0b1220;
+      border: 1px solid #1f2d44;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .result-label {
+      display: block;
+      font-size: 0.82rem;
+      color: #9fb0c7;
+      margin-bottom: 4px;
+    }
+
+    .result-value {
+      display: block;
+      font-size: 1.22rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #f8fafc;
+    }
+
+    .highlight-result {
+      border-color: var(--green-border);
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    .note,
+    .muted,
+    .small {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .assumption-box {
+      margin-top: 14px;
+      padding: 14px 15px;
+      border-radius: 12px;
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: var(--warning-text);
+      font-size: 0.92rem;
+    }
+
+    .toc {
+      margin: 0 0 1rem;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #0b1220;
+      border: 1px solid var(--line);
+    }
+
+    .toc-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+      color: #f8fafc;
+    }
+
+    .toc ul {
+      margin: 0;
+      padding-left: 1rem;
+    }
+
+    .toc li {
+      margin-bottom: 0.28rem;
+    }
+
+    .callout {
+      margin: 1rem 0;
+      padding: 0.95rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--green-border);
+      background: var(--green-soft);
+      color: #ecfdf5;
+    }
+
+    .callout strong {
+      color: #ffffff;
+    }
+
+    .comparison-table-wrap {
+      overflow-x: auto;
+      margin: 0.9rem 0 0.2rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      background: #0b1220;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+
+    th {
+      color: #f8fafc;
+      background: #111827;
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 1rem;
+    }
+
+    .mini-card {
+      background: #0b1220;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #f8fafc;
+    }
+
+    .faq-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .related-links {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.96rem;
+    }
+
+    .related-links .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin-top: 0.75rem;
+    }
+
+    .related-links a {
+      display: inline-block;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--green);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .disclaimer {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      opacity: 0.92;
+    }
+
+    .footer-note {
+      max-width: 860px;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .top-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .content-card {
+        order: 2;
+      }
+
+      .calculator-card {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-wrap {
+        padding: 16px 12px 42px;
+      }
+
+      .calculator-card,
+      .content-card {
+        padding: 18px;
+      }
+
+      .field-grid,
+      .result-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <!-- WebApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Cost Per Day Calculator",
+    "url": "https://financecalccenter.com/cost-per-day-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "en",
+    "description": "Convert monthly, weekly, and yearly expenses into daily, weekly, monthly, and annual costs.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter",
+      "url": "https://financecalccenter.com/"
+    }
+  }
+  </script>
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://financecalccenter.com/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Cost Per Day Calculator",
+        "item": "https://financecalccenter.com/cost-per-day-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does a cost per day calculator do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A cost per day calculator converts an expense into daily, weekly, monthly, and yearly amounts. It helps you understand what subscriptions, bills, memberships, and habits really cost over time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you convert a monthly cost to a daily cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This calculator multiplies the monthly cost by 12 to estimate the annual cost, then divides the annual cost by 365 to estimate the daily cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you convert a weekly cost to a yearly cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Multiply the weekly cost by 52 to estimate the yearly cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you convert a yearly cost to a monthly cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Divide the yearly cost by 12 to estimate the monthly cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this calculator exact?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It provides a simple estimate using 365 days per year, 52 weeks per year, and 12 months per year. Actual billing may differ if a company uses calendar months, billing cycles, leap years, discounts, taxes, or fees."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is cost per day useful?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cost per day makes expenses easier to understand. A monthly or yearly price may feel small, but seeing the daily and annual cost can help you compare whether the expense is worth keeping."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="site-wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://financecalccenter.com/index.html">Home</a> &raquo;
+      <span aria-current="page">Cost Per Day Calculator</span>
+    </nav>
+
+    <header class="hero">
+      <h1>Cost Per Day Calculator</h1>
+      <p>
+        Convert monthly, weekly, or yearly expenses into daily, weekly, monthly, and annual costs.
+        This simple calculator helps you understand what subscriptions, bills, memberships, and everyday spending really cost over time.
+      </p>
+    </header>
+
+    <main id="main-content">
+      <div class="top-grid">
+        <section class="card calculator-card" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading">Calculate your cost per day</h2>
+          <p class="intro-note">
+            Enter the amount you pay and choose whether it is a monthly, weekly, daily, or yearly cost.
+          </p>
+
+          <form id="calculatorForm" novalidate>
+            <div class="field-grid">
+              <div class="field">
+                <label for="costAmount">Cost Amount ($)</label>
+                <input type="number" id="costAmount" inputmode="decimal" min="0" step="0.01" value="15" />
+                <div class="help-text">Example: 15 for a $15/month subscription.</div>
+              </div>
+
+              <div class="field">
+                <label for="costPeriod">Cost Period</label>
+                <select id="costPeriod">
+                  <option value="daily">Daily</option>
+                  <option value="weekly">Weekly</option>
+                  <option value="monthly" selected>Monthly</option>
+                  <option value="yearly">Yearly</option>
+                </select>
+                <div class="help-text">Choose how often you pay this amount.</div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="btn-primary">Calculate</button>
+              <button type="button" class="btn-secondary" id="resetBtn">Reset to defaults</button>
+            </div>
+          </form>
+
+          <div class="trust-strip">
+            Useful for subscriptions, memberships, streaming services, apps, insurance, phone plans, and small recurring expenses.
+          </div>
+
+          <div id="result" class="result-box" aria-live="polite"></div>
+
+          <div class="assumption-box">
+            <strong>Assumption:</strong> This calculator uses 365 days per year, 52 weeks per year, and 12 months per year.
+            Actual billing may differ because of taxes, discounts, fees, trial periods, or calendar-based billing cycles.
+          </div>
+        </section>
+
+        <article class="card content-card">
+          <div class="toc" aria-labelledby="toc-heading">
+            <div class="toc-title" id="toc-heading">On this page</div>
+            <ul>
+              <li><a href="#what-is-cost-per-day-calculator">What this calculator does</a></li>
+              <li><a href="#how-to-use">How to use it</a></li>
+              <li><a href="#examples">Example conversions</a></li>
+              <li><a href="#why-useful">Why cost per day matters</a></li>
+              <li><a href="#formulas">Formulas used</a></li>
+              <li><a href="#common-uses">Common uses</a></li>
+              <li><a href="#mistakes">Common mistakes</a></li>
+              <li><a href="#faq">Frequently asked questions</a></li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            <strong>Quick example:</strong>
+            A <strong>$15/month</strong> subscription costs about <strong>$0.49 per day</strong> and <strong>$180 per year</strong>.
+          </div>
+
+          <section id="what-is-cost-per-day-calculator">
+            <h2>What Is a Cost Per Day Calculator?</h2>
+            <p>
+              A cost per day calculator converts a recurring expense into different time periods.
+              Instead of only seeing a monthly, weekly, or yearly price, you can quickly see what that expense costs
+              per day, per week, per month, and per year.
+            </p>
+            <p>
+              This is especially useful for subscriptions and small recurring expenses. A single subscription may look cheap,
+              but several small expenses can add up to a meaningful annual amount.
+            </p>
+          </section>
+
+          <section id="how-to-use">
+            <h2>How to Use This Calculator</h2>
+            <ul>
+              <li><strong>Enter the cost amount:</strong> for example, 15 for a $15 subscription.</li>
+              <li><strong>Select the cost period:</strong> daily, weekly, monthly, or yearly.</li>
+              <li><strong>Click Calculate:</strong> the tool converts the amount into daily, weekly, monthly, and yearly costs.</li>
+            </ul>
+            <p>
+              The result helps you compare expenses more clearly. For example, you can see whether a monthly subscription
+              is still worth keeping when you look at its full yearly cost.
+            </p>
+          </section>
+
+          <section id="examples">
+            <h2>Example Conversions</h2>
+
+            <h3>Example 1: Monthly cost to daily and yearly cost</h3>
+            <p>
+              A <strong>$15/month</strong> subscription costs about <strong>$0.49 per day</strong> and <strong>$180 per year</strong>.
+              That may still be worth it, but the yearly number gives you a clearer picture.
+            </p>
+
+            <h3>Example 2: Weekly cost to yearly cost</h3>
+            <p>
+              A <strong>$20/week</strong> habit costs about <strong>$1,040 per year</strong>.
+              Weekly expenses often feel smaller than they really are because the annual total is less visible.
+            </p>
+
+            <h3>Example 3: Yearly cost to monthly cost</h3>
+            <p>
+              A <strong>$240/year</strong> plan costs about <strong>$20 per month</strong>.
+              This can help you compare annual plans against monthly billing.
+            </p>
+
+            <div class="mini-grid">
+              <div class="mini-card">
+                <strong>Daily view</strong>
+                Makes large costs feel easier to understand.
+              </div>
+              <div class="mini-card">
+                <strong>Annual view</strong>
+                Shows the real long-term impact of small expenses.
+              </div>
+              <div class="mini-card">
+                <strong>Monthly view</strong>
+                Helps compare subscriptions and billing plans.
+              </div>
+            </div>
+          </section>
+
+          <section id="why-useful">
+            <h2>Why Cost Per Day Matters</h2>
+            <p>
+              Many expenses are priced in a way that feels small: $9.99 per month, $4.99 per week, or $99 per year.
+              The problem is that different billing periods make expenses harder to compare.
+            </p>
+            <p>
+              Converting every cost to a daily, monthly, and yearly amount gives you a clearer view.
+              It can help you decide whether a service is worth keeping, whether an annual plan is actually cheaper,
+              or whether several small subscriptions are quietly adding up.
+            </p>
+          </section>
+
+          <section id="formulas">
+            <h2>Formulas Used by This Calculator</h2>
+            <p>This calculator uses simple conversions:</p>
+
+            <div class="comparison-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Conversion</th>
+                    <th>Formula</th>
+                    <th>Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Monthly to yearly</strong></td>
+                    <td>Monthly cost × 12</td>
+                    <td>$15 × 12 = $180/year</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Monthly to daily</strong></td>
+                    <td>(Monthly cost × 12) ÷ 365</td>
+                    <td>$180 ÷ 365 ≈ $0.49/day</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Weekly to yearly</strong></td>
+                    <td>Weekly cost × 52</td>
+                    <td>$20 × 52 = $1,040/year</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Yearly to monthly</strong></td>
+                    <td>Yearly cost ÷ 12</td>
+                    <td>$240 ÷ 12 = $20/month</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Yearly to daily</strong></td>
+                    <td>Yearly cost ÷ 365</td>
+                    <td>$240 ÷ 365 ≈ $0.66/day</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="common-uses">
+            <h2>Common Uses</h2>
+            <p>
+              This calculator can be useful for everyday money decisions, especially when you want to compare costs
+              that use different billing periods.
+            </p>
+
+            <ul>
+              <li><strong>Streaming subscriptions:</strong> compare monthly and yearly plans.</li>
+              <li><strong>Gym memberships:</strong> see the daily cost of staying subscribed.</li>
+              <li><strong>Software tools:</strong> compare monthly billing against annual billing.</li>
+              <li><strong>Phone plans:</strong> understand the yearly cost of a monthly bill.</li>
+              <li><strong>Small habits:</strong> convert weekly spending into yearly impact.</li>
+              <li><strong>Insurance:</strong> compare monthly premiums with annual totals.</li>
+            </ul>
+          </section>
+
+          <section id="mistakes">
+            <h2>Common Mistakes When Comparing Costs</h2>
+            <ul>
+              <li><strong>Only looking at the monthly price:</strong> small monthly costs can become large yearly totals.</li>
+              <li><strong>Ignoring taxes and fees:</strong> the advertised price may not be the final price.</li>
+              <li><strong>Forgetting unused subscriptions:</strong> a service you rarely use still has a real annual cost.</li>
+              <li><strong>Comparing different billing periods:</strong> monthly, weekly, and yearly prices should be converted before comparing.</li>
+              <li><strong>Assuming annual plans are always better:</strong> annual billing may be cheaper, but only if you actually use the service.</li>
+            </ul>
+          </section>
+
+          <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+              <h3>What does a cost per day calculator do?</h3>
+              <p>
+                It converts an expense into daily, weekly, monthly, and yearly amounts.
+                This helps you understand what a subscription, bill, membership, or habit really costs over time.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How do you convert a monthly cost to a daily cost?</h3>
+              <p>
+                Multiply the monthly cost by 12 to estimate the yearly cost, then divide by 365.
+                For example, $15/month becomes $180/year, and $180 ÷ 365 is about $0.49/day.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How do you convert a weekly cost to a yearly cost?</h3>
+              <p>
+                Multiply the weekly cost by 52. For example, $20/week is about $1,040/year.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How do you convert a yearly cost to a monthly cost?</h3>
+              <p>
+                Divide the yearly cost by 12. For example, $240/year is about $20/month.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Is this calculator exact?</h3>
+              <p>
+                It gives a simple estimate using 365 days, 52 weeks, and 12 months per year.
+                Actual billing can differ because of leap years, calendar months, discounts, taxes, fees, or billing-cycle rules.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Why should I calculate cost per day?</h3>
+              <p>
+                Cost per day makes expenses easier to compare. It can help you decide whether a subscription or recurring cost
+                is worth keeping when you also see the monthly and yearly impact.
+              </p>
+            </div>
+
+            <p class="disclaimer">
+              <strong>Note:</strong> This calculator is for educational and planning purposes only. It does not provide financial advice.
+            </p>
+          </section>
+
+          <section class="related-links" aria-labelledby="related-links-heading">
+            <h2 id="related-links-heading">Related calculators and articles</h2>
+            <div class="links">
+              <a href="https://financecalccenter.com/monthly-budget-calculator.html">Monthly Budget Calculator</a>
+              <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
+              <a href="https://financecalccenter.com/emergency-fund-calculator.html">Emergency Fund Calculator</a>
+              <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
+              <a href="https://financecalccenter.com/what-is-an-emergency-fund.html">What Is an Emergency Fund?</a>
+              <a href="https://financecalccenter.com/index.html">Browse all calculators →</a>
+            </div>
+          </section>
+
+          <a class="back-link" href="index.html">← Back to home</a>
+        </article>
+      </div>
+    </main>
+
+    <p class="footer-note">
+      FinanceCalcCenter provides educational calculators and plain-English financial explainers designed to help users compare everyday money decisions more clearly.
+    </p>
+  </div>
+
+  <script>
+    function fmtMoney(x) {
+      if (!isFinite(x)) return "0.00";
+      return x.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function getInputValues() {
+      const amount = Math.max(0, parseFloat(document.getElementById("costAmount").value) || 0);
+      const period = document.getElementById("costPeriod").value;
+
+      return {
+        amount,
+        period
+      };
+    }
+
+    function calculateCosts() {
+      const { amount, period } = getInputValues();
+      const resultBox = document.getElementById("result");
+
+      let dailyCost = 0;
+      let weeklyCost = 0;
+      let monthlyCost = 0;
+      let yearlyCost = 0;
+
+      if (period === "daily") {
+        dailyCost = amount;
+        weeklyCost = amount * 7;
+        yearlyCost = amount * 365;
+        monthlyCost = yearlyCost / 12;
+      }
+
+      if (period === "weekly") {
+        weeklyCost = amount;
+        yearlyCost = amount * 52;
+        monthlyCost = yearlyCost / 12;
+        dailyCost = yearlyCost / 365;
+      }
+
+      if (period === "monthly") {
+        monthlyCost = amount;
+        yearlyCost = amount * 12;
+        weeklyCost = yearlyCost / 52;
+        dailyCost = yearlyCost / 365;
+      }
+
+      if (period === "yearly") {
+        yearlyCost = amount;
+        monthlyCost = amount / 12;
+        weeklyCost = amount / 52;
+        dailyCost = amount / 365;
+      }
+
+      const periodLabel = {
+        daily: "day",
+        weekly: "week",
+        monthly: "month",
+        yearly: "year"
+      }[period];
+
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Results</h2>
+
+        <div class="result-grid">
+          <div class="result-item highlight-result">
+            <span class="result-label">Cost per day</span>
+            <span class="result-value">$${fmtMoney(dailyCost)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Cost per week</span>
+            <span class="result-value">$${fmtMoney(weeklyCost)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Cost per month</span>
+            <span class="result-value">$${fmtMoney(monthlyCost)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Cost per year</span>
+            <span class="result-value">$${fmtMoney(yearlyCost)}</span>
+          </div>
+        </div>
+
+        <p class="note">
+          A $${fmtMoney(amount)} per ${periodLabel} expense is about
+          <strong>$${fmtMoney(dailyCost)} per day</strong>,
+          <strong>$${fmtMoney(monthlyCost)} per month</strong>, and
+          <strong>$${fmtMoney(yearlyCost)} per year</strong>.
+        </p>
+      `;
+    }
+
+    function resetCalculator() {
+      document.getElementById("costAmount").value = "15";
+      document.getElementById("costPeriod").value = "monthly";
+      document.getElementById("result").style.display = "none";
+      document.getElementById("result").innerHTML = "";
+    }
+
+    document.getElementById("calculatorForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      calculateCosts();
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", resetCalculator);
+  </script>
+</body>
+</html>
