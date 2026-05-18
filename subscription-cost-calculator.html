@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68ZVCW4FWK');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020617" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <title>Subscription Cost Calculator | Monthly, Yearly, Weekly and Daily Cost</title>
+  <meta
+    name="description"
+    content="Use this subscription cost calculator to estimate the monthly, yearly, weekly, and daily cost of subscriptions. Add multiple subscriptions, compare annual billing discounts, and see how recurring payments add up."
+  />
+  <link rel="canonical" href="https://financecalccenter.com/subscription-cost-calculator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Subscription Cost Calculator | Monthly, Yearly, Weekly and Daily Cost" />
+  <meta property="og:description" content="Estimate the real cost of subscriptions. Calculate monthly, yearly, weekly, and daily cost, including multiple subscriptions and annual billing discounts." />
+  <meta property="og:url" content="https://financecalccenter.com/subscription-cost-calculator.html" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Subscription Cost Calculator" />
+  <meta name="twitter:description" content="Calculate how much your subscriptions cost per month, year, week, and day." />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0f172a;
+      --panel-2: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --line: #1e293b;
+      --line-2: #334155;
+      --green: #22c55e;
+      --green-dark: #16a34a;
+      --green-soft: rgba(34, 197, 94, 0.08);
+      --green-border: rgba(34, 197, 94, 0.35);
+      --focus: #38bdf8;
+      --warning-bg: rgba(250, 204, 21, 0.08);
+      --warning-border: rgba(250, 204, 21, 0.28);
+      --warning-text: #fde68a;
+      --radius: 14px;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #020617 0%, #06111f 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -48px;
+      background: #fff;
+      color: #000;
+      padding: 10px 14px;
+      border-radius: 8px;
+      z-index: 999;
+      font-weight: 600;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .site-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 16px 56px;
+    }
+
+    .breadcrumbs {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 4px 0 14px;
+    }
+
+    .breadcrumbs a {
+      color: #cbd5e1;
+    }
+
+    .hero {
+      max-width: 860px;
+      margin: 0 auto 22px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 760px;
+      color: #cbd5e1;
+      font-size: 1.02rem;
+    }
+
+    .top-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .calculator-card {
+      max-width: 620px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .content-card {
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+
+    .calculator-card,
+    .content-card {
+      padding: 22px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1.3rem;
+      line-height: 1.25;
+    }
+
+    .card h3 {
+      margin-top: 1.2rem;
+      margin-bottom: 0.35rem;
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    .intro-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .help-text {
+      margin-top: 5px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 13px;
+      border-radius: 10px;
+      border: 1px solid var(--line-2);
+      background: #0b1220;
+      color: var(--text);
+      margin-top: 0;
+      font-size: 1rem;
+      min-height: 46px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.06s ease, background 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      flex: 1 1 220px;
+      background: var(--green);
+      color: #052e16;
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+    }
+
+    .btn-secondary {
+      flex: 1 1 180px;
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid var(--line-2);
+    }
+
+    .btn-secondary:hover {
+      background: #273449;
+    }
+
+    .trust-strip {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--line);
+      color: #cbd5e1;
+      font-size: 0.9rem;
+    }
+
+    .result-box {
+      margin-top: 18px;
+      padding: 18px;
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid var(--line-2);
+      display: none;
+    }
+
+    .result-box h2 {
+      font-size: 1.22rem;
+      margin: 0 0 12px;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 0.75rem;
+    }
+
+    .result-item {
+      background: #0b1220;
+      border: 1px solid #1f2d44;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .result-label {
+      display: block;
+      font-size: 0.82rem;
+      color: #9fb0c7;
+      margin-bottom: 4px;
+    }
+
+    .result-value {
+      display: block;
+      font-size: 1.22rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #f8fafc;
+    }
+
+    .highlight-result {
+      border-color: var(--green-border);
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    .note,
+    .muted,
+    .small {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .assumption-box {
+      margin-top: 14px;
+      padding: 14px 15px;
+      border-radius: 12px;
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: var(--warning-text);
+      font-size: 0.92rem;
+    }
+
+    .toc {
+      margin: 0 0 1rem;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #0b1220;
+      border: 1px solid var(--line);
+    }
+
+    .toc-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+      color: #f8fafc;
+    }
+
+    .toc ul {
+      margin: 0;
+      padding-left: 1rem;
+    }
+
+    .toc li {
+      margin-bottom: 0.28rem;
+    }
+
+    .callout {
+      margin: 1rem 0;
+      padding: 0.95rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--green-border);
+      background: var(--green-soft);
+      color: #ecfdf5;
+    }
+
+    .callout strong {
+      color: #ffffff;
+    }
+
+    .comparison-table-wrap {
+      overflow-x: auto;
+      margin: 0.9rem 0 0.2rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      background: #0b1220;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+
+    th {
+      color: #f8fafc;
+      background: #111827;
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 1rem;
+    }
+
+    .mini-card {
+      background: #0b1220;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #f8fafc;
+    }
+
+    .faq-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .related-links {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.96rem;
+    }
+
+    .related-links .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin-top: 0.75rem;
+    }
+
+    .related-links a {
+      display: inline-block;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--green);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .disclaimer {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      opacity: 0.92;
+    }
+
+    .footer-note {
+      max-width: 860px;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .top-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-wrap {
+        padding: 16px 12px 42px;
+      }
+
+      .calculator-card,
+      .content-card {
+        padding: 18px;
+      }
+
+      .field-grid,
+      .result-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <!-- WebApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Subscription Cost Calculator",
+    "url": "https://financecalccenter.com/subscription-cost-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "en",
+    "description": "Estimate the monthly, yearly, weekly, and daily cost of subscriptions.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter",
+      "url": "https://financecalccenter.com/"
+    }
+  }
+  </script>
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://financecalccenter.com/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Subscription Cost Calculator",
+        "item": "https://financecalccenter.com/subscription-cost-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you calculate the yearly cost of a subscription?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Multiply the monthly subscription cost by 12. For example, a $15 monthly subscription costs $180 per year before taxes, fees, discounts, or price changes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a subscription cost calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A subscription cost calculator estimates how much recurring subscriptions cost over time. It can show monthly, yearly, weekly, and daily cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much is $10 per month for a year?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "$10 per month is $120 per year before taxes, fees, or discounts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much is $20 per month for a year?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "$20 per month is $240 per year before taxes, fees, or discounts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is annual billing cheaper than monthly billing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Annual billing is often cheaper if the company offers a discount, but it depends on the service. Compare the total yearly cost of the monthly plan with the annual price before deciding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I track subscription costs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tracking subscription costs helps you understand recurring spending, compare plans, find unused subscriptions, and reduce expenses that no longer provide enough value."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="site-wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://financecalccenter.com/index.html">Home</a> &raquo;
+      <span aria-current="page">Subscription Cost Calculator</span>
+    </nav>
+
+    <header class="hero">
+      <h1>Subscription Cost Calculator</h1>
+      <p>
+        Estimate the real cost of your subscriptions by month, year, week, and day.
+        Add multiple subscriptions, compare annual billing discounts, and see how small recurring payments can add up over time.
+      </p>
+    </header>
+
+    <main id="main-content">
+      <div class="top-grid">
+        <section class="card calculator-card" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading">Calculate your subscription cost</h2>
+          <p class="intro-note">
+            Enter a monthly subscription price and the number of similar subscriptions you pay for.
+            You can also add an optional annual billing discount to compare monthly vs yearly billing.
+          </p>
+
+          <form id="calculatorForm" novalidate>
+            <div class="field-grid">
+              <div class="field">
+                <label for="monthlyCost">Monthly Cost per Subscription ($)</label>
+                <input type="number" id="monthlyCost" inputmode="decimal" min="0" step="0.01" value="15" />
+                <div class="help-text">Example: 15 for a $15/month subscription.</div>
+              </div>
+
+              <div class="field">
+                <label for="subscriptionCount">Number of Subscriptions</label>
+                <input type="number" id="subscriptionCount" inputmode="numeric" min="1" step="1" value="3" />
+                <div class="help-text">Use 1 for one subscription, or more for several similar plans.</div>
+              </div>
+
+              <div class="field">
+                <label for="annualDiscount">Annual Billing Discount (%)</label>
+                <input type="number" id="annualDiscount" inputmode="decimal" min="0" max="100" step="0.1" value="15" />
+                <div class="help-text">Optional. Example: 15 means 15% off if paid yearly.</div>
+              </div>
+
+              <div class="field">
+                <label for="unusedPercent">Estimated Unused Portion (%)</label>
+                <input type="number" id="unusedPercent" inputmode="decimal" min="0" max="100" step="1" value="0" />
+                <div class="help-text">Optional. Use this to estimate wasted cost from unused subscriptions.</div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="btn-primary">Calculate</button>
+              <button type="button" class="btn-secondary" id="resetBtn">Reset to defaults</button>
+            </div>
+          </form>
+
+          <div class="trust-strip">
+            Useful for streaming services, apps, software tools, cloud storage, memberships, newsletters, phone add-ons, and other recurring subscriptions.
+          </div>
+
+          <div id="result" class="result-box" aria-live="polite"></div>
+
+          <div class="assumption-box">
+            <strong>Assumption:</strong> This calculator uses 12 months per year, 52 weeks per year, and 365 days per year.
+            Actual subscription costs may differ because of taxes, fees, currency conversion, free trials, discounts, price increases, or billing-cycle rules.
+          </div>
+        </section>
+
+        <article class="card content-card">
+          <div class="toc" aria-labelledby="toc-heading">
+            <div class="toc-title" id="toc-heading">On this page</div>
+            <ul>
+              <li><a href="#what-is-subscription-cost-calculator">What this calculator does</a></li>
+              <li><a href="#how-to-use">How to use it</a></li>
+              <li><a href="#examples">Subscription cost examples</a></li>
+              <li><a href="#monthly-vs-annual">Monthly vs annual billing</a></li>
+              <li><a href="#formulas">Formulas used</a></li>
+              <li><a href="#common-subscriptions">Common subscription costs</a></li>
+              <li><a href="#reduce-costs">How to reduce subscription spending</a></li>
+              <li><a href="#mistakes">Common mistakes</a></li>
+              <li><a href="#faq">Frequently asked questions</a></li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            <strong>Quick example:</strong>
+            Three subscriptions at <strong>$15/month each</strong> cost <strong>$45 per month</strong> and <strong>$540 per year</strong>.
+            With a <strong>15% annual billing discount</strong>, the estimated yearly cost would be <strong>$459</strong>.
+          </div>
+
+          <section id="what-is-subscription-cost-calculator">
+            <h2>What Is a Subscription Cost Calculator?</h2>
+            <p>
+              A subscription cost calculator helps you estimate how much recurring subscriptions cost over time.
+              Instead of only looking at the monthly price, you can see the total yearly cost, weekly cost, daily cost, and possible savings from annual billing.
+            </p>
+            <p>
+              This is useful because subscriptions often look small when viewed one at a time.
+              A $9.99, $14.99, or $19.99 monthly payment may seem manageable, but several subscriptions together can become a large yearly expense.
+            </p>
+            <p>
+              This calculator is designed for everyday planning. You can use it for streaming services, software subscriptions, paid apps, memberships, cloud storage, newsletters, and other recurring payments.
+            </p>
+          </section>
+
+          <section id="how-to-use">
+            <h2>How to Use This Subscription Cost Calculator</h2>
+            <ul>
+              <li><strong>Enter the monthly cost per subscription:</strong> for example, 15 for a $15/month service.</li>
+              <li><strong>Enter the number of subscriptions:</strong> use 1 for one subscription, or enter more if you want to estimate several similar subscriptions.</li>
+              <li><strong>Add an annual billing discount:</strong> if a service offers 10%, 15%, or 20% off for yearly billing, enter that percentage.</li>
+              <li><strong>Add an unused portion:</strong> if you rarely use a service, estimate how much of the cost may be wasted.</li>
+              <li><strong>Click Calculate:</strong> the calculator shows monthly, yearly, weekly, daily, discounted yearly cost, and estimated savings.</li>
+            </ul>
+            <p>
+              The result can help you decide whether a subscription is worth keeping, whether annual billing makes sense, or whether it is time to cancel unused services.
+            </p>
+          </section>
+
+          <section id="examples">
+            <h2>Subscription Cost Examples</h2>
+
+            <h3>Example 1: One $10/month subscription</h3>
+            <p>
+              A <strong>$10/month</strong> subscription costs <strong>$120 per year</strong>.
+              This could be a basic app, cloud storage plan, or small digital service.
+            </p>
+
+            <h3>Example 2: Three $15/month subscriptions</h3>
+            <p>
+              Three subscriptions at <strong>$15/month each</strong> cost <strong>$45 per month</strong>.
+              Over one year, that becomes <strong>$540 per year</strong> before taxes, fees, or discounts.
+            </p>
+
+            <h3>Example 3: Five $20/month subscriptions</h3>
+            <p>
+              Five subscriptions at <strong>$20/month each</strong> cost <strong>$100 per month</strong>.
+              Over a full year, that equals <strong>$1,200 per year</strong>.
+            </p>
+
+            <div class="mini-grid">
+              <div class="mini-card">
+                <strong>Monthly view</strong>
+                Shows what leaves your account each billing cycle.
+              </div>
+              <div class="mini-card">
+                <strong>Yearly view</strong>
+                Shows the full annual impact of recurring payments.
+              </div>
+              <div class="mini-card">
+                <strong>Daily view</strong>
+                Makes subscriptions easier to compare with everyday spending.
+              </div>
+            </div>
+          </section>
+
+          <section id="monthly-vs-annual">
+            <h2>Monthly vs Annual Subscription Billing</h2>
+            <p>
+              Many services offer both monthly and annual billing. Monthly billing gives you more flexibility because you can cancel sooner.
+              Annual billing may be cheaper if the company gives a discount, but it usually requires paying more upfront.
+            </p>
+            <p>
+              The best choice depends on how confident you are that you will use the service for the full year.
+              If you use the subscription regularly and the discount is meaningful, annual billing may save money.
+              If you are unsure, monthly billing may be safer even if it costs more over time.
+            </p>
+
+            <div class="comparison-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Billing Type</th>
+                    <th>Main Advantage</th>
+                    <th>Main Risk</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Monthly billing</strong></td>
+                    <td>More flexible and easier to cancel.</td>
+                    <td>Usually costs more over a full year.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Annual billing</strong></td>
+                    <td>May offer a lower yearly cost.</td>
+                    <td>You may pay upfront for a service you stop using.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Free trial</strong></td>
+                    <td>Lets you test the service before paying.</td>
+                    <td>You may forget to cancel before billing starts.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="formulas">
+            <h2>Formulas Used by This Calculator</h2>
+            <p>
+              This calculator uses simple recurring cost formulas. The main formula is:
+            </p>
+
+            <div class="callout">
+              <strong>Yearly subscription cost = Monthly cost × Number of subscriptions × 12</strong>
+            </div>
+
+            <div class="comparison-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Calculation</th>
+                    <th>Formula</th>
+                    <th>Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Total monthly cost</strong></td>
+                    <td>Monthly cost × Number of subscriptions</td>
+                    <td>$15 × 3 = $45/month</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Yearly cost</strong></td>
+                    <td>Total monthly cost × 12</td>
+                    <td>$45 × 12 = $540/year</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Weekly cost</strong></td>
+                    <td>Yearly cost ÷ 52</td>
+                    <td>$540 ÷ 52 ≈ $10.38/week</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Daily cost</strong></td>
+                    <td>Yearly cost ÷ 365</td>
+                    <td>$540 ÷ 365 ≈ $1.48/day</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Annual billing discount</strong></td>
+                    <td>Yearly cost × Discount percentage</td>
+                    <td>$540 × 15% = $81 savings</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Estimated unused cost</strong></td>
+                    <td>Yearly cost × Unused percentage</td>
+                    <td>$540 × 20% = $108 unused cost</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="common-subscriptions">
+            <h2>Common Subscription Costs to Track</h2>
+            <p>
+              Subscription spending can be easy to overlook because each payment may feel small.
+              Tracking them together gives you a clearer view of your recurring expenses.
+            </p>
+
+            <ul>
+              <li><strong>Streaming services:</strong> movies, TV, music, sports, and entertainment platforms.</li>
+              <li><strong>Software tools:</strong> design apps, office tools, productivity apps, and business software.</li>
+              <li><strong>Cloud storage:</strong> photo backup, file storage, and premium storage plans.</li>
+              <li><strong>Fitness apps and gyms:</strong> workout apps, memberships, and online coaching subscriptions.</li>
+              <li><strong>Newsletters and learning platforms:</strong> paid content, courses, and education memberships.</li>
+              <li><strong>Gaming subscriptions:</strong> online memberships, game libraries, and in-game passes.</li>
+              <li><strong>Mobile add-ons:</strong> extra data, premium features, and phone plan extras.</li>
+            </ul>
+          </section>
+
+          <section id="reduce-costs">
+            <h2>How to Reduce Subscription Spending</h2>
+            <p>
+              Reducing subscription costs does not always mean canceling everything.
+              The goal is to keep the services that provide real value and remove the ones you rarely use.
+            </p>
+
+            <ul>
+              <li><strong>Review your bank statement:</strong> look for recurring charges you forgot about.</li>
+              <li><strong>Cancel unused subscriptions:</strong> even small monthly costs add up over a year.</li>
+              <li><strong>Rotate services:</strong> instead of paying for several streaming services at once, use one or two at a time.</li>
+              <li><strong>Check annual plans carefully:</strong> annual billing can save money only if you will use the service long enough.</li>
+              <li><strong>Use reminders before trials end:</strong> free trials can become paid subscriptions automatically.</li>
+              <li><strong>Compare similar tools:</strong> you may be paying for overlapping services that do the same thing.</li>
+            </ul>
+          </section>
+
+          <section id="mistakes">
+            <h2>Common Mistakes When Estimating Subscription Cost</h2>
+            <ul>
+              <li><strong>Only looking at the monthly price:</strong> yearly cost gives a clearer picture.</li>
+              <li><strong>Forgetting taxes and fees:</strong> the final charged amount may be higher than the advertised price.</li>
+              <li><strong>Ignoring unused subscriptions:</strong> a service still costs money even if you rarely use it.</li>
+              <li><strong>Not comparing monthly and annual billing:</strong> convert both options to yearly cost before deciding.</li>
+              <li><strong>Forgetting renewal dates:</strong> annual plans may renew automatically.</li>
+              <li><strong>Keeping duplicate services:</strong> multiple apps may offer similar features.</li>
+            </ul>
+          </section>
+
+          <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+              <h3>How do you calculate the yearly cost of a subscription?</h3>
+              <p>
+                Multiply the monthly subscription cost by 12. For example, a $15 monthly subscription costs $15 × 12 = $180 per year before taxes, fees, or discounts.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How much is $10 per month for a year?</h3>
+              <p>
+                $10 per month is $120 per year. The formula is $10 × 12 = $120.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How much is $20 per month for a year?</h3>
+              <p>
+                $20 per month is $240 per year. This does not include taxes, fees, discounts, or price changes.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How much do three $15 subscriptions cost per year?</h3>
+              <p>
+                Three $15 monthly subscriptions cost $45 per month. Over one year, that equals $540 before taxes, fees, or discounts.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Is annual billing always better?</h3>
+              <p>
+                Not always. Annual billing may be cheaper if there is a discount, but monthly billing can be better if you are unsure whether you will keep using the service.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Why should I calculate subscription costs?</h3>
+              <p>
+                Calculating subscription costs helps you understand recurring spending, compare services, find unused subscriptions, and make better budget decisions.
+              </p>
+            </div>
+
+            <p class="disclaimer">
+              <strong>Note:</strong> This calculator is for educational and planning purposes only. It does not provide financial advice.
+            </p>
+          </section>
+
+          <section class="related-links" aria-labelledby="related-links-heading">
+            <h2 id="related-links-heading">Related calculators and articles</h2>
+            <div class="links">
+              <a href="https://financecalccenter.com/monthly-to-yearly-cost-calculator.html">Monthly to Yearly Cost Calculator</a>
+              <a href="https://financecalccenter.com/cost-per-day-calculator.html">Cost Per Day Calculator</a>
+              <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
+              <a href="https://financecalccenter.com/emergency-fund-calculator.html">Emergency Fund Calculator</a>
+              <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
+              <a href="https://financecalccenter.com/index.html">Browse all calculators →</a>
+            </div>
+          </section>
+
+          <a class="back-link" href="index.html">← Back to home</a>
+        </article>
+      </div>
+    </main>
+
+    <p class="footer-note">
+      FinanceCalcCenter provides educational calculators and plain-English financial explainers designed to help users compare everyday money decisions more clearly.
+    </p>
+  </div>
+
+  <script>
+    function fmtMoney(x) {
+      if (!isFinite(x)) return "0.00";
+      return x.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function fmtPercent(x) {
+      if (!isFinite(x)) return "0";
+      return x.toLocaleString("en-US", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 1
+      });
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function getInputValues() {
+      const monthlyCost = Math.max(0, parseFloat(document.getElementById("monthlyCost").value) || 0);
+      const subscriptionCount = Math.max(1, parseInt(document.getElementById("subscriptionCount").value, 10) || 1);
+      const annualDiscount = clamp(parseFloat(document.getElementById("annualDiscount").value) || 0, 0, 100);
+      const unusedPercent = clamp(parseFloat(document.getElementById("unusedPercent").value) || 0, 0, 100);
+
+      return {
+        monthlyCost,
+        subscriptionCount,
+        annualDiscount,
+        unusedPercent
+      };
+    }
+
+    function calculateCosts() {
+      const { monthlyCost, subscriptionCount, annualDiscount, unusedPercent } = getInputValues();
+      const resultBox = document.getElementById("result");
+
+      const totalMonthlyCost = monthlyCost * subscriptionCount;
+      const yearlyCost = totalMonthlyCost * 12;
+      const weeklyCost = yearlyCost / 52;
+      const dailyCost = yearlyCost / 365;
+      const quarterlyCost = totalMonthlyCost * 3;
+
+      const annualSavings = yearlyCost * (annualDiscount / 100);
+      const discountedAnnualCost = yearlyCost - annualSavings;
+      const discountedMonthlyEquivalent = discountedAnnualCost / 12;
+
+      const estimatedUnusedCost = yearlyCost * (unusedPercent / 100);
+      const estimatedUsedValue = yearlyCost - estimatedUnusedCost;
+
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Results</h2>
+
+        <div class="result-grid">
+          <div class="result-item highlight-result">
+            <span class="result-label">Yearly subscription cost</span>
+            <span class="result-value">$${fmtMoney(yearlyCost)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Monthly total</span>
+            <span class="result-value">$${fmtMoney(totalMonthlyCost)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Weekly cost</span>
+            <span class="result-value">$${fmtMoney(weeklyCost)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Daily cost</span>
+            <span class="result-value">$${fmtMoney(dailyCost)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Quarterly cost</span>
+            <span class="result-value">$${fmtMoney(quarterlyCost)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Number of subscriptions</span>
+            <span class="result-value">${subscriptionCount}</span>
+          </div>
+
+          <div class="result-item highlight-result">
+            <span class="result-label">Annual billing estimate</span>
+            <span class="result-value">$${fmtMoney(discountedAnnualCost)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Estimated annual savings</span>
+            <span class="result-value">$${fmtMoney(annualSavings)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Discounted monthly equivalent</span>
+            <span class="result-value">$${fmtMoney(discountedMonthlyEquivalent)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Estimated unused cost</span>
+            <span class="result-value">$${fmtMoney(estimatedUnusedCost)}</span>
+          </div>
+        </div>
+
+        <p class="note">
+          ${subscriptionCount === 1 ? "A" : "Your"} $${fmtMoney(monthlyCost)} monthly subscription${subscriptionCount === 1 ? "" : " × " + subscriptionCount}
+          costs about <strong>$${fmtMoney(yearlyCost)} per year</strong>,
+          <strong>$${fmtMoney(weeklyCost)} per week</strong>, and
+          <strong>$${fmtMoney(dailyCost)} per day</strong>.
+        </p>
+
+        <p class="note">
+          With a <strong>${fmtPercent(annualDiscount)}% annual billing discount</strong>, the estimated yearly cost would be
+          <strong>$${fmtMoney(discountedAnnualCost)}</strong>, saving about <strong>$${fmtMoney(annualSavings)}</strong> per year.
+        </p>
+
+        <p class="note">
+          If about <strong>${fmtPercent(unusedPercent)}%</strong> of the subscription value goes unused, the estimated unused cost is
+          <strong>$${fmtMoney(estimatedUnusedCost)}</strong> per year, leaving about <strong>$${fmtMoney(estimatedUsedValue)}</strong> of estimated used value.
+        </p>
+      `;
+    }
+
+    function resetCalculator() {
+      document.getElementById("monthlyCost").value = "15";
+      document.getElementById("subscriptionCount").value = "3";
+      document.getElementById("annualDiscount").value = "15";
+      document.getElementById("unusedPercent").value = "0";
+      document.getElementById("result").style.display = "none";
+      document.getElementById("result").innerHTML = "";
+    }
+
+    document.getElementById("calculatorForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      calculateCosts();
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", resetCalculator);
+  </script>
+</body>
+</html>
