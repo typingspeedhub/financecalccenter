@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68ZVCW4FWK');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7086753311239071"
+    crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020617" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <title>Coffee Cost Calculator | Daily, Monthly & Yearly Coffee Spending</title>
+  <meta
+    name="description"
+    content="Use this coffee cost calculator to estimate how much you spend on coffee per day, week, month, and year. Compare coffee shop costs with homemade coffee and see possible yearly savings."
+  />
+  <link rel="canonical" href="https://financecalccenter.com/coffee-cost-calculator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Coffee Cost Calculator | Daily, Monthly & Yearly Coffee Spending" />
+  <meta property="og:description" content="Calculate your daily, weekly, monthly, and yearly coffee spending. Compare coffee shop coffee with homemade coffee and estimate possible savings." />
+  <meta property="og:url" content="https://financecalccenter.com/coffee-cost-calculator.html" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Coffee Cost Calculator | Daily, Monthly & Yearly Coffee Spending" />
+  <meta name="twitter:description" content="Estimate how much your coffee habit costs per day, month, and year." />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: #0f172a;
+      --panel-2: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --line: #1e293b;
+      --line-2: #334155;
+      --green: #22c55e;
+      --green-dark: #16a34a;
+      --green-soft: rgba(34, 197, 94, 0.08);
+      --green-border: rgba(34, 197, 94, 0.35);
+      --focus: #38bdf8;
+      --warning-bg: rgba(250, 204, 21, 0.08);
+      --warning-border: rgba(250, 204, 21, 0.28);
+      --warning-text: #fde68a;
+      --radius: 14px;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #020617 0%, #06111f 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -48px;
+      background: #fff;
+      color: #000;
+      padding: 10px 14px;
+      border-radius: 8px;
+      z-index: 999;
+      font-weight: 600;
+      transition: top 0.2s ease;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .site-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 16px 56px;
+    }
+
+    .breadcrumbs {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 4px 0 14px;
+    }
+
+    .breadcrumbs a {
+      color: #cbd5e1;
+    }
+
+    .hero {
+      max-width: 860px;
+      margin: 0 auto 22px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 760px;
+      color: #cbd5e1;
+      font-size: 1.02rem;
+    }
+
+    .top-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .calculator-card {
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .content-card {
+      max-width: 860px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+
+    .calculator-card,
+    .content-card {
+      padding: 22px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1.3rem;
+      line-height: 1.25;
+    }
+
+    .card h3 {
+      margin-top: 1.2rem;
+      margin-bottom: 0.35rem;
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    .intro-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .help-text {
+      margin-top: 5px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 12px 13px;
+      border-radius: 10px;
+      border: 1px solid var(--line-2);
+      background: #0b1220;
+      color: var(--text);
+      margin-top: 0;
+      font-size: 1rem;
+      min-height: 46px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.06s ease, background 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      flex: 1 1 220px;
+      background: var(--green);
+      color: #052e16;
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+    }
+
+    .btn-secondary {
+      flex: 1 1 180px;
+      background: #1e293b;
+      color: #e2e8f0;
+      border: 1px solid var(--line-2);
+    }
+
+    .btn-secondary:hover {
+      background: #273449;
+    }
+
+    .trust-strip {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--line);
+      color: #cbd5e1;
+      font-size: 0.9rem;
+    }
+
+    .result-box {
+      margin-top: 18px;
+      padding: 18px;
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid var(--line-2);
+      display: none;
+    }
+
+    .result-box h2 {
+      font-size: 1.22rem;
+      margin: 0 0 12px;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 0.75rem;
+    }
+
+    .result-item {
+      background: #0b1220;
+      border: 1px solid #1f2d44;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .result-label {
+      display: block;
+      font-size: 0.82rem;
+      color: #9fb0c7;
+      margin-bottom: 4px;
+    }
+
+    .result-value {
+      display: block;
+      font-size: 1.22rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #f8fafc;
+    }
+
+    .highlight-result {
+      border-color: var(--green-border);
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    .note,
+    .muted,
+    .small {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .assumption-box {
+      margin-top: 14px;
+      padding: 14px 15px;
+      border-radius: 12px;
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: var(--warning-text);
+      font-size: 0.92rem;
+    }
+
+    .toc {
+      margin: 0 0 1rem;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: #0b1220;
+      border: 1px solid var(--line);
+    }
+
+    .toc-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+      color: #f8fafc;
+    }
+
+    .toc ul {
+      margin: 0;
+      padding-left: 1rem;
+    }
+
+    .toc li {
+      margin-bottom: 0.28rem;
+    }
+
+    .callout {
+      margin: 1rem 0;
+      padding: 0.95rem 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--green-border);
+      background: var(--green-soft);
+      color: #ecfdf5;
+    }
+
+    .callout strong {
+      color: #ffffff;
+    }
+
+    .comparison-table-wrap {
+      overflow-x: auto;
+      margin: 0.9rem 0 0.2rem;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      background: #0b1220;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+
+    th {
+      color: #f8fafc;
+      background: #111827;
+      font-weight: 700;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 1rem;
+    }
+
+    .mini-card {
+      background: #0b1220;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #f8fafc;
+    }
+
+    .faq-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .related-links {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.96rem;
+    }
+
+    .related-links .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin-top: 0.75rem;
+    }
+
+    .related-links a {
+      display: inline-block;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 24px;
+      color: var(--green);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .disclaimer {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      opacity: 0.92;
+    }
+
+    .footer-note {
+      max-width: 860px;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .top-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-wrap {
+        padding: 16px 12px 42px;
+      }
+
+      .calculator-card,
+      .content-card {
+        padding: 18px;
+      }
+
+      .field-grid,
+      .result-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <!-- WebApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Coffee Cost Calculator",
+    "url": "https://financecalccenter.com/coffee-cost-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "en",
+    "description": "Estimate daily, weekly, monthly, and yearly coffee costs and compare coffee shop spending with homemade coffee.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter",
+      "url": "https://financecalccenter.com/"
+    }
+  }
+  </script>
+
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://financecalccenter.com/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Coffee Cost Calculator",
+        "item": "https://financecalccenter.com/coffee-cost-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does a coffee cost calculator do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A coffee cost calculator estimates how much you spend on coffee per day, week, month, and year based on the price per coffee, how many coffees you buy, and how many days per week you buy them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you calculate yearly coffee spending?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Multiply the price per coffee by the number of coffees per day, then multiply by the number of coffee-buying days per week and by 52 weeks per year."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much can I save by making coffee at home?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To estimate savings, compare your coffee shop cost per cup with your homemade coffee cost per cup, then multiply the difference by the number of coffees you drink per year."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this coffee cost calculator exact?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It provides an estimate using 52 weeks per year and 12 months per year. Actual costs may differ because of taxes, tips, different coffee prices, skipped days, discounts, or seasonal habits."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I calculate my coffee spending?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Coffee can feel like a small daily expense, but repeated purchases can become a meaningful yearly cost. Calculating it helps you decide whether the habit fits your budget."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="site-wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://financecalccenter.com/index.html">Home</a> &raquo;
+      <span aria-current="page">Coffee Cost Calculator</span>
+    </nav>
+
+    <header class="hero">
+      <h1>Coffee Cost Calculator</h1>
+      <p>
+        Estimate how much your coffee habit costs per day, week, month, and year.
+        Compare coffee shop spending with homemade coffee and see how small daily purchases can add up over time.
+      </p>
+    </header>
+
+    <main id="main-content">
+      <div class="top-grid">
+        <section class="card calculator-card" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading">Calculate your coffee cost</h2>
+          <p class="intro-note">
+            Enter your usual coffee price, how many coffees you buy, and how often you buy them.
+            You can also compare the result with homemade coffee.
+          </p>
+
+          <form id="calculatorForm" novalidate>
+            <div class="field-grid">
+              <div class="field">
+                <label for="currency">Currency</label>
+                <select id="currency">
+                  <option value="$" selected>$ - US Dollar</option>
+                  <option value="€">€ - Euro</option>
+                  <option value="£">£ - British Pound</option>
+                  <option value="Ft">Ft - Hungarian Forint</option>
+                </select>
+                <div class="help-text">Choose the currency you want to display.</div>
+              </div>
+
+              <div class="field">
+                <label for="pricePerCoffee">Price per coffee</label>
+                <input type="number" id="pricePerCoffee" inputmode="decimal" min="0" step="0.01" value="4.50" />
+                <div class="help-text">Example: 4.50 for a coffee shop coffee.</div>
+              </div>
+
+              <div class="field">
+                <label for="coffeesPerDay">Coffees per day</label>
+                <input type="number" id="coffeesPerDay" inputmode="decimal" min="0" step="0.1" value="1" />
+                <div class="help-text">How many coffees you usually buy per coffee-buying day.</div>
+              </div>
+
+              <div class="field">
+                <label for="daysPerWeek">Days per week</label>
+                <input type="number" id="daysPerWeek" inputmode="numeric" min="0" max="7" step="1" value="5" />
+                <div class="help-text">Example: 5 for weekdays, 7 for every day.</div>
+              </div>
+
+              <div class="field full">
+                <label for="homeCoffeeCost">Optional: homemade coffee cost per cup</label>
+                <input type="number" id="homeCoffeeCost" inputmode="decimal" min="0" step="0.01" value="0.75" />
+                <div class="help-text">Use this to estimate possible savings from making coffee at home.</div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="btn-primary">Calculate</button>
+              <button type="button" class="btn-secondary" id="resetBtn">Reset to defaults</button>
+            </div>
+          </form>
+
+          <div class="trust-strip">
+            Useful for coffee shop spending, takeaway coffee, office coffee habits, homemade coffee comparisons, and everyday budget planning.
+          </div>
+
+          <div id="result" class="result-box" aria-live="polite"></div>
+
+          <div class="assumption-box">
+            <strong>Assumption:</strong> This calculator uses 52 weeks per year and 12 months per year.
+            Actual costs may differ because of taxes, tips, discounts, skipped days, changing prices, or different coffee sizes.
+          </div>
+        </section>
+
+        <article class="card content-card">
+          <div class="toc" aria-labelledby="toc-heading">
+            <div class="toc-title" id="toc-heading">On this page</div>
+            <ul>
+              <li><a href="#what-is-coffee-cost-calculator">What this calculator does</a></li>
+              <li><a href="#how-to-use">How to use it</a></li>
+              <li><a href="#examples">Coffee cost examples</a></li>
+              <li><a href="#why-it-matters">Why coffee spending matters</a></li>
+              <li><a href="#formulas">Formulas used</a></li>
+              <li><a href="#coffee-shop-vs-home">Coffee shop vs homemade coffee</a></li>
+              <li><a href="#mistakes">Common mistakes</a></li>
+              <li><a href="#faq">Frequently asked questions</a></li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            <strong>Quick example:</strong>
+            A <strong>$4.50 coffee</strong> bought <strong>5 days per week</strong> costs about
+            <strong>$97.50 per month</strong> and <strong>$1,170 per year</strong>.
+          </div>
+
+          <section id="what-is-coffee-cost-calculator">
+            <h2>What Is a Coffee Cost Calculator?</h2>
+            <p>
+              A coffee cost calculator estimates how much you spend on coffee over time.
+              Instead of only thinking about the price of one cup, it shows the daily, weekly, monthly, and yearly cost of your coffee habit.
+            </p>
+            <p>
+              This can be helpful because coffee is usually a small repeated purchase.
+              One coffee may not feel expensive, but buying it several times per week can create a noticeable annual expense.
+            </p>
+          </section>
+
+          <section id="how-to-use">
+            <h2>How to Use This Coffee Cost Calculator</h2>
+            <ul>
+              <li><strong>Choose your currency:</strong> dollar, euro, pound, or forint.</li>
+              <li><strong>Enter the price per coffee:</strong> for example, 4.50 for a coffee shop coffee.</li>
+              <li><strong>Enter coffees per day:</strong> how many coffees you usually buy on a day when you buy coffee.</li>
+              <li><strong>Enter days per week:</strong> how many days per week you buy coffee.</li>
+              <li><strong>Add homemade coffee cost:</strong> optional, but useful for estimating possible savings.</li>
+            </ul>
+            <p>
+              After you click Calculate, the tool shows your estimated coffee spending per day, week, month, and year.
+              It also estimates how much you could save if you replaced the same number of coffees with homemade coffee.
+            </p>
+          </section>
+
+          <section id="examples">
+            <h2>Coffee Cost Examples</h2>
+
+            <h3>Example 1: One coffee on weekdays</h3>
+            <p>
+              If you buy one coffee for <strong>$4.50</strong> on <strong>5 days per week</strong>,
+              your weekly coffee cost is <strong>$22.50</strong>.
+              Over a full year, that becomes about <strong>$1,170</strong>.
+            </p>
+
+            <h3>Example 2: Two coffees per workday</h3>
+            <p>
+              If you buy two coffees per day at <strong>$4.50 each</strong> for <strong>5 days per week</strong>,
+              your weekly cost becomes <strong>$45</strong>.
+              That is about <strong>$195 per month</strong> and <strong>$2,340 per year</strong>.
+            </p>
+
+            <h3>Example 3: Coffee shop vs homemade coffee</h3>
+            <p>
+              If a coffee shop coffee costs <strong>$4.50</strong> and homemade coffee costs about <strong>$0.75</strong>,
+              the difference is <strong>$3.75 per cup</strong>.
+              Replacing 5 coffees per week could save about <strong>$975 per year</strong>.
+            </p>
+
+            <div class="mini-grid">
+              <div class="mini-card">
+                <strong>Daily view</strong>
+                Shows what your coffee habit costs on a normal day.
+              </div>
+              <div class="mini-card">
+                <strong>Monthly view</strong>
+                Helps you compare coffee spending with subscriptions and bills.
+              </div>
+              <div class="mini-card">
+                <strong>Yearly view</strong>
+                Shows the long-term impact of a small repeated purchase.
+              </div>
+            </div>
+          </section>
+
+          <section id="why-it-matters">
+            <h2>Why Coffee Spending Matters</h2>
+            <p>
+              Coffee spending is not automatically bad. Many people enjoy buying coffee, working from a café, or using a daily coffee break as part of their routine.
+              The goal of this calculator is not to tell you to stop buying coffee.
+            </p>
+            <p>
+              The goal is to make the cost visible. When you know the yearly number, you can decide whether the habit is worth it,
+              whether you want to reduce it slightly, or whether you would rather use part of that money for savings, debt payoff, investing, or another goal.
+            </p>
+          </section>
+
+          <section id="formulas">
+            <h2>Formulas Used by This Calculator</h2>
+            <p>This calculator uses simple estimates based on your inputs:</p>
+
+            <div class="comparison-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Calculation</th>
+                    <th>Formula</th>
+                    <th>Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Daily coffee cost</strong></td>
+                    <td>Price per coffee × coffees per day</td>
+                    <td>$4.50 × 1 = $4.50/day</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Weekly coffee cost</strong></td>
+                    <td>Daily coffee cost × days per week</td>
+                    <td>$4.50 × 5 = $22.50/week</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Yearly coffee cost</strong></td>
+                    <td>Weekly coffee cost × 52</td>
+                    <td>$22.50 × 52 = $1,170/year</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Monthly coffee cost</strong></td>
+                    <td>Yearly coffee cost ÷ 12</td>
+                    <td>$1,170 ÷ 12 = $97.50/month</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Estimated yearly savings</strong></td>
+                    <td>(Coffee shop cost - homemade cost) × coffees per year</td>
+                    <td>($4.50 - $0.75) × 260 = $975/year</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="coffee-shop-vs-home">
+            <h2>Coffee Shop vs Homemade Coffee</h2>
+            <p>
+              Coffee shop coffee usually costs more than homemade coffee because you are paying for convenience, service, location, rent, labor, and the café experience.
+              Homemade coffee is usually cheaper per cup, but it may not replace the same experience.
+            </p>
+            <p>
+              A realistic approach is to compare the numbers and choose a balance that fits your life.
+              For example, you might keep your favorite café coffee on certain days and make coffee at home on other days.
+            </p>
+
+            <div class="comparison-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Option</th>
+                    <th>Possible benefit</th>
+                    <th>Possible downside</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Coffee shop coffee</strong></td>
+                    <td>Convenient, social, enjoyable, no preparation needed</td>
+                    <td>Higher cost per cup</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Homemade coffee</strong></td>
+                    <td>Lower cost per cup and easier to control spending</td>
+                    <td>Requires equipment, supplies, and preparation</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Mixed approach</strong></td>
+                    <td>Keeps some convenience while reducing yearly cost</td>
+                    <td>Requires a habit change</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="mistakes">
+            <h2>Common Mistakes When Estimating Coffee Costs</h2>
+            <ul>
+              <li><strong>Only looking at one cup:</strong> one coffee may feel small, but repeated purchases create the real cost.</li>
+              <li><strong>Ignoring the number of days per week:</strong> buying coffee every weekday is very different from buying it once or twice a week.</li>
+              <li><strong>Forgetting extra costs:</strong> tips, delivery fees, larger sizes, syrups, snacks, or taxes can increase the total.</li>
+              <li><strong>Assuming homemade coffee is free:</strong> beans, milk, filters, pods, and equipment still have a cost.</li>
+              <li><strong>Making unrealistic cuts:</strong> reducing coffee spending gradually may be easier than trying to stop completely.</li>
+            </ul>
+          </section>
+
+          <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+              <h3>What does a coffee cost calculator do?</h3>
+              <p>
+                It estimates how much your coffee habit costs per day, week, month, and year.
+                It can also compare coffee shop spending with homemade coffee costs.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How do I calculate my yearly coffee spending?</h3>
+              <p>
+                Multiply the price per coffee by the number of coffees you buy per day.
+                Then multiply that by the number of days per week you buy coffee and by 52 weeks.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>How much does a daily coffee cost per year?</h3>
+              <p>
+                It depends on the price per cup. For example, one $4.50 coffee bought 5 days per week costs about $1,170 per year.
+                If you buy coffee every day, the yearly cost would be higher.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Can making coffee at home save money?</h3>
+              <p>
+                Often, yes. Homemade coffee usually has a lower cost per cup.
+                The exact savings depend on the coffee you buy, the ingredients you use at home, and how often you replace coffee shop purchases.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Is this calculator exact?</h3>
+              <p>
+                It gives a simple estimate using 52 weeks per year and 12 months per year.
+                Actual costs can differ because of taxes, tips, discounts, skipped days, price changes, or different drink sizes.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <h3>Should I stop buying coffee to save money?</h3>
+              <p>
+                Not necessarily. The calculator is only meant to show the numbers clearly.
+                You can use the result to decide whether your coffee spending fits your budget and priorities.
+              </p>
+            </div>
+
+            <p class="disclaimer">
+              <strong>Note:</strong> This calculator is for educational and planning purposes only. It does not provide financial advice.
+            </p>
+          </section>
+
+          <section class="related-links" aria-labelledby="related-links-heading">
+            <h2 id="related-links-heading">Related calculators and articles</h2>
+            <div class="links">
+              <a href="https://financecalccenter.com/cost-per-day-calculator.html">Cost Per Day Calculator</a>
+              <a href="https://financecalccenter.com/monthly-to-yearly-cost-calculator.html">Monthly to Yearly Cost Calculator</a>
+              <a href="https://financecalccenter.com/subscription-cost-calculator.html">Subscription Cost Calculator</a>
+              <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
+              <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
+              <a href="https://financecalccenter.com/index.html">Browse all calculators →</a>
+            </div>
+          </section>
+
+          <a class="back-link" href="index.html">← Back to home</a>
+        </article>
+      </div>
+    </main>
+
+    <p class="footer-note">
+      FinanceCalcCenter provides educational calculators and plain-English financial explainers designed to help users compare everyday money decisions more clearly.
+    </p>
+  </div>
+
+  <script>
+    function fmtMoney(x, currency) {
+      if (!isFinite(x)) x = 0;
+
+      if (currency === "Ft") {
+        return Math.round(x).toLocaleString("en-US") + " Ft";
+      }
+
+      return currency + x.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function getInputValues() {
+      const currency = document.getElementById("currency").value;
+      const pricePerCoffee = Math.max(0, parseFloat(document.getElementById("pricePerCoffee").value) || 0);
+      const coffeesPerDay = Math.max(0, parseFloat(document.getElementById("coffeesPerDay").value) || 0);
+      const daysPerWeekRaw = Math.max(0, parseFloat(document.getElementById("daysPerWeek").value) || 0);
+      const daysPerWeek = Math.min(7, daysPerWeekRaw);
+      const homeCoffeeCost = Math.max(0, parseFloat(document.getElementById("homeCoffeeCost").value) || 0);
+
+      return {
+        currency,
+        pricePerCoffee,
+        coffeesPerDay,
+        daysPerWeek,
+        homeCoffeeCost
+      };
+    }
+
+    function calculateCoffeeCosts() {
+      const {
+        currency,
+        pricePerCoffee,
+        coffeesPerDay,
+        daysPerWeek,
+        homeCoffeeCost
+      } = getInputValues();
+
+      const resultBox = document.getElementById("result");
+
+      const coffeeShopDailyCost = pricePerCoffee * coffeesPerDay;
+      const coffeeShopWeeklyCost = coffeeShopDailyCost * daysPerWeek;
+      const coffeeShopYearlyCost = coffeeShopWeeklyCost * 52;
+      const coffeeShopMonthlyCost = coffeeShopYearlyCost / 12;
+
+      const coffeesPerWeek = coffeesPerDay * daysPerWeek;
+      const coffeesPerYear = coffeesPerWeek * 52;
+
+      const homeDailyCost = homeCoffeeCost * coffeesPerDay;
+      const homeWeeklyCost = homeDailyCost * daysPerWeek;
+      const homeYearlyCost = homeWeeklyCost * 52;
+      const homeMonthlyCost = homeYearlyCost / 12;
+
+      const yearlySavings = Math.max(0, coffeeShopYearlyCost - homeYearlyCost);
+      const monthlySavings = yearlySavings / 12;
+
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Results</h2>
+
+        <div class="result-grid">
+          <div class="result-item highlight-result">
+            <span class="result-label">Coffee shop cost per year</span>
+            <span class="result-value">${fmtMoney(coffeeShopYearlyCost, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Coffee shop cost per month</span>
+            <span class="result-value">${fmtMoney(coffeeShopMonthlyCost, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Coffee shop cost per week</span>
+            <span class="result-value">${fmtMoney(coffeeShopWeeklyCost, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Coffee shop cost per coffee-buying day</span>
+            <span class="result-value">${fmtMoney(coffeeShopDailyCost, currency)}</span>
+          </div>
+
+          <div class="result-item highlight-result">
+            <span class="result-label">Estimated yearly savings vs homemade coffee</span>
+            <span class="result-value">${fmtMoney(yearlySavings, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Estimated monthly savings</span>
+            <span class="result-value">${fmtMoney(monthlySavings, currency)}</span>
+          </div>
+        </div>
+
+        <p class="note">
+          You buy about <strong>${coffeesPerWeek.toLocaleString("en-US", { maximumFractionDigits: 1 })} coffees per week</strong>
+          and about <strong>${coffeesPerYear.toLocaleString("en-US", { maximumFractionDigits: 0 })} coffees per year</strong>.
+          At ${fmtMoney(pricePerCoffee, currency)} per coffee, that is about
+          <strong>${fmtMoney(coffeeShopMonthlyCost, currency)} per month</strong> and
+          <strong>${fmtMoney(coffeeShopYearlyCost, currency)} per year</strong>.
+        </p>
+
+        <p class="note">
+          If homemade coffee costs about ${fmtMoney(homeCoffeeCost, currency)} per cup, the same amount of coffee would cost about
+          <strong>${fmtMoney(homeMonthlyCost, currency)} per month</strong> and
+          <strong>${fmtMoney(homeYearlyCost, currency)} per year</strong>.
+        </p>
+      `;
+    }
+
+    function resetCalculator() {
+      document.getElementById("currency").value = "$";
+      document.getElementById("pricePerCoffee").value = "4.50";
+      document.getElementById("coffeesPerDay").value = "1";
+      document.getElementById("daysPerWeek").value = "5";
+      document.getElementById("homeCoffeeCost").value = "0.75";
+      document.getElementById("result").style.display = "none";
+      document.getElementById("result").innerHTML = "";
+    }
+
+    document.getElementById("calculatorForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      calculateCoffeeCosts();
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", resetCalculator);
+  </script>
+</body>
+</html>
