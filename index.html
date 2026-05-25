@@ -315,7 +315,18 @@
       gap: 1rem;
       margin-bottom: 2rem;
     }
+     .ebooks-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
 
+.ebooks-grid .tool-card {
+  grid-column: span 2;
+}
+
+    
     @media (max-width: 1024px) {
       .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
@@ -909,8 +920,8 @@
           Beginner-friendly digital guides for debt, credit cards, budgeting, and everyday money decisions.
         </div>
       </div>
-
-      <div class="cards-grid">
+      
+      <div class="ebooks-grid">
         <a href="https://payhip.com/b/LABgO" class="tool-card" target="_blank" rel="nofollow sponsored noopener">
           <div class="tool-label">Digital guide</div>
           <div class="tool-name">The Credit Card Reset System</div>
