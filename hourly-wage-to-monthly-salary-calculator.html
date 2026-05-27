@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68ZVCW4FWK');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7086753311239071"
+    crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020617" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <title>Hourly Wage to Monthly Salary Calculator | Gross Monthly Pay</title>
+  <meta
+    name="description"
+    content="Use this hourly wage to monthly salary calculator to estimate your gross monthly, yearly, weekly, biweekly, and semimonthly pay from an hourly rate and work hours."
+  />
+  <link rel="canonical" href="https://financecalccenter.com/hourly-wage-to-monthly-salary-calculator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hourly Wage to Monthly Salary Calculator | Gross Monthly Pay" />
+  <meta property="og:description" content="Convert hourly wage into estimated gross monthly salary, yearly salary, weekly pay, biweekly pay, and semimonthly pay." />
+  <meta property="og:url" content="https://financecalccenter.com/hourly-wage-to-monthly-salary-calculator.html" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Hourly Wage to Monthly Salary Calculator" />
+  <meta name="twitter:description" content="Estimate your gross monthly and yearly salary from an hourly wage, weekly hours, paid weeks, and optional overtime." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Hourly Wage to Monthly Salary Calculator",
+    "url": "https://financecalccenter.com/hourly-wage-to-monthly-salary-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "A free calculator that converts hourly wage into estimated gross monthly salary, yearly salary, weekly pay, biweekly pay, and semimonthly pay.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I convert hourly wage to monthly salary?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Multiply your hourly wage by your work hours per week, then multiply by the number of paid weeks per year. Divide the yearly amount by 12 to estimate gross monthly salary."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is monthly salary before or after taxes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This calculator estimates gross pay before taxes, deductions, insurance, retirement contributions, and other withholdings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the formula for hourly wage to yearly salary?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yearly salary equals hourly wage multiplied by weekly hours multiplied by paid weeks per year. For example, $20 per hour at 40 hours per week for 52 weeks equals $41,600 per year before taxes."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #0f172a;
+      --card: #111827;
+      --card-2: #1e293b;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22c55e;
+      --accent-2: #16a34a;
+      --border: #334155;
+      --danger: #f97316;
+      --shadow: rgba(15, 23, 42, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.14), transparent 32rem),
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.12), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: #86efac;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0;
+      background: #ffffff;
+      color: #020617;
+      padding: 0.7rem 1rem;
+      z-index: 100;
+      border-radius: 0 0 0.5rem 0;
+    }
+
+    .skip-link:focus {
+      left: 0;
+    }
+
+    .site-wrap {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.25rem 0 3rem;
+    }
+
+    .breadcrumbs {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0.25rem 0 1.25rem;
+    }
+
+    .breadcrumbs a {
+      color: #bbf7d0;
+    }
+
+    .hero {
+      padding: 2rem;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      border-radius: 1.5rem;
+      background:
+        linear-gradient(135deg, rgba(34, 197, 94, 0.14), rgba(15, 23, 42, 0.88)),
+        rgba(15, 23, 42, 0.96);
+      box-shadow: 0 24px 55px var(--shadow);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.08;
+      margin: 0 0 0.9rem;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 1.08rem;
+    }
+
+    .top-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 1.25rem;
+      box-shadow: 0 18px 45px var(--shadow);
+    }
+
+    .calculator-card,
+    .content-card {
+      padding: 1.35rem;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin: 1.35rem 0 0.55rem;
+    }
+
+    p {
+      margin: 0 0 1rem;
+      color: #d1d5db;
+    }
+
+    .intro-note,
+    .help-text,
+    .note {
+      color: var(--muted);
+    }
+
+    .intro-note {
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    label {
+      font-size: 0.92rem;
+      font-weight: 650;
+      color: #f3f4f6;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #020617;
+      color: var(--text);
+      border-radius: 0.8rem;
+      padding: 0.78rem 0.82rem;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 0.82rem 1.15rem;
+      font-weight: 750;
+      font-size: 0.98rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #052e16;
+    }
+
+    .btn-secondary {
+      background: #1f2937;
+      color: #e5e7eb;
+      border: 1px solid #374151;
+    }
+
+    .trust-strip {
+      margin: 1rem 0 0;
+      padding: 0.85rem 0.95rem;
+      border-radius: 0.95rem;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      color: #bbf7d0;
+      font-size: 0.92rem;
+    }
+
+    .result-box {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.82);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+    }
+
+    .result-box h2 {
+      margin-bottom: 0.9rem;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-item {
+      padding: 0.9rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 0.95rem;
+    }
+
+    .highlight-result {
+      border-color: rgba(34, 197, 94, 0.52);
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    .result-label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .result-value {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #f9fafb;
+      line-height: 1.2;
+    }
+
+    .assumption-box,
+    .callout {
+      border-radius: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      background: rgba(30, 41, 59, 0.72);
+      color: #d1d5db;
+    }
+
+    .assumption-box {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+    }
+
+    .callout {
+      margin-bottom: 1.1rem;
+    }
+
+    .toc {
+      margin-bottom: 1.15rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.62);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .toc-title {
+      font-weight: 800;
+      margin-bottom: 0.55rem;
+    }
+
+    .toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .content-card section {
+      padding-top: 1rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.14);
+      margin-top: 1rem;
+    }
+
+    ul,
+    ol {
+      color: #d1d5db;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+
+    .comparison-table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0;
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px;
+      background: rgba(2, 6, 23, 0.55);
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 0.8rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(30, 41, 59, 0.78);
+      color: #f9fafb;
+      font-size: 0.9rem;
+    }
+
+    td {
+      color: #d1d5db;
+      font-size: 0.92rem;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    .mini-card {
+      padding: 0.9rem;
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.62);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      color: #d1d5db;
+      font-size: 0.92rem;
+    }
+
+    .related-links {
+      margin-top: 1.25rem;
+      padding: 1.15rem;
+      border-radius: 1.1rem;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .related-links h2 {
+      margin-bottom: 0.75rem;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .links a {
+      display: inline-flex;
+      padding: 0.6rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      color: #bbf7d0;
+      font-size: 0.92rem;
+    }
+
+    .footer-note {
+      margin-top: 1.25rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .top-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field-grid,
+      .result-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 1.35rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="site-wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://financecalccenter.com/index.html">Home</a> &raquo;
+      <span aria-current="page">Hourly Wage to Monthly Salary Calculator</span>
+    </nav>
+
+    <header class="hero">
+      <h1>Hourly Wage to Monthly Salary Calculator</h1>
+      <p>
+        Convert your hourly wage into an estimated gross monthly salary, yearly salary,
+        weekly pay, biweekly pay, and semimonthly pay. Useful for job offers, budgeting,
+        side income, part-time work, and comparing hourly pay with salary.
+      </p>
+    </header>
+
+    <main id="main-content">
+      <div class="top-grid">
+        <section class="card calculator-card" aria-labelledby="calculator-heading">
+          <h2 id="calculator-heading">Calculate monthly salary from hourly wage</h2>
+          <p class="intro-note">
+            Enter your hourly wage, regular weekly hours, paid weeks per year, and optional overtime.
+            The calculator estimates gross pay before taxes and deductions.
+          </p>
+
+          <form id="calculatorForm" novalidate>
+            <div class="field-grid">
+              <div class="field">
+                <label for="currency">Currency</label>
+                <select id="currency">
+                  <option value="$" selected>$ - US Dollar</option>
+                  <option value="€">€ - Euro</option>
+                  <option value="£">£ - British Pound</option>
+                  <option value="Ft">Ft - Hungarian Forint</option>
+                </select>
+                <div class="help-text">Choose the currency you want to display.</div>
+              </div>
+
+              <div class="field">
+                <label for="hourlyWage">Hourly wage</label>
+                <input type="number" id="hourlyWage" inputmode="decimal" min="0" step="0.01" value="20" />
+                <div class="help-text">Enter your hourly rate before taxes.</div>
+              </div>
+
+              <div class="field">
+                <label for="hoursPerWeek">Regular hours per week</label>
+                <input type="number" id="hoursPerWeek" inputmode="decimal" min="0" max="168" step="0.1" value="40" />
+                <div class="help-text">Example: 40 for full-time, 20 for part-time.</div>
+              </div>
+
+              <div class="field">
+                <label for="paidWeeks">Paid weeks per year</label>
+                <input type="number" id="paidWeeks" inputmode="decimal" min="0" max="52" step="0.1" value="52" />
+                <div class="help-text">Use 52 if you are paid all year. Use less for unpaid time off or seasonal work.</div>
+              </div>
+
+              <div class="field">
+                <label for="overtimeHours">Overtime hours per week</label>
+                <input type="number" id="overtimeHours" inputmode="decimal" min="0" max="168" step="0.1" value="0" />
+                <div class="help-text">Optional. Enter 0 if overtime does not apply.</div>
+              </div>
+
+              <div class="field">
+                <label for="overtimeMultiplier">Overtime rate multiplier</label>
+                <input type="number" id="overtimeMultiplier" inputmode="decimal" min="0" step="0.1" value="1.5" />
+                <div class="help-text">Common example: 1.5 means time-and-a-half.</div>
+              </div>
+
+              <div class="field">
+                <label for="monthlyDeductions">Optional monthly deductions</label>
+                <input type="number" id="monthlyDeductions" inputmode="decimal" min="0" step="0.01" value="0" />
+                <div class="help-text">Optional estimate for taxes, insurance, retirement, or other deductions.</div>
+              </div>
+
+              <div class="field">
+                <label for="payFrequency">Pay frequency for comparison</label>
+                <select id="payFrequency">
+                  <option value="weekly">Weekly</option>
+                  <option value="biweekly" selected>Biweekly</option>
+                  <option value="semimonthly">Semimonthly</option>
+                  <option value="monthly">Monthly</option>
+                </select>
+                <div class="help-text">This does not change annual pay. It only helps compare paycheck amounts.</div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button type="submit" class="btn-primary">Calculate</button>
+              <button type="button" class="btn-secondary" id="resetBtn">Reset to defaults</button>
+            </div>
+          </form>
+
+          <div class="trust-strip">
+            Useful for hourly workers, part-time jobs, full-time jobs, overtime estimates,
+            freelance income, job offer comparisons, and monthly budget planning.
+          </div>
+
+          <div id="result" class="result-box" aria-live="polite"></div>
+
+          <div class="assumption-box">
+            <strong>Important:</strong> This calculator estimates gross pay before taxes unless you enter optional monthly deductions.
+            Actual take-home pay may be different because of income tax, payroll tax, health insurance,
+            retirement contributions, unpaid leave, bonuses, commissions, local laws, and employer-specific pay rules.
+          </div>
+        </section>
+
+        <article class="card content-card">
+          <div class="toc" aria-labelledby="toc-heading">
+            <div class="toc-title" id="toc-heading">On this page</div>
+            <ul>
+              <li><a href="#what-is-hourly-to-monthly">What this calculator does</a></li>
+              <li><a href="#how-to-use">How to use it</a></li>
+              <li><a href="#examples">Hourly wage examples</a></li>
+              <li><a href="#why-it-matters">Why monthly salary matters</a></li>
+              <li><a href="#formulas">Formulas used</a></li>
+              <li><a href="#gross-vs-net">Gross pay vs take-home pay</a></li>
+              <li><a href="#job-offers">Using it for job offers</a></li>
+              <li><a href="#mistakes">Common mistakes</a></li>
+              <li><a href="#faq">Frequently asked questions</a></li>
+            </ul>
+          </div>
+
+          <div class="callout">
+            <strong>Quick example:</strong>
+            If you earn <strong>$20 per hour</strong> and work <strong>40 hours per week</strong>
+            for <strong>52 paid weeks</strong>, your estimated gross pay is
+            <strong>$41,600 per year</strong>, or about <strong>$3,466.67 per month</strong> before taxes.
+          </div>
+
+          <section id="what-is-hourly-to-monthly">
+            <h2>What Is an Hourly Wage to Monthly Salary Calculator?</h2>
+            <p>
+              An hourly wage to monthly salary calculator converts an hourly rate into an estimated monthly salary.
+              It helps you understand how much an hourly job may be worth over a full month or year.
+            </p>
+            <p>
+              This is useful because hourly pay can be harder to compare with salary-based jobs.
+              A job that pays $18 per hour, $22 per hour, or $30 per hour may sound simple,
+              but the real monthly income depends on weekly hours, paid weeks, overtime, and deductions.
+            </p>
+          </section>
+
+          <section id="how-to-use">
+            <h2>How to Use This Hourly Wage to Monthly Salary Calculator</h2>
+            <ul>
+              <li><strong>Choose your currency:</strong> dollar, euro, pound, or forint.</li>
+              <li><strong>Enter hourly wage:</strong> this is your pay rate before taxes.</li>
+              <li><strong>Enter regular weekly hours:</strong> use the number of hours you normally work each week.</li>
+              <li><strong>Enter paid weeks per year:</strong> use 52 for a full year of paid work.</li>
+              <li><strong>Add overtime if needed:</strong> enter overtime hours and the overtime multiplier.</li>
+              <li><strong>Add optional deductions:</strong> this can help estimate a rough monthly amount after deductions.</li>
+              <li><strong>Compare pay frequencies:</strong> see weekly, biweekly, semimonthly, and monthly amounts.</li>
+            </ul>
+          </section>
+
+          <section id="examples">
+            <h2>Hourly Wage to Monthly Salary Examples</h2>
+            <p>
+              The table below shows common hourly wage examples using 40 hours per week and 52 paid weeks per year.
+              These are gross estimates before taxes and deductions.
+            </p>
+
+            <div class="comparison-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Hourly wage</th>
+                    <th>Weekly gross pay</th>
+                    <th>Monthly gross salary</th>
+                    <th>Yearly gross salary</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>$15/hour</strong></td>
+                    <td>$600</td>
+                    <td>About $2,600</td>
+                    <td>$31,200</td>
+                  </tr>
+                  <tr>
+                    <td><strong>$20/hour</strong></td>
+                    <td>$800</td>
+                    <td>About $3,466.67</td>
+                    <td>$41,600</td>
+                  </tr>
+                  <tr>
+                    <td><strong>$25/hour</strong></td>
+                    <td>$1,000</td>
+                    <td>About $4,333.33</td>
+                    <td>$52,000</td>
+                  </tr>
+                  <tr>
+                    <td><strong>$30/hour</strong></td>
+                    <td>$1,200</td>
+                    <td>About $5,200</td>
+                    <td>$62,400</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              Monthly salary is usually not the same as four weeks of pay.
+              A full year has 52 weeks, and 52 weeks divided by 12 months equals about 4.33 weeks per month.
+              That is why monthly salary is usually calculated from annual pay divided by 12.
+            </p>
+
+            <div class="mini-grid">
+              <div class="mini-card">
+                <strong>Weekly view</strong>
+                Helps you understand your regular workweek earnings.
+              </div>
+              <div class="mini-card">
+                <strong>Monthly view</strong>
+                Helps you plan rent, bills, savings, and recurring expenses.
+              </div>
+              <div class="mini-card">
+                <strong>Yearly view</strong>
+                Helps you compare hourly jobs with annual salary offers.
+              </div>
+            </div>
+          </section>
+
+          <section id="why-it-matters">
+            <h2>Why Monthly Salary Matters</h2>
+            <p>
+              Monthly income is one of the most useful numbers for everyday budgeting.
+              Many major expenses are monthly, including rent, mortgage payments, utilities,
+              subscriptions, insurance, loan payments, and savings goals.
+            </p>
+            <p>
+              If you only look at your hourly wage, it can be difficult to know how much room you have in your budget.
+              Converting hourly pay to monthly salary makes it easier to compare income with monthly expenses.
+            </p>
+          </section>
+
+          <section id="formulas">
+            <h2>Formulas Used by This Calculator</h2>
+            <p>
+              This calculator uses simple gross pay formulas. It does not automatically calculate taxes
+              because tax rules vary by country, state, income level, filing status, and personal situation.
+            </p>
+
+            <div class="comparison-table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Calculation</th>
+                    <th>Formula</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Regular weekly pay</strong></td>
+                    <td>Hourly wage × regular hours per week</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Overtime weekly pay</strong></td>
+                    <td>Hourly wage × overtime multiplier × overtime hours per week</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Total weekly pay</strong></td>
+                    <td>Regular weekly pay + overtime weekly pay</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Yearly gross salary</strong></td>
+                    <td>Total weekly pay × paid weeks per year</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Monthly gross salary</strong></td>
+                    <td>Yearly gross salary ÷ 12</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Biweekly gross pay</strong></td>
+                    <td>Yearly gross salary ÷ 26</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="gross-vs-net">
+            <h2>Gross Pay vs Take-Home Pay</h2>
+            <p>
+              Gross pay is the amount you earn before deductions. Take-home pay, sometimes called net pay,
+              is what remains after taxes and deductions are removed.
+            </p>
+            <p>
+              Common deductions may include income tax, payroll tax, health insurance, retirement contributions,
+              union dues, benefit costs, wage garnishments, or other employer-specific deductions.
+              Because these vary widely, this calculator focuses on gross pay and lets you enter an optional
+              monthly deduction estimate.
+            </p>
+          </section>
+
+          <section id="job-offers">
+            <h2>Using This Calculator for Job Offers</h2>
+            <p>
+              When comparing job offers, the hourly rate is only one part of the decision.
+              Two jobs with the same hourly wage can produce different monthly income if the hours,
+              overtime rules, paid time off, benefits, commute costs, or schedule stability are different.
+            </p>
+            <ul>
+              <li>Compare the estimated yearly salary, not only the hourly rate.</li>
+              <li>Check whether the job offers consistent hours each week.</li>
+              <li>Consider unpaid time off, seasonal work, and reduced hours.</li>
+              <li>Include commute costs when comparing two job locations.</li>
+              <li>Look at benefits, health insurance, retirement matching, and paid leave.</li>
+            </ul>
+          </section>
+
+          <section id="mistakes">
+            <h2>Common Mistakes When Converting Hourly Wage to Monthly Salary</h2>
+            <ul>
+              <li><strong>Using four weeks per month:</strong> a year has about 4.33 weeks per month, not exactly 4.</li>
+              <li><strong>Ignoring unpaid time off:</strong> unpaid weeks reduce annual and monthly income.</li>
+              <li><strong>Counting overtime as guaranteed:</strong> overtime may change from week to week.</li>
+              <li><strong>Confusing gross and net pay:</strong> taxes and deductions can reduce take-home income.</li>
+              <li><strong>Ignoring variable schedules:</strong> part-time or shift-based work may not provide the same hours every week.</li>
+            </ul>
+          </section>
+
+          <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>How do I calculate monthly salary from hourly wage?</h3>
+            <p>
+              Multiply hourly wage by weekly hours, then multiply by paid weeks per year.
+              Divide the yearly amount by 12 to estimate monthly gross salary.
+            </p>
+
+            <h3>Is this calculator before or after taxes?</h3>
+            <p>
+              The main result is gross pay before taxes and deductions.
+              You can enter optional monthly deductions to create a rough adjusted monthly estimate,
+              but this is not a full tax calculation.
+            </p>
+
+            <h3>Why is monthly pay not just weekly pay times four?</h3>
+            <p>
+              A year has 52 weeks. When divided by 12 months, the average month has about 4.33 weeks.
+              Using only four weeks can underestimate monthly income.
+            </p>
+
+            <h3>Can I use this calculator for part-time work?</h3>
+            <p>
+              Yes. Enter your part-time hours per week and your hourly wage.
+              The calculator will estimate weekly, monthly, and yearly gross pay.
+            </p>
+
+            <h3>Can I include overtime?</h3>
+            <p>
+              Yes. Enter overtime hours per week and the overtime multiplier.
+              For example, use 1.5 for time-and-a-half.
+            </p>
+          </section>
+        </article>
+      </div>
+
+      <section class="related-links" aria-labelledby="related-links-heading">
+        <h2 id="related-links-heading">Related calculators and articles</h2>
+        <div class="links">
+          <a href="https://financecalccenter.com/monthly-to-yearly-cost-calculator.html">Monthly to Yearly Cost Calculator</a>
+          <a href="https://financecalccenter.com/cost-per-day-calculator.html">Cost Per Day Calculator</a>
+          <a href="https://financecalccenter.com/commute-cost-calculator.html">Commute Cost Calculator</a>
+          <a href="https://financecalccenter.com/lunch-cost-calculator.html">Lunch Cost Calculator</a>
+          <a href="https://financecalccenter.com/coffee-cost-calculator.html">Coffee Cost Calculator</a>
+          <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
+          <a href="https://financecalccenter.com/index.html">Browse all calculators →</a>
+        </div>
+      </section>
+
+      <p class="footer-note">
+        FinanceCalcCenter calculators are for educational and planning purposes only.
+        They are not financial, tax, legal, or employment advice.
+      </p>
+    </main>
+  </div>
+
+  <script>
+    function getNumber(id) {
+      const value = parseFloat(document.getElementById(id).value);
+      return Number.isFinite(value) ? value : 0;
+    }
+
+    function fmtMoney(value, currency) {
+      if (!Number.isFinite(value)) {
+        value = 0;
+      }
+
+      if (currency === "Ft") {
+        return Math.round(value).toLocaleString("en-US") + " Ft";
+      }
+
+      return currency + value.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function fmtNumber(value) {
+      if (!Number.isFinite(value)) {
+        value = 0;
+      }
+
+      return value.toLocaleString("en-US", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function calculateSalary() {
+      const currency = document.getElementById("currency").value;
+      const hourlyWage = getNumber("hourlyWage");
+      const hoursPerWeek = getNumber("hoursPerWeek");
+      const paidWeeks = getNumber("paidWeeks");
+      const overtimeHours = getNumber("overtimeHours");
+      const overtimeMultiplier = getNumber("overtimeMultiplier");
+      const monthlyDeductions = getNumber("monthlyDeductions");
+      const payFrequency = document.getElementById("payFrequency").value;
+
+      const resultBox = document.getElementById("result");
+
+      if (hourlyWage < 0 || hoursPerWeek < 0 || paidWeeks < 0 || overtimeHours < 0 || overtimeMultiplier < 0 || monthlyDeductions < 0) {
+        resultBox.style.display = "block";
+        resultBox.innerHTML = "<h2>Check your inputs</h2><p class='note'>Please enter zero or positive numbers only.</p>";
+        return;
+      }
+
+      if (hoursPerWeek + overtimeHours > 168) {
+        resultBox.style.display = "block";
+        resultBox.innerHTML = "<h2>Check your weekly hours</h2><p class='note'>Regular hours and overtime hours cannot be more than 168 hours in one week.</p>";
+        return;
+      }
+
+      if (paidWeeks > 52) {
+        resultBox.style.display = "block";
+        resultBox.innerHTML = "<h2>Check paid weeks</h2><p class='note'>Paid weeks per year cannot be more than 52.</p>";
+        return;
+      }
+
+      const regularWeeklyPay = hourlyWage * hoursPerWeek;
+      const overtimeWeeklyPay = hourlyWage * overtimeMultiplier * overtimeHours;
+      const totalWeeklyPay = regularWeeklyPay + overtimeWeeklyPay;
+
+      const yearlyGrossPay = totalWeeklyPay * paidWeeks;
+      const monthlyGrossPay = yearlyGrossPay / 12;
+      const weeklyAveragePay = yearlyGrossPay / 52;
+      const biweeklyGrossPay = yearlyGrossPay / 26;
+      const semimonthlyGrossPay = yearlyGrossPay / 24;
+
+      const monthlyAfterDeductions = Math.max(0, monthlyGrossPay - monthlyDeductions);
+      const yearlyDeductions = monthlyDeductions * 12;
+      const yearlyAfterDeductions = Math.max(0, yearlyGrossPay - yearlyDeductions);
+
+      let selectedPaycheckLabel = "Estimated biweekly gross pay";
+      let selectedPaycheckValue = biweeklyGrossPay;
+
+      if (payFrequency === "weekly") {
+        selectedPaycheckLabel = "Estimated weekly gross pay";
+        selectedPaycheckValue = weeklyAveragePay;
+      } else if (payFrequency === "semimonthly") {
+        selectedPaycheckLabel = "Estimated semimonthly gross pay";
+        selectedPaycheckValue = semimonthlyGrossPay;
+      } else if (payFrequency === "monthly") {
+        selectedPaycheckLabel = "Estimated monthly gross pay";
+        selectedPaycheckValue = monthlyGrossPay;
+      }
+
+      let deductionNote = "No optional monthly deductions were entered.";
+      if (monthlyDeductions > 0) {
+        deductionNote = "After the optional monthly deductions you entered, the rough adjusted monthly estimate is " + fmtMoney(monthlyAfterDeductions, currency) + ". This is not a full tax calculation.";
+      }
+
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Results</h2>
+
+        <div class="result-grid">
+          <div class="result-item highlight-result">
+            <span class="result-label">Estimated gross monthly salary</span>
+            <span class="result-value">${fmtMoney(monthlyGrossPay, currency)}</span>
+          </div>
+
+          <div class="result-item highlight-result">
+            <span class="result-label">Estimated gross yearly salary</span>
+            <span class="result-value">${fmtMoney(yearlyGrossPay, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Regular weekly gross pay</span>
+            <span class="result-value">${fmtMoney(regularWeeklyPay, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Overtime weekly gross pay</span>
+            <span class="result-value">${fmtMoney(overtimeWeeklyPay, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Average weekly gross pay</span>
+            <span class="result-value">${fmtMoney(weeklyAveragePay, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Estimated biweekly gross pay</span>
+            <span class="result-value">${fmtMoney(biweeklyGrossPay, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Estimated semimonthly gross pay</span>
+            <span class="result-value">${fmtMoney(semimonthlyGrossPay, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">${selectedPaycheckLabel}</span>
+            <span class="result-value">${fmtMoney(selectedPaycheckValue, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Monthly estimate after optional deductions</span>
+            <span class="result-value">${fmtMoney(monthlyAfterDeductions, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Yearly estimate after optional deductions</span>
+            <span class="result-value">${fmtMoney(yearlyAfterDeductions, currency)}</span>
+          </div>
+        </div>
+
+        <p class="note">
+          Your estimate is based on an hourly wage of <strong>${fmtMoney(hourlyWage, currency)}</strong>,
+          <strong>${fmtNumber(hoursPerWeek)} regular hours per week</strong>,
+          <strong>${fmtNumber(overtimeHours)} overtime hours per week</strong>,
+          and <strong>${fmtNumber(paidWeeks)} paid weeks per year</strong>.
+        </p>
+
+        <p class="note">
+          Regular weekly pay is <strong>${fmtMoney(regularWeeklyPay, currency)}</strong>.
+          Overtime weekly pay is <strong>${fmtMoney(overtimeWeeklyPay, currency)}</strong>.
+        </p>
+
+        <p class="note">
+          <strong>${deductionNote}</strong>
+        </p>
+
+        <p class="note">
+          This calculator provides an estimate for planning purposes. Your actual paycheck may be different because of taxes,
+          deductions, benefits, unpaid leave, payroll rules, overtime eligibility, bonuses, and employer policies.
+        </p>
+      `;
+    }
+
+    function resetCalculator() {
+      document.getElementById("currency").value = "$";
+      document.getElementById("hourlyWage").value = "20";
+      document.getElementById("hoursPerWeek").value = "40";
+      document.getElementById("paidWeeks").value = "52";
+      document.getElementById("overtimeHours").value = "0";
+      document.getElementById("overtimeMultiplier").value = "1.5";
+      document.getElementById("monthlyDeductions").value = "0";
+      document.getElementById("payFrequency").value = "biweekly";
+      document.getElementById("result").style.display = "none";
+      document.getElementById("result").innerHTML = "";
+    }
+
+    document.getElementById("calculatorForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      calculateSalary();
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", resetCalculator);
+  </script>
+</body>
+</html>
