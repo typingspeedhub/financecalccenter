@@ -25,20 +25,15 @@
   <link rel="shortcut icon" href="/favicon.ico">
 
   <title>Hourly Wage to Monthly Salary Calculator | Gross Monthly Pay</title>
-  <meta
-    name="description"
-    content="Use this hourly wage to monthly salary calculator to estimate your gross monthly, yearly, weekly, biweekly, and semimonthly pay from an hourly rate and work hours."
-  />
+  <meta name="description" content="Use this hourly wage to monthly salary calculator to estimate your gross monthly, yearly, weekly, biweekly, and semimonthly pay from an hourly rate and work hours." />
   <link rel="canonical" href="https://financecalccenter.com/hourly-wage-to-monthly-salary-calculator.html" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Hourly Wage to Monthly Salary Calculator | Gross Monthly Pay" />
   <meta property="og:description" content="Convert hourly wage into estimated gross monthly salary, yearly salary, weekly pay, biweekly pay, and semimonthly pay." />
   <meta property="og:url" content="https://financecalccenter.com/hourly-wage-to-monthly-salary-calculator.html" />
   <meta property="og:site_name" content="FinanceCalcCenter" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Hourly Wage to Monthly Salary Calculator" />
   <meta name="twitter:description" content="Estimate your gross monthly and yearly salary from an hourly wage, weekly hours, paid weeks, and optional overtime." />
@@ -96,15 +91,12 @@
   <style>
     :root {
       --bg: #020617;
-      --bg-soft: #0f172a;
       --card: #111827;
-      --card-2: #1e293b;
       --text: #e5e7eb;
       --muted: #9ca3af;
       --accent: #22c55e;
       --accent-2: #16a34a;
       --border: #334155;
-      --danger: #f97316;
       --shadow: rgba(15, 23, 42, 0.45);
     }
 
@@ -152,7 +144,7 @@
     }
 
     .site-wrap {
-      width: min(1120px, calc(100% - 2rem));
+      width: min(980px, calc(100% - 2rem));
       margin: 0 auto;
       padding: 1.25rem 0 3rem;
     }
@@ -186,17 +178,10 @@
     }
 
     .hero p {
-      max-width: 780px;
+      max-width: 820px;
       margin: 0;
       color: #cbd5e1;
       font-size: 1.08rem;
-    }
-
-    .top-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-      gap: 1.25rem;
-      align-items: start;
     }
 
     .card {
@@ -204,6 +189,7 @@
       border: 1px solid rgba(148, 163, 184, 0.22);
       border-radius: 1.25rem;
       box-shadow: 0 18px 45px var(--shadow);
+      margin-bottom: 1.25rem;
     }
 
     .calculator-card,
@@ -325,10 +311,6 @@
       border: 1px solid rgba(34, 197, 94, 0.35);
     }
 
-    .result-box h2 {
-      margin-bottom: 0.9rem;
-    }
-
     .result-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -379,6 +361,7 @@
 
     .callout {
       margin-bottom: 1.1rem;
+      border-color: rgba(34, 197, 94, 0.28);
     }
 
     .toc {
@@ -475,10 +458,6 @@
       border: 1px solid rgba(148, 163, 184, 0.22);
     }
 
-    .related-links h2 {
-      margin-bottom: 0.75rem;
-    }
-
     .links {
       display: flex;
       flex-wrap: wrap;
@@ -502,11 +481,7 @@
       text-align: center;
     }
 
-    @media (max-width: 900px) {
-      .top-grid {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 760px) {
       .field-grid,
       .result-grid,
       .mini-grid {
@@ -515,6 +490,11 @@
 
       .hero {
         padding: 1.35rem;
+      }
+
+      .calculator-card,
+      .content-card {
+        padding: 1rem;
       }
     }
   </style>
@@ -539,347 +519,345 @@
     </header>
 
     <main id="main-content">
-      <div class="top-grid">
-        <section class="card calculator-card" aria-labelledby="calculator-heading">
-          <h2 id="calculator-heading">Calculate monthly salary from hourly wage</h2>
-          <p class="intro-note">
-            Enter your hourly wage, regular weekly hours, paid weeks per year, and optional overtime.
-            The calculator estimates gross pay before taxes and deductions.
-          </p>
+      <section class="card calculator-card" aria-labelledby="calculator-heading">
+        <h2 id="calculator-heading">Calculate monthly salary from hourly wage</h2>
+        <p class="intro-note">
+          Enter your hourly wage, regular weekly hours, paid weeks per year, and optional overtime.
+          The calculator estimates gross pay before taxes and deductions.
+        </p>
 
-          <form id="calculatorForm" novalidate>
-            <div class="field-grid">
-              <div class="field">
-                <label for="currency">Currency</label>
-                <select id="currency">
-                  <option value="$" selected>$ - US Dollar</option>
-                  <option value="€">€ - Euro</option>
-                  <option value="£">£ - British Pound</option>
-                  <option value="Ft">Ft - Hungarian Forint</option>
-                </select>
-                <div class="help-text">Choose the currency you want to display.</div>
-              </div>
-
-              <div class="field">
-                <label for="hourlyWage">Hourly wage</label>
-                <input type="number" id="hourlyWage" inputmode="decimal" min="0" step="0.01" value="20" />
-                <div class="help-text">Enter your hourly rate before taxes.</div>
-              </div>
-
-              <div class="field">
-                <label for="hoursPerWeek">Regular hours per week</label>
-                <input type="number" id="hoursPerWeek" inputmode="decimal" min="0" max="168" step="0.1" value="40" />
-                <div class="help-text">Example: 40 for full-time, 20 for part-time.</div>
-              </div>
-
-              <div class="field">
-                <label for="paidWeeks">Paid weeks per year</label>
-                <input type="number" id="paidWeeks" inputmode="decimal" min="0" max="52" step="0.1" value="52" />
-                <div class="help-text">Use 52 if you are paid all year. Use less for unpaid time off or seasonal work.</div>
-              </div>
-
-              <div class="field">
-                <label for="overtimeHours">Overtime hours per week</label>
-                <input type="number" id="overtimeHours" inputmode="decimal" min="0" max="168" step="0.1" value="0" />
-                <div class="help-text">Optional. Enter 0 if overtime does not apply.</div>
-              </div>
-
-              <div class="field">
-                <label for="overtimeMultiplier">Overtime rate multiplier</label>
-                <input type="number" id="overtimeMultiplier" inputmode="decimal" min="0" step="0.1" value="1.5" />
-                <div class="help-text">Common example: 1.5 means time-and-a-half.</div>
-              </div>
-
-              <div class="field">
-                <label for="monthlyDeductions">Optional monthly deductions</label>
-                <input type="number" id="monthlyDeductions" inputmode="decimal" min="0" step="0.01" value="0" />
-                <div class="help-text">Optional estimate for taxes, insurance, retirement, or other deductions.</div>
-              </div>
-
-              <div class="field">
-                <label for="payFrequency">Pay frequency for comparison</label>
-                <select id="payFrequency">
-                  <option value="weekly">Weekly</option>
-                  <option value="biweekly" selected>Biweekly</option>
-                  <option value="semimonthly">Semimonthly</option>
-                  <option value="monthly">Monthly</option>
-                </select>
-                <div class="help-text">This does not change annual pay. It only helps compare paycheck amounts.</div>
-              </div>
+        <form id="calculatorForm" novalidate>
+          <div class="field-grid">
+            <div class="field">
+              <label for="currency">Currency</label>
+              <select id="currency">
+                <option value="$" selected>$ - US Dollar</option>
+                <option value="€">€ - Euro</option>
+                <option value="£">£ - British Pound</option>
+                <option value="Ft">Ft - Hungarian Forint</option>
+              </select>
+              <div class="help-text">Choose the currency you want to display.</div>
             </div>
 
-            <div class="actions">
-              <button type="submit" class="btn-primary">Calculate</button>
-              <button type="button" class="btn-secondary" id="resetBtn">Reset to defaults</button>
+            <div class="field">
+              <label for="hourlyWage">Hourly wage</label>
+              <input type="number" id="hourlyWage" inputmode="decimal" min="0" step="0.01" value="20" />
+              <div class="help-text">Enter your hourly rate before taxes.</div>
             </div>
-          </form>
 
-          <div class="trust-strip">
-            Useful for hourly workers, part-time jobs, full-time jobs, overtime estimates,
-            freelance income, job offer comparisons, and monthly budget planning.
+            <div class="field">
+              <label for="hoursPerWeek">Regular hours per week</label>
+              <input type="number" id="hoursPerWeek" inputmode="decimal" min="0" max="168" step="0.1" value="40" />
+              <div class="help-text">Example: 40 for full-time, 20 for part-time.</div>
+            </div>
+
+            <div class="field">
+              <label for="paidWeeks">Paid weeks per year</label>
+              <input type="number" id="paidWeeks" inputmode="decimal" min="0" max="52" step="0.1" value="52" />
+              <div class="help-text">Use 52 if you are paid all year. Use less for unpaid time off or seasonal work.</div>
+            </div>
+
+            <div class="field">
+              <label for="overtimeHours">Overtime hours per week</label>
+              <input type="number" id="overtimeHours" inputmode="decimal" min="0" max="168" step="0.1" value="0" />
+              <div class="help-text">Optional. Enter 0 if overtime does not apply.</div>
+            </div>
+
+            <div class="field">
+              <label for="overtimeMultiplier">Overtime rate multiplier</label>
+              <input type="number" id="overtimeMultiplier" inputmode="decimal" min="0" step="0.1" value="1.5" />
+              <div class="help-text">Common example: 1.5 means time-and-a-half.</div>
+            </div>
+
+            <div class="field">
+              <label for="monthlyDeductions">Optional monthly deductions</label>
+              <input type="number" id="monthlyDeductions" inputmode="decimal" min="0" step="0.01" value="0" />
+              <div class="help-text">Optional estimate for taxes, insurance, retirement, or other deductions.</div>
+            </div>
+
+            <div class="field">
+              <label for="payFrequency">Pay frequency for comparison</label>
+              <select id="payFrequency">
+                <option value="weekly">Weekly</option>
+                <option value="biweekly" selected>Biweekly</option>
+                <option value="semimonthly">Semimonthly</option>
+                <option value="monthly">Monthly</option>
+              </select>
+              <div class="help-text">This does not change annual pay. It only helps compare paycheck amounts.</div>
+            </div>
           </div>
 
-          <div id="result" class="result-box" aria-live="polite"></div>
+          <div class="actions">
+            <button type="submit" class="btn-primary">Calculate</button>
+            <button type="button" class="btn-secondary" id="resetBtn">Reset to defaults</button>
+          </div>
+        </form>
 
-          <div class="assumption-box">
-            <strong>Important:</strong> This calculator estimates gross pay before taxes unless you enter optional monthly deductions.
-            Actual take-home pay may be different because of income tax, payroll tax, health insurance,
-            retirement contributions, unpaid leave, bonuses, commissions, local laws, and employer-specific pay rules.
+        <div class="trust-strip">
+          Useful for hourly workers, part-time jobs, full-time jobs, overtime estimates,
+          freelance income, job offer comparisons, and monthly budget planning.
+        </div>
+
+        <div id="result" class="result-box" aria-live="polite"></div>
+
+        <div class="assumption-box">
+          <strong>Important:</strong> This calculator estimates gross pay before taxes unless you enter optional monthly deductions.
+          Actual take-home pay may be different because of income tax, payroll tax, health insurance,
+          retirement contributions, unpaid leave, bonuses, commissions, local laws, and employer-specific pay rules.
+        </div>
+      </section>
+
+      <article class="card content-card">
+        <div class="toc" aria-labelledby="toc-heading">
+          <div class="toc-title" id="toc-heading">On this page</div>
+          <ul>
+            <li><a href="#what-is-hourly-to-monthly">What this calculator does</a></li>
+            <li><a href="#how-to-use">How to use it</a></li>
+            <li><a href="#examples">Hourly wage examples</a></li>
+            <li><a href="#why-it-matters">Why monthly salary matters</a></li>
+            <li><a href="#formulas">Formulas used</a></li>
+            <li><a href="#gross-vs-net">Gross pay vs take-home pay</a></li>
+            <li><a href="#job-offers">Using it for job offers</a></li>
+            <li><a href="#mistakes">Common mistakes</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <strong>Quick example:</strong>
+          If you earn <strong>$20 per hour</strong> and work <strong>40 hours per week</strong>
+          for <strong>52 paid weeks</strong>, your estimated gross pay is
+          <strong>$41,600 per year</strong>, or about <strong>$3,466.67 per month</strong> before taxes.
+        </div>
+
+        <section id="what-is-hourly-to-monthly">
+          <h2>What Is an Hourly Wage to Monthly Salary Calculator?</h2>
+          <p>
+            An hourly wage to monthly salary calculator converts an hourly rate into an estimated monthly salary.
+            It helps you understand how much an hourly job may be worth over a full month or year.
+          </p>
+          <p>
+            This is useful because hourly pay can be harder to compare with salary-based jobs.
+            A job that pays $18 per hour, $22 per hour, or $30 per hour may sound simple,
+            but the real monthly income depends on weekly hours, paid weeks, overtime, and deductions.
+          </p>
+        </section>
+
+        <section id="how-to-use">
+          <h2>How to Use This Hourly Wage to Monthly Salary Calculator</h2>
+          <ul>
+            <li><strong>Choose your currency:</strong> dollar, euro, pound, or forint.</li>
+            <li><strong>Enter hourly wage:</strong> this is your pay rate before taxes.</li>
+            <li><strong>Enter regular weekly hours:</strong> use the number of hours you normally work each week.</li>
+            <li><strong>Enter paid weeks per year:</strong> use 52 for a full year of paid work.</li>
+            <li><strong>Add overtime if needed:</strong> enter overtime hours and the overtime multiplier.</li>
+            <li><strong>Add optional deductions:</strong> this can help estimate a rough monthly amount after deductions.</li>
+            <li><strong>Compare pay frequencies:</strong> see weekly, biweekly, semimonthly, and monthly amounts.</li>
+          </ul>
+        </section>
+
+        <section id="examples">
+          <h2>Hourly Wage to Monthly Salary Examples</h2>
+          <p>
+            The table below shows common hourly wage examples using 40 hours per week and 52 paid weeks per year.
+            These are gross estimates before taxes and deductions.
+          </p>
+
+          <div class="comparison-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Hourly wage</th>
+                  <th>Weekly gross pay</th>
+                  <th>Monthly gross salary</th>
+                  <th>Yearly gross salary</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>$15/hour</strong></td>
+                  <td>$600</td>
+                  <td>About $2,600</td>
+                  <td>$31,200</td>
+                </tr>
+                <tr>
+                  <td><strong>$20/hour</strong></td>
+                  <td>$800</td>
+                  <td>About $3,466.67</td>
+                  <td>$41,600</td>
+                </tr>
+                <tr>
+                  <td><strong>$25/hour</strong></td>
+                  <td>$1,000</td>
+                  <td>About $4,333.33</td>
+                  <td>$52,000</td>
+                </tr>
+                <tr>
+                  <td><strong>$30/hour</strong></td>
+                  <td>$1,200</td>
+                  <td>About $5,200</td>
+                  <td>$62,400</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Monthly salary is usually not the same as four weeks of pay.
+            A full year has 52 weeks, and 52 weeks divided by 12 months equals about 4.33 weeks per month.
+            That is why monthly salary is usually calculated from annual pay divided by 12.
+          </p>
+
+          <div class="mini-grid">
+            <div class="mini-card">
+              <strong>Weekly view</strong><br>
+              Helps you understand your regular workweek earnings.
+            </div>
+            <div class="mini-card">
+              <strong>Monthly view</strong><br>
+              Helps you plan rent, bills, savings, and recurring expenses.
+            </div>
+            <div class="mini-card">
+              <strong>Yearly view</strong><br>
+              Helps you compare hourly jobs with annual salary offers.
+            </div>
           </div>
         </section>
 
-        <article class="card content-card">
-          <div class="toc" aria-labelledby="toc-heading">
-            <div class="toc-title" id="toc-heading">On this page</div>
-            <ul>
-              <li><a href="#what-is-hourly-to-monthly">What this calculator does</a></li>
-              <li><a href="#how-to-use">How to use it</a></li>
-              <li><a href="#examples">Hourly wage examples</a></li>
-              <li><a href="#why-it-matters">Why monthly salary matters</a></li>
-              <li><a href="#formulas">Formulas used</a></li>
-              <li><a href="#gross-vs-net">Gross pay vs take-home pay</a></li>
-              <li><a href="#job-offers">Using it for job offers</a></li>
-              <li><a href="#mistakes">Common mistakes</a></li>
-              <li><a href="#faq">Frequently asked questions</a></li>
-            </ul>
+        <section id="why-it-matters">
+          <h2>Why Monthly Salary Matters</h2>
+          <p>
+            Monthly income is one of the most useful numbers for everyday budgeting.
+            Many major expenses are monthly, including rent, mortgage payments, utilities,
+            subscriptions, insurance, loan payments, and savings goals.
+          </p>
+          <p>
+            If you only look at your hourly wage, it can be difficult to know how much room you have in your budget.
+            Converting hourly pay to monthly salary makes it easier to compare income with monthly expenses.
+          </p>
+        </section>
+
+        <section id="formulas">
+          <h2>Formulas Used by This Calculator</h2>
+          <p>
+            This calculator uses simple gross pay formulas. It does not automatically calculate taxes
+            because tax rules vary by country, state, income level, filing status, and personal situation.
+          </p>
+
+          <div class="comparison-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Calculation</th>
+                  <th>Formula</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Regular weekly pay</strong></td>
+                  <td>Hourly wage × regular hours per week</td>
+                </tr>
+                <tr>
+                  <td><strong>Overtime weekly pay</strong></td>
+                  <td>Hourly wage × overtime multiplier × overtime hours per week</td>
+                </tr>
+                <tr>
+                  <td><strong>Total weekly pay</strong></td>
+                  <td>Regular weekly pay + overtime weekly pay</td>
+                </tr>
+                <tr>
+                  <td><strong>Yearly gross salary</strong></td>
+                  <td>Total weekly pay × paid weeks per year</td>
+                </tr>
+                <tr>
+                  <td><strong>Monthly gross salary</strong></td>
+                  <td>Yearly gross salary ÷ 12</td>
+                </tr>
+                <tr>
+                  <td><strong>Biweekly gross pay</strong></td>
+                  <td>Yearly gross salary ÷ 26</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+        </section>
 
-          <div class="callout">
-            <strong>Quick example:</strong>
-            If you earn <strong>$20 per hour</strong> and work <strong>40 hours per week</strong>
-            for <strong>52 paid weeks</strong>, your estimated gross pay is
-            <strong>$41,600 per year</strong>, or about <strong>$3,466.67 per month</strong> before taxes.
-          </div>
+        <section id="gross-vs-net">
+          <h2>Gross Pay vs Take-Home Pay</h2>
+          <p>
+            Gross pay is the amount you earn before deductions. Take-home pay, sometimes called net pay,
+            is what remains after taxes and deductions are removed.
+          </p>
+          <p>
+            Common deductions may include income tax, payroll tax, health insurance, retirement contributions,
+            union dues, benefit costs, wage garnishments, or other employer-specific deductions.
+            Because these vary widely, this calculator focuses on gross pay and lets you enter an optional
+            monthly deduction estimate.
+          </p>
+        </section>
 
-          <section id="what-is-hourly-to-monthly">
-            <h2>What Is an Hourly Wage to Monthly Salary Calculator?</h2>
-            <p>
-              An hourly wage to monthly salary calculator converts an hourly rate into an estimated monthly salary.
-              It helps you understand how much an hourly job may be worth over a full month or year.
-            </p>
-            <p>
-              This is useful because hourly pay can be harder to compare with salary-based jobs.
-              A job that pays $18 per hour, $22 per hour, or $30 per hour may sound simple,
-              but the real monthly income depends on weekly hours, paid weeks, overtime, and deductions.
-            </p>
-          </section>
+        <section id="job-offers">
+          <h2>Using This Calculator for Job Offers</h2>
+          <p>
+            When comparing job offers, the hourly rate is only one part of the decision.
+            Two jobs with the same hourly wage can produce different monthly income if the hours,
+            overtime rules, paid time off, benefits, commute costs, or schedule stability are different.
+          </p>
+          <ul>
+            <li>Compare the estimated yearly salary, not only the hourly rate.</li>
+            <li>Check whether the job offers consistent hours each week.</li>
+            <li>Consider unpaid time off, seasonal work, and reduced hours.</li>
+            <li>Include commute costs when comparing two job locations.</li>
+            <li>Look at benefits, health insurance, retirement matching, and paid leave.</li>
+          </ul>
+        </section>
 
-          <section id="how-to-use">
-            <h2>How to Use This Hourly Wage to Monthly Salary Calculator</h2>
-            <ul>
-              <li><strong>Choose your currency:</strong> dollar, euro, pound, or forint.</li>
-              <li><strong>Enter hourly wage:</strong> this is your pay rate before taxes.</li>
-              <li><strong>Enter regular weekly hours:</strong> use the number of hours you normally work each week.</li>
-              <li><strong>Enter paid weeks per year:</strong> use 52 for a full year of paid work.</li>
-              <li><strong>Add overtime if needed:</strong> enter overtime hours and the overtime multiplier.</li>
-              <li><strong>Add optional deductions:</strong> this can help estimate a rough monthly amount after deductions.</li>
-              <li><strong>Compare pay frequencies:</strong> see weekly, biweekly, semimonthly, and monthly amounts.</li>
-            </ul>
-          </section>
+        <section id="mistakes">
+          <h2>Common Mistakes When Converting Hourly Wage to Monthly Salary</h2>
+          <ul>
+            <li><strong>Using four weeks per month:</strong> a year has about 4.33 weeks per month, not exactly 4.</li>
+            <li><strong>Ignoring unpaid time off:</strong> unpaid weeks reduce annual and monthly income.</li>
+            <li><strong>Counting overtime as guaranteed:</strong> overtime may change from week to week.</li>
+            <li><strong>Confusing gross and net pay:</strong> taxes and deductions can reduce take-home income.</li>
+            <li><strong>Ignoring variable schedules:</strong> part-time or shift-based work may not provide the same hours every week.</li>
+          </ul>
+        </section>
 
-          <section id="examples">
-            <h2>Hourly Wage to Monthly Salary Examples</h2>
-            <p>
-              The table below shows common hourly wage examples using 40 hours per week and 52 paid weeks per year.
-              These are gross estimates before taxes and deductions.
-            </p>
+        <section id="faq">
+          <h2>Frequently Asked Questions</h2>
 
-            <div class="comparison-table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Hourly wage</th>
-                    <th>Weekly gross pay</th>
-                    <th>Monthly gross salary</th>
-                    <th>Yearly gross salary</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>$15/hour</strong></td>
-                    <td>$600</td>
-                    <td>About $2,600</td>
-                    <td>$31,200</td>
-                  </tr>
-                  <tr>
-                    <td><strong>$20/hour</strong></td>
-                    <td>$800</td>
-                    <td>About $3,466.67</td>
-                    <td>$41,600</td>
-                  </tr>
-                  <tr>
-                    <td><strong>$25/hour</strong></td>
-                    <td>$1,000</td>
-                    <td>About $4,333.33</td>
-                    <td>$52,000</td>
-                  </tr>
-                  <tr>
-                    <td><strong>$30/hour</strong></td>
-                    <td>$1,200</td>
-                    <td>About $5,200</td>
-                    <td>$62,400</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+          <h3>How do I calculate monthly salary from hourly wage?</h3>
+          <p>
+            Multiply hourly wage by weekly hours, then multiply by paid weeks per year.
+            Divide the yearly amount by 12 to estimate monthly gross salary.
+          </p>
 
-            <p>
-              Monthly salary is usually not the same as four weeks of pay.
-              A full year has 52 weeks, and 52 weeks divided by 12 months equals about 4.33 weeks per month.
-              That is why monthly salary is usually calculated from annual pay divided by 12.
-            </p>
+          <h3>Is this calculator before or after taxes?</h3>
+          <p>
+            The main result is gross pay before taxes and deductions.
+            You can enter optional monthly deductions to create a rough adjusted monthly estimate,
+            but this is not a full tax calculation.
+          </p>
 
-            <div class="mini-grid">
-              <div class="mini-card">
-                <strong>Weekly view</strong>
-                Helps you understand your regular workweek earnings.
-              </div>
-              <div class="mini-card">
-                <strong>Monthly view</strong>
-                Helps you plan rent, bills, savings, and recurring expenses.
-              </div>
-              <div class="mini-card">
-                <strong>Yearly view</strong>
-                Helps you compare hourly jobs with annual salary offers.
-              </div>
-            </div>
-          </section>
+          <h3>Why is monthly pay not just weekly pay times four?</h3>
+          <p>
+            A year has 52 weeks. When divided by 12 months, the average month has about 4.33 weeks.
+            Using only four weeks can underestimate monthly income.
+          </p>
 
-          <section id="why-it-matters">
-            <h2>Why Monthly Salary Matters</h2>
-            <p>
-              Monthly income is one of the most useful numbers for everyday budgeting.
-              Many major expenses are monthly, including rent, mortgage payments, utilities,
-              subscriptions, insurance, loan payments, and savings goals.
-            </p>
-            <p>
-              If you only look at your hourly wage, it can be difficult to know how much room you have in your budget.
-              Converting hourly pay to monthly salary makes it easier to compare income with monthly expenses.
-            </p>
-          </section>
+          <h3>Can I use this calculator for part-time work?</h3>
+          <p>
+            Yes. Enter your part-time hours per week and your hourly wage.
+            The calculator will estimate weekly, monthly, and yearly gross pay.
+          </p>
 
-          <section id="formulas">
-            <h2>Formulas Used by This Calculator</h2>
-            <p>
-              This calculator uses simple gross pay formulas. It does not automatically calculate taxes
-              because tax rules vary by country, state, income level, filing status, and personal situation.
-            </p>
-
-            <div class="comparison-table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Calculation</th>
-                    <th>Formula</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Regular weekly pay</strong></td>
-                    <td>Hourly wage × regular hours per week</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Overtime weekly pay</strong></td>
-                    <td>Hourly wage × overtime multiplier × overtime hours per week</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Total weekly pay</strong></td>
-                    <td>Regular weekly pay + overtime weekly pay</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Yearly gross salary</strong></td>
-                    <td>Total weekly pay × paid weeks per year</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Monthly gross salary</strong></td>
-                    <td>Yearly gross salary ÷ 12</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Biweekly gross pay</strong></td>
-                    <td>Yearly gross salary ÷ 26</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section id="gross-vs-net">
-            <h2>Gross Pay vs Take-Home Pay</h2>
-            <p>
-              Gross pay is the amount you earn before deductions. Take-home pay, sometimes called net pay,
-              is what remains after taxes and deductions are removed.
-            </p>
-            <p>
-              Common deductions may include income tax, payroll tax, health insurance, retirement contributions,
-              union dues, benefit costs, wage garnishments, or other employer-specific deductions.
-              Because these vary widely, this calculator focuses on gross pay and lets you enter an optional
-              monthly deduction estimate.
-            </p>
-          </section>
-
-          <section id="job-offers">
-            <h2>Using This Calculator for Job Offers</h2>
-            <p>
-              When comparing job offers, the hourly rate is only one part of the decision.
-              Two jobs with the same hourly wage can produce different monthly income if the hours,
-              overtime rules, paid time off, benefits, commute costs, or schedule stability are different.
-            </p>
-            <ul>
-              <li>Compare the estimated yearly salary, not only the hourly rate.</li>
-              <li>Check whether the job offers consistent hours each week.</li>
-              <li>Consider unpaid time off, seasonal work, and reduced hours.</li>
-              <li>Include commute costs when comparing two job locations.</li>
-              <li>Look at benefits, health insurance, retirement matching, and paid leave.</li>
-            </ul>
-          </section>
-
-          <section id="mistakes">
-            <h2>Common Mistakes When Converting Hourly Wage to Monthly Salary</h2>
-            <ul>
-              <li><strong>Using four weeks per month:</strong> a year has about 4.33 weeks per month, not exactly 4.</li>
-              <li><strong>Ignoring unpaid time off:</strong> unpaid weeks reduce annual and monthly income.</li>
-              <li><strong>Counting overtime as guaranteed:</strong> overtime may change from week to week.</li>
-              <li><strong>Confusing gross and net pay:</strong> taxes and deductions can reduce take-home income.</li>
-              <li><strong>Ignoring variable schedules:</strong> part-time or shift-based work may not provide the same hours every week.</li>
-            </ul>
-          </section>
-
-          <section id="faq">
-            <h2>Frequently Asked Questions</h2>
-
-            <h3>How do I calculate monthly salary from hourly wage?</h3>
-            <p>
-              Multiply hourly wage by weekly hours, then multiply by paid weeks per year.
-              Divide the yearly amount by 12 to estimate monthly gross salary.
-            </p>
-
-            <h3>Is this calculator before or after taxes?</h3>
-            <p>
-              The main result is gross pay before taxes and deductions.
-              You can enter optional monthly deductions to create a rough adjusted monthly estimate,
-              but this is not a full tax calculation.
-            </p>
-
-            <h3>Why is monthly pay not just weekly pay times four?</h3>
-            <p>
-              A year has 52 weeks. When divided by 12 months, the average month has about 4.33 weeks.
-              Using only four weeks can underestimate monthly income.
-            </p>
-
-            <h3>Can I use this calculator for part-time work?</h3>
-            <p>
-              Yes. Enter your part-time hours per week and your hourly wage.
-              The calculator will estimate weekly, monthly, and yearly gross pay.
-            </p>
-
-            <h3>Can I include overtime?</h3>
-            <p>
-              Yes. Enter overtime hours per week and the overtime multiplier.
-              For example, use 1.5 for time-and-a-half.
-            </p>
-          </section>
-        </article>
-      </div>
+          <h3>Can I include overtime?</h3>
+          <p>
+            Yes. Enter overtime hours per week and the overtime multiplier.
+            For example, use 1.5 for time-and-a-half.
+          </p>
+        </section>
+      </article>
 
       <section class="related-links" aria-labelledby="related-links-heading">
         <h2 id="related-links-heading">Related calculators and articles</h2>
@@ -1097,3 +1075,4 @@
   </script>
 </body>
 </html>
+
