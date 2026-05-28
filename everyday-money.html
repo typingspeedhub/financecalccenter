@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Everyday Money & Spending Calculators | Finance Calc Center</title>
+  <meta name="description" content="Use free everyday money calculators for daily costs, subscriptions, coffee, lunch, commuting, salary, paycheck planning, and small spending decisions." />
+
+  <link rel="canonical" href="https://financecalccenter.com/everyday-money.html" />
+
+  <style>
+    :root {
+      --bg: #020817;
+      --card: #0f172a;
+      --card-border: #1e293b;
+      --text: #e5f0ff;
+      --muted: #9fb3c8;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020817 42%, #020817 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 38px;
+    }
+
+    .brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 34px 0 26px;
+      max-width: 850px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 11px;
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #bdeeff;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.08;
+      color: var(--white);
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .section {
+      margin-top: 34px;
+    }
+
+    .section-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .section-subtitle {
+      max-width: 520px;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .tool-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 172px;
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--card-border);
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.55);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .tool-label {
+      margin-bottom: 8px;
+      color: #7dd3fc;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .tool-name {
+      margin-bottom: 8px;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .tool-desc {
+      color: #c6d6e7;
+      font-size: 13px;
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .tool-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      color: #8ecae6;
+      font-size: 11px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border: 1px solid #294761;
+      border-radius: 999px;
+      color: #bdeeff;
+      background: rgba(56, 189, 248, 0.08);
+      white-space: nowrap;
+    }
+
+    .info-box {
+      margin-top: 34px;
+      padding: 20px;
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.72);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .info-box h2 {
+      margin: 0 0 10px;
+      color: var(--white);
+      font-size: 20px;
+    }
+
+    .info-box p {
+      margin: 0 0 12px;
+    }
+
+    .info-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer {
+      margin-top: 44px;
+      padding-top: 22px;
+      border-top: 1px solid var(--card-border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer a {
+      color: #bdeeff;
+    }
+
+    @media (max-width: 980px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-title-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .section-subtitle {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tool-card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a href="index.html" class="brand">Finance Calc Center</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="/investing/">Investing</a>
+        <a href="/debt/">Debt</a>
+        <a href="/home-finance/">Home Finance</a>
+        <a href="/savings/">Savings</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">Everyday money tools</div>
+      <h1>Everyday Money &amp; Spending Calculators</h1>
+      <p>
+        Simple calculators for daily costs, subscriptions, coffee, lunch, commuting, salary planning,
+        and everyday spending decisions. Use these tools to see where small expenses add up over time.
+      </p>
+    </section>
+
+    <section class="section" aria-labelledby="calculators-heading">
+      <div class="section-title-row">
+        <div>
+          <div class="section-title" id="calculators-heading">Calculators in this topic</div>
+        </div>
+        <div class="section-subtitle">
+          These tools focus on practical, day-to-day money decisions and small recurring costs.
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <a href="cost-per-day-calculator.html" class="tool-card">
+          <div class="tool-label">Everyday money</div>
+          <div class="tool-name">Cost Per Day Calculator</div>
+          <div class="tool-desc">
+            Convert monthly, weekly, or yearly expenses into daily, monthly, and annual costs.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">New · 2026</span>
+            <span>Cost breakdown</span>
+          </div>
+        </a>
+
+        <a href="monthly-to-yearly-cost-calculator.html" class="tool-card">
+          <div class="tool-label">Everyday money</div>
+          <div class="tool-name">Monthly to Yearly Cost Calculator</div>
+          <div class="tool-desc">
+            Convert monthly expenses into yearly, weekly, and daily costs for subscriptions, bills, and memberships.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">New · 2026</span>
+            <span>Annual cost</span>
+          </div>
+        </a>
+
+        <a href="subscription-cost-calculator.html" class="tool-card">
+          <div class="tool-label">Everyday money</div>
+          <div class="tool-name">Subscription Cost Calculator</div>
+          <div class="tool-desc">
+            Calculate how much your subscriptions cost per month, year, week, and day.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">New · 2026</span>
+            <span>Subscription costs</span>
+          </div>
+        </a>
+
+        <a href="coffee-cost-calculator.html" class="tool-card">
+          <div class="tool-label">Everyday money</div>
+          <div class="tool-name">Coffee Cost Calculator</div>
+          <div class="tool-desc">
+            Calculate how much your coffee habit costs per day, week, month, and year.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">New · 2026</span>
+            <span>Coffee spending</span>
+          </div>
+        </a>
+
+        <a href="lunch-cost-calculator.html" class="tool-card">
+          <div class="tool-label">Everyday money</div>
+          <div class="tool-name">Lunch Cost Calculator</div>
+          <div class="tool-desc">
+            Calculate how much buying lunch costs per day, week, month, and year, and compare it with bringing lunch from home.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">New · 2026</span>
+            <span>Lunch costs</span>
+          </div>
+        </a>
+
+        <a href="commute-cost-calculator.html" class="tool-card">
+          <div class="tool-label">Everyday money</div>
+          <div class="tool-name">Commute Cost Calculator</div>
+          <div class="tool-desc">
+            Calculate how much your commute costs per day, week, month, and year, including fuel, parking, tolls, and public transit.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">New · 2026</span>
+            <span>Commute costs</span>
+          </div>
+        </a>
+
+        <a href="hourly-wage-to-monthly-salary-calculator.html" class="tool-card">
+          <div class="tool-label">Everyday money</div>
+          <div class="tool-name">Hourly Wage to Monthly Salary Calculator</div>
+          <div class="tool-desc">
+            Convert an hourly wage into estimated monthly, yearly, weekly, biweekly, and semimonthly gross pay.
+          </div>
+          <div class="tool-meta">
+            <span class="pill">New · 2026</span>
+            <span>Income planning</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="info-box">
+      <h2>Why everyday money calculations matter</h2>
+      <p>
+        Small expenses can feel harmless in the moment, but repeated spending can become a large yearly cost.
+        A daily coffee, a lunch habit, a subscription, or a commute expense may look small alone, but together
+        they can affect your monthly budget.
+      </p>
+      <p>
+        These calculators are designed to make everyday costs easier to understand, so you can compare options,
+        reduce waste, and make better spending decisions without complicated spreadsheets.
+      </p>
+    </section>
+
+    <section class="info-box">
+      <h2>More everyday money tools are coming</h2>
+      <p>
+        Future calculators in this topic may include paycheck planning, salary comparison, rent affordability,
+        impulse purchase cost, work hours cost, and annual savings tools.
+      </p>
+    </section>
+
+    <footer class="footer">
+      <p>
+        <a href="index.html">← Back to all calculators</a>
+      </p>
+      <p>
+        Finance Calc Center provides educational calculators and guides. Results are estimates and should not be considered financial advice.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>
