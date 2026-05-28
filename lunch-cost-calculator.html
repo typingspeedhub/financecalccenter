@@ -31,14 +31,12 @@
   />
   <link rel="canonical" href="https://financecalccenter.com/lunch-cost-calculator.html" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Lunch Cost Calculator | Daily, Monthly & Yearly Lunch Spending" />
   <meta property="og:description" content="Calculate your daily, weekly, monthly, and yearly lunch spending. Compare eating out with packed lunch costs and estimate possible savings." />
   <meta property="og:url" content="https://financecalccenter.com/lunch-cost-calculator.html" />
   <meta property="og:site_name" content="FinanceCalcCenter" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Lunch Cost Calculator | Daily, Monthly & Yearly Lunch Spending" />
   <meta name="twitter:description" content="Estimate how much your lunch habit costs per day, month, and year." />
@@ -46,171 +44,150 @@
   <style>
     :root {
       --bg: #020617;
-      --panel: #0f172a;
-      --panel-2: #111827;
+      --card: #111827;
       --text: #e5e7eb;
-      --muted: #94a3b8;
-      --line: #1e293b;
-      --line-2: #334155;
-      --green: #22c55e;
-      --green-dark: #16a34a;
-      --green-soft: rgba(34, 197, 94, 0.08);
-      --green-border: rgba(34, 197, 94, 0.35);
-      --focus: #38bdf8;
-      --warning-bg: rgba(250, 204, 21, 0.08);
-      --warning-border: rgba(250, 204, 21, 0.28);
-      --warning-text: #fde68a;
-      --radius: 14px;
-      --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      --muted: #9ca3af;
+      --accent: #22c55e;
+      --accent-2: #16a34a;
+      --border: #334155;
+      --shadow: rgba(15, 23, 42, 0.45);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: linear-gradient(180deg, #020617 0%, #06111f 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.14), transparent 32rem),
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.12), transparent 30rem),
+        var(--bg);
       color: var(--text);
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
     a {
-      color: var(--green);
+      color: #86efac;
       text-decoration: none;
     }
 
-    a:hover,
-    a:focus-visible {
+    a:hover {
       text-decoration: underline;
-    }
-
-    button,
-    input,
-    select {
-      font: inherit;
-    }
-
-    :focus-visible {
-      outline: 3px solid var(--focus);
-      outline-offset: 2px;
     }
 
     .skip-link {
       position: absolute;
-      left: 12px;
-      top: -48px;
-      background: #fff;
-      color: #000;
-      padding: 10px 14px;
-      border-radius: 8px;
-      z-index: 999;
-      font-weight: 600;
-      transition: top 0.2s ease;
+      left: -999px;
+      top: 0;
+      background: #ffffff;
+      color: #020617;
+      padding: 0.7rem 1rem;
+      z-index: 100;
+      border-radius: 0 0 0.5rem 0;
     }
 
     .skip-link:focus {
-      top: 12px;
+      left: 0;
     }
 
     .site-wrap {
-      max-width: 1100px;
+      width: min(980px, calc(100% - 2rem));
       margin: 0 auto;
-      padding: 20px 16px 56px;
+      padding: 1.25rem 0 3rem;
     }
 
     .breadcrumbs {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--muted);
-      margin: 4px 0 14px;
+      margin: 0.25rem 0 1.25rem;
     }
 
     .breadcrumbs a {
-      color: #cbd5e1;
+      color: #bbf7d0;
     }
 
     .hero {
-      max-width: 860px;
-      margin: 0 auto 22px;
-      text-align: center;
+      padding: 2rem;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      border-radius: 1.5rem;
+      background:
+        linear-gradient(135deg, rgba(34, 197, 94, 0.14), rgba(15, 23, 42, 0.88)),
+        rgba(15, 23, 42, 0.96);
+      box-shadow: 0 24px 55px var(--shadow);
+      margin-bottom: 1.25rem;
     }
 
     .hero h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 4vw, 2.9rem);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.08;
+      margin: 0 0 0.9rem;
+      letter-spacing: -0.04em;
     }
 
     .hero p {
-      margin: 0 auto;
-      max-width: 760px;
+      max-width: 820px;
+      margin: 0;
       color: #cbd5e1;
-      font-size: 1.02rem;
-    }
-
-    .top-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    .calculator-card {
-      max-width: 680px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .content-card {
-      max-width: 860px;
-      width: 100%;
-      margin: 0 auto;
+      font-size: 1.08rem;
     }
 
     .card {
-      background: rgba(15, 23, 42, 0.88);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(4px);
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 1.25rem;
+      box-shadow: 0 18px 45px var(--shadow);
+      margin-bottom: 1.25rem;
     }
 
     .calculator-card,
     .content-card {
-      padding: 22px;
+      padding: 1.35rem;
     }
 
-    .card h2 {
-      margin-top: 0;
-      margin-bottom: 0.6rem;
-      font-size: 1.3rem;
-      line-height: 1.25;
+    h2 {
+      font-size: 1.45rem;
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.025em;
     }
 
-    .card h3 {
-      margin-top: 1.2rem;
-      margin-bottom: 0.35rem;
-      font-size: 1.02rem;
-      line-height: 1.35;
+    h3 {
+      font-size: 1.1rem;
+      margin: 1.35rem 0 0.55rem;
+    }
+
+    p {
+      margin: 0 0 1rem;
+      color: #d1d5db;
+    }
+
+    .intro-note,
+    .help-text,
+    .note {
+      color: var(--muted);
     }
 
     .intro-note {
-      color: var(--muted);
-      font-size: 0.95rem;
       margin-bottom: 1rem;
+      font-size: 0.98rem;
     }
 
     .field-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
     }
 
     .field {
       display: flex;
       flex-direction: column;
+      gap: 0.35rem;
     }
 
     .field.full {
@@ -218,318 +195,288 @@
     }
 
     label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.94rem;
-      font-weight: 600;
-      color: #e2e8f0;
-    }
-
-    .help-text {
-      margin-top: 5px;
-      font-size: 0.82rem;
-      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 650;
+      color: #f3f4f6;
     }
 
     input,
     select {
       width: 100%;
-      padding: 12px 13px;
-      border-radius: 10px;
-      border: 1px solid var(--line-2);
-      background: #0b1220;
+      border: 1px solid var(--border);
+      background: #020617;
       color: var(--text);
-      margin-top: 0;
+      border-radius: 0.8rem;
+      padding: 0.78rem 0.82rem;
       font-size: 1rem;
-      min-height: 46px;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+    }
+
+    .help-text {
+      font-size: 0.82rem;
     }
 
     .actions {
       display: flex;
-      gap: 10px;
-      margin-top: 18px;
       flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
     }
 
     button {
-      appearance: none;
-      border: none;
-      border-radius: 10px;
-      padding: 12px 16px;
+      border: 0;
       cursor: pointer;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: transform 0.06s ease, background 0.15s ease, opacity 0.15s ease;
-    }
-
-    button:hover {
-      transform: translateY(-1px);
+      border-radius: 999px;
+      padding: 0.82rem 1.15rem;
+      font-weight: 750;
+      font-size: 0.98rem;
     }
 
     .btn-primary {
-      flex: 1 1 220px;
-      background: var(--green);
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
       color: #052e16;
     }
 
-    .btn-primary:hover {
-      background: var(--green-dark);
-    }
-
     .btn-secondary {
-      flex: 1 1 180px;
-      background: #1e293b;
-      color: #e2e8f0;
-      border: 1px solid var(--line-2);
-    }
-
-    .btn-secondary:hover {
-      background: #273449;
+      background: #1f2937;
+      color: #e5e7eb;
+      border: 1px solid #374151;
     }
 
     .trust-strip {
-      margin-top: 16px;
-      padding: 12px 14px;
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--line);
-      color: #cbd5e1;
-      font-size: 0.9rem;
+      margin: 1rem 0 0;
+      padding: 0.85rem 0.95rem;
+      border-radius: 0.95rem;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      color: #bbf7d0;
+      font-size: 0.92rem;
     }
 
     .result-box {
-      margin-top: 18px;
-      padding: 18px;
-      background: #020617;
-      border-radius: 12px;
-      border: 1px solid var(--line-2);
       display: none;
-    }
-
-    .result-box h2 {
-      font-size: 1.22rem;
-      margin: 0 0 12px;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.82);
+      border: 1px solid rgba(34, 197, 94, 0.35);
     }
 
     .result-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 0.75rem;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
     }
 
     .result-item {
-      background: #0b1220;
-      border: 1px solid #1f2d44;
-      border-radius: 12px;
-      padding: 14px;
+      padding: 0.9rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 0.95rem;
+    }
+
+    .highlight-result {
+      border-color: rgba(34, 197, 94, 0.52);
+      background: rgba(34, 197, 94, 0.08);
     }
 
     .result-label {
       display: block;
+      color: var(--muted);
       font-size: 0.82rem;
-      color: #9fb0c7;
-      margin-bottom: 4px;
+      margin-bottom: 0.25rem;
     }
 
     .result-value {
       display: block;
-      font-size: 1.22rem;
+      font-size: 1.35rem;
       font-weight: 800;
+      color: #f9fafb;
       line-height: 1.2;
-      color: #f8fafc;
     }
 
-    .highlight-result {
-      border-color: var(--green-border);
-      background: rgba(34, 197, 94, 0.08);
-    }
-
-    .note,
-    .muted,
-    .small {
-      color: var(--muted);
-      font-size: 0.93rem;
+    .assumption-box,
+    .callout {
+      border-radius: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      background: rgba(30, 41, 59, 0.72);
+      color: #d1d5db;
     }
 
     .assumption-box {
-      margin-top: 14px;
-      padding: 14px 15px;
-      border-radius: 12px;
-      background: var(--warning-bg);
-      border: 1px solid var(--warning-border);
-      color: var(--warning-text);
+      margin-top: 1rem;
       font-size: 0.92rem;
-    }
-
-    .toc {
-      margin: 0 0 1rem;
-      padding: 14px 16px;
-      border-radius: 12px;
-      background: #0b1220;
-      border: 1px solid var(--line);
-    }
-
-    .toc-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.45rem;
-      color: #f8fafc;
-    }
-
-    .toc ul {
-      margin: 0;
-      padding-left: 1rem;
-    }
-
-    .toc li {
-      margin-bottom: 0.28rem;
+      border-color: rgba(250, 204, 21, 0.35);
+      background: rgba(250, 204, 21, 0.08);
+      color: #fde68a;
     }
 
     .callout {
-      margin: 1rem 0;
-      padding: 0.95rem 1rem;
-      border-radius: 12px;
-      border: 1px solid var(--green-border);
-      background: var(--green-soft);
-      color: #ecfdf5;
+      margin-bottom: 1.1rem;
+      border-color: rgba(34, 197, 94, 0.28);
     }
 
-    .callout strong {
-      color: #ffffff;
+    .toc {
+      margin-bottom: 1.15rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.62);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .toc-title {
+      font-weight: 800;
+      margin-bottom: 0.55rem;
+    }
+
+    .toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .content-card section {
+      padding-top: 1rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.14);
+      margin-top: 1rem;
+    }
+
+    ul,
+    ol {
+      color: #d1d5db;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
     }
 
     .comparison-table-wrap {
       overflow-x: auto;
-      margin: 0.9rem 0 0.2rem;
-      border: 1px solid var(--line);
-      border-radius: 12px;
+      margin: 1rem 0;
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 560px;
-      background: #0b1220;
+      min-width: 620px;
+      background: rgba(2, 6, 23, 0.55);
     }
 
-    th, td {
-      padding: 12px 14px;
-      border-bottom: 1px solid var(--line);
+    th,
+    td {
       text-align: left;
+      padding: 0.8rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.16);
       vertical-align: top;
-      font-size: 0.95rem;
     }
 
     th {
-      color: #f8fafc;
-      background: #111827;
-      font-weight: 700;
+      background: rgba(30, 41, 59, 0.78);
+      color: #f9fafb;
+      font-size: 0.9rem;
     }
 
-    tr:last-child td {
-      border-bottom: none;
+    td {
+      color: #d1d5db;
+      font-size: 0.92rem;
     }
 
     .mini-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 1rem;
+      gap: 0.8rem;
+      margin: 1rem 0;
     }
 
     .mini-card {
-      background: #0b1220;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 14px;
-    }
-
-    .mini-card strong {
-      display: block;
-      margin-bottom: 0.35rem;
-      color: #f8fafc;
+      padding: 0.9rem;
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.62);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      color: #d1d5db;
+      font-size: 0.92rem;
     }
 
     .faq-item {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--line);
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
     }
 
     .faq-item:last-child {
       border-bottom: none;
     }
 
-    .related-links {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--line);
-      font-size: 0.96rem;
+    .disclaimer {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
     }
 
-    .related-links .links {
+    .related-links {
+      margin-top: 1.25rem;
+      padding: 1.15rem;
+      border-radius: 1.1rem;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 14px;
-      margin-top: 0.75rem;
+      gap: 0.7rem;
     }
 
-    .related-links a {
-      display: inline-block;
+    .links a {
+      display: inline-flex;
+      padding: 0.6rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      color: #bbf7d0;
+      font-size: 0.92rem;
     }
 
     .back-link {
       display: inline-block;
-      margin-top: 24px;
-      color: var(--green);
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-
-    .disclaimer {
       margin-top: 1rem;
-      font-size: 0.92rem;
-      color: #cbd5e1;
-      opacity: 0.92;
+      font-weight: 650;
+      color: #86efac;
     }
 
     .footer-note {
-      max-width: 860px;
-      margin: 24px auto 0;
+      margin-top: 1.25rem;
       color: var(--muted);
       font-size: 0.88rem;
       text-align: center;
     }
 
-    @media (max-width: 900px) {
-      .top-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .site-wrap {
-        padding: 16px 12px 42px;
-      }
-
-      .calculator-card,
-      .content-card {
-        padding: 18px;
-      }
-
+    @media (max-width: 760px) {
       .field-grid,
       .result-grid,
       .mini-grid {
         grid-template-columns: 1fr;
       }
 
-      .actions {
-        flex-direction: column;
+      .hero {
+        padding: 1.35rem;
       }
 
-      .btn-primary,
-      .btn-secondary {
-        width: 100%;
+      .calculator-card,
+      .content-card {
+        padding: 1rem;
       }
     }
   </style>
@@ -644,361 +591,359 @@
     </header>
 
     <main id="main-content">
-      <div class="top-grid">
-        <section class="card calculator-card" aria-labelledby="calculator-heading">
-          <h2 id="calculator-heading">Calculate your lunch cost</h2>
-          <p class="intro-note">
-            Enter your usual lunch price, how many lunches you buy, and how often you buy them.
-            You can also compare the result with bringing lunch from home.
-          </p>
+      <section class="card calculator-card" aria-labelledby="calculator-heading">
+        <h2 id="calculator-heading">Calculate your lunch cost</h2>
+        <p class="intro-note">
+          Enter your usual lunch price, how many lunches you buy, and how often you buy them.
+          You can also compare the result with bringing lunch from home.
+        </p>
 
-          <form id="calculatorForm" novalidate>
-            <div class="field-grid">
-              <div class="field">
-                <label for="currency">Currency</label>
-                <select id="currency">
-                  <option value="$" selected>$ - US Dollar</option>
-                  <option value="€">€ - Euro</option>
-                  <option value="£">£ - British Pound</option>
-                  <option value="Ft">Ft - Hungarian Forint</option>
-                </select>
-                <div class="help-text">Choose the currency you want to display.</div>
-              </div>
-
-              <div class="field">
-                <label for="pricePerLunch">Average cost per lunch</label>
-                <input type="number" id="pricePerLunch" inputmode="decimal" min="0" step="0.01" value="12.00" />
-                <div class="help-text">Example: 12.00 for a takeout, cafeteria, or restaurant lunch.</div>
-              </div>
-
-              <div class="field">
-                <label for="lunchesPerDay">Lunches per day</label>
-                <input type="number" id="lunchesPerDay" inputmode="decimal" min="0" step="0.1" value="1" />
-                <div class="help-text">Usually 1, but you can adjust it if needed.</div>
-              </div>
-
-              <div class="field">
-                <label for="daysPerWeek">Days per week</label>
-                <input type="number" id="daysPerWeek" inputmode="numeric" min="0" max="7" step="1" value="5" />
-                <div class="help-text">Example: 5 for workdays, 7 for every day.</div>
-              </div>
-
-              <div class="field full">
-                <label for="homeLunchCost">Optional: packed lunch cost</label>
-                <input type="number" id="homeLunchCost" inputmode="decimal" min="0" step="0.01" value="4.00" />
-                <div class="help-text">Use this to estimate possible savings from bringing lunch from home.</div>
-              </div>
+        <form id="calculatorForm" novalidate>
+          <div class="field-grid">
+            <div class="field">
+              <label for="currency">Currency</label>
+              <select id="currency">
+                <option value="$" selected>$ - US Dollar</option>
+                <option value="€">€ - Euro</option>
+                <option value="£">£ - British Pound</option>
+                <option value="Ft">Ft - Hungarian Forint</option>
+              </select>
+              <div class="help-text">Choose the currency you want to display.</div>
             </div>
 
-            <div class="actions">
-              <button type="submit" class="btn-primary">Calculate</button>
-              <button type="button" class="btn-secondary" id="resetBtn">Reset to defaults</button>
+            <div class="field">
+              <label for="pricePerLunch">Average cost per lunch</label>
+              <input type="number" id="pricePerLunch" inputmode="decimal" min="0" step="0.01" value="12.00" />
+              <div class="help-text">Example: 12.00 for a takeout, cafeteria, or restaurant lunch.</div>
             </div>
-          </form>
 
-          <div class="trust-strip">
-            Useful for work lunch spending, takeout lunches, cafeteria meals, school lunches, packed lunch comparisons, and everyday budget planning.
+            <div class="field">
+              <label for="lunchesPerDay">Lunches per day</label>
+              <input type="number" id="lunchesPerDay" inputmode="decimal" min="0" step="0.1" value="1" />
+              <div class="help-text">Usually 1, but you can adjust it if needed.</div>
+            </div>
+
+            <div class="field">
+              <label for="daysPerWeek">Days per week</label>
+              <input type="number" id="daysPerWeek" inputmode="numeric" min="0" max="7" step="1" value="5" />
+              <div class="help-text">Example: 5 for workdays, 7 for every day.</div>
+            </div>
+
+            <div class="field full">
+              <label for="homeLunchCost">Optional: packed lunch cost</label>
+              <input type="number" id="homeLunchCost" inputmode="decimal" min="0" step="0.01" value="4.00" />
+              <div class="help-text">Use this to estimate possible savings from bringing lunch from home.</div>
+            </div>
           </div>
 
-          <div id="result" class="result-box" aria-live="polite"></div>
+          <div class="actions">
+            <button type="submit" class="btn-primary">Calculate</button>
+            <button type="button" class="btn-secondary" id="resetBtn">Reset to defaults</button>
+          </div>
+        </form>
 
-          <div class="assumption-box">
-            <strong>Assumption:</strong> This calculator uses 52 weeks per year and 12 months per year.
-            Actual costs may differ because of taxes, tips, delivery fees, skipped days, changing food prices, or different meal choices.
+        <div class="trust-strip">
+          Useful for work lunch spending, takeout lunches, cafeteria meals, school lunches, packed lunch comparisons, and everyday budget planning.
+        </div>
+
+        <div id="result" class="result-box" aria-live="polite"></div>
+
+        <div class="assumption-box">
+          <strong>Assumption:</strong> This calculator uses 52 weeks per year and 12 months per year.
+          Actual costs may differ because of taxes, tips, delivery fees, skipped days, changing food prices, or different meal choices.
+        </div>
+      </section>
+
+      <article class="card content-card">
+        <div class="toc" aria-labelledby="toc-heading">
+          <div class="toc-title" id="toc-heading">On this page</div>
+          <ul>
+            <li><a href="#what-is-lunch-cost-calculator">What this calculator does</a></li>
+            <li><a href="#how-to-use">How to use it</a></li>
+            <li><a href="#examples">Lunch cost examples</a></li>
+            <li><a href="#why-it-matters">Why lunch spending matters</a></li>
+            <li><a href="#formulas">Formulas used</a></li>
+            <li><a href="#eating-out-vs-packed-lunch">Eating out vs packed lunch</a></li>
+            <li><a href="#ways-to-save">Simple ways to reduce lunch costs</a></li>
+            <li><a href="#mistakes">Common mistakes</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <strong>Quick example:</strong>
+          A <strong>$12 lunch</strong> bought <strong>5 days per week</strong> costs about
+          <strong>$260 per month</strong> and <strong>$3,120 per year</strong>.
+        </div>
+
+        <section id="what-is-lunch-cost-calculator">
+          <h2>What Is a Lunch Cost Calculator?</h2>
+          <p>
+            A lunch cost calculator estimates how much you spend on lunch over time.
+            Instead of only looking at the price of one meal, it shows the daily, weekly, monthly, and yearly cost of your lunch habit.
+          </p>
+          <p>
+            This can be helpful because lunch is often a repeated weekday expense.
+            One takeout lunch may not feel like a major purchase, but buying lunch several times per week can become a significant annual cost.
+          </p>
+        </section>
+
+        <section id="how-to-use">
+          <h2>How to Use This Lunch Cost Calculator</h2>
+          <ul>
+            <li><strong>Choose your currency:</strong> dollar, euro, pound, or forint.</li>
+            <li><strong>Enter the average cost per lunch:</strong> for example, 12.00 for a takeout or restaurant lunch.</li>
+            <li><strong>Enter lunches per day:</strong> most people can leave this at 1.</li>
+            <li><strong>Enter days per week:</strong> how many days per week you usually buy lunch.</li>
+            <li><strong>Add packed lunch cost:</strong> optional, but useful for estimating possible savings.</li>
+          </ul>
+          <p>
+            After you click Calculate, the tool shows your estimated lunch spending per day, week, month, and year.
+            It also estimates how much you could save if you replaced the same number of purchased lunches with packed lunches from home.
+          </p>
+        </section>
+
+        <section id="examples">
+          <h2>Lunch Cost Examples</h2>
+
+          <h3>Example 1: Buying lunch on workdays</h3>
+          <p>
+            If you buy one lunch for <strong>$12</strong> on <strong>5 days per week</strong>,
+            your weekly lunch cost is <strong>$60</strong>.
+            Over a full year, that becomes about <strong>$3,120</strong>.
+          </p>
+
+          <h3>Example 2: A more expensive lunch habit</h3>
+          <p>
+            If your average lunch costs <strong>$18</strong> and you buy lunch <strong>5 days per week</strong>,
+            your weekly cost becomes <strong>$90</strong>.
+            That is about <strong>$390 per month</strong> and <strong>$4,680 per year</strong>.
+          </p>
+
+          <h3>Example 3: Eating out vs bringing lunch from home</h3>
+          <p>
+            If buying lunch costs <strong>$12</strong> and a packed lunch costs about <strong>$4</strong>,
+            the difference is <strong>$8 per lunch</strong>.
+            Replacing 5 purchased lunches per week could save about <strong>$2,080 per year</strong>.
+          </p>
+
+          <div class="mini-grid">
+            <div class="mini-card">
+              <strong>Daily view</strong><br>
+              Shows what lunch costs on a normal buying day.
+            </div>
+            <div class="mini-card">
+              <strong>Monthly view</strong><br>
+              Helps you compare lunch spending with subscriptions, bills, and groceries.
+            </div>
+            <div class="mini-card">
+              <strong>Yearly view</strong><br>
+              Shows the long-term impact of a repeated weekday expense.
+            </div>
           </div>
         </section>
 
-        <article class="card content-card">
-          <div class="toc" aria-labelledby="toc-heading">
-            <div class="toc-title" id="toc-heading">On this page</div>
-            <ul>
-              <li><a href="#what-is-lunch-cost-calculator">What this calculator does</a></li>
-              <li><a href="#how-to-use">How to use it</a></li>
-              <li><a href="#examples">Lunch cost examples</a></li>
-              <li><a href="#why-it-matters">Why lunch spending matters</a></li>
-              <li><a href="#formulas">Formulas used</a></li>
-              <li><a href="#eating-out-vs-packed-lunch">Eating out vs packed lunch</a></li>
-              <li><a href="#ways-to-save">Simple ways to reduce lunch costs</a></li>
-              <li><a href="#mistakes">Common mistakes</a></li>
-              <li><a href="#faq">Frequently asked questions</a></li>
-            </ul>
+        <section id="why-it-matters">
+          <h2>Why Lunch Spending Matters</h2>
+          <p>
+            Buying lunch is not automatically a bad financial decision. It can save time, make workdays easier,
+            provide variety, or be part of a social routine. The purpose of this calculator is not to tell you that you should never buy lunch.
+          </p>
+          <p>
+            The goal is to make the cost visible. When you know the monthly and yearly number, you can decide whether your lunch spending fits your budget,
+            whether you want to reduce it slightly, or whether you would rather use part of that money for savings, debt payoff, investing, groceries, or another goal.
+          </p>
+        </section>
+
+        <section id="formulas">
+          <h2>Formulas Used by This Calculator</h2>
+          <p>This calculator uses simple estimates based on your inputs:</p>
+
+          <div class="comparison-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Calculation</th>
+                  <th>Formula</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Daily lunch cost</strong></td>
+                  <td>Average cost per lunch × lunches per day</td>
+                  <td>$12 × 1 = $12/day</td>
+                </tr>
+                <tr>
+                  <td><strong>Weekly lunch cost</strong></td>
+                  <td>Daily lunch cost × days per week</td>
+                  <td>$12 × 5 = $60/week</td>
+                </tr>
+                <tr>
+                  <td><strong>Yearly lunch cost</strong></td>
+                  <td>Weekly lunch cost × 52</td>
+                  <td>$60 × 52 = $3,120/year</td>
+                </tr>
+                <tr>
+                  <td><strong>Monthly lunch cost</strong></td>
+                  <td>Yearly lunch cost ÷ 12</td>
+                  <td>$3,120 ÷ 12 = $260/month</td>
+                </tr>
+                <tr>
+                  <td><strong>Estimated yearly savings</strong></td>
+                  <td>(Bought lunch cost - packed lunch cost) × lunches per year</td>
+                  <td>($12 - $4) × 260 = $2,080/year</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="eating-out-vs-packed-lunch">
+          <h2>Eating Out vs Packed Lunch</h2>
+          <p>
+            Buying lunch usually costs more than bringing food from home because you are paying for convenience,
+            preparation, service, rent, delivery, packaging, and sometimes tips or fees.
+          </p>
+          <p>
+            A packed lunch is usually cheaper per meal, but it takes planning, shopping, preparation, and storage.
+            A realistic approach does not have to be all-or-nothing. You might bring lunch from home on some days and buy lunch on busier days.
+          </p>
+
+          <div class="comparison-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Option</th>
+                  <th>Possible benefit</th>
+                  <th>Possible downside</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Buying lunch</strong></td>
+                  <td>Convenient, quick, social, and no meal preparation needed</td>
+                  <td>Higher cost per meal and possible extra fees</td>
+                </tr>
+                <tr>
+                  <td><strong>Packed lunch</strong></td>
+                  <td>Lower cost per meal and easier to control ingredients</td>
+                  <td>Requires planning, groceries, containers, and preparation time</td>
+                </tr>
+                <tr>
+                  <td><strong>Mixed approach</strong></td>
+                  <td>Balances convenience with savings</td>
+                  <td>Requires a simple routine and some planning</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="ways-to-save">
+          <h2>Simple Ways to Reduce Lunch Costs</h2>
+          <p>
+            Reducing lunch spending does not mean you have to stop buying lunch completely.
+            Small changes can make the habit easier to manage without making your workday feel restricted.
+          </p>
+          <ul>
+            <li><strong>Bring lunch one or two days per week:</strong> even a small change can create meaningful yearly savings.</li>
+            <li><strong>Use leftovers:</strong> cooking a little extra at dinner can make the next day’s lunch easier.</li>
+            <li><strong>Set a weekly lunch budget:</strong> decide how much you want to spend before the week starts.</li>
+            <li><strong>Watch drinks and snacks:</strong> extras can raise the real cost of a lunch habit.</li>
+            <li><strong>Limit delivery fees:</strong> pickup or homemade meals may reduce the total cost.</li>
+            <li><strong>Keep emergency lunches available:</strong> simple pantry or freezer options can help avoid expensive last-minute choices.</li>
+          </ul>
+        </section>
+
+        <section id="mistakes">
+          <h2>Common Mistakes When Estimating Lunch Costs</h2>
+          <ul>
+            <li><strong>Only looking at one meal:</strong> one lunch may seem small, but repeated purchases create the real cost.</li>
+            <li><strong>Ignoring drinks and snacks:</strong> soda, coffee, dessert, delivery fees, and tips can increase the total.</li>
+            <li><strong>Using a low average:</strong> if some lunches are cheap and others are expensive, use a realistic average.</li>
+            <li><strong>Forgetting skipped weeks:</strong> vacations, holidays, remote work, and sick days can change your real yearly total.</li>
+            <li><strong>Assuming packed lunch is free:</strong> groceries, containers, sauces, and preparation still have a cost.</li>
+            <li><strong>Making unrealistic cuts:</strong> reducing lunch spending gradually may be easier than trying to stop buying lunch completely.</li>
+          </ul>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="faq-item">
+            <h3>What does a lunch cost calculator do?</h3>
+            <p>
+              It estimates how much your lunch habit costs per day, week, month, and year.
+              It can also compare the cost of buying lunch with the cost of bringing lunch from home.
+            </p>
           </div>
 
-          <div class="callout">
-            <strong>Quick example:</strong>
-            A <strong>$12 lunch</strong> bought <strong>5 days per week</strong> costs about
-            <strong>$260 per month</strong> and <strong>$3,120 per year</strong>.
+          <div class="faq-item">
+            <h3>How do I calculate my yearly lunch spending?</h3>
+            <p>
+              Multiply the average cost per lunch by the number of lunches you buy per day.
+              Then multiply that by the number of days per week you buy lunch and by 52 weeks.
+            </p>
           </div>
 
-          <section id="what-is-lunch-cost-calculator">
-            <h2>What Is a Lunch Cost Calculator?</h2>
+          <div class="faq-item">
+            <h3>How much does buying lunch at work cost per year?</h3>
             <p>
-              A lunch cost calculator estimates how much you spend on lunch over time.
-              Instead of only looking at the price of one meal, it shows the daily, weekly, monthly, and yearly cost of your lunch habit.
+              It depends on the price per meal and how often you buy lunch.
+              For example, one $12 lunch bought 5 days per week costs about $3,120 per year.
             </p>
+          </div>
+
+          <div class="faq-item">
+            <h3>Can bringing lunch from home save money?</h3>
             <p>
-              This can be helpful because lunch is often a repeated weekday expense.
-              One takeout lunch may not feel like a major purchase, but buying lunch several times per week can become a significant annual cost.
+              Often, yes. A packed lunch usually has a lower cost per meal.
+              The exact savings depend on grocery prices, portion sizes, your eating habits, and how often you replace purchased lunches.
             </p>
-          </section>
+          </div>
 
-          <section id="how-to-use">
-            <h2>How to Use This Lunch Cost Calculator</h2>
-            <ul>
-              <li><strong>Choose your currency:</strong> dollar, euro, pound, or forint.</li>
-              <li><strong>Enter the average cost per lunch:</strong> for example, 12.00 for a takeout or restaurant lunch.</li>
-              <li><strong>Enter lunches per day:</strong> most people can leave this at 1.</li>
-              <li><strong>Enter days per week:</strong> how many days per week you usually buy lunch.</li>
-              <li><strong>Add packed lunch cost:</strong> optional, but useful for estimating possible savings.</li>
-            </ul>
+          <div class="faq-item">
+            <h3>Is this calculator exact?</h3>
             <p>
-              After you click Calculate, the tool shows your estimated lunch spending per day, week, month, and year.
-              It also estimates how much you could save if you replaced the same number of purchased lunches with packed lunches from home.
+              It gives a simple estimate using 52 weeks per year and 12 months per year.
+              Actual costs can differ because of taxes, tips, delivery fees, skipped days, discounts, changing food prices, or different meal choices.
             </p>
-          </section>
+          </div>
 
-          <section id="examples">
-            <h2>Lunch Cost Examples</h2>
-
-            <h3>Example 1: Buying lunch on workdays</h3>
+          <div class="faq-item">
+            <h3>Should I stop buying lunch to save money?</h3>
             <p>
-              If you buy one lunch for <strong>$12</strong> on <strong>5 days per week</strong>,
-              your weekly lunch cost is <strong>$60</strong>.
-              Over a full year, that becomes about <strong>$3,120</strong>.
+              Not necessarily. The calculator is only meant to show the numbers clearly.
+              You can use the result to decide whether your lunch spending fits your budget and priorities.
             </p>
+          </div>
 
-            <h3>Example 2: A more expensive lunch habit</h3>
-            <p>
-              If your average lunch costs <strong>$18</strong> and you buy lunch <strong>5 days per week</strong>,
-              your weekly cost becomes <strong>$90</strong>.
-              That is about <strong>$390 per month</strong> and <strong>$4,680 per year</strong>.
-            </p>
-
-            <h3>Example 3: Eating out vs bringing lunch from home</h3>
-            <p>
-              If buying lunch costs <strong>$12</strong> and a packed lunch costs about <strong>$4</strong>,
-              the difference is <strong>$8 per lunch</strong>.
-              Replacing 5 purchased lunches per week could save about <strong>$2,080 per year</strong>.
-            </p>
-
-            <div class="mini-grid">
-              <div class="mini-card">
-                <strong>Daily view</strong>
-                Shows what lunch costs on a normal buying day.
-              </div>
-              <div class="mini-card">
-                <strong>Monthly view</strong>
-                Helps you compare lunch spending with subscriptions, bills, and groceries.
-              </div>
-              <div class="mini-card">
-                <strong>Yearly view</strong>
-                Shows the long-term impact of a repeated weekday expense.
-              </div>
-            </div>
-          </section>
-
-          <section id="why-it-matters">
-            <h2>Why Lunch Spending Matters</h2>
-            <p>
-              Buying lunch is not automatically a bad financial decision. It can save time, make workdays easier, provide variety, or be part of a social routine.
-              The purpose of this calculator is not to tell you that you should never buy lunch.
-            </p>
-            <p>
-              The goal is to make the cost visible. When you know the monthly and yearly number, you can decide whether your lunch spending fits your budget,
-              whether you want to reduce it slightly, or whether you would rather use part of that money for savings, debt payoff, investing, groceries, or another goal.
-            </p>
-          </section>
-
-          <section id="formulas">
-            <h2>Formulas Used by This Calculator</h2>
-            <p>This calculator uses simple estimates based on your inputs:</p>
-
-            <div class="comparison-table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Calculation</th>
-                    <th>Formula</th>
-                    <th>Example</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Daily lunch cost</strong></td>
-                    <td>Cost per lunch × lunches per day</td>
-                    <td>$12 × 1 = $12/day</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Weekly lunch cost</strong></td>
-                    <td>Daily lunch cost × days per week</td>
-                    <td>$12 × 5 = $60/week</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Yearly lunch cost</strong></td>
-                    <td>Weekly lunch cost × 52</td>
-                    <td>$60 × 52 = $3,120/year</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Monthly lunch cost</strong></td>
-                    <td>Yearly lunch cost ÷ 12</td>
-                    <td>$3,120 ÷ 12 = $260/month</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Estimated yearly savings</strong></td>
-                    <td>(Bought lunch cost - packed lunch cost) × lunches per year</td>
-                    <td>($12 - $4) × 260 = $2,080/year</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section id="eating-out-vs-packed-lunch">
-            <h2>Eating Out vs Packed Lunch</h2>
-            <p>
-              Buying lunch usually costs more than bringing lunch from home because you are paying for convenience, service, preparation, packaging, rent, labor, and sometimes delivery.
-              A packed lunch is usually cheaper per meal, but it requires planning, shopping, preparation, and storage.
-            </p>
-            <p>
-              A realistic approach is not always all-or-nothing.
-              You might buy lunch on busy days and bring lunch from home on the other days. Even replacing one or two purchased lunches per week can reduce annual spending.
-            </p>
-
-            <div class="comparison-table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Option</th>
-                    <th>Possible benefit</th>
-                    <th>Possible downside</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Buying lunch</strong></td>
-                    <td>Convenient, quick, social, no preparation needed</td>
-                    <td>Higher cost per meal</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Packed lunch</strong></td>
-                    <td>Lower cost per meal and easier to control spending</td>
-                    <td>Requires planning, groceries, containers, and preparation</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Mixed approach</strong></td>
-                    <td>Keeps some convenience while reducing yearly cost</td>
-                    <td>Requires a habit change and some meal planning</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section id="ways-to-save">
-            <h2>Simple Ways to Reduce Lunch Costs</h2>
-            <p>
-              You do not need to remove every purchased lunch to make a difference.
-              Small changes can reduce yearly spending while still keeping some convenience in your routine.
-            </p>
-
-            <ul>
-              <li><strong>Bring lunch one extra day per week:</strong> this can create noticeable savings over a year.</li>
-              <li><strong>Use leftovers:</strong> cooking a larger dinner can make the next day’s lunch cheaper and easier.</li>
-              <li><strong>Set a weekly lunch budget:</strong> a weekly limit can be easier to follow than a strict daily rule.</li>
-              <li><strong>Compare meal deals carefully:</strong> a small upgrade, drink, snack, or delivery fee can raise the true cost.</li>
-              <li><strong>Keep emergency lunches available:</strong> simple pantry or freezer options can help avoid expensive last-minute choices.</li>
-            </ul>
-          </section>
-
-          <section id="mistakes">
-            <h2>Common Mistakes When Estimating Lunch Costs</h2>
-            <ul>
-              <li><strong>Only looking at one meal:</strong> one lunch may seem small, but repeated purchases create the real cost.</li>
-              <li><strong>Ignoring drinks and snacks:</strong> soda, coffee, dessert, delivery fees, and tips can increase the total.</li>
-              <li><strong>Using a low average:</strong> if some lunches are cheap and others are expensive, use a realistic average.</li>
-              <li><strong>Forgetting skipped weeks:</strong> vacations, holidays, remote work, and sick days can change your real yearly total.</li>
-              <li><strong>Assuming packed lunch is free:</strong> groceries, containers, sauces, and preparation still have a cost.</li>
-              <li><strong>Making unrealistic cuts:</strong> reducing lunch spending gradually may be easier than trying to stop buying lunch completely.</li>
-            </ul>
-          </section>
-
-          <section id="faq">
-            <h2>Frequently Asked Questions</h2>
-
-            <div class="faq-item">
-              <h3>What does a lunch cost calculator do?</h3>
-              <p>
-                It estimates how much your lunch habit costs per day, week, month, and year.
-                It can also compare the cost of buying lunch with the cost of bringing lunch from home.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>How do I calculate my yearly lunch spending?</h3>
-              <p>
-                Multiply the average cost per lunch by the number of lunches you buy per day.
-                Then multiply that by the number of days per week you buy lunch and by 52 weeks.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>How much does buying lunch at work cost per year?</h3>
-              <p>
-                It depends on the price per meal and how often you buy lunch.
-                For example, one $12 lunch bought 5 days per week costs about $3,120 per year.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>Can bringing lunch from home save money?</h3>
-              <p>
-                Often, yes. A packed lunch usually has a lower cost per meal.
-                The exact savings depend on grocery prices, portion sizes, your eating habits, and how often you replace purchased lunches.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>Is this calculator exact?</h3>
-              <p>
-                It gives a simple estimate using 52 weeks per year and 12 months per year.
-                Actual costs can differ because of taxes, tips, delivery fees, skipped days, discounts, changing food prices, or different meal choices.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>Should I stop buying lunch to save money?</h3>
-              <p>
-                Not necessarily. The calculator is only meant to show the numbers clearly.
-                You can use the result to decide whether your lunch spending fits your budget and priorities.
-              </p>
-            </div>
-
-            <p class="disclaimer">
-              <strong>Note:</strong> This calculator is for educational and planning purposes only. It does not provide financial advice.
-            </p>
-          </section>
-
-          <section class="related-links" aria-labelledby="related-links-heading">
-            <h2 id="related-links-heading">Related calculators and articles</h2>
-            <div class="links">
-              <a href="https://financecalccenter.com/cost-per-day-calculator.html">Cost Per Day Calculator</a>
-              <a href="https://financecalccenter.com/monthly-to-yearly-cost-calculator.html">Monthly to Yearly Cost Calculator</a>
-              <a href="https://financecalccenter.com/subscription-cost-calculator.html">Subscription Cost Calculator</a>
-              <a href="https://financecalccenter.com/coffee-cost-calculator.html">Coffee Cost Calculator</a>
-              <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
-              <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
-              <a href="https://financecalccenter.com/index.html">Browse all calculators →</a>
-            </div>
-          </section>
+          <p class="disclaimer">
+            <strong>Note:</strong> This calculator is for educational and planning purposes only. It does not provide financial advice.
+          </p>
 
           <a class="back-link" href="index.html">← Back to home</a>
-        </article>
-      </div>
-    </main>
+        </section>
+      </article>
 
-    <p class="footer-note">
-      FinanceCalcCenter provides educational calculators and plain-English financial explainers designed to help users compare everyday money decisions more clearly.
-    </p>
+      <section class="related-links" aria-labelledby="related-links-heading">
+        <h2 id="related-links-heading">Related calculators and articles</h2>
+        <div class="links">
+          <a href="https://financecalccenter.com/cost-per-day-calculator.html">Cost Per Day Calculator</a>
+          <a href="https://financecalccenter.com/monthly-to-yearly-cost-calculator.html">Monthly to Yearly Cost Calculator</a>
+          <a href="https://financecalccenter.com/subscription-cost-calculator.html">Subscription Cost Calculator</a>
+          <a href="https://financecalccenter.com/coffee-cost-calculator.html">Coffee Cost Calculator</a>
+          <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
+          <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
+          <a href="https://financecalccenter.com/index.html">Browse all calculators →</a>
+        </div>
+      </section>
+
+      <p class="footer-note">
+        FinanceCalcCenter provides educational calculators and plain-English financial explainers designed to help users compare everyday money decisions more clearly.
+      </p>
+    </main>
   </div>
 
   <script>
@@ -1130,3 +1075,5 @@
   </script>
 </body>
 </html>
+   
+  
