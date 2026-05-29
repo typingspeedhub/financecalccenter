@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68ZVCW4FWK');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7086753311239071"
+    crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#020617" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <title>Paycheck Calculator | Estimate Gross and Net Pay</title>
+  <meta name="description" content="Use this paycheck calculator to estimate gross pay, deductions, taxes, and net take-home pay for weekly, biweekly, semimonthly, monthly, or yearly pay." />
+  <link rel="canonical" href="https://financecalccenter.com/paycheck-calculator.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Paycheck Calculator | Estimate Gross and Net Pay" />
+  <meta property="og:description" content="Estimate your paycheck amount before and after deductions using hourly or salary income, pay frequency, overtime, bonuses, and estimated withholding." />
+  <meta property="og:url" content="https://financecalccenter.com/paycheck-calculator.html" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Paycheck Calculator" />
+  <meta name="twitter:description" content="Estimate gross paycheck, deductions, taxes, and net take-home pay for different pay frequencies." />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Paycheck Calculator",
+    "url": "https://financecalccenter.com/paycheck-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "A free paycheck calculator that estimates gross pay, deductions, taxes, and net take-home pay for hourly or salary income.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a paycheck calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A paycheck calculator estimates how much money may be paid in one paycheck. It can show gross pay, estimated taxes, deductions, and approximate net take-home pay."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this paycheck calculator a tax calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This calculator does not calculate official taxes. It uses the estimated tax or withholding percentage entered by the user and is intended for general planning only."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between gross pay and net pay?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gross pay is the amount earned before deductions. Net pay is the estimated amount left after taxes, pre-tax deductions, and post-tax deductions are subtracted."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #020617;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22c55e;
+      --accent-2: #16a34a;
+      --border: #334155;
+      --shadow: rgba(15, 23, 42, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.14), transparent 32rem),
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.12), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: #86efac;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0;
+      background: #ffffff;
+      color: #020617;
+      padding: 0.7rem 1rem;
+      z-index: 100;
+      border-radius: 0 0 0.5rem 0;
+    }
+
+    .skip-link:focus {
+      left: 0;
+    }
+
+    .site-wrap {
+      width: min(980px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 1.25rem 0 3rem;
+    }
+
+    .breadcrumbs {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0.25rem 0 1.25rem;
+    }
+
+    .breadcrumbs a {
+      color: #bbf7d0;
+    }
+
+    .hero {
+      padding: 2rem;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      border-radius: 1.5rem;
+      background:
+        linear-gradient(135deg, rgba(34, 197, 94, 0.14), rgba(15, 23, 42, 0.88)),
+        rgba(15, 23, 42, 0.96);
+      box-shadow: 0 24px 55px var(--shadow);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.08;
+      margin: 0 0 0.9rem;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      max-width: 820px;
+      margin: 0;
+      color: #cbd5e1;
+      font-size: 1.08rem;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 1.25rem;
+      box-shadow: 0 18px 45px var(--shadow);
+      margin-bottom: 1.25rem;
+    }
+
+    .calculator-card,
+    .content-card {
+      padding: 1.35rem;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin: 1.35rem 0 0.55rem;
+    }
+
+    p {
+      margin: 0 0 1rem;
+      color: #d1d5db;
+    }
+
+    .intro-note,
+    .help-text,
+    .note {
+      color: var(--muted);
+    }
+
+    .intro-note {
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    label {
+      font-size: 0.92rem;
+      font-weight: 650;
+      color: #f3f4f6;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #020617;
+      color: var(--text);
+      border-radius: 0.8rem;
+      padding: 0.78rem 0.82rem;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+    }
+
+    .help-text {
+      font-size: 0.82rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 0.82rem 1.15rem;
+      font-weight: 750;
+      font-size: 0.98rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #052e16;
+    }
+
+    .btn-secondary {
+      background: #1f2937;
+      color: #e5e7eb;
+      border: 1px solid #374151;
+    }
+
+    .trust-strip {
+      margin: 1rem 0 0;
+      padding: 0.85rem 0.95rem;
+      border-radius: 0.95rem;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      color: #bbf7d0;
+      font-size: 0.92rem;
+    }
+
+    .result-box {
+      display: none;
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.82);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-item {
+      padding: 0.9rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 0.95rem;
+    }
+
+    .highlight-result {
+      border-color: rgba(34, 197, 94, 0.52);
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    .result-label {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .result-value {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #f9fafb;
+      line-height: 1.2;
+    }
+
+    .assumption-box,
+    .callout {
+      border-radius: 1rem;
+      padding: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      background: rgba(30, 41, 59, 0.72);
+      color: #d1d5db;
+    }
+
+    .assumption-box {
+      margin-top: 1rem;
+      font-size: 0.92rem;
+    }
+
+    .callout {
+      margin-bottom: 1.1rem;
+      border-color: rgba(34, 197, 94, 0.28);
+    }
+
+    .toc {
+      margin-bottom: 1.15rem;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.62);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .toc-title {
+      font-weight: 800;
+      margin-bottom: 0.55rem;
+    }
+
+    .toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .content-card section {
+      padding-top: 1rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.14);
+      margin-top: 1rem;
+    }
+
+    ul,
+    ol {
+      color: #d1d5db;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+
+    .comparison-table-wrap {
+      overflow-x: auto;
+      margin: 1rem 0;
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px;
+      background: rgba(2, 6, 23, 0.55);
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 0.8rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(30, 41, 59, 0.78);
+      color: #f9fafb;
+      font-size: 0.9rem;
+    }
+
+    td {
+      color: #d1d5db;
+      font-size: 0.92rem;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+
+    .mini-card {
+      padding: 0.9rem;
+      border-radius: 1rem;
+      background: rgba(2, 6, 23, 0.62);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      color: #d1d5db;
+      font-size: 0.92rem;
+    }
+
+    .related-links {
+      margin-top: 1.25rem;
+      padding: 1.15rem;
+      border-radius: 1.1rem;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .links a {
+      display: inline-flex;
+      padding: 0.6rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      color: #bbf7d0;
+      font-size: 0.92rem;
+    }
+
+    .footer-note {
+      margin-top: 1.25rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .field-grid,
+      .result-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 1.35rem;
+      }
+
+      .calculator-card,
+      .content-card {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="site-wrap">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="https://financecalccenter.com/index.html">Home</a> &raquo;
+      <span aria-current="page">Paycheck Calculator</span>
+    </nav>
+
+    <header class="hero">
+      <h1>Paycheck Calculator</h1>
+      <p>
+        Estimate your gross paycheck, deductions, taxes, and approximate take-home pay.
+        Use this calculator for hourly wages, salary income, overtime, bonuses, weekly pay,
+        biweekly pay, semimonthly pay, monthly pay, and yearly planning.
+      </p>
+    </header>
+
+    <main id="main-content">
+      <section class="card calculator-card" aria-labelledby="calculator-heading">
+        <h2 id="calculator-heading">Estimate your paycheck</h2>
+        <p class="intro-note">
+          Enter your pay type, pay frequency, income details, estimated tax or withholding percentage,
+          and deductions. The calculator provides a general paycheck estimate for budgeting and planning.
+        </p>
+
+        <form id="calculatorForm" novalidate>
+          <div class="field-grid">
+            <div class="field">
+              <label for="currency">Currency</label>
+              <select id="currency">
+                <option value="$" selected>$ - US Dollar</option>
+                <option value="€">€ - Euro</option>
+                <option value="£">£ - British Pound</option>
+                <option value="Ft">Ft - Hungarian Forint</option>
+              </select>
+              <div class="help-text">Choose the currency you want to display.</div>
+            </div>
+
+            <div class="field">
+              <label for="payType">Pay type</label>
+              <select id="payType">
+                <option value="hourly" selected>Hourly</option>
+                <option value="salary">Annual salary</option>
+              </select>
+              <div class="help-text">Choose whether you are paid hourly or by annual salary.</div>
+            </div>
+
+            <div class="field">
+              <label for="payFrequency">Pay frequency</label>
+              <select id="payFrequency">
+                <option value="weekly">Weekly - 52 paychecks/year</option>
+                <option value="biweekly" selected>Biweekly - 26 paychecks/year</option>
+                <option value="semimonthly">Semimonthly - 24 paychecks/year</option>
+                <option value="monthly">Monthly - 12 paychecks/year</option>
+                <option value="yearly">Yearly - 1 paycheck/year</option>
+              </select>
+              <div class="help-text">Select how often you receive a paycheck.</div>
+            </div>
+
+            <div class="field">
+              <label for="annualSalary">Annual salary</label>
+              <input type="number" id="annualSalary" inputmode="decimal" min="0" step="0.01" value="52000" />
+              <div class="help-text">Used when pay type is annual salary.</div>
+            </div>
+
+            <div class="field">
+              <label for="hourlyWage">Hourly wage</label>
+              <input type="number" id="hourlyWage" inputmode="decimal" min="0" step="0.01" value="25" />
+              <div class="help-text">Used when pay type is hourly.</div>
+            </div>
+
+            <div class="field">
+              <label for="regularHours">Regular hours per paycheck</label>
+              <input type="number" id="regularHours" inputmode="decimal" min="0" max="744" step="0.1" value="80" />
+              <div class="help-text">Example: 80 hours for a biweekly full-time paycheck.</div>
+            </div>
+
+            <div class="field">
+              <label for="overtimeHours">Overtime hours per paycheck</label>
+              <input type="number" id="overtimeHours" inputmode="decimal" min="0" max="744" step="0.1" value="0" />
+              <div class="help-text">Optional. Enter 0 if overtime does not apply.</div>
+            </div>
+
+            <div class="field">
+              <label for="overtimeMultiplier">Overtime rate multiplier</label>
+              <input type="number" id="overtimeMultiplier" inputmode="decimal" min="0" step="0.1" value="1.5" />
+              <div class="help-text">Common example: 1.5 means time-and-a-half.</div>
+            </div>
+
+            <div class="field">
+              <label for="bonus">Bonus, commission, or extra pay per paycheck</label>
+              <input type="number" id="bonus" inputmode="decimal" min="0" step="0.01" value="0" />
+              <div class="help-text">Optional extra gross pay for this paycheck.</div>
+            </div>
+
+            <div class="field">
+              <label for="taxRate">Estimated tax / withholding rate (%)</label>
+              <input type="number" id="taxRate" inputmode="decimal" min="0" max="100" step="0.1" value="20" />
+              <div class="help-text">This is only an estimate, not official tax advice.</div>
+            </div>
+
+            <div class="field">
+              <label for="pretaxDeductions">Pre-tax deductions per paycheck</label>
+              <input type="number" id="pretaxDeductions" inputmode="decimal" min="0" step="0.01" value="0" />
+              <div class="help-text">Examples: retirement contributions, health plan deductions, eligible benefits.</div>
+            </div>
+
+            <div class="field">
+              <label for="posttaxDeductions">Post-tax deductions per paycheck</label>
+              <input type="number" id="posttaxDeductions" inputmode="decimal" min="0" step="0.01" value="0" />
+              <div class="help-text">Examples: after-tax benefits, repayments, or other deductions.</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn-primary">Calculate paycheck</button>
+            <button type="button" class="btn-secondary" id="resetBtn">Reset to defaults</button>
+          </div>
+        </form>
+
+        <div class="trust-strip">
+          Useful for paycheck planning, monthly budgeting, job offer comparison, overtime estimates,
+          salary planning, and understanding the difference between gross pay and take-home pay.
+        </div>
+
+        <div id="result" class="result-box" aria-live="polite"></div>
+
+        <div class="assumption-box">
+          <strong>Important:</strong> This paycheck calculator is for educational and planning purposes only.
+          It does not calculate official tax liability, payroll withholding, benefits rules, or legal employment requirements.
+          Actual paychecks may vary based on your country, state, employer, filing status, deductions, overtime rules,
+          benefits, unpaid leave, and payroll system.
+        </div>
+      </section>
+
+      <article class="card content-card">
+        <div class="toc" aria-labelledby="toc-heading">
+          <div class="toc-title" id="toc-heading">On this page</div>
+          <ul>
+            <li><a href="#what-is-paycheck">What this paycheck calculator does</a></li>
+            <li><a href="#how-to-use">How to use the calculator</a></li>
+            <li><a href="#gross-net">Gross pay vs net pay</a></li>
+            <li><a href="#pay-frequency">Pay frequency explained</a></li>
+            <li><a href="#deductions">Common paycheck deductions</a></li>
+            <li><a href="#examples">Paycheck examples</a></li>
+            <li><a href="#formulas">Formulas used</a></li>
+            <li><a href="#mistakes">Common paycheck mistakes</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <strong>Quick example:</strong>
+          If you earn <strong>$25 per hour</strong> and work <strong>80 regular hours</strong>
+          in a biweekly pay period, your gross paycheck is <strong>$2,000</strong> before taxes and deductions.
+          If estimated withholding is 20%, your estimated take-home pay would be lower after taxes and deductions.
+        </div>
+
+        <section id="what-is-paycheck">
+          <h2>What Is a Paycheck Calculator?</h2>
+          <p>
+            A paycheck calculator helps estimate how much money you may receive in one paycheck.
+            It can show your gross pay, estimated taxes, pre-tax deductions, post-tax deductions,
+            and approximate net take-home pay.
+          </p>
+          <p>
+            This is useful because the amount you earn is not always the same as the amount that arrives
+            in your bank account. Taxes, insurance, retirement contributions, benefits, and other deductions
+            can reduce your final paycheck.
+          </p>
+        </section>
+
+        <section id="how-to-use">
+          <h2>How to Use This Paycheck Calculator</h2>
+          <ul>
+            <li><strong>Choose your currency:</strong> dollar, euro, pound, or forint.</li>
+            <li><strong>Select your pay type:</strong> hourly or annual salary.</li>
+            <li><strong>Choose your pay frequency:</strong> weekly, biweekly, semimonthly, monthly, or yearly.</li>
+            <li><strong>Enter income details:</strong> hourly wage and hours, or annual salary.</li>
+            <li><strong>Add overtime if needed:</strong> enter overtime hours and the overtime multiplier.</li>
+            <li><strong>Add bonus or commission:</strong> include any extra pay for the paycheck period.</li>
+            <li><strong>Enter estimated tax rate:</strong> use a rough withholding percentage for planning.</li>
+            <li><strong>Enter deductions:</strong> include pre-tax and post-tax deductions if you know them.</li>
+          </ul>
+        </section>
+
+        <section id="gross-net">
+          <h2>Gross Pay vs Net Pay</h2>
+          <p>
+            Gross pay is the amount you earn before deductions. Net pay, also called take-home pay,
+            is the estimated amount left after taxes and deductions are removed.
+          </p>
+          <p>
+            For example, if your gross paycheck is $2,000 and estimated taxes and deductions total $500,
+            your estimated net paycheck would be $1,500. The calculator shows both numbers so you can
+            understand the difference between earnings and take-home pay.
+          </p>
+
+          <div class="mini-grid">
+            <div class="mini-card">
+              <strong>Gross pay</strong><br>
+              Your pay before deductions.
+            </div>
+            <div class="mini-card">
+              <strong>Taxes and deductions</strong><br>
+              Estimated amounts removed from pay.
+            </div>
+            <div class="mini-card">
+              <strong>Net pay</strong><br>
+              Your estimated take-home paycheck.
+            </div>
+          </div>
+        </section>
+
+        <section id="pay-frequency">
+          <h2>Pay Frequency Explained</h2>
+          <p>
+            Pay frequency affects the size of each paycheck. The same annual income can look different
+            depending on whether you are paid weekly, biweekly, semimonthly, or monthly.
+          </p>
+
+          <div class="comparison-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pay frequency</th>
+                  <th>Typical paychecks per year</th>
+                  <th>How it works</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Weekly</strong></td>
+                  <td>52</td>
+                  <td>You are usually paid once every week.</td>
+                </tr>
+                <tr>
+                  <td><strong>Biweekly</strong></td>
+                  <td>26</td>
+                  <td>You are usually paid every two weeks.</td>
+                </tr>
+                <tr>
+                  <td><strong>Semimonthly</strong></td>
+                  <td>24</td>
+                  <td>You are usually paid twice per month.</td>
+                </tr>
+                <tr>
+                  <td><strong>Monthly</strong></td>
+                  <td>12</td>
+                  <td>You are usually paid once per month.</td>
+                </tr>
+                <tr>
+                  <td><strong>Yearly</strong></td>
+                  <td>1</td>
+                  <td>Used mainly for annual planning or one-time annual income estimates.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Biweekly and semimonthly pay are often confused. Biweekly usually means 26 paychecks per year,
+            while semimonthly usually means 24 paychecks per year. This difference can change the amount
+            of each paycheck even if annual pay is the same.
+          </p>
+        </section>
+
+        <section id="deductions">
+          <h2>Common Paycheck Deductions</h2>
+          <p>
+            Your paycheck may include different deductions depending on your location, employer,
+            benefits, and personal choices. This calculator uses user-entered estimates rather than
+            official tax tables because rules vary widely.
+          </p>
+
+          <ul>
+            <li><strong>Estimated taxes or withholding:</strong> income tax, payroll tax, or other required withholding.</li>
+            <li><strong>Retirement contributions:</strong> workplace retirement plans or pension contributions.</li>
+            <li><strong>Health insurance:</strong> medical, dental, or vision plan deductions.</li>
+            <li><strong>Benefit deductions:</strong> employer benefits, savings plans, or flexible spending accounts.</li>
+            <li><strong>Post-tax deductions:</strong> repayments, after-tax benefits, or other payroll deductions.</li>
+          </ul>
+        </section>
+
+        <section id="examples">
+          <h2>Paycheck Examples</h2>
+          <p>
+            The table below shows simple paycheck examples. These are general estimates only and do not
+            represent official tax calculations.
+          </p>
+
+          <div class="comparison-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Example</th>
+                  <th>Gross paycheck</th>
+                  <th>Estimated tax rate</th>
+                  <th>Estimated net paycheck</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>$20/hour, 80 hours biweekly</strong></td>
+                  <td>$1,600</td>
+                  <td>20%</td>
+                  <td>About $1,280 before other deductions</td>
+                </tr>
+                <tr>
+                  <td><strong>$25/hour, 80 hours biweekly</strong></td>
+                  <td>$2,000</td>
+                  <td>20%</td>
+                  <td>About $1,600 before other deductions</td>
+                </tr>
+                <tr>
+                  <td><strong>$52,000 salary, biweekly</strong></td>
+                  <td>$2,000</td>
+                  <td>20%</td>
+                  <td>About $1,600 before other deductions</td>
+                </tr>
+                <tr>
+                  <td><strong>$60,000 salary, monthly</strong></td>
+                  <td>$5,000</td>
+                  <td>25%</td>
+                  <td>About $3,750 before other deductions</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="formulas">
+          <h2>Formulas Used by This Calculator</h2>
+          <p>
+            This calculator uses basic paycheck formulas. It does not use official government tax tables.
+            The tax estimate is based only on the percentage you enter.
+          </p>
+
+          <div class="comparison-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Calculation</th>
+                  <th>Formula</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Hourly regular pay</strong></td>
+                  <td>Hourly wage × regular hours per paycheck</td>
+                </tr>
+                <tr>
+                  <td><strong>Overtime pay</strong></td>
+                  <td>Hourly wage × overtime multiplier × overtime hours</td>
+                </tr>
+                <tr>
+                  <td><strong>Salary paycheck gross pay</strong></td>
+                  <td>Annual salary ÷ paychecks per year</td>
+                </tr>
+                <tr>
+                  <td><strong>Total gross paycheck</strong></td>
+                  <td>Regular pay or salary paycheck + overtime + bonus</td>
+                </tr>
+                <tr>
+                  <td><strong>Taxable estimate</strong></td>
+                  <td>Gross paycheck - pre-tax deductions</td>
+                </tr>
+                <tr>
+                  <td><strong>Estimated tax</strong></td>
+                  <td>Taxable estimate × estimated tax rate</td>
+                </tr>
+                <tr>
+                  <td><strong>Estimated net paycheck</strong></td>
+                  <td>Gross paycheck - pre-tax deductions - estimated tax - post-tax deductions</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="mistakes">
+          <h2>Common Paycheck Mistakes</h2>
+          <ul>
+            <li><strong>Confusing gross and net pay:</strong> gross pay is before deductions, net pay is after deductions.</li>
+            <li><strong>Using the wrong pay frequency:</strong> biweekly and semimonthly are not the same.</li>
+            <li><strong>Ignoring deductions:</strong> benefits, retirement, and insurance can reduce take-home pay.</li>
+            <li><strong>Assuming overtime is guaranteed:</strong> overtime can change from one pay period to another.</li>
+            <li><strong>Using a tax estimate as official tax advice:</strong> actual tax depends on many personal and legal factors.</li>
+          </ul>
+        </section>
+
+        <section id="faq">
+          <h2>Frequently Asked Questions</h2>
+
+          <h3>What is a paycheck calculator?</h3>
+          <p>
+            A paycheck calculator estimates how much money may be paid in one paycheck.
+            It can show gross pay, estimated taxes, deductions, and approximate take-home pay.
+          </p>
+
+          <h3>Is this paycheck calculator before or after taxes?</h3>
+          <p>
+            The calculator shows both gross pay before deductions and estimated net pay after the tax percentage
+            and deductions you enter.
+          </p>
+
+          <h3>Does this calculator calculate official taxes?</h3>
+          <p>
+            No. This is not an official tax calculator. It uses the estimated tax or withholding rate you enter.
+            Actual taxes may depend on your country, state, income, filing status, benefits, and payroll rules.
+          </p>
+
+          <h3>Can I use this for hourly pay?</h3>
+          <p>
+            Yes. Choose hourly as the pay type, then enter your hourly wage, regular hours,
+            overtime hours, and pay frequency.
+          </p>
+
+          <h3>Can I use this for salary pay?</h3>
+          <p>
+            Yes. Choose annual salary as the pay type, then enter your yearly salary and pay frequency.
+            The calculator divides your salary by the number of paychecks per year.
+          </p>
+
+          <h3>What is the difference between biweekly and semimonthly pay?</h3>
+          <p>
+            Biweekly pay usually means 26 paychecks per year because you are paid every two weeks.
+            Semimonthly pay usually means 24 paychecks per year because you are paid twice per month.
+          </p>
+        </section>
+      </article>
+
+      <section class="related-links" aria-labelledby="related-links-heading">
+        <h2 id="related-links-heading">Related calculators and articles</h2>
+        <div class="links">
+          <a href="https://financecalccenter.com/hourly-wage-to-monthly-salary-calculator.html">Hourly Wage to Monthly Salary Calculator</a>
+          <a href="https://financecalccenter.com/monthly-to-yearly-cost-calculator.html">Monthly to Yearly Cost Calculator</a>
+          <a href="https://financecalccenter.com/cost-per-day-calculator.html">Cost Per Day Calculator</a>
+          <a href="https://financecalccenter.com/commute-cost-calculator.html">Commute Cost Calculator</a>
+          <a href="https://financecalccenter.com/lunch-cost-calculator.html">Lunch Cost Calculator</a>
+          <a href="https://financecalccenter.com/coffee-cost-calculator.html">Coffee Cost Calculator</a>
+          <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
+          <a href="https://financecalccenter.com/index.html">Browse all calculators →</a>
+        </div>
+      </section>
+
+      <p class="footer-note">
+        FinanceCalcCenter calculators are for educational and planning purposes only.
+        They are not financial, tax, legal, payroll, or employment advice.
+      </p>
+    </main>
+  </div>
+
+  <script>
+    function getNumber(id) {
+      const value = parseFloat(document.getElementById(id).value);
+      return Number.isFinite(value) ? value : 0;
+    }
+
+    function getPaychecksPerYear(frequency) {
+      if (frequency === "weekly") {
+        return 52;
+      }
+
+      if (frequency === "biweekly") {
+        return 26;
+      }
+
+      if (frequency === "semimonthly") {
+        return 24;
+      }
+
+      if (frequency === "monthly") {
+        return 12;
+      }
+
+      if (frequency === "yearly") {
+        return 1;
+      }
+
+      return 26;
+    }
+
+    function getFrequencyLabel(frequency) {
+      if (frequency === "weekly") {
+        return "weekly";
+      }
+
+      if (frequency === "biweekly") {
+        return "biweekly";
+      }
+
+      if (frequency === "semimonthly") {
+        return "semimonthly";
+      }
+
+      if (frequency === "monthly") {
+        return "monthly";
+      }
+
+      if (frequency === "yearly") {
+        return "yearly";
+      }
+
+      return "biweekly";
+    }
+
+    function fmtMoney(value, currency) {
+      if (!Number.isFinite(value)) {
+        value = 0;
+      }
+
+      if (currency === "Ft") {
+        return Math.round(value).toLocaleString("en-US") + " Ft";
+      }
+
+      return currency + value.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function fmtNumber(value) {
+      if (!Number.isFinite(value)) {
+        value = 0;
+      }
+
+      return value.toLocaleString("en-US", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function calculatePaycheck() {
+      const currency = document.getElementById("currency").value;
+      const payType = document.getElementById("payType").value;
+      const payFrequency = document.getElementById("payFrequency").value;
+      const paychecksPerYear = getPaychecksPerYear(payFrequency);
+      const frequencyLabel = getFrequencyLabel(payFrequency);
+
+      const annualSalary = getNumber("annualSalary");
+      const hourlyWage = getNumber("hourlyWage");
+      const regularHours = getNumber("regularHours");
+      const overtimeHours = getNumber("overtimeHours");
+      const overtimeMultiplier = getNumber("overtimeMultiplier");
+      const bonus = getNumber("bonus");
+      const taxRate = getNumber("taxRate");
+      const pretaxDeductions = getNumber("pretaxDeductions");
+      const posttaxDeductions = getNumber("posttaxDeductions");
+
+      const resultBox = document.getElementById("result");
+
+      if (
+        annualSalary < 0 ||
+        hourlyWage < 0 ||
+        regularHours < 0 ||
+        overtimeHours < 0 ||
+        overtimeMultiplier < 0 ||
+        bonus < 0 ||
+        taxRate < 0 ||
+        pretaxDeductions < 0 ||
+        posttaxDeductions < 0
+      ) {
+        resultBox.style.display = "block";
+        resultBox.innerHTML = "<h2>Check your inputs</h2><p class='note'>Please enter zero or positive numbers only.</p>";
+        return;
+      }
+
+      if (taxRate > 100) {
+        resultBox.style.display = "block";
+        resultBox.innerHTML = "<h2>Check your tax rate</h2><p class='note'>Estimated tax rate cannot be more than 100%.</p>";
+        return;
+      }
+
+      if (regularHours + overtimeHours > 744) {
+        resultBox.style.display = "block";
+        resultBox.innerHTML = "<h2>Check your hours</h2><p class='note'>Regular hours and overtime hours are unusually high for one paycheck. Please check your input.</p>";
+        return;
+      }
+
+      let baseGrossPay = 0;
+      let regularPay = 0;
+      let overtimePay = 0;
+
+      if (payType === "salary") {
+        baseGrossPay = annualSalary / paychecksPerYear;
+        regularPay = baseGrossPay;
+        overtimePay = hourlyWage * overtimeMultiplier * overtimeHours;
+      } else {
+        regularPay = hourlyWage * regularHours;
+        overtimePay = hourlyWage * overtimeMultiplier * overtimeHours;
+        baseGrossPay = regularPay + overtimePay;
+      }
+
+      const grossPaycheck = baseGrossPay + bonus;
+
+      const safePretaxDeductions = Math.min(pretaxDeductions, grossPaycheck);
+      const taxablePay = Math.max(0, grossPaycheck - safePretaxDeductions);
+      const estimatedTax = taxablePay * (taxRate / 100);
+      const estimatedNetPaycheck = Math.max(0, grossPaycheck - safePretaxDeductions - estimatedTax - posttaxDeductions);
+
+      const annualGrossEstimate = grossPaycheck * paychecksPerYear;
+      const annualPretaxDeductions = safePretaxDeductions * paychecksPerYear;
+      const annualTaxEstimate = estimatedTax * paychecksPerYear;
+      const annualPosttaxDeductions = posttaxDeductions * paychecksPerYear;
+      const annualNetEstimate = estimatedNetPaycheck * paychecksPerYear;
+
+      const monthlyGrossAverage = annualGrossEstimate / 12;
+      const monthlyNetAverage = annualNetEstimate / 12;
+
+      let incomeSummary = "";
+
+      if (payType === "salary") {
+        incomeSummary = "Your estimate is based on an annual salary of <strong>" + fmtMoney(annualSalary, currency) + "</strong>, paid <strong>" + frequencyLabel + "</strong>.";
+      } else {
+        incomeSummary = "Your estimate is based on an hourly wage of <strong>" + fmtMoney(hourlyWage, currency) + "</strong>, <strong>" + fmtNumber(regularHours) + " regular hours</strong>, and <strong>" + fmtNumber(overtimeHours) + " overtime hours</strong> per paycheck.";
+      }
+
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h2>Results</h2>
+
+        <div class="result-grid">
+          <div class="result-item highlight-result">
+            <span class="result-label">Estimated net paycheck</span>
+            <span class="result-value">${fmtMoney(estimatedNetPaycheck, currency)}</span>
+          </div>
+
+          <div class="result-item highlight-result">
+            <span class="result-label">Gross paycheck</span>
+            <span class="result-value">${fmtMoney(grossPaycheck, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Estimated tax / withholding</span>
+            <span class="result-value">${fmtMoney(estimatedTax, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Taxable pay estimate</span>
+            <span class="result-value">${fmtMoney(taxablePay, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Pre-tax deductions</span>
+            <span class="result-value">${fmtMoney(safePretaxDeductions, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Post-tax deductions</span>
+            <span class="result-value">${fmtMoney(posttaxDeductions, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Average monthly gross pay</span>
+            <span class="result-value">${fmtMoney(monthlyGrossAverage, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Average monthly net pay</span>
+            <span class="result-value">${fmtMoney(monthlyNetAverage, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Estimated annual gross pay</span>
+            <span class="result-value">${fmtMoney(annualGrossEstimate, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Estimated annual net pay</span>
+            <span class="result-value">${fmtMoney(annualNetEstimate, currency)}</span>
+          </div>
+        </div>
+
+        <p class="note">
+          ${incomeSummary}
+          This pay frequency uses <strong>${paychecksPerYear} paycheck(s) per year</strong>.
+        </p>
+
+        <p class="note">
+          Regular or salary-based pay is <strong>${fmtMoney(regularPay, currency)}</strong>.
+          Overtime pay is <strong>${fmtMoney(overtimePay, currency)}</strong>.
+          Bonus or extra pay is <strong>${fmtMoney(bonus, currency)}</strong>.
+        </p>
+
+        <p class="note">
+          Estimated annual pre-tax deductions: <strong>${fmtMoney(annualPretaxDeductions, currency)}</strong>.
+          Estimated annual tax or withholding: <strong>${fmtMoney(annualTaxEstimate, currency)}</strong>.
+          Estimated annual post-tax deductions: <strong>${fmtMoney(annualPosttaxDeductions, currency)}</strong>.
+        </p>
+
+        <p class="note">
+          This is a general estimate for planning purposes only. Actual paycheck amounts may be different because of tax rules,
+          benefit deductions, payroll timing, filing status, unpaid leave, employer policies, overtime eligibility, and local laws.
+        </p>
+      `;
+    }
+
+    function resetCalculator() {
+      document.getElementById("currency").value = "$";
+      document.getElementById("payType").value = "hourly";
+      document.getElementById("payFrequency").value = "biweekly";
+      document.getElementById("annualSalary").value = "52000";
+      document.getElementById("hourlyWage").value = "25";
+      document.getElementById("regularHours").value = "80";
+      document.getElementById("overtimeHours").value = "0";
+      document.getElementById("overtimeMultiplier").value = "1.5";
+      document.getElementById("bonus").value = "0";
+      document.getElementById("taxRate").value = "20";
+      document.getElementById("pretaxDeductions").value = "0";
+      document.getElementById("posttaxDeductions").value = "0";
+      document.getElementById("result").style.display = "none";
+      document.getElementById("result").innerHTML = "";
+    }
+
+    document.getElementById("calculatorForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      calculatePaycheck();
+    });
+
+    document.getElementById("resetBtn").addEventListener("click", resetCalculator);
+  </script>
+</body>
+</html>
