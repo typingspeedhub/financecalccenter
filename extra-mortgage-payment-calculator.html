@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-68ZVCW4FWK");
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7086753311239071"
+    crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Extra Mortgage Payment Calculator | Pay Off Your Mortgage Faster</title>
+  <meta name="description" content="Free extra mortgage payment calculator. Estimate how much interest you could save and how much sooner you may pay off your mortgage with extra monthly or one-time principal payments." />
+  <meta name="author" content="FinanceCalcCenter" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://financecalccenter.com/extra-mortgage-payment-calculator.html" />
+
+  <meta name="theme-color" content="#020617" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+  <meta property="og:title" content="Extra Mortgage Payment Calculator | Pay Off Your Mortgage Faster" />
+  <meta property="og:description" content="See how extra mortgage payments may reduce your payoff time and total interest. Compare regular payments with extra principal payments." />
+  <meta property="og:url" content="https://financecalccenter.com/extra-mortgage-payment-calculator.html" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Extra Mortgage Payment Calculator" />
+  <meta name="twitter:description" content="Estimate mortgage interest savings and payoff time with extra monthly or one-time payments." />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --card: #0f172a;
+      --card-soft: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --line: #334155;
+      --accent: #22c55e;
+      --accent-dark: #16a34a;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --blue: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.13), transparent 30%),
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.12), transparent 28%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: #86efac;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 56px;
+    }
+
+    .breadcrumbs {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(15, 23, 42, 0.96)),
+        var(--card);
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      border-radius: 26px;
+      padding: 36px;
+      margin-bottom: 24px;
+      box-shadow: 0 24px 55px rgba(15, 23, 42, 0.42);
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.32);
+      color: #bbf7d0;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.55rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      margin: 0 0 14px;
+    }
+
+    h2 {
+      font-size: clamp(1.55rem, 3vw, 2.15rem);
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+      margin: 0 0 12px;
+    }
+
+    h3 {
+      font-size: 1.22rem;
+      margin: 24px 0 8px;
+    }
+
+    p {
+      color: #d1d5db;
+      margin-top: 0;
+    }
+
+    .hero p {
+      max-width: 880px;
+      font-size: 1.08rem;
+      margin-bottom: 0;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 24px;
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 18px 42px rgba(15, 23, 42, 0.24);
+    }
+
+    .soft-card {
+      background: rgba(2, 6, 23, 0.66);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    label {
+      font-weight: 750;
+      color: #f8fafc;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #020617;
+      color: var(--text);
+      padding: 12px 13px;
+      border-radius: 14px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.16);
+    }
+
+    .help {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 850;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #052e16;
+    }
+
+    .btn-secondary {
+      background: #1f2937;
+      border: 1px solid var(--line);
+      color: #e5e7eb;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .summary-box {
+      background: #020617;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 16px;
+      padding: 15px;
+    }
+
+    .summary-label {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+
+    .summary-value {
+      color: #f8fafc;
+      font-size: 1.28rem;
+      font-weight: 900;
+      line-height: 1.22;
+    }
+
+    .status {
+      margin-top: 16px;
+      padding: 14px 15px;
+      border-radius: 16px;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      background: rgba(34, 197, 94, 0.11);
+      color: #dcfce7;
+    }
+
+    .status.warning {
+      border-color: rgba(245, 158, 11, 0.4);
+      background: rgba(245, 158, 11, 0.12);
+      color: #fef3c7;
+    }
+
+    .status.danger {
+      border-color: rgba(239, 68, 68, 0.4);
+      background: rgba(239, 68, 68, 0.12);
+      color: #fee2e2;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      background: #020617;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(15, 23, 42, 0.92);
+      color: #f8fafc;
+      font-size: 0.92rem;
+    }
+
+    td {
+      color: #d1d5db;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .three-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    ul,
+    ol {
+      color: #d1d5db;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .callout {
+      border-left: 4px solid var(--accent);
+      background: rgba(34, 197, 94, 0.09);
+      padding: 16px 18px;
+      border-radius: 14px;
+      margin-top: 16px;
+    }
+
+    .warning-box {
+      border-left: 4px solid var(--warning);
+      background: rgba(245, 158, 11, 0.09);
+      padding: 16px 18px;
+      border-radius: 14px;
+      margin-top: 16px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .related-card {
+      display: block;
+      background: rgba(2, 6, 23, 0.68);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 18px;
+      padding: 18px;
+      min-height: 138px;
+    }
+
+    .related-card strong {
+      display: block;
+      color: #f8fafc;
+      margin-bottom: 8px;
+      font-size: 1.04rem;
+    }
+
+    .related-card span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .small-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .toc {
+      background: rgba(2, 6, 23, 0.66);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 18px;
+    }
+
+    .toc ul {
+      columns: 2;
+      margin-bottom: 0;
+    }
+
+    .footer {
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .calculator-layout,
+      .content-grid,
+      .three-grid,
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field-grid,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero,
+      .card {
+        padding: 22px;
+      }
+
+      .toc ul {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <nav class="breadcrumbs">
+      <a href="index.html">Home</a> &raquo; Extra Mortgage Payment Calculator
+    </nav>
+
+    <header class="hero">
+      <div class="hero-label">Mortgage payoff planning</div>
+      <h1>Extra Mortgage Payment Calculator</h1>
+      <p>
+        Use this free extra mortgage payment calculator to estimate how much interest you may save and how much sooner
+        you could pay off your mortgage by adding extra monthly or one-time principal payments.
+      </p>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Calculate your extra mortgage payment savings</h2>
+        <p>
+          Enter your remaining mortgage balance, interest rate, remaining term, and planned extra payments.
+          The calculator compares your current mortgage payoff schedule with a faster payoff plan that includes extra principal payments.
+        </p>
+
+        <div class="calculator-layout">
+          <div>
+            <form id="mortgageForm">
+              <div class="field-grid">
+                <div class="field">
+                  <label for="currency">Currency</label>
+                  <select id="currency">
+                    <option value="$">$ - US Dollar</option>
+                    <option value="€">€ - Euro</option>
+                    <option value="£">£ - British Pound</option>
+                    <option value="Ft">Ft - Hungarian Forint</option>
+                  </select>
+                  <div class="help">Choose the currency for the displayed results.</div>
+                </div>
+
+                <div class="field">
+                  <label for="balance">Remaining mortgage balance</label>
+                  <input id="balance" type="number" value="250000" min="0" step="1000">
+                  <div class="help">The current unpaid principal balance.</div>
+                </div>
+
+                <div class="field">
+                  <label for="rate">Mortgage interest rate (%)</label>
+                  <input id="rate" type="number" value="6.5" min="0" step="0.01">
+                  <div class="help">Use your current annual mortgage interest rate.</div>
+                </div>
+
+                <div class="field">
+                  <label for="years">Remaining years</label>
+                  <input id="years" type="number" value="30" min="0" step="1">
+                  <div class="help">Years left on the mortgage.</div>
+                </div>
+
+                <div class="field">
+                  <label for="months">Additional remaining months</label>
+                  <input id="months" type="number" value="0" min="0" max="11" step="1">
+                  <div class="help">Use 0 if the term is a whole number of years.</div>
+                </div>
+
+                <div class="field">
+                  <label for="extraMonthly">Extra monthly principal payment</label>
+                  <input id="extraMonthly" type="number" value="200" min="0" step="25">
+                  <div class="help">Extra amount paid toward principal each month.</div>
+                </div>
+
+                <div class="field">
+                  <label for="oneTimeExtra">One-time extra payment</label>
+                  <input id="oneTimeExtra" type="number" value="0" min="0" step="100">
+                  <div class="help">Optional lump-sum principal payment at the start.</div>
+                </div>
+
+                <div class="field">
+                  <label for="propertyTaxInsurance">Monthly taxes & insurance</label>
+                  <input id="propertyTaxInsurance" type="number" value="0" min="0" step="50">
+                  <div class="help">Optional. Not used for payoff math, only shown in total monthly estimate.</div>
+                </div>
+              </div>
+
+              <div class="btn-row">
+                <button class="btn-primary" type="submit">Calculate savings</button>
+                <button class="btn-secondary" type="button" id="resetBtn">Reset</button>
+              </div>
+            </form>
+          </div>
+
+          <aside class="soft-card">
+            <h3 style="margin-top:0;">Result summary</h3>
+
+            <div class="summary-grid">
+              <div class="summary-box">
+                <div class="summary-label">Regular principal & interest</div>
+                <div class="summary-value" id="regularPaymentOut">-</div>
+              </div>
+
+              <div class="summary-box">
+                <div class="summary-label">With extra monthly payment</div>
+                <div class="summary-value" id="extraPaymentOut">-</div>
+              </div>
+
+              <div class="summary-box">
+                <div class="summary-label">Time saved</div>
+                <div class="summary-value" id="timeSavedOut">-</div>
+              </div>
+
+              <div class="summary-box">
+                <div class="summary-label">Interest saved</div>
+                <div class="summary-value" id="interestSavedOut">-</div>
+              </div>
+            </div>
+
+            <div class="status" id="statusBox">
+              Add your numbers and calculate your mortgage payoff estimate.
+            </div>
+          </aside>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>Monthly principal & interest</th>
+                <th>Extra payment</th>
+                <th>Payoff time</th>
+                <th>Total interest</th>
+                <th>Total paid</th>
+              </tr>
+            </thead>
+            <tbody id="comparisonBody"></tbody>
+          </table>
+        </div>
+
+        <p class="small-note">
+          This calculator is an educational estimate. It uses a simplified monthly amortization method and does not include
+          lender fees, mortgage insurance, escrow changes, prepayment penalties, adjustable-rate changes, or taxes and insurance in the payoff calculation.
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="toc">
+          <h2>On this page</h2>
+          <ul>
+            <li><a href="#what-is">What is an extra mortgage payment calculator?</a></li>
+            <li><a href="#how-to-use">How to use this calculator</a></li>
+            <li><a href="#example">Extra mortgage payment example</a></li>
+            <li><a href="#principal">Why principal-only payments matter</a></li>
+            <li><a href="#strategies">Extra payment strategies</a></li>
+            <li><a href="#pros-cons">Pros and cons</a></li>
+            <li><a href="#not-best">When extra payments may not be best</a></li>
+            <li><a href="#related">Related calculators</a></li>
+            <li><a href="#faq">Frequently asked questions</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card" id="what-is">
+        <h2>What is an extra mortgage payment calculator?</h2>
+        <p>
+          An extra mortgage payment calculator estimates how additional payments toward your mortgage principal may affect
+          your payoff date and total interest cost. It compares your regular amortization schedule with a faster payoff plan.
+        </p>
+        <p>
+          Mortgage interest is usually calculated on the remaining balance. When extra payments reduce the principal sooner,
+          future interest can also decrease. This is why even a small recurring extra payment may shorten the loan term over time.
+        </p>
+
+        <div class="callout">
+          <strong>Simple idea:</strong>
+          Extra principal payments reduce the balance faster. A lower balance can mean less interest over the remaining life of the loan.
+        </div>
+      </section>
+
+      <section class="card" id="how-to-use">
+        <h2>How to use this calculator</h2>
+        <div class="content-grid">
+          <div>
+            <ol>
+              <li>Enter your remaining mortgage balance.</li>
+              <li>Enter your current annual mortgage interest rate.</li>
+              <li>Enter the number of years and months remaining.</li>
+              <li>Add your planned extra monthly principal payment.</li>
+              <li>Add any one-time extra payment if you plan to make one.</li>
+              <li>Click calculate to compare payoff time and estimated interest.</li>
+            </ol>
+          </div>
+
+          <div class="soft-card">
+            <h3 style="margin-top:0;">Best input source</h3>
+            <p>
+              For a more realistic estimate, use your latest mortgage statement. Look for the unpaid principal balance,
+              interest rate, required principal and interest payment, and remaining term if available.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="example">
+        <h2>Extra mortgage payment example</h2>
+        <p>
+          Suppose you have a $250,000 remaining mortgage balance at a 6.5% interest rate with 30 years left.
+          If you add an extra $200 per month toward principal, your balance can fall faster and your total interest may decrease.
+        </p>
+
+        <div class="three-grid">
+          <div class="soft-card">
+            <h3 style="margin-top:0;">Balance</h3>
+            <p>A larger balance usually creates a larger interest cost, especially early in the repayment schedule.</p>
+          </div>
+
+          <div class="soft-card">
+            <h3 style="margin-top:0;">Interest rate</h3>
+            <p>A higher mortgage rate can make extra principal payments more valuable because interest savings may be larger.</p>
+          </div>
+
+          <div class="soft-card">
+            <h3 style="margin-top:0;">Extra payment</h3>
+            <p>A consistent monthly extra payment can reduce the loan balance faster than occasional small payments.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="principal">
+        <h2>Why principal-only extra payments matter</h2>
+        <p>
+          When you make an extra mortgage payment, it is important to confirm that the extra amount is applied to principal.
+          If the payment is treated as a future regular payment instead, it may not reduce interest in the same way.
+        </p>
+
+        <div class="warning-box">
+          <strong>Check your lender instructions:</strong>
+          Some lenders require you to mark extra payments as “principal only” or choose a special option in the payment portal.
+          If you are unsure, contact your mortgage servicer before sending extra money.
+        </div>
+      </section>
+
+      <section class="card" id="strategies">
+        <h2>Extra mortgage payment strategies</h2>
+
+        <h3>1. Add a fixed extra amount every month</h3>
+        <p>
+          This is the easiest method to plan. For example, you might add $100, $200, or $500 to your regular monthly payment
+          and apply it directly to principal.
+        </p>
+
+        <h3>2. Make one extra mortgage payment per year</h3>
+        <p>
+          Some homeowners make one additional principal payment each year using a bonus, tax refund, or savings from the monthly budget.
+        </p>
+
+        <h3>3. Round up your payment</h3>
+        <p>
+          If your regular principal and interest payment is $1,584, you might round it up to $1,700 or $1,800.
+          This can be easier than setting a large extra payment.
+        </p>
+
+        <h3>4. Use occasional lump-sum payments</h3>
+        <p>
+          A one-time payment can reduce the balance immediately. This calculator lets you include a lump-sum payment at the start
+          of the estimate.
+        </p>
+      </section>
+
+      <section class="card" id="pros-cons">
+        <h2>Pros and cons of paying extra on your mortgage</h2>
+        <div class="content-grid">
+          <div class="soft-card">
+            <h3 style="margin-top:0;">Possible benefits</h3>
+            <ul>
+              <li>You may pay less total interest.</li>
+              <li>You may become mortgage-free sooner.</li>
+              <li>Your home equity may grow faster.</li>
+              <li>You may reduce long-term debt stress.</li>
+              <li>Extra payments can create a clear financial goal.</li>
+            </ul>
+          </div>
+
+          <div class="soft-card">
+            <h3 style="margin-top:0;">Possible drawbacks</h3>
+            <ul>
+              <li>Extra money becomes less liquid.</li>
+              <li>You may miss higher-priority financial goals.</li>
+              <li>Some loans may have prepayment penalties.</li>
+              <li>Low-rate mortgages may not be the best debt to prioritize.</li>
+              <li>Investing or building emergency savings may be more important for some households.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="not-best">
+        <h2>When extra mortgage payments may not be the best choice</h2>
+        <p>
+          Paying extra on a mortgage can be helpful, but it is not always the first priority.
+          Before sending extra principal payments, consider your broader financial picture.
+        </p>
+
+        <ul>
+          <li>You do not have an emergency fund.</li>
+          <li>You have high-interest credit card debt.</li>
+          <li>Your mortgage has a very low interest rate.</li>
+          <li>Your loan charges a prepayment penalty.</li>
+          <li>You are not contributing enough for an employer retirement match.</li>
+          <li>You may need cash soon for repairs, medical costs, moving, or income changes.</li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>Planning note:</strong>
+          Extra mortgage payments can reduce interest, but they also reduce cash flexibility. Make sure the plan fits your household budget.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Extra payments vs refinancing</h2>
+        <p>
+          Extra payments and refinancing solve different problems. Extra payments help reduce your current balance faster.
+          Refinancing replaces your current mortgage with a new loan, usually to change the interest rate, payment, or term.
+        </p>
+        <p>
+          Refinancing may involve closing costs and a new approval process. Extra payments usually do not require a new loan,
+          but they may not lower your required monthly payment unless your lender offers recasting.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Mortgage recast vs extra payments</h2>
+        <p>
+          A mortgage recast is when you make a large principal payment and the lender recalculates your monthly payment
+          based on the lower balance. This may reduce your required payment while keeping the same loan and interest rate.
+        </p>
+        <p>
+          Not all loans are eligible for recasting, and lenders may charge a fee. If your goal is to lower your required payment,
+          ask your lender whether recasting is available.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>When this calculator may not match your mortgage statement</h2>
+        <ul>
+          <li>Your lender may use exact daily interest instead of simplified monthly amortization.</li>
+          <li>Your mortgage may include escrow for taxes and insurance.</li>
+          <li>Your loan may have adjustable interest rates.</li>
+          <li>Your mortgage payment may include mortgage insurance.</li>
+          <li>Late fees, servicing fees, and prepayment penalties are not included.</li>
+          <li>Your extra payment may not be applied to principal unless you specify it correctly.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Extra mortgage payment checklist</h2>
+        <div class="content-grid">
+          <div>
+            <h3>Before paying extra</h3>
+            <ul>
+              <li>Check your unpaid principal balance.</li>
+              <li>Confirm your mortgage interest rate.</li>
+              <li>Ask whether prepayment penalties apply.</li>
+              <li>Confirm how to make principal-only payments.</li>
+              <li>Review emergency savings and high-interest debt first.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>During repayment</h3>
+            <ul>
+              <li>Track your balance monthly.</li>
+              <li>Check that extra payments reduce principal.</li>
+              <li>Keep enough cash for emergencies.</li>
+              <li>Review your plan after income or expense changes.</li>
+              <li>Compare interest savings with other financial priorities.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="related">
+        <h2>Related calculators</h2>
+        <p>
+          These tools can help you plan your housing costs, debt payoff, and monthly budget.
+        </p>
+
+        <div class="related-grid">
+          <a class="related-card" href="mortgage-calculator.html">
+            <strong>Mortgage Calculator</strong>
+            <span>Estimate monthly mortgage payments based on loan amount, rate, and term.</span>
+          </a>
+
+          <a class="related-card" href="rent-affordability-calculator.html">
+            <strong>Rent Affordability Calculator</strong>
+            <span>Estimate how much rent may fit your income and monthly budget.</span>
+          </a>
+
+          <a class="related-card" href="credit-card-payoff-calculator.html">
+            <strong>Credit Card Payoff Calculator</strong>
+            <span>Estimate payoff time and interest savings from extra credit card payments.</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="card" id="faq">
+        <h2>Frequently asked questions</h2>
+
+        <h3>What does this extra mortgage payment calculator show?</h3>
+        <p>
+          It estimates your regular mortgage payoff time, payoff time with extra principal payments,
+          total interest, total amount paid, time saved, and estimated interest saved.
+        </p>
+
+        <h3>Do extra mortgage payments really save interest?</h3>
+        <p>
+          They can. When extra payments reduce the principal balance sooner, less interest may accrue over the remaining life of the loan.
+          The savings depend on your balance, interest rate, term, and payment amount.
+        </p>
+
+        <h3>Should extra mortgage payments go to principal?</h3>
+        <p>
+          Yes, if your goal is to reduce the loan balance and save interest. Check your lender’s process for marking extra payments as principal-only.
+        </p>
+
+        <h3>Is it better to pay extra monthly or once a year?</h3>
+        <p>
+          Monthly extra payments usually reduce principal sooner, which may save more interest than waiting for one annual payment.
+          However, the best method depends on your cash flow and budget.
+        </p>
+
+        <h3>Can I pay off a 30-year mortgage early?</h3>
+        <p>
+          Many mortgages allow early payoff, but you should check whether your loan has any prepayment penalty or special payment rules.
+        </p>
+
+        <h3>Will extra payments lower my required monthly mortgage payment?</h3>
+        <p>
+          Usually no. Extra payments reduce the balance and may shorten the payoff time, but they do not usually lower the required payment
+          unless your lender offers a mortgage recast.
+        </p>
+
+        <h3>Does this calculator include taxes and insurance?</h3>
+        <p>
+          Taxes and insurance can be entered for a monthly payment estimate, but they are not used in the mortgage payoff and interest calculation.
+          The payoff math focuses on principal and interest.
+        </p>
+
+        <h3>Does this calculator include adjustable-rate mortgages?</h3>
+        <p>
+          No. It assumes a fixed interest rate for the estimate. Adjustable-rate mortgages can change over time and may produce different results.
+        </p>
+
+        <h3>Is paying extra on a mortgage better than investing?</h3>
+        <p>
+          It depends on your mortgage rate, risk tolerance, emergency savings, tax situation, investment expectations, and personal goals.
+          This calculator shows mortgage interest savings only and does not compare investment returns.
+        </p>
+
+        <h3>Is this financial advice?</h3>
+        <p>
+          No. This calculator is an educational planning tool only. For personal financial advice, consider speaking with a qualified financial professional.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      FinanceCalcCenter calculators are educational tools only and are not financial, legal, tax, mortgage, or investment advice.
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById("mortgageForm");
+    const resetBtn = document.getElementById("resetBtn");
+
+    const regularPaymentOut = document.getElementById("regularPaymentOut");
+    const extraPaymentOut = document.getElementById("extraPaymentOut");
+    const timeSavedOut = document.getElementById("timeSavedOut");
+    const interestSavedOut = document.getElementById("interestSavedOut");
+    const statusBox = document.getElementById("statusBox");
+    const comparisonBody = document.getElementById("comparisonBody");
+
+    function getValue(id) {
+      const value = parseFloat(document.getElementById(id).value);
+      return Number.isFinite(value) ? value : 0;
+    }
+
+    function getCurrency() {
+      return document.getElementById("currency").value;
+    }
+
+    function formatMoney(amount) {
+      const currency = getCurrency();
+      const rounded = Math.round(amount);
+
+      if (currency === "Ft") {
+        return rounded.toLocaleString("en-US") + " Ft";
+      }
+
+      return currency + rounded.toLocaleString("en-US");
+    }
+
+    function formatTime(months) {
+      if (!Number.isFinite(months)) {
+        return "Not reachable";
+      }
+
+      if (months <= 0) {
+        return "0 months";
+      }
+
+      const years = Math.floor(months / 12);
+      const rest = months % 12;
+
+      if (years === 0) {
+        return months + (months === 1 ? " month" : " months");
+      }
+
+      if (rest === 0) {
+        return years + (years === 1 ? " year" : " years");
+      }
+
+      return years + (years === 1 ? " year " : " years ") + rest + (rest === 1 ? " month" : " months");
+    }
+
+    function calculateMonthlyPayment(balance, annualRate, months) {
+      if (balance <= 0 || months <= 0) {
+        return 0;
+      }
+
+      const monthlyRate = annualRate / 100 / 12;
+
+      if (monthlyRate === 0) {
+        return balance / months;
+      }
+
+      return balance * monthlyRate / (1 - Math.pow(1 + monthlyRate, -months));
+    }
+
+    function calculateScenario(balance, annualRate, months, regularPayment, extraMonthly, oneTimeExtra) {
+      const monthlyRate = annualRate / 100 / 12;
+      let currentBalance = Math.max(0, balance - oneTimeExtra);
+      let totalInterest = 0;
+      let totalPaid = Math.min(balance, oneTimeExtra);
+      let monthCount = 0;
+      const maxMonths = 720;
+
+      if (balance <= 0) {
+        return {
+          possible: true,
+          months: 0,
+          totalInterest: 0,
+          totalPaid: 0
+        };
+      }
+
+      if (currentBalance <= 0) {
+        return {
+          possible: true,
+          months: 0,
+          totalInterest: 0,
+          totalPaid: balance
+        };
+      }
+
+      const plannedPayment = regularPayment + extraMonthly;
+
+      while (currentBalance > 0.01 && monthCount < maxMonths) {
+        const interest = currentBalance * monthlyRate;
+        const balanceBeforePayment = currentBalance + interest;
+
+        if (plannedPayment <= interest && balanceBeforePayment >= currentBalance) {
+          return {
+            possible: false,
+            months: Infinity,
+            totalInterest: totalInterest,
+            totalPaid: totalPaid
+          };
+        }
+
+        const actualPayment = Math.min(plannedPayment, balanceBeforePayment);
+        currentBalance = balanceBeforePayment - actualPayment;
+
+        totalInterest += interest;
+        totalPaid += actualPayment;
+        monthCount++;
+      }
+
+      if (monthCount >= maxMonths && currentBalance > 0.01) {
+        return {
+          possible: false,
+          months: Infinity,
+          totalInterest: totalInterest,
+          totalPaid: totalPaid
+        };
+      }
+
+      return {
+        possible: true,
+        months: monthCount,
+        totalInterest: totalInterest,
+        totalPaid: totalPaid
+      };
+    }
+
+    function addComparisonRow(label, regularPayment, extraPayment, scenario) {
+      const row = document.createElement("tr");
+
+      const payoffText = scenario.possible ? formatTime(scenario.months) : "Not reachable";
+      const interestText = scenario.possible ? formatMoney(scenario.totalInterest) : "N/A";
+      const paidText = scenario.possible ? formatMoney(scenario.totalPaid) : "N/A";
+
+      row.innerHTML = `
+        <td>${label}</td>
+        <td>${formatMoney(regularPayment)}</td>
+        <td>${formatMoney(extraPayment)}</td>
+        <td>${payoffText}</td>
+        <td>${interestText}</td>
+        <td>${paidText}</td>
+      `;
+
+      comparisonBody.appendChild(row);
+    }
+
+    function calculate() {
+      const balance = getValue("balance");
+      const rate = getValue("rate");
+      const years = getValue("years");
+      const monthsInput = getValue("months");
+      const extraMonthly = getValue("extraMonthly");
+      const oneTimeExtra = getValue("oneTimeExtra");
+      const propertyTaxInsurance = getValue("propertyTaxInsurance");
+
+      if (balance < 0 || rate < 0 || years < 0 || monthsInput < 0 || extraMonthly < 0 || oneTimeExtra < 0 || propertyTaxInsurance < 0) {
+        alert("Please enter zero or positive numbers only.");
+        return;
+      }
+
+      const remainingMonths = Math.round(years * 12 + monthsInput);
+
+      if (balance > 0 && remainingMonths <= 0) {
+        alert("Please enter a remaining term greater than zero.");
+        return;
+      }
+
+      const regularPayment = calculateMonthlyPayment(balance, rate, remainingMonths);
+
+      const regularScenario = calculateScenario(balance, rate, remainingMonths, regularPayment, 0, 0);
+      const extraScenario = calculateScenario(balance, rate, remainingMonths, regularPayment, extraMonthly, oneTimeExtra);
+
+      const totalRegularMonthly = regularPayment + propertyTaxInsurance;
+      const totalWithExtraMonthly = regularPayment + extraMonthly + propertyTaxInsurance;
+
+      regularPaymentOut.textContent = formatMoney(totalRegularMonthly);
+      extraPaymentOut.textContent = formatMoney(totalWithExtraMonthly);
+
+      if (regularScenario.possible && extraScenario.possible) {
+        const monthsSaved = Math.max(0, regularScenario.months - extraScenario.months);
+        const interestSaved = Math.max(0, regularScenario.totalInterest - extraScenario.totalInterest);
+
+        timeSavedOut.textContent = formatTime(monthsSaved);
+        interestSavedOut.textContent = formatMoney(interestSaved);
+      } else {
+        timeSavedOut.textContent = "N/A";
+        interestSavedOut.textContent = "N/A";
+      }
+
+      comparisonBody.innerHTML = "";
+      addComparisonRow("Regular payoff", regularPayment, 0, regularScenario);
+      addComparisonRow("With extra payments", regularPayment, extraMonthly, extraScenario);
+
+      statusBox.className = "status";
+
+      if (!extraScenario.possible) {
+        statusBox.classList.add("danger");
+        statusBox.textContent =
+          "The entered payment may not be enough to pay off the mortgage under this estimate.";
+      } else if (extraMonthly > 0 || oneTimeExtra > 0) {
+        statusBox.textContent =
+          "Your extra payment plan may reduce your payoff time and total interest compared with the regular schedule.";
+      } else {
+        statusBox.classList.add("warning");
+        statusBox.textContent =
+          "This estimate uses the regular mortgage payment only. Add an extra monthly or one-time payment to compare savings.";
+      }
+    }
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      calculate();
+    });
+
+    resetBtn.addEventListener("click", function() {
+      document.getElementById("currency").value = "$";
+      document.getElementById("balance").value = "250000";
+      document.getElementById("rate").value = "6.5";
+      document.getElementById("years").value = "30";
+      document.getElementById("months").value = "0";
+      document.getElementById("extraMonthly").value = "200";
+      document.getElementById("oneTimeExtra").value = "0";
+      document.getElementById("propertyTaxInsurance").value = "0";
+      calculate();
+    });
+
+    calculate();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Extra Mortgage Payment Calculator",
+    "url": "https://financecalccenter.com/extra-mortgage-payment-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "A free calculator that estimates mortgage payoff time, interest savings, and time saved from extra monthly or one-time principal payments.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does this extra mortgage payment calculator show?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It estimates regular payoff time, payoff time with extra principal payments, total interest, total amount paid, time saved, and interest saved."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do extra mortgage payments save interest?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Extra mortgage payments can save interest because they reduce the principal balance sooner. A lower balance can reduce future interest over the life of the loan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should extra mortgage payments go to principal?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. If the goal is to pay off the mortgage faster and reduce interest, extra payments should generally be applied to principal. Borrowers should confirm the correct process with their lender."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will extra payments lower my required monthly mortgage payment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually no. Extra payments may shorten the payoff time, but they do not usually lower the required monthly payment unless the lender offers a mortgage recast."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this financial advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This calculator is for educational planning only and is not financial, legal, tax, mortgage, or investment advice."
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
+
