@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-68ZVCW4FWK");
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7086753311239071"
+    crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Annual Savings Calculator | Estimate Yearly Savings Growth</title>
+  <meta name="description" content="Free annual savings calculator. Estimate how much you could save in one year or over several years with monthly deposits, starting balance, interest, inflation, and savings goals." />
+  <meta name="author" content="FinanceCalcCenter" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://financecalccenter.com/annual-savings-calculator.html" />
+
+  <meta name="theme-color" content="#020617" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+  <meta property="og:title" content="Annual Savings Calculator | Estimate Yearly Savings Growth" />
+  <meta property="og:description" content="Calculate yearly savings, monthly deposits, compound interest, goal progress, and inflation-adjusted savings value." />
+  <meta property="og:url" content="https://financecalccenter.com/annual-savings-calculator.html" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Annual Savings Calculator" />
+  <meta name="twitter:description" content="Estimate how your savings may grow with regular monthly deposits, interest, and long-term planning." />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --card: #0f172a;
+      --card-soft: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --line: #334155;
+      --accent: #22c55e;
+      --accent-dark: #16a34a;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --blue: #38bdf8;
+      --radius: 24px;
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.14), transparent 34rem),
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.12), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: #86efac;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .brand {
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .breadcrumb {
+      color: var(--muted);
+    }
+
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(15, 23, 42, 0.96)),
+        var(--card);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 42px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(134, 239, 172, 0.35);
+      background: rgba(34, 197, 94, 0.1);
+      color: #bbf7d0;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.15rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      color: #ffffff;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.2;
+      color: #ffffff;
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      margin: 26px 0 10px;
+      color: #ffffff;
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+
+    h4 {
+      margin: 18px 0 8px;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+
+    p {
+      color: #cbd5e1;
+      margin: 0 0 16px;
+    }
+
+    .hero p {
+      max-width: 830px;
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 18px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 0.98rem;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #052e16;
+    }
+
+    .btn-primary:hover {
+      background: #4ade80;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(15, 23, 42, 0.92);
+      color: #e5e7eb;
+      border: 1px solid var(--line);
+    }
+
+    .btn-secondary:hover {
+      background: #1e293b;
+      text-decoration: none;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 22px;
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.28);
+    }
+
+    .soft-card {
+      background: rgba(2, 6, 23, 0.62);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .hint {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 4px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid #475569;
+      background: #020617;
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 13px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.16);
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .result-box {
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .result-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    .result-box strong {
+      display: block;
+      color: #ffffff;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+
+    .result-box.highlight {
+      border-color: rgba(34, 197, 94, 0.55);
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.11), #020617);
+    }
+
+    .progress-wrap {
+      margin-top: 18px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+      gap: 12px;
+    }
+
+    .progress-bar {
+      height: 14px;
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #22c55e, #86efac);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .summary-box {
+      margin-top: 18px;
+      border-left: 4px solid var(--accent);
+      background: rgba(34, 197, 94, 0.08);
+      padding: 16px;
+      border-radius: 14px;
+      color: #d1fae5;
+    }
+
+    .warning-box {
+      margin-top: 18px;
+      border-left: 4px solid var(--warning);
+      background: rgba(245, 158, 11, 0.08);
+      padding: 16px;
+      border-radius: 14px;
+      color: #fde68a;
+    }
+
+    .info-box {
+      margin-top: 18px;
+      border-left: 4px solid var(--blue);
+      background: rgba(56, 189, 248, 0.08);
+      padding: 16px;
+      border-radius: 14px;
+      color: #bae6fd;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .toc a {
+      display: block;
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      color: #d1fae5;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      border-color: rgba(34, 197, 94, 0.55);
+      text-decoration: none;
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      background: #020617;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #ffffff;
+      background: rgba(15, 23, 42, 0.98);
+      font-size: 0.92rem;
+    }
+
+    td {
+      color: #cbd5e1;
+      font-size: 0.94rem;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+    }
+
+    ul,
+    ol {
+      color: #cbd5e1;
+      margin-top: 8px;
+      margin-bottom: 18px;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .three-column {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mini-card {
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .mini-card strong {
+      display: block;
+      color: #ffffff;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .mini-card p {
+      margin-bottom: 0;
+      font-size: 0.96rem;
+    }
+
+    .example-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .example-card {
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .example-card h3 {
+      margin-top: 0;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .related-grid a {
+      display: block;
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      color: #cbd5e1;
+    }
+
+    .related-grid a:hover {
+      border-color: rgba(34, 197, 94, 0.55);
+      text-decoration: none;
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    .related-grid strong {
+      display: block;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-top: 18px;
+    }
+
+    .faq-item:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      margin-top: 30px;
+      font-size: 0.95rem;
+    }
+
+    .small {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: #cbd5e1;
+      background: rgba(2, 6, 23, 0.5);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .screen-reader-text {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding: 28px;
+      }
+
+      .calculator-grid,
+      .two-column,
+      .three-column,
+      .example-grid,
+      .related-grid,
+      .toc {
+        grid-template-columns: 1fr;
+      }
+
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .input-row {
+        grid-template-columns: 1fr;
+      }
+
+      .top-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .hero,
+      .card {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #111827;
+      }
+
+      .hero,
+      .card,
+      .soft-card,
+      .mini-card,
+      .example-card,
+      .result-box {
+        background: #ffffff;
+        color: #111827;
+        border-color: #cbd5e1;
+        box-shadow: none;
+      }
+
+      p,
+      li,
+      td,
+      .small,
+      .hint {
+        color: #374151;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      label,
+      th,
+      .result-box strong {
+        color: #111827;
+      }
+
+      .top-nav,
+      .hero-actions,
+      .button-row,
+      .related-grid,
+      .toc {
+        display: none;
+      }
+
+      a {
+        color: #111827;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <nav class="top-nav" aria-label="Breadcrumb">
+      <a class="brand" href="index.html">FinanceCalcCenter</a>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span> / </span>
+        <span>Annual Savings Calculator</span>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-label">Savings planning tool</div>
+      <h1>Annual Savings Calculator</h1>
+      <p>
+        Use this annual savings calculator to estimate how much money you could save in one year,
+        several years, or toward a specific savings goal. Enter your starting balance, monthly savings,
+        extra annual contribution, expected interest rate, and inflation estimate to see a clearer picture
+        of your future savings.
+      </p>
+      <p>
+        The calculator is designed for everyday planning: emergency funds, vacation savings, car deposits,
+        home down payments, education savings, or long-term financial goals. It shows total contributions,
+        estimated interest, inflation-adjusted value, goal progress, and a year-by-year savings breakdown.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#calculator">Use the calculator</a>
+        <a class="btn btn-secondary" href="#guide">Read the savings guide</a>
+      </div>
+
+      <div class="badge-row">
+        <span class="badge">Monthly deposits</span>
+        <span class="badge">Compound interest</span>
+        <span class="badge">Goal progress</span>
+        <span class="badge">Inflation estimate</span>
+        <span class="badge">Year-by-year table</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="card" id="calculator">
+        <h2>Calculate your annual savings</h2>
+        <p>
+          Fill in the fields below to estimate how your savings may grow over time. You can use the calculator
+          for a simple one-year savings estimate or a longer multi-year plan.
+        </p>
+
+        <div class="calculator-grid">
+          <form id="savingsForm" class="soft-card">
+            <div class="field">
+              <label for="currency">Currency</label>
+              <select id="currency">
+                <option value="$">$ Dollar</option>
+                <option value="€">€ Euro</option>
+                <option value="£">£ Pound</option>
+                <option value="Ft">Ft Forint</option>
+              </select>
+              <span class="hint">Choose the symbol used in your results.</span>
+            </div>
+
+            <div class="input-row">
+              <div class="field">
+                <label for="startingBalance">Starting balance</label>
+                <input id="startingBalance" type="number" value="1000" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Money you already have saved.</span>
+              </div>
+
+              <div class="field">
+                <label for="monthlySavings">Monthly savings</label>
+                <input id="monthlySavings" type="number" value="300" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Amount you plan to save each month.</span>
+              </div>
+            </div>
+
+            <div class="input-row">
+              <div class="field">
+                <label for="annualExtra">Extra annual contribution</label>
+                <input id="annualExtra" type="number" value="0" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Optional bonus, tax refund, or yearly deposit.</span>
+              </div>
+
+              <div class="field">
+                <label for="annualRate">Annual interest rate (%)</label>
+                <input id="annualRate" type="number" value="4" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Estimated yearly return or savings interest.</span>
+              </div>
+            </div>
+
+            <div class="input-row">
+              <div class="field">
+                <label for="years">Savings period in years</label>
+                <input id="years" type="number" value="5" min="1" max="50" step="1" inputmode="numeric" />
+                <span class="hint">Choose 1 to 50 years.</span>
+              </div>
+
+              <div class="field">
+                <label for="inflationRate">Inflation rate (%)</label>
+                <input id="inflationRate" type="number" value="3" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Used to estimate purchasing power.</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="savingsGoal">Savings goal</label>
+              <input id="savingsGoal" type="number" value="25000" min="0" step="0.01" inputmode="decimal" />
+              <span class="hint">Optional target amount. Use 0 if you do not have a specific goal.</span>
+            </div>
+
+            <div class="button-row">
+              <button class="btn btn-primary" type="submit">Calculate savings</button>
+              <button class="btn btn-secondary" type="button" id="resetBtn">Reset</button>
+              <button class="btn btn-secondary" type="button" id="printBtn">Print results</button>
+            </div>
+
+            <p class="small">
+              This calculator is for educational planning only. It does not include taxes, account fees,
+              market losses, changing interest rates, or personal financial advice.
+            </p>
+          </form>
+
+          <div class="soft-card">
+            <h2>Your savings estimate</h2>
+            <p>
+              The results update when you press the calculate button. Review the ending balance, your own
+              contributions, estimated interest, and inflation-adjusted value.
+            </p>
+
+            <div class="result-grid">
+              <div class="result-box highlight">
+                <span>Projected ending balance</span>
+                <strong id="endingBalance">$0</strong>
+              </div>
+
+              <div class="result-box">
+                <span>Total contributions</span>
+                <strong id="totalContributions">$0</strong>
+              </div>
+
+              <div class="result-box">
+                <span>Estimated interest earned</span>
+                <strong id="interestEarned">$0</strong>
+              </div>
+
+              <div class="result-box">
+                <span>Inflation-adjusted value</span>
+                <strong id="realValue">$0</strong>
+              </div>
+
+              <div class="result-box">
+                <span>Average annual savings</span>
+                <strong id="averageAnnual">$0</strong>
+              </div>
+
+              <div class="result-box">
+                <span>Estimated time to goal</span>
+                <strong id="timeToGoal">—</strong>
+              </div>
+            </div>
+
+            <div class="progress-wrap">
+              <div class="progress-label">
+                <span>Goal progress</span>
+                <span id="goalProgressText">0%</span>
+              </div>
+              <div class="progress-bar" aria-hidden="true">
+                <div class="progress-fill" id="goalProgressFill"></div>
+              </div>
+            </div>
+
+            <div class="summary-box" id="summaryText">
+              Enter your numbers and calculate your annual savings estimate.
+            </div>
+
+            <div class="warning-box">
+              A savings calculator can help you plan, but it cannot predict the future. Interest rates,
+              inflation, income, expenses, and personal priorities can all change over time.
+            </div>
+          </div>
+        </div>
+
+        <h2>Year-by-year savings breakdown</h2>
+        <p>
+          This table shows how your savings may grow each year. It separates your deposits from estimated
+          interest so you can see how much of the final amount comes from your own savings habit.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Starting balance</th>
+                <th>Annual deposits</th>
+                <th>Interest earned</th>
+                <th>Ending balance</th>
+                <th>Inflation-adjusted value</th>
+              </tr>
+            </thead>
+            <tbody id="breakdownBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>On this page</h2>
+        <p>
+          This page includes the calculator, a practical savings guide, examples, formulas, and common questions
+          about annual savings planning.
+        </p>
+
+        <div class="toc">
+          <a href="#guide">Savings guide</a>
+          <a href="#formula">Formula</a>
+          <a href="#examples">Examples</a>
+          <a href="#strategy">Savings strategy</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </section>
+
+      <section class="card" id="guide">
+        <h2>How to use the annual savings calculator</h2>
+        <p>
+          This calculator is built for realistic savings planning. You can use it whether you are saving a small
+          monthly amount, building an emergency fund, preparing for a large purchase, or checking how long it may
+          take to reach a financial target.
+        </p>
+
+        <ol>
+          <li>
+            <strong>Choose your currency.</strong>
+            The calculator supports dollar, euro, pound, and forint formatting. This only changes the symbol,
+            not the mathematical result.
+          </li>
+          <li>
+            <strong>Enter your starting balance.</strong>
+            This is the amount already saved before your new savings plan begins.
+          </li>
+          <li>
+            <strong>Enter your monthly savings amount.</strong>
+            Use a realistic number that you can save without creating pressure on your normal budget.
+          </li>
+          <li>
+            <strong>Add an extra annual contribution.</strong>
+            This can be a yearly bonus, tax refund, side income, gift, or any extra amount you expect to save once per year.
+          </li>
+          <li>
+            <strong>Enter an estimated annual interest rate.</strong>
+            Use 0% if you want to calculate deposits only. Use a conservative estimate if your savings account or investment return is uncertain.
+          </li>
+          <li>
+            <strong>Choose the number of years.</strong>
+            A one-year plan is useful for short-term goals. Longer periods show how consistency and compound interest may affect savings.
+          </li>
+          <li>
+            <strong>Enter an inflation estimate.</strong>
+            Inflation reduces purchasing power, so the calculator also shows an approximate inflation-adjusted value.
+          </li>
+          <li>
+            <strong>Add a savings goal.</strong>
+            The goal progress bar shows how close your projected ending balance is to your target.
+          </li>
+          <li>
+            <strong>Review the table.</strong>
+            The year-by-year table helps you see when the balance grows mostly because of deposits and when interest starts to matter more.
+          </li>
+        </ol>
+
+        <div class="info-box">
+          For many people, the most important input is not the interest rate. It is the monthly savings amount.
+          Regular deposits usually matter more than small differences in interest, especially in the first few years.
+        </div>
+      </section>
+
+      <section class="card" id="formula">
+        <h2>Annual savings formula</h2>
+        <p>
+          The calculator uses monthly compounding. Each month, it adds your planned monthly deposit and then
+          applies one month of estimated interest. At the end of each year, it adds the extra annual contribution.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <strong>Monthly interest rate</strong>
+            <p>
+              Monthly rate = annual interest rate ÷ 12. For example, a 4% annual rate becomes approximately
+              0.333% per month before compounding.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>Monthly balance update</strong>
+            <p>
+              New balance = previous balance + monthly deposit + estimated monthly interest.
+            </p>
+          </div>
+        </div>
+
+        <h3>What the calculator includes</h3>
+        <ul>
+          <li>Starting balance</li>
+          <li>Monthly savings deposits</li>
+          <li>Extra annual contribution</li>
+          <li>Estimated monthly compound interest</li>
+          <li>Inflation-adjusted value</li>
+          <li>Savings goal progress</li>
+          <li>Year-by-year balance table</li>
+        </ul>
+
+        <h3>What the calculator does not include</h3>
+        <ul>
+          <li>Taxes on interest or investment gains</li>
+          <li>Bank fees, account fees, or platform fees</li>
+          <li>Changing interest rates</li>
+          <li>Market losses or investment volatility</li>
+          <li>Currency exchange changes</li>
+          <li>Changes in your income or expenses</li>
+        </ul>
+
+        <div class="warning-box">
+          If you use the calculator for investments instead of a savings account, remember that investment returns
+          are not guaranteed. A fixed interest assumption is only a simplified planning estimate.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Why annual savings planning matters</h2>
+        <p>
+          Saving money is easier when the goal is visible. A monthly savings amount may look small, but the annual
+          result can be meaningful. For example, saving 200 per month equals 2,400 per year before any interest.
+          Saving 300 per month equals 3,600 per year. Over several years, these regular habits can build a useful
+          financial cushion.
+        </p>
+
+        <p>
+          Annual savings planning also helps you compare goals. You may want to save for an emergency fund, a car,
+          a home deposit, a vacation, a computer, a family event, or a future education cost. A calculator helps you
+          see whether your current plan is realistic or whether the goal needs more time, higher monthly deposits,
+          or a lower target amount.
+        </p>
+
+        <div class="three-column">
+          <div class="mini-card">
+            <strong>Short-term clarity</strong>
+            <p>
+              See what one year of consistent saving can produce.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>Long-term direction</strong>
+            <p>
+              Estimate how savings may grow over several years.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>Goal discipline</strong>
+            <p>
+              Compare your goal with your current saving pace.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="examples">
+        <h2>Annual savings examples</h2>
+        <p>
+          The examples below show how different saving habits can lead to different outcomes. They are simplified
+          examples and do not represent guaranteed results.
+        </p>
+
+        <div class="example-grid">
+          <div class="example-card">
+            <h3>Example 1: Building a small emergency fund</h3>
+            <p>
+              Starting with 500 and saving 150 per month creates 1,800 in yearly deposits. After one year,
+              the saver has built a much stronger safety buffer, even if interest is low.
+            </p>
+            <ul>
+              <li>Starting balance: 500</li>
+              <li>Monthly savings: 150</li>
+              <li>Annual deposits: 1,800</li>
+              <li>Main benefit: better emergency protection</li>
+            </ul>
+          </div>
+
+          <div class="example-card">
+            <h3>Example 2: Saving for a car deposit</h3>
+            <p>
+              Someone saving 300 per month can deposit 3,600 per year. With a small starting balance and a clear
+              target, the calculator can show whether the goal may be reached in one, two, or three years.
+            </p>
+            <ul>
+              <li>Starting balance: 1,000</li>
+              <li>Monthly savings: 300</li>
+              <li>Goal: 8,000</li>
+              <li>Main benefit: realistic timeline</li>
+            </ul>
+          </div>
+
+          <div class="example-card">
+            <h3>Example 3: Saving a yearly bonus</h3>
+            <p>
+              A person who saves monthly and also adds a yearly bonus can reach goals faster. The extra annual
+              contribution field is useful for irregular income, bonuses, tax refunds, or seasonal savings.
+            </p>
+            <ul>
+              <li>Monthly savings: 250</li>
+              <li>Extra annual contribution: 1,000</li>
+              <li>Total yearly deposits: 4,000</li>
+              <li>Main benefit: faster progress</li>
+            </ul>
+          </div>
+
+          <div class="example-card">
+            <h3>Example 4: Long-term savings habit</h3>
+            <p>
+              Over longer periods, interest may become more visible. However, the foundation is still regular
+              saving. A strong deposit habit gives compound interest more money to work with.
+            </p>
+            <ul>
+              <li>Starting balance: 2,500</li>
+              <li>Monthly savings: 400</li>
+              <li>Period: 10 years</li>
+              <li>Main benefit: long-term consistency</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" id="strategy">
+        <h2>How to build a realistic annual savings plan</h2>
+        <p>
+          A good savings plan should be ambitious enough to matter but realistic enough to maintain. If the monthly
+          amount is too high, it may fail after a few months. If the amount is too low, progress may feel slow.
+          The best savings amount is usually the amount you can repeat consistently.
+        </p>
+
+        <h3>1. Start with your real monthly surplus</h3>
+        <p>
+          Before choosing a savings amount, compare income and regular expenses. Include rent or mortgage,
+          utilities, food, transport, insurance, debt payments, subscriptions, and irregular costs. The safest
+          savings plan leaves room for normal life.
+        </p>
+
+        <h3>2. Separate emergency savings from goal savings</h3>
+        <p>
+          Emergency money should usually be accessible. Goal savings can sometimes be held separately to avoid
+          accidental spending. Keeping separate accounts or categories may make the plan easier to follow.
+        </p>
+
+        <h3>3. Automate the monthly transfer</h3>
+        <p>
+          Many people save more consistently when the transfer happens automatically after payday. Automation
+          reduces the chance of forgetting and makes savings feel like a normal monthly bill.
+        </p>
+
+        <h3>4. Review the plan once per quarter</h3>
+        <p>
+          Income, expenses, and priorities can change. A quarterly review helps you adjust your monthly savings
+          amount without abandoning the full plan.
+        </p>
+
+        <h3>5. Use extra income carefully</h3>
+        <p>
+          Bonuses, tax refunds, and one-time income can quickly improve progress. You do not always need to save
+          every extra amount, but deciding in advance can prevent impulsive spending.
+        </p>
+
+        <div class="summary-box">
+          A simple approach is to save a fixed monthly amount, add part of any extra income, and review your goal
+          every few months. The calculator can help you test different versions of that plan.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Monthly savings vs annual savings</h2>
+        <p>
+          Monthly savings and annual savings are connected, but they show different things. Monthly savings shows
+          the habit. Annual savings shows the result of that habit over a full year.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Monthly savings</th>
+                <th>Annual savings before interest</th>
+                <th>Possible use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>50</td>
+                <td>600</td>
+                <td>Small emergency buffer or yearly subscription planning</td>
+              </tr>
+              <tr>
+                <td>100</td>
+                <td>1,200</td>
+                <td>Starter emergency fund or basic travel fund</td>
+              </tr>
+              <tr>
+                <td>250</td>
+                <td>3,000</td>
+                <td>Car repair fund, larger vacation, or debt-free cash reserve</td>
+              </tr>
+              <tr>
+                <td>500</td>
+                <td>6,000</td>
+                <td>Home deposit planning, investment funding, or stronger safety fund</td>
+              </tr>
+              <tr>
+                <td>1,000</td>
+                <td>12,000</td>
+                <td>Major financial goal or aggressive long-term savings plan</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The table does not include interest. It simply shows why even a modest monthly amount can become
+          significant when repeated for a full year.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Emergency fund planning with this calculator</h2>
+        <p>
+          An emergency fund is money set aside for unexpected costs such as car repairs, medical bills, temporary
+          income loss, urgent home repairs, or other financial surprises. This calculator can help estimate how
+          long it may take to build that fund.
+        </p>
+
+        <h3>Common emergency fund targets</h3>
+        <ul>
+          <li>Starter emergency fund: a small amount that covers basic surprises.</li>
+          <li>One month of expenses: a stronger short-term safety buffer.</li>
+          <li>Three months of expenses: a common medium-sized emergency fund goal.</li>
+          <li>Six months of expenses: a larger cushion for people with variable income or higher risk.</li>
+        </ul>
+
+        <p>
+          To use this calculator for emergency fund planning, enter your current emergency savings as the starting
+          balance, your monthly emergency fund deposit as monthly savings, and your target emergency fund amount
+          as the savings goal.
+        </p>
+
+        <div class="info-box">
+          Emergency funds are usually more about access and safety than maximum return. Many people prefer to keep
+          emergency money in a simple, accessible account rather than in a risky investment.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Short-term savings vs long-term savings</h2>
+        <p>
+          Not all savings goals should be treated the same way. A short-term goal may need safety and easy access.
+          A long-term goal may allow more flexibility, but it may also involve more uncertainty.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <strong>Short-term savings</strong>
+            <p>
+              Usually for goals within one to three years. Examples include emergency funds, small vacations,
+              car repairs, electronics, furniture, and yearly bills.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>Long-term savings</strong>
+            <p>
+              Usually for goals several years away. Examples include home deposits, education planning,
+              large purchases, or long-term financial independence goals.
+            </p>
+          </div>
+        </div>
+
+        <p>
+          The same calculator can be used for both, but the assumptions should be different. For short-term
+          savings, use conservative interest estimates. For long-term projections, remember that results become
+          less certain as the time period increases.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Inflation and savings value</h2>
+        <p>
+          A future savings balance may look large, but inflation can reduce what that money can buy. That is why
+          this calculator includes an inflation-adjusted value. It estimates the purchasing power of the future
+          balance in today's terms.
+        </p>
+
+        <p>
+          For example, if your projected ending balance is 25,000 after several years, the inflation-adjusted
+          value may be lower. This does not mean saving is useless. It simply means that long-term planning should
+          consider both the nominal amount and the real purchasing power.
+        </p>
+
+        <h3>How to use the inflation field</h3>
+        <ul>
+          <li>Use 0% if you only want the simple future balance.</li>
+          <li>Use a moderate estimate if you want to see purchasing power.</li>
+          <li>Try several inflation rates to understand how sensitive your plan is.</li>
+          <li>Remember that inflation can change significantly over time.</li>
+        </ul>
+
+        <div class="warning-box">
+          Inflation estimates are uncertain. The calculator uses a simplified constant inflation rate only for
+          educational planning.
+        </div>
+      </section>
+
+      <section class="card" id="mistakes">
+        <h2>Common savings planning mistakes</h2>
+        <p>
+          Savings plans often fail because the plan is not connected to real monthly life. The following mistakes
+          are common and can be avoided with a more realistic approach.
+        </p>
+
+        <div class="three-column">
+          <div class="mini-card">
+            <strong>Choosing an unrealistic amount</strong>
+            <p>
+              A plan that looks good on paper may fail if it leaves no room for normal expenses.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>Ignoring irregular costs</strong>
+            <p>
+              Car maintenance, gifts, school costs, travel, and repairs can interrupt savings if not planned.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>Depending only on interest</strong>
+            <p>
+              Interest helps, but deposits usually drive most early savings growth.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>Mixing all savings together</strong>
+            <p>
+              Emergency money, vacation money, and long-term savings may need different treatment.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>Not reviewing the goal</strong>
+            <p>
+              A savings target may need adjustment when prices, income, or priorities change.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>Forgetting inflation</strong>
+            <p>
+              A future amount may buy less than expected if inflation is high.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Ways to increase your annual savings</h2>
+        <p>
+          Increasing annual savings does not always require a dramatic lifestyle change. Small improvements can
+          add up when repeated every month.
+        </p>
+
+        <h3>Increase deposits gradually</h3>
+        <p>
+          Instead of moving from 100 per month to 500 per month immediately, you might increase savings by a small
+          amount every few months. Gradual increases are often easier to maintain.
+        </p>
+
+        <h3>Save part of every raise</h3>
+        <p>
+          If your income increases, consider saving part of the increase before your spending grows. This can raise
+          your savings rate without feeling like a cut.
+        </p>
+
+        <h3>Use a separate account</h3>
+        <p>
+          Keeping savings separate from everyday spending can reduce the temptation to use it for non-essential purchases.
+        </p>
+
+        <h3>Review subscriptions and recurring expenses</h3>
+        <p>
+          Small recurring expenses can quietly reduce annual savings. Canceling or reducing unused subscriptions
+          can redirect money to your savings goal.
+        </p>
+
+        <h3>Plan before big purchases</h3>
+        <p>
+          Waiting a few days before a non-essential purchase can help you decide whether the purchase is truly
+          more important than the savings goal.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Interpreting your result</h2>
+        <p>
+          The projected ending balance is useful, but it should not be the only number you review. Look at the
+          total contributions, estimated interest, and inflation-adjusted value together.
+        </p>
+
+        <div class="two-column">
+          <div class="mini-card">
+            <strong>If contributions are most of the result</strong>
+            <p>
+              This is normal in the early years. It means your saving habit is doing most of the work.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>If interest becomes larger over time</strong>
+            <p>
+              This shows the effect of compounding. It becomes more visible when the balance and time period grow.
+            </p>
+          </div>
+        </div>
+
+        <p>
+          A good result is not only a large ending balance. A good result is a plan that is realistic, repeatable,
+          and connected to your real financial life.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Related calculators</h2>
+        <p>
+          These calculators can help you build a broader personal finance plan.
+        </p>
+
+        <div class="related-grid">
+          <a href="savings-goal-calculator.html">
+            <strong>Savings Goal Calculator</strong>
+            Estimate how much you need to save each month to reach a target.
+          </a>
+
+          <a href="emergency-fund-calculator.html">
+            <strong>Emergency Fund Calculator</strong>
+            Estimate how much emergency money may fit your monthly expenses.
+          </a>
+
+          <a href="monthly-budget-calculator.html">
+            <strong>Monthly Budget Calculator</strong>
+            Compare income, expenses, and possible monthly savings.
+          </a>
+
+          <a href="salary-calculator.html">
+            <strong>Salary Calculator</strong>
+            Convert salary into monthly, weekly, and hourly estimates.
+          </a>
+
+          <a href="paycheck-calculator.html">
+            <strong>Paycheck Calculator</strong>
+            Estimate gross pay, deductions, and take-home pay.
+          </a>
+
+          <a href="rent-affordability-calculator.html">
+            <strong>Rent Affordability Calculator</strong>
+            Estimate affordable rent based on income and expenses.
+          </a>
+
+          <a href="credit-card-payoff-calculator.html">
+            <strong>Credit Card Payoff Calculator</strong>
+            Estimate payoff time and interest for credit card balances.
+          </a>
+
+          <a href="debt-to-income-ratio-calculator.html">
+            <strong>Debt-to-Income Ratio Calculator</strong>
+            Compare debt payments with income.
+          </a>
+
+          <a href="cost-per-day-calculator.html">
+            <strong>Cost Per Day Calculator</strong>
+            Convert purchases into daily cost estimates.
+          </a>
+        </div>
+      </section>
+
+      <section class="card" id="faq">
+        <h2>Annual Savings Calculator FAQ</h2>
+
+        <div class="faq-item">
+          <h3>What is an annual savings calculator?</h3>
+          <p>
+            An annual savings calculator estimates how much money you may save over one year or several years.
+            It uses your starting balance, monthly deposits, extra annual contributions, interest rate, inflation
+            rate, and savings goal.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do I calculate annual savings?</h3>
+          <p>
+            A simple annual savings estimate is monthly savings multiplied by 12, plus any extra yearly deposits.
+            This calculator goes further by also estimating compound interest and inflation-adjusted value.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Does the calculator include compound interest?</h3>
+          <p>
+            Yes. The calculator estimates monthly compound interest using the annual interest rate entered by the user.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can I use this calculator for a savings account?</h3>
+          <p>
+            Yes. You can use it for a savings account by entering your estimated annual savings account interest rate.
+            Keep in mind that real bank rates can change.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can I use it for investments?</h3>
+          <p>
+            You can use it for a simplified investment projection, but investment returns are not guaranteed.
+            The calculator does not model market losses or volatility.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What should I enter as the interest rate?</h3>
+          <p>
+            Use a conservative estimate. If you do not want to include interest, enter 0. For a savings account,
+            you can enter an approximate annual percentage yield. For investments, remember that returns can vary.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What does inflation-adjusted value mean?</h3>
+          <p>
+            Inflation-adjusted value estimates the future balance in today's purchasing power. It helps show how
+            inflation may reduce the real value of money over time.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Why is my inflation-adjusted value lower than my ending balance?</h3>
+          <p>
+            Because inflation reduces purchasing power. A future amount may buy less than the same nominal amount
+            would buy today.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can this calculator help with emergency fund planning?</h3>
+          <p>
+            Yes. Enter your current emergency savings as the starting balance and your target emergency fund as
+            the savings goal.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How much should I save per month?</h3>
+          <p>
+            The right monthly amount depends on income, expenses, debts, and goals. A realistic amount that you can
+            repeat consistently is usually better than an aggressive amount that fails after a few months.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Is saving monthly better than saving once per year?</h3>
+          <p>
+            Monthly saving can be easier to maintain and may allow interest to start working earlier. A yearly lump
+            sum can also help, especially if it comes from a bonus or tax refund.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is a good annual savings goal?</h3>
+          <p>
+            A good goal is specific, realistic, and connected to a purpose. Examples include an emergency fund,
+            car deposit, vacation fund, home deposit, or education savings.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Does the calculator include taxes?</h3>
+          <p>
+            No. It does not include taxes on interest, investment gains, or account-specific tax rules.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Does the calculator include fees?</h3>
+          <p>
+            No. It does not include bank fees, investment platform fees, account maintenance fees, or transaction costs.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Why does the calculator show a time to goal?</h3>
+          <p>
+            Time to goal estimates how long it may take to reach the target amount based on your monthly deposits,
+            annual extra deposits, and estimated interest.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What if my savings goal is already reached?</h3>
+          <p>
+            If your projected balance is already above your goal, the calculator will show that the goal is reached
+            within the selected plan.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Can I print the results?</h3>
+          <p>
+            Yes. Use the print button to print or save the result page as a PDF using your browser.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Is this calculator financial advice?</h3>
+          <p>
+            No. This calculator is for educational and planning purposes only. It is not financial, investment,
+            tax, legal, or professional advice.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        &copy; 2026 FinanceCalcCenter. All calculators are for educational and informational purposes only.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById("savingsForm");
+    const resetBtn = document.getElementById("resetBtn");
+    const printBtn = document.getElementById("printBtn");
+
+    function getValue(id) {
+      const element = document.getElementById(id);
+      const value = parseFloat(element.value);
+      return Number.isFinite(value) ? value : 0;
+    }
+
+    function getCurrency() {
+      return document.getElementById("currency").value;
+    }
+
+    function formatMoney(amount) {
+      const currency = getCurrency();
+      const rounded = Math.round(amount);
+      const formatted = rounded.toLocaleString("en-US");
+
+      if (currency === "Ft") {
+        return formatted + " Ft";
+      }
+
+      return currency + formatted;
+    }
+
+    function formatPercent(value) {
+      return value.toFixed(1) + "%";
+    }
+
+    function formatTime(months) {
+      if (!Number.isFinite(months)) {
+        return "Not reached";
+      }
+
+      if (months <= 0) {
+        return "Already reached";
+      }
+
+      const years = Math.floor(months / 12);
+      const remainingMonths = months % 12;
+
+      if (years === 0) {
+        return remainingMonths + " months";
+      }
+
+      if (remainingMonths === 0) {
+        return years + (years === 1 ? " year" : " years");
+      }
+
+      return years + (years === 1 ? " year " : " years ") + remainingMonths + " months";
+    }
+
+    function calculateTimeToGoal(startingBalance, monthlySavings, annualExtra, annualRate, goal) {
+      if (goal <= 0) {
+        return null;
+      }
+
+      if (startingBalance >= goal) {
+        return 0;
+      }
+
+      if (monthlySavings <= 0 && annualExtra <= 0 && annualRate <= 0) {
+        return Infinity;
+      }
+
+      const monthlyRate = annualRate / 100 / 12;
+      let balance = startingBalance;
+
+      for (let month = 1; month <= 600; month++) {
+        balance += monthlySavings;
+
+        if (monthlyRate > 0) {
+          balance += balance * monthlyRate;
+        }
+
+        if (month % 12 === 0) {
+          balance += annualExtra;
+        }
+
+        if (balance >= goal) {
+          return month;
+        }
+      }
+
+      return Infinity;
+    }
+
+    function calculateSavings() {
+      const startingBalance = Math.max(0, getValue("startingBalance"));
+      const monthlySavings = Math.max(0, getValue("monthlySavings"));
+      const annualExtra = Math.max(0, getValue("annualExtra"));
+      const annualRate = Math.max(0, getValue("annualRate"));
+      const inflationRate = Math.max(0, getValue("inflationRate"));
+      const years = Math.max(1, Math.min(50, Math.round(getValue("years"))));
+      const savingsGoal = Math.max(0, getValue("savingsGoal"));
+
+      const monthlyRate = annualRate / 100 / 12;
+      const inflationDecimal = inflationRate / 100;
+
+      let balance = startingBalance;
+      let totalContributions = startingBalance;
+      let totalInterest = 0;
+      let totalDepositsExcludingStarting = 0;
+
+      const breakdownBody = document.getElementById("breakdownBody");
+      breakdownBody.innerHTML = "";
+
+      for (let year = 1; year <= years; year++) {
+        const yearStart = balance;
+        let yearDeposits = 0;
+        let yearInterest = 0;
+
+        for (let month = 1; month <= 12; month++) {
+          balance += monthlySavings;
+          yearDeposits += monthlySavings;
+          totalContributions += monthlySavings;
+          totalDepositsExcludingStarting += monthlySavings;
+
+          if (monthlyRate > 0) {
+            const interest = balance * monthlyRate;
+            balance += interest;
+            yearInterest += interest;
+            totalInterest += interest;
+          }
+        }
+
+        balance += annualExtra;
+        yearDeposits += annualExtra;
+        totalContributions += annualExtra;
+        totalDepositsExcludingStarting += annualExtra;
+
+        const realValueForYear = inflationDecimal > 0
+          ? balance / Math.pow(1 + inflationDecimal, year)
+          : balance;
+
+        const row = document.createElement("tr");
+        row.innerHTML =
+          "<td>" + year + "</td>" +
+          "<td>" + formatMoney(yearStart) + "</td>" +
+          "<td>" + formatMoney(yearDeposits) + "</td>" +
+          "<td>" + formatMoney(yearInterest) + "</td>" +
+          "<td>" + formatMoney(balance) + "</td>" +
+          "<td>" + formatMoney(realValueForYear) + "</td>";
+
+        breakdownBody.appendChild(row);
+      }
+
+      const realValue = inflationDecimal > 0
+        ? balance / Math.pow(1 + inflationDecimal, years)
+        : balance;
+
+      const averageAnnual = totalDepositsExcludingStarting / years;
+
+      const timeToGoalMonths = calculateTimeToGoal(
+        startingBalance,
+        monthlySavings,
+        annualExtra,
+        annualRate,
+        savingsGoal
+      );
+
+      const goalProgress = savingsGoal > 0
+        ? Math.min(100, (balance / savingsGoal) * 100)
+        : 0;
+
+      document.getElementById("endingBalance").textContent = formatMoney(balance);
+      document.getElementById("totalContributions").textContent = formatMoney(totalContributions);
+      document.getElementById("interestEarned").textContent = formatMoney(totalInterest);
+      document.getElementById("realValue").textContent = formatMoney(realValue);
+      document.getElementById("averageAnnual").textContent = formatMoney(averageAnnual);
+
+      if (savingsGoal <= 0) {
+        document.getElementById("timeToGoal").textContent = "No goal entered";
+      } else {
+        document.getElementById("timeToGoal").textContent = formatTime(timeToGoalMonths);
+      }
+
+      document.getElementById("goalProgressFill").style.width = goalProgress + "%";
+      document.getElementById("goalProgressText").textContent = savingsGoal > 0
+        ? formatPercent(goalProgress)
+        : "No goal";
+
+      let summary = "Based on your inputs, your projected ending balance after " +
+        years +
+        (years === 1 ? " year is " : " years is ") +
+        formatMoney(balance) +
+        ". Your total contributions are estimated at " +
+        formatMoney(totalContributions) +
+        ", including your starting balance, and estimated interest is " +
+        formatMoney(totalInterest) +
+        ".";
+
+      if (savingsGoal > 0) {
+        if (balance >= savingsGoal) {
+          summary += " Your selected savings goal of " + formatMoney(savingsGoal) + " is reached within this projection.";
+        } else {
+          summary += " Your selected savings goal of " + formatMoney(savingsGoal) + " is not reached within the selected period.";
+        }
+      }
+
+      if (inflationRate > 0) {
+        summary += " After adjusting for " + inflationRate.toFixed(2) + "% annual inflation, the estimated purchasing-power value is " + formatMoney(realValue) + ".";
+      }
+
+      document.getElementById("summaryText").textContent = summary;
+    }
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      calculateSavings();
+    });
+
+    resetBtn.addEventListener("click", function() {
+      document.getElementById("currency").value = "$";
+      document.getElementById("startingBalance").value = "1000";
+      document.getElementById("monthlySavings").value = "300";
+      document.getElementById("annualExtra").value = "0";
+      document.getElementById("annualRate").value = "4";
+      document.getElementById("years").value = "5";
+      document.getElementById("inflationRate").value = "3";
+      document.getElementById("savingsGoal").value = "25000";
+      calculateSavings();
+    });
+
+    printBtn.addEventListener("click", function() {
+      window.print();
+    });
+
+    calculateSavings();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Annual Savings Calculator",
+    "url": "https://financecalccenter.com/annual-savings-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "A free annual savings calculator that estimates savings growth from starting balance, monthly deposits, annual contributions, interest, inflation, and savings goals.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "FinanceCalcCenter",
+        "item": "https://financecalccenter.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Annual Savings Calculator",
+        "item": "https://financecalccenter.com/annual-savings-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an annual savings calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An annual savings calculator estimates how much money you may save over one year or several years using starting balance, monthly deposits, extra annual contributions, interest rate, inflation rate, and savings goal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate annual savings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A simple annual savings estimate is monthly savings multiplied by 12, plus any extra yearly deposits. This calculator also estimates compound interest and inflation-adjusted value."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this calculator include compound interest?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The calculator estimates monthly compound interest using the annual interest rate entered by the user."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this calculator for emergency fund planning?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Enter your current emergency savings as the starting balance and your target emergency fund as the savings goal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this annual savings calculator financial advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This calculator is for educational and informational purposes only and is not financial, investment, tax, legal, or professional advice."
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
