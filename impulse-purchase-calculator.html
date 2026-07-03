@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-68ZVCW4FWK");
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7086753311239071"
+    crossorigin="anonymous"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Impulse Purchase Calculator | See the Real Cost of Buying Now</title>
+  <meta name="description" content="Free impulse purchase calculator. Estimate the true cost of an unplanned purchase, including sales tax, shipping, financing interest, opportunity cost, work hours, and delayed savings." />
+  <meta name="author" content="FinanceCalcCenter" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://financecalccenter.com/impulse-purchase-calculator.html" />
+
+  <meta name="theme-color" content="#020617" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="FinanceCalcCenter" />
+  <meta property="og:title" content="Impulse Purchase Calculator | See the Real Cost of Buying Now" />
+  <meta property="og:description" content="Estimate the real cost of impulse buying, including tax, shipping, financing, work hours, and what the money could become if saved instead." />
+  <meta property="og:url" content="https://financecalccenter.com/impulse-purchase-calculator.html" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Impulse Purchase Calculator" />
+  <meta name="twitter:description" content="Check whether an unplanned purchase fits your budget before you buy." />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --card: #0f172a;
+      --card-soft: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --line: #334155;
+      --accent: #22c55e;
+      --accent-dark: #16a34a;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --blue: #38bdf8;
+      --radius: 24px;
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.14), transparent 34rem),
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.12), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: #86efac;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .brand {
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .breadcrumb {
+      color: var(--muted);
+    }
+
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(34, 197, 94, 0.18), rgba(15, 23, 42, 0.96)),
+        var(--card);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: 42px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(134, 239, 172, 0.35);
+      background: rgba(34, 197, 94, 0.1);
+      color: #bbf7d0;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.15rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+      color: #ffffff;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.2;
+      color: #ffffff;
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      margin: 26px 0 10px;
+      color: #ffffff;
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+
+    h4 {
+      margin: 18px 0 8px;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+
+    p {
+      color: #cbd5e1;
+      margin: 0 0 16px;
+    }
+
+    .hero p {
+      max-width: 830px;
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 18px;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 0.98rem;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #052e16;
+    }
+
+    .btn-primary:hover {
+      background: #4ade80;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(15, 23, 42, 0.92);
+      color: #e5e7eb;
+      border: 1px solid var(--line);
+    }
+
+    .btn-secondary:hover {
+      background: #1e293b;
+      text-decoration: none;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 22px;
+      box-shadow: 0 18px 60px rgba(15, 23, 42, 0.28);
+    }
+
+    .soft-card {
+      background: rgba(2, 6, 23, 0.62);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .hint {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 4px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      border: 1px solid #475569;
+      background: #020617;
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 13px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.16);
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .result-box {
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .result-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+
+    .result-box strong {
+      display: block;
+      color: #ffffff;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+
+    .result-box.highlight {
+      border-color: rgba(34, 197, 94, 0.55);
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.11), #020617);
+    }
+
+    .progress-wrap {
+      margin-top: 18px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+      gap: 12px;
+    }
+
+    .progress-bar {
+      height: 14px;
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #22c55e, #86efac);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .summary-box {
+      margin-top: 18px;
+      border-left: 4px solid var(--accent);
+      background: rgba(34, 197, 94, 0.08);
+      padding: 16px;
+      border-radius: 14px;
+      color: #d1fae5;
+    }
+
+    .warning-box {
+      margin-top: 18px;
+      border-left: 4px solid var(--warning);
+      background: rgba(245, 158, 11, 0.08);
+      padding: 16px;
+      border-radius: 14px;
+      color: #fde68a;
+    }
+
+    .info-box {
+      margin-top: 18px;
+      border-left: 4px solid var(--blue);
+      background: rgba(56, 189, 248, 0.08);
+      padding: 16px;
+      border-radius: 14px;
+      color: #bae6fd;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .toc a {
+      display: block;
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 14px;
+      color: #d1fae5;
+      font-weight: 700;
+    }
+
+    .toc a:hover {
+      border-color: rgba(34, 197, 94, 0.55);
+      text-decoration: none;
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      background: #020617;
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #ffffff;
+      background: rgba(15, 23, 42, 0.98);
+      font-size: 0.92rem;
+    }
+
+    td {
+      color: #cbd5e1;
+      font-size: 0.94rem;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+    }
+
+    ul,
+    ol {
+      color: #cbd5e1;
+      margin-top: 8px;
+      margin-bottom: 18px;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .three-column {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mini-card {
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .mini-card strong {
+      display: block;
+      color: #ffffff;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+    }
+
+    .mini-card p {
+      margin-bottom: 0;
+      font-size: 0.96rem;
+    }
+
+    .example-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .example-card {
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .example-card h3 {
+      margin-top: 0;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .related-grid a {
+      display: block;
+      background: #020617;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      color: #cbd5e1;
+    }
+
+    .related-grid a:hover {
+      border-color: rgba(34, 197, 94, 0.55);
+      text-decoration: none;
+      background: rgba(34, 197, 94, 0.08);
+    }
+
+    .related-grid strong {
+      display: block;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      margin-top: 18px;
+    }
+
+    .faq-item:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      margin-top: 30px;
+      font-size: 0.95rem;
+    }
+
+    .small {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: #cbd5e1;
+      background: rgba(2, 6, 23, 0.5);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .screen-reader-text {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding: 28px;
+      }
+
+      .calculator-grid,
+      .two-column,
+      .three-column,
+      .example-grid,
+      .related-grid,
+      .toc {
+        grid-template-columns: 1fr;
+      }
+
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .input-row {
+        grid-template-columns: 1fr;
+      }
+
+      .top-nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .hero,
+      .card {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #111827;
+      }
+
+      .hero,
+      .card,
+      .soft-card,
+      .mini-card,
+      .example-card,
+      .result-box {
+        background: #ffffff;
+        color: #111827;
+        border-color: #cbd5e1;
+        box-shadow: none;
+      }
+
+      p,
+      li,
+      td,
+      .small,
+      .hint {
+        color: #374151;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      label,
+      th,
+      .result-box strong {
+        color: #111827;
+      }
+
+      .top-nav,
+      .hero-actions,
+      .button-row,
+      .related-grid,
+      .toc {
+        display: none;
+      }
+
+      a {
+        color: #111827;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <nav class="top-nav" aria-label="Breadcrumb">
+      <a class="brand" href="index.html">FinanceCalcCenter</a>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span> / </span>
+        <span>Impulse Purchase Calculator</span>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-label">Everyday spending tool</div>
+      <h1>Impulse Purchase Calculator</h1>
+      <p>
+        Use this impulse purchase calculator before buying something you did not plan for. Enter the item price,
+        sales tax, shipping, possible financing cost, your hourly take-home pay, and your savings goal to see the
+        real cost of buying now.
+      </p>
+      <p>
+        The calculator is built for everyday spending decisions: gadgets, clothes, home items, subscriptions,
+        hobbies, upgrades, sale items, and any purchase that feels tempting in the moment. It shows the total
+        out-of-pocket cost, estimated work hours, monthly budget impact, possible interest cost, and how much the
+        money could become if saved instead.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#calculator">Use the calculator</a>
+        <a class="btn btn-secondary" href="#guide">Read the buying guide</a>
+      </div>
+
+      <div class="badge-row">
+        <span class="badge">Total purchase cost</span>
+        <span class="badge">Work hours</span>
+        <span class="badge">Budget impact</span>
+        <span class="badge">Financing cost</span>
+        <span class="badge">Savings trade-off</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="card" id="calculator">
+        <h2>Calculate the real cost of an impulse purchase</h2>
+        <p>
+          Fill in the fields below to estimate what the purchase really costs after tax, shipping, fees, and
+          optional financing. The result can help you decide whether to buy now, wait, save for it, or skip it.
+        </p>
+
+        <div class="calculator-grid">
+          <form id="impulseForm" class="soft-card">
+            <div class="field">
+              <label for="currency">Currency</label>
+              <select id="currency">
+                <option value="$">$ Dollar</option>
+                <option value="€">€ Euro</option>
+                <option value="£">£ Pound</option>
+                <option value="Ft">Ft Forint</option>
+              </select>
+              <span class="hint">Choose the symbol used in your results.</span>
+            </div>
+
+            <div class="input-row">
+              <div class="field">
+                <label for="itemPrice">Item price</label>
+                <input id="itemPrice" type="number" value="120" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">The advertised price before extra costs.</span>
+              </div>
+
+              <div class="field">
+                <label for="taxRate">Sales tax / VAT (%)</label>
+                <input id="taxRate" type="number" value="8" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Use 0 if tax is already included.</span>
+              </div>
+            </div>
+
+            <div class="input-row">
+              <div class="field">
+                <label for="shippingCost">Shipping and handling</label>
+                <input id="shippingCost" type="number" value="10" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Delivery, handling, or convenience fees.</span>
+              </div>
+
+              <div class="field">
+                <label for="otherFees">Other fees or add-ons</label>
+                <input id="otherFees" type="number" value="0" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Accessories, service fees, warranties, or extras.</span>
+              </div>
+            </div>
+
+            <div class="input-row">
+              <div class="field">
+                <label for="hourlyPay">Hourly take-home pay</label>
+                <input id="hourlyPay" type="number" value="20" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Your after-tax hourly pay estimate.</span>
+              </div>
+
+              <div class="field">
+                <label for="monthlySpendingBudget">Monthly fun-money budget</label>
+                <input id="monthlySpendingBudget" type="number" value="300" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Optional monthly amount for wants or non-essential spending.</span>
+              </div>
+            </div>
+
+            <div class="input-row">
+              <div class="field">
+                <label for="financingMonths">Financing period in months</label>
+                <input id="financingMonths" type="number" value="0" min="0" max="120" step="1" inputmode="numeric" />
+                <span class="hint">Use 0 if you pay in full today.</span>
+              </div>
+
+              <div class="field">
+                <label for="financingApr">Financing APR (%)</label>
+                <input id="financingApr" type="number" value="0" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Estimated annual percentage rate if financed.</span>
+              </div>
+            </div>
+
+            <div class="input-row">
+              <div class="field">
+                <label for="savingsReturn">Savings return if not bought (%)</label>
+                <input id="savingsReturn" type="number" value="4" min="0" step="0.01" inputmode="decimal" />
+                <span class="hint">Optional annual return or interest rate.</span>
+              </div>
+
+              <div class="field">
+                <label for="yearsSaved">Years saved instead</label>
+                <input id="yearsSaved" type="number" value="5" min="1" max="50" step="1" inputmode="numeric" />
+                <span class="hint">How long the money could stay saved.</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="waitDays">Cooling-off period in days</label>
+              <input id="waitDays" type="number" value="7" min="0" max="365" step="1" inputmode="numeric" />
+              <span class="hint">A waiting period can reduce emotional purchases.</span>
+            </div>
+
+            <div class="button-row">
+              <button class="btn btn-primary" type="submit">Calculate purchase cost</button>
+              <button class="btn btn-secondary" type="button" id="resetBtn">Reset</button>
+              <button class="btn btn-secondary" type="button" id="printBtn">Print results</button>
+            </div>
+
+            <p class="small">
+              This calculator is for educational planning only. It does not provide financial advice and does not
+              know your full budget, debt situation, income stability, or personal priorities.
+            </p>
+          </form>
+
+          <div class="soft-card">
+            <h2>Your impulse purchase estimate</h2>
+            <p>
+              The results show the real purchase cost and several practical trade-offs: time worked, budget impact,
+              financing cost, and possible savings value if you do not buy today.
+            </p>
+
+            <div class="result-grid">
+              <div class="result-box highlight">
+                <span>Total cost today</span>
+                <strong id="totalCost">$0</strong>
+              </div>
+
+              <div class="result-box">
+                <span>Work hours needed</span>
+                <strong id="workHours">0 hours</strong>
+              </div>
+
+              <div class="result-box">
+                <span>Budget used</span>
+                <strong id="budgetUsed">0%</strong>
+              </div>
+
+              <div class="result-box">
+                <span>Estimated financing cost</span>
+                <strong id="financingCost">$0</strong>
+              </div>
+
+              <div class="result-box">
+                <span>Monthly payment</span>
+                <strong id="monthlyPayment">$0</strong>
+              </div>
+
+              <div class="result-box">
+                <span>Value if saved instead</span>
+                <strong id="futureValue">$0</strong>
+              </div>
+            </div>
+
+            <div class="progress-wrap">
+              <div class="progress-label">
+                <span>Monthly fun-money budget used</span>
+                <span id="budgetProgressText">0%</span>
+              </div>
+              <div class="progress-bar" aria-hidden="true">
+                <div class="progress-fill" id="budgetProgressFill"></div>
+              </div>
+            </div>
+
+            <div class="summary-box" id="summaryText">
+              Enter your numbers and calculate the purchase before you buy.
+            </div>
+
+            <div class="warning-box" id="decisionBox">
+              A good impulse purchase check is simple: if you would not still want the item after waiting, it may
+              not deserve your money today.
+            </div>
+          </div>
+        </div>
+
+        <h2>Cost breakdown</h2>
+        <p>
+          This table separates the advertised price from taxes, shipping, fees, financing, and the estimated
+          opportunity cost of not saving the money.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Cost category</th>
+                <th>Estimated amount</th>
+                <th>What it means</th>
+              </tr>
+            </thead>
+            <tbody id="breakdownBody">
+              <tr>
+                <td>Item price</td>
+                <td>$0</td>
+                <td>Advertised price before extra costs.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" id="guide">
+        <h2>On this page</h2>
+        <ul>
+          <li><a href="#how-to-use">How to use the impulse purchase calculator</a></li>
+          <li><a href="#formula">Impulse purchase cost formula</a></li>
+          <li><a href="#why-it-matters">Why impulse buying matters</a></li>
+          <li><a href="#examples">Impulse purchase examples</a></li>
+          <li><a href="#cooling-off">How to use a cooling-off period</a></li>
+          <li><a href="#budget-check">How to compare the purchase with your budget</a></li>
+          <li><a href="#work-hours">Why work hours are useful</a></li>
+          <li><a href="#financing">Impulse buying with financing</a></li>
+          <li><a href="#mistakes">Common impulse buying mistakes</a></li>
+          <li><a href="#faq">Impulse Purchase Calculator FAQ</a></li>
+        </ul>
+      </section>
+
+      <section class="card" id="how-to-use">
+        <h2>How to use the impulse purchase calculator</h2>
+        <p>
+          Start with the advertised item price. Add any tax, shipping, handling fees, add-ons, extended warranties,
+          accessories, or other costs that are easy to ignore during checkout. If you plan to use a payment plan or
+          credit card balance, enter the financing months and APR.
+        </p>
+        <p>
+          Next, enter your hourly take-home pay. This turns the purchase into work hours. For many people, this is
+          easier to understand than a price tag. A small item may feel less attractive when it represents several
+          hours of after-tax work.
+        </p>
+        <p>
+          Finally, enter your monthly fun-money budget and optional savings return. The calculator will estimate
+          how much of your monthly spending budget the item uses and what the money could become if you saved it
+          instead.
+        </p>
+      </section>
+
+      <section class="card" id="formula">
+        <h2>Impulse purchase cost formula</h2>
+        <p>
+          A simple impulse purchase estimate starts with this formula:
+        </p>
+        <div class="summary-box">
+          Total cost today = item price + tax + shipping + other fees
+        </div>
+        <p>
+          If the purchase is financed, the total repayment may be higher than the price today. This calculator
+          estimates monthly payment and financing cost using a standard monthly APR calculation. If APR is 0%, it
+          simply divides the total cost by the number of months.
+        </p>
+        <p>
+          The calculator also estimates work hours:
+        </p>
+        <div class="summary-box">
+          Work hours needed = total cost today ÷ hourly take-home pay
+        </div>
+      </section>
+
+      <section class="card" id="why-it-matters">
+        <h2>Why impulse buying matters</h2>
+        <p>
+          Impulse purchases are not always bad. A small unplanned purchase can be harmless if it fits your budget,
+          does not create debt, and does not interrupt important goals. The problem starts when frequent unplanned
+          purchases quietly reduce savings, increase credit card balances, or make monthly cash flow feel tight.
+        </p>
+        <p>
+          This calculator helps slow the decision down. Instead of asking only “Can I buy this?”, it also asks
+          “What does this cost after fees?”, “How many hours did I work for it?”, and “What goal does this delay?”.
+        </p>
+      </section>
+
+      <section class="card" id="examples">
+        <h2>Impulse purchase examples</h2>
+        <p>
+          Example 1: a $120 item with 8% tax and $10 shipping costs $139.60 today. If your after-tax pay is $20 per
+          hour, that purchase equals about 7 hours of work.
+        </p>
+        <p>
+          Example 2: a $600 gadget financed for 12 months at 22% APR may cost noticeably more than the sticker
+          price. The monthly payment can look small, but the total repayment and interest cost are what matter.
+        </p>
+        <p>
+          Example 3: a $75 sale item may be reasonable if you budgeted for it. But if you buy several similar items
+          every month, the annual cost can become hundreds or thousands.
+        </p>
+      </section>
+
+      <section class="card" id="cooling-off">
+        <h2>How to use a cooling-off period</h2>
+        <p>
+          A cooling-off period is a simple delay before buying. For small purchases, 24 hours may be enough. For
+          larger purchases, waiting 7 to 30 days can help you separate a real need from a temporary emotional
+          reaction to a discount, advertisement, or social media post.
+        </p>
+        <p>
+          During the waiting period, save the product link instead of completing checkout. If you still want it
+          later and it fits your budget, the purchase may be more intentional. If you forget about it, skipping it
+          was probably the right decision.
+        </p>
+      </section>
+
+      <section class="card" id="budget-check">
+        <h2>How to compare the purchase with your budget</h2>
+        <p>
+          One practical rule is to compare the total cost with your monthly fun-money budget, not just your bank
+          balance. A purchase may be affordable in the sense that you have enough cash today, but still be too large
+          for your spending plan.
+        </p>
+        <p>
+          If one item uses most of your monthly wants budget, ask whether you are comfortable saying no to other
+          things for the rest of the month. The calculator highlights this by showing the percentage of your monthly
+          budget used.
+        </p>
+      </section>
+
+      <section class="card" id="work-hours">
+        <h2>Why work hours are useful</h2>
+        <p>
+          Work hours turn money into time. This is useful because a price tag can feel abstract, especially online.
+          If a purchase costs 10 hours of take-home pay, you can ask whether the item is worth more than a full day
+          of work.
+        </p>
+        <p>
+          Use take-home pay rather than gross pay if possible. Taxes, deductions, commuting costs, and other
+          work-related expenses mean that your real spending power per hour is usually lower than your headline
+          hourly wage.
+        </p>
+      </section>
+
+      <section class="card" id="financing">
+        <h2>Impulse buying with financing</h2>
+        <p>
+          Financing can make an impulse purchase feel cheaper because it breaks the cost into smaller monthly
+          payments. The risk is that several small payments can stack up and reduce future flexibility.
+        </p>
+        <p>
+          If the APR is high, the item may cost much more than expected. Even with 0% financing, the payment still
+          uses future income. Before financing an unplanned purchase, check whether it competes with emergency
+          savings, debt payoff, rent, utilities, insurance, or other fixed bills.
+        </p>
+      </section>
+
+      <section class="card" id="mistakes">
+        <h2>Common impulse buying mistakes</h2>
+        <ul>
+          <li>Looking only at the sale price and ignoring tax, shipping, and accessories.</li>
+          <li>Using a credit card without a payoff plan.</li>
+          <li>Buying because the discount expires soon.</li>
+          <li>Calling a want a need without checking the budget.</li>
+          <li>Forgetting how many similar small purchases happen each month.</li>
+          <li>Ignoring the savings goal that the purchase delays.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Related calculators</h2>
+        <div class="related-grid">
+          <a class="related-card" href="annual-savings-calculator.html">
+            <strong>Annual Savings Calculator</strong>
+            <span>Estimate how your savings may grow over time.</span>
+          </a>
+          <a class="related-card" href="work-hours-cost-calculator.html">
+            <strong>Work Hours Cost Calculator</strong>
+            <span>Convert purchases into hours of work.</span>
+          </a>
+          <a class="related-card" href="credit-card-interest-calculator.html">
+            <strong>Credit Card Interest Calculator</strong>
+            <span>Estimate how much credit card interest can cost.</span>
+          </a>
+          <a class="related-card" href="paycheck-calculator.html">
+            <strong>Paycheck Calculator</strong>
+            <span>Estimate gross pay, deductions, and take-home pay.</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="card" id="faq">
+        <h2>Impulse Purchase Calculator FAQ</h2>
+
+        <div class="faq-item">
+          <h3>What is an impulse purchase calculator?</h3>
+          <p>
+            An impulse purchase calculator estimates the real cost of an unplanned purchase, including tax,
+            shipping, fees, financing cost, work hours, budget impact, and the potential value of saving the money
+            instead.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>How do I calculate the real cost of an impulse purchase?</h3>
+          <p>
+            Add the item price, tax, shipping, and other fees. If you use financing, include interest and repayment
+            time. You can also compare the total with your hourly take-home pay and monthly spending budget.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Is every impulse purchase bad?</h3>
+          <p>
+            No. A small unplanned purchase can be fine if it fits your budget and does not create debt or delay
+            important goals. The calculator helps you make that decision more clearly.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>What is a good waiting period before buying?</h3>
+          <p>
+            For small purchases, 24 hours can help. For larger purchases, 7 to 30 days may be better. The goal is
+            to check whether you still want the item after the emotion of the moment has passed.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <h3>Is this calculator financial advice?</h3>
+          <p>
+            No. This impulse purchase calculator is for educational and informational purposes only. It is not
+            financial, investment, tax, legal, or professional advice.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        &copy; 2026 FinanceCalcCenter. All calculators are for educational and informational purposes only.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById("impulseForm");
+    const resetBtn = document.getElementById("resetBtn");
+    const printBtn = document.getElementById("printBtn");
+
+    function getValue(id) {
+      const element = document.getElementById(id);
+      const value = parseFloat(element.value);
+      return Number.isFinite(value) ? value : 0;
+    }
+
+    function getCurrency() {
+      return document.getElementById("currency").value;
+    }
+
+    function formatMoney(amount) {
+      const currency = getCurrency();
+      const rounded = Math.round(amount);
+      const formatted = rounded.toLocaleString("en-US");
+
+      if (currency === "Ft") {
+        return formatted + " Ft";
+      }
+
+      return currency + formatted;
+    }
+
+    function formatMoneyExact(amount) {
+      const currency = getCurrency();
+      const formatted = amount.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      if (currency === "Ft") {
+        return formatted + " Ft";
+      }
+
+      return currency + formatted;
+    }
+
+    function formatPercent(value) {
+      return value.toFixed(1) + "%";
+    }
+
+    function calculateMonthlyPayment(principal, months, apr) {
+      if (months <= 0) {
+        return 0;
+      }
+
+      if (apr <= 0) {
+        return principal / months;
+      }
+
+      const monthlyRate = apr / 100 / 12;
+      return principal * monthlyRate / (1 - Math.pow(1 + monthlyRate, -months));
+    }
+
+    function calculateImpulsePurchase() {
+      const itemPrice = Math.max(0, getValue("itemPrice"));
+      const taxRate = Math.max(0, getValue("taxRate"));
+      const shippingCost = Math.max(0, getValue("shippingCost"));
+      const otherFees = Math.max(0, getValue("otherFees"));
+      const hourlyPay = Math.max(0, getValue("hourlyPay"));
+      const monthlySpendingBudget = Math.max(0, getValue("monthlySpendingBudget"));
+      const financingMonths = Math.max(0, Math.min(120, Math.round(getValue("financingMonths"))));
+      const financingApr = Math.max(0, getValue("financingApr"));
+      const savingsReturn = Math.max(0, getValue("savingsReturn"));
+      const yearsSaved = Math.max(1, Math.min(50, Math.round(getValue("yearsSaved"))));
+      const waitDays = Math.max(0, Math.min(365, Math.round(getValue("waitDays"))));
+
+      const taxAmount = itemPrice * taxRate / 100;
+      const totalCostToday = itemPrice + taxAmount + shippingCost + otherFees;
+
+      const monthlyPayment = calculateMonthlyPayment(totalCostToday, financingMonths, financingApr);
+      const totalRepaid = financingMonths > 0 ? monthlyPayment * financingMonths : totalCostToday;
+      const financingCost = Math.max(0, totalRepaid - totalCostToday);
+
+      const workHours = hourlyPay > 0 ? totalCostToday / hourlyPay : 0;
+      const budgetUsed = monthlySpendingBudget > 0 ? (totalCostToday / monthlySpendingBudget) * 100 : 0;
+
+      const annualReturnDecimal = savingsReturn / 100;
+      const futureValue = totalCostToday * Math.pow(1 + annualReturnDecimal, yearsSaved);
+      const opportunityGain = futureValue - totalCostToday;
+
+      document.getElementById("totalCost").textContent = formatMoneyExact(totalCostToday);
+      document.getElementById("workHours").textContent = hourlyPay > 0
+        ? workHours.toFixed(1) + (workHours === 1 ? " hour" : " hours")
+        : "Add hourly pay";
+
+      document.getElementById("budgetUsed").textContent = monthlySpendingBudget > 0
+        ? formatPercent(budgetUsed)
+        : "No budget entered";
+
+      document.getElementById("financingCost").textContent = formatMoneyExact(financingCost);
+      document.getElementById("monthlyPayment").textContent = financingMonths > 0
+        ? formatMoneyExact(monthlyPayment)
+        : "Paid in full";
+
+      document.getElementById("futureValue").textContent = formatMoneyExact(futureValue);
+
+      const progress = monthlySpendingBudget > 0 ? Math.min(100, budgetUsed) : 0;
+      document.getElementById("budgetProgressFill").style.width = progress + "%";
+      document.getElementById("budgetProgressText").textContent = monthlySpendingBudget > 0
+        ? formatPercent(budgetUsed)
+        : "No budget";
+
+      const breakdownBody = document.getElementById("breakdownBody");
+      breakdownBody.innerHTML = "";
+
+      const rows = [
+        ["Item price", itemPrice, "The advertised price before extra costs."],
+        ["Sales tax / VAT", taxAmount, "Estimated tax based on the percentage entered."],
+        ["Shipping and handling", shippingCost, "Delivery, handling, or convenience charges."],
+        ["Other fees or add-ons", otherFees, "Accessories, warranties, service fees, or extras."],
+        ["Total cost today", totalCostToday, "The estimated out-of-pocket cost if you buy now."],
+        ["Financing interest", financingCost, "Extra cost from paying over time, if financing is used."],
+        ["Total repayment", totalRepaid, "Estimated total paid after financing, if applicable."],
+        ["Opportunity gain if saved", opportunityGain, "Estimated extra value from saving the money instead."]
+      ];
+
+      rows.forEach(function(rowData) {
+        const row = document.createElement("tr");
+        row.innerHTML =
+          "<td>" + rowData[0] + "</td>" +
+          "<td>" + formatMoneyExact(rowData[1]) + "</td>" +
+          "<td>" + rowData[2] + "</td>";
+        breakdownBody.appendChild(row);
+      });
+
+      let summary = "This purchase costs about " + formatMoneyExact(totalCostToday) + " today";
+
+      if (hourlyPay > 0) {
+        summary += ", which equals about " + workHours.toFixed(1) + " hours of take-home work";
+      }
+
+      if (monthlySpendingBudget > 0) {
+        summary += ". It would use " + formatPercent(budgetUsed) + " of your monthly fun-money budget";
+      }
+
+      if (financingMonths > 0) {
+        summary += ". If financed for " + financingMonths + " months at " + financingApr.toFixed(2) +
+          "% APR, the estimated monthly payment is " + formatMoneyExact(monthlyPayment) +
+          " and the estimated financing cost is " + formatMoneyExact(financingCost);
+      }
+
+      summary += ". If you saved the money for " + yearsSaved + (yearsSaved === 1 ? " year" : " years") +
+        " at " + savingsReturn.toFixed(2) + "% annually, it could become about " + formatMoneyExact(futureValue) + ".";
+
+      document.getElementById("summaryText").textContent = summary;
+
+      let decision = "";
+
+      if (monthlySpendingBudget > 0 && budgetUsed > 100) {
+        decision = "This purchase is larger than your monthly fun-money budget. Waiting, saving first, or skipping it may protect your cash flow.";
+      } else if (financingMonths > 0 && financingApr > 0) {
+        decision = "Financing adds extra cost. Check whether the item is still worth it after including interest and future monthly payments.";
+      } else if (workHours >= 8) {
+        decision = "This purchase equals about a full workday or more. A cooling-off period may be useful before buying.";
+      } else if (waitDays >= 1) {
+        decision = "Consider waiting " + waitDays + (waitDays === 1 ? " day" : " days") + " before buying. If you still want it and it fits your budget, the decision is more intentional.";
+      } else {
+        decision = "The numbers look manageable based on the fields entered, but still compare the purchase with your current priorities before buying.";
+      }
+
+      document.getElementById("decisionBox").textContent = decision;
+    }
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      calculateImpulsePurchase();
+    });
+
+    resetBtn.addEventListener("click", function() {
+      document.getElementById("currency").value = "$";
+      document.getElementById("itemPrice").value = "120";
+      document.getElementById("taxRate").value = "8";
+      document.getElementById("shippingCost").value = "10";
+      document.getElementById("otherFees").value = "0";
+      document.getElementById("hourlyPay").value = "20";
+      document.getElementById("monthlySpendingBudget").value = "300";
+      document.getElementById("financingMonths").value = "0";
+      document.getElementById("financingApr").value = "0";
+      document.getElementById("savingsReturn").value = "4";
+      document.getElementById("yearsSaved").value = "5";
+      document.getElementById("waitDays").value = "7";
+      calculateImpulsePurchase();
+    });
+
+    printBtn.addEventListener("click", function() {
+      window.print();
+    });
+
+    calculateImpulsePurchase();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Impulse Purchase Calculator",
+    "url": "https://financecalccenter.com/impulse-purchase-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "A free impulse purchase calculator that estimates the real cost of unplanned buying, including tax, shipping, fees, financing interest, work hours, budget impact, and savings trade-off.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "FinanceCalcCenter",
+        "item": "https://financecalccenter.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Impulse Purchase Calculator",
+        "item": "https://financecalccenter.com/impulse-purchase-calculator.html"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an impulse purchase calculator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An impulse purchase calculator estimates the real cost of an unplanned purchase, including item price, tax, shipping, fees, financing cost, work hours, budget impact, and the potential value of saving the money instead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate the real cost of an impulse purchase?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add the item price, sales tax or VAT, shipping, and other fees. If the purchase is financed, also include repayment time and APR. This calculator also compares the cost with hourly take-home pay and monthly spending budget."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is every impulse purchase bad?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. An impulse purchase may be reasonable if it fits your budget, does not create debt, and does not delay more important financial goals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a cooling-off period for impulse buying?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A cooling-off period is a delay before buying. Waiting 24 hours for small purchases or 7 to 30 days for larger purchases can help reduce emotional spending."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this impulse purchase calculator financial advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This calculator is for educational and informational purposes only and is not financial, investment, tax, legal, or professional advice."
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
