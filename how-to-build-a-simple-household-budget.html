@@ -1707,9 +1707,30 @@
       </article>
     </main>
 
-    <footer>
-      © 2026 FinanceCalcCenter.com · Educational calculators and guides. Not financial advice.
-    </footer>
+  <footer>
+  <span class="badge">Updated: 2026</span>
+  <span class="badge">Topic: Investing basics</span>
+
+  <p class="note">
+    Disclaimer: This calculator is for educational purposes only and does not provide financial, tax, or investment advice.
+  </p>
+
+  <p>
+    <a href="privacy-policy.html">Privacy Policy</a> ·
+    <a href="terms-and-conditions.html">Terms</a> ·
+    <a href="disclaimer.html">Disclaimer</a> ·
+    <a href="about.html">About</a> ·
+    <a href="contact.html">Contact</a>
+  </p>
+
+  <p>
+    © <span id="year"></span> FinanceCalcCenter
+  </p>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
   </div>
 </body>
 </html>
