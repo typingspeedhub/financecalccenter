@@ -144,10 +144,7 @@
   <url>
     <loc>https://financecalccenter.com/average-stock-market-return-explained.html</loc>
   </url>
-  <url>
-    <loc>https://financecalccenter.com/what-is-a-good-interest-rate-in-2025.html</loc>
-  </url>
-  <url>
+    <url>
     <loc>https://financecalccenter.com/should-you-save-monthly-or-invest-monthly.html</loc>
   </url>
   <url>
@@ -178,12 +175,25 @@
     <loc>https://financecalccenter.com/mortgage-vs-rent.html</loc>
   </url>
 
-  <!-- Utility pages -->
+     <!-- Utility pages -->
   <url>
     <loc>https://financecalccenter.com/privacy-policy.html</loc>
   </url>
+
   <url>
     <loc>https://financecalccenter.com/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://financecalccenter.com/contact.html</loc>
+  </url>
+
+  <url>
+    <loc>https://financecalccenter.com/disclaimer.html</loc>
+  </url>
+
+  <url>
+    <loc>https://financecalccenter.com/terms-and-conditions.html</loc>
   </url>
 
 </urlset>
