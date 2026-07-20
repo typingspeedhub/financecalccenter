@@ -112,10 +112,10 @@
     }
 
     .site-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 20px 16px 56px;
-    }
+  width: min(1400px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 20px 0 56px;
+}
 
     .breadcrumbs {
       font-size: 0.88rem;
@@ -127,11 +127,11 @@
       color: #cbd5e1;
     }
 
-    .hero {
-      max-width: 860px;
-      margin: 0 auto 22px;
-      text-align: center;
-    }
+  .hero {
+  max-width: 1100px;
+  margin: 0 auto 22px;
+  text-align: center;
+}
 
     .hero h1 {
       margin: 0 0 10px;
@@ -147,12 +147,12 @@
       font-size: 1.02rem;
     }
 
-    .top-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
-      gap: 20px;
-      align-items: start;
-    }
+   .top-grid {
+  display: grid;
+  grid-template-columns: minmax(340px, 0.8fr) minmax(0, 1.4fr);
+  gap: 24px;
+  align-items: start;
+}
 
     .card {
       background: rgba(15, 23, 42, 0.88);
@@ -861,5 +861,19 @@
       document.getElementById("results").style.display = "block";
     }
   </script>
+  <footer style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid #334155; color:#9ca3af; text-align:center;">
+  <p>
+    © <script>document.write(new Date().getFullYear())</script>
+    FinanceCalcCenter — Educational content only. Not financial advice.
+  </p>
+
+  <p>
+    <a href="privacy-policy.html">Privacy Policy</a> ·
+    <a href="terms-and-conditions.html">Terms</a> ·
+    <a href="disclaimer.html">Disclaimer</a> ·
+    <a href="about.html">About</a> ·
+    <a href="contact.html">Contact</a>
+  </p>
+</footer>
 </body>
 </html>
