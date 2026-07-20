@@ -79,10 +79,10 @@
       height: auto;
     }
 
-    .wrapper {
-      max-width: 1060px;
-      margin: 0 auto;
-    }
+   .wrapper {
+  width: min(1280px, calc(100% - 2rem));
+  margin: 0 auto;
+}
 
     .skip-link {
       position: absolute;
@@ -259,12 +259,12 @@
     }
 
     .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.35fr);
-      gap: 1.2rem;
-      align-items: start;
-      margin-top: 1rem;
-    }
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: 1.4rem;
+  align-items: start;
+  margin-top: 1rem;
+}
 
     @media (max-width: 900px) {
       .layout {
@@ -1516,5 +1516,19 @@
 
     calculateSavingsGoal();
   </script>
+    <footer style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid #334155; color:#9ca3af; text-align:center;">
+  <p>
+    © <script>document.write(new Date().getFullYear())</script>
+    FinanceCalcCenter — Educational content only. Not financial advice.
+  </p>
+
+  <p>
+    <a href="privacy-policy.html">Privacy Policy</a> ·
+    <a href="terms-and-conditions.html">Terms</a> ·
+    <a href="disclaimer.html">Disclaimer</a> ·
+    <a href="about.html">About</a> ·
+    <a href="contact.html">Contact</a>
+  </p>
+</footer>
 </body>
 </html>
