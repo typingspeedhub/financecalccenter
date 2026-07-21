@@ -936,8 +936,18 @@
     </section>
 
     <footer>
-      This calculator is for educational purposes only and does not constitute financial advice, tax advice, or a loan offer.
-    </footer>
+  <p>
+    © <span id="year"></span> FinanceCalcCenter — Educational content only. Not financial, tax, or legal advice.
+  </p>
+
+  <p>
+    <a href="privacy-policy.html">Privacy Policy</a> ·
+    <a href="terms-and-conditions.html">Terms</a> ·
+    <a href="disclaimer.html">Disclaimer</a> ·
+    <a href="about.html">About</a> ·
+    <a href="contact.html">Contact</a>
+  </p>
+</footer>
   </div>
 
   <script>
@@ -1178,6 +1188,7 @@
     $("frequency").addEventListener("change", calculateLoan);
 
     calculateLoan();
+    $("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
