@@ -424,88 +424,104 @@
     }
   </style>
 
-  <!-- Article + FAQ + Breadcrumb Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Article",
-        "headline": "APR vs APY: What’s the Difference? Formulas, Examples & Calculator Guide (2026)",
-        "description": "Learn the difference between APR and APY with simple examples, formulas, and comparisons for savings accounts, loans, and investing.",
-        "author": {
-          "@type": "Organization",
-          "name": "FinanceCalcCenter"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "FinanceCalcCenter",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://financecalccenter.com/favicon-32x32.png"
-          }
-        },
-        "url": "https://financecalccenter.com/apr-vs-apy.html",
-        "inLanguage": "en",
-        "mainEntityOfPage": "https://financecalccenter.com/apr-vs-apy.html"
+ <!-- Article + FAQ + Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "APR vs APY: What’s the Difference? Formulas, Examples & Calculator Guide (2026)",
+      "description": "Learn the difference between APR and APY with simple examples, formulas, and comparisons for savings accounts, loans, and investing.",
+      "author": {
+        "@type": "Organization",
+        "name": "FinanceCalcCenter"
       },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is the main difference between APR and APY?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "APR is the yearly interest rate without compounding, while APY includes the effect of compounding over the year."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is APY always higher than APR?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "APY is usually higher than APR when interest compounds more than once per year. If there is no compounding, APR and APY can be the same."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Should I compare savings accounts using APR or APY?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "For savings accounts, APY is usually the better comparison number because it reflects the real yearly return after compounding."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Should I compare loans using APR or APY?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Loans are most often advertised using APR, but understanding the effective yearly cost with compounding can help reveal the true borrowing cost."
-            }
-          }
-        ]
+      "publisher": {
+        "@type": "Organization",
+        "name": "FinanceCalcCenter",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://financecalccenter.com/favicon-32x32.png"
+        }
       },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://financecalccenter.com/index.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "APR vs APY",
-            "item": "https://financecalccenter.com/apr-vs-apy.html"
+      "url": "https://financecalccenter.com/apr-vs-apy.html",
+      "inLanguage": "en",
+      "mainEntityOfPage": "https://financecalccenter.com/apr-vs-apy.html"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is APY always higher than APR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually yes, as long as compounding happens more than once per year. If interest compounds only annually, APR and APY can be the same."
           }
-        ]
-      }
-    ]
-  }
-  </script>
+        },
+        {
+          "@type": "Question",
+          "name": "Which is better for comparing savings accounts: APR or APY?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "APY is better for comparing savings accounts because it reflects the effective annual return after compounding."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do banks advertise APY on savings accounts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because APY gives a more realistic picture of what a customer may earn over a full year if interest compounds as stated."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do lenders usually advertise APR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "APR is a standardized annual measure used across many borrowing products, which can help consumers compare loan offers. Depending on the product, it may also reflect certain fees or finance charges."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can two accounts have the same APR but different APY?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. If the compounding frequency is different, the APY can also be different even when the APR is the same."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does compounding matter a lot over long periods?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Over several years, even small differences in APY can lead to noticeably different balances."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://financecalccenter.com/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "APR vs APY",
+          "item": "https://financecalccenter.com/apr-vs-apy.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -547,7 +563,9 @@
 
         <div class="quick-answer">
           <h2>Quick answer</h2>
-          <p><strong>APR</strong> = annual percentage rate, usually shown <strong>without compounding</strong>.</p>
+        <p>
+       <strong>APR</strong> = annual percentage rate, an annualized rate commonly used for borrowing costs or nominal interest comparisons.
+       </p>
           <p><strong>APY</strong> = annual percentage yield, which <strong>includes compounding</strong>.</p>
           <p>
             That means APR is often the “headline” rate, while APY is usually closer to the
@@ -580,14 +598,15 @@
 
         <h2 id="what-is-apr">What Is APR?</h2>
         <p>
-          <strong>APR (Annual Percentage Rate)</strong> is the yearly interest rate shown as a simple annual figure.
-          In many basic explanations, APR is treated as the rate <strong>before compounding is factored in</strong>.
-        </p>
+      <strong>APR (Annual Percentage Rate)</strong> is an annualized measure of interest or borrowing cost.
+      For deposit-rate calculations, it may describe a nominal annual rate before compounding is included.
+     For loans, APR may also include certain lender fees and other finance charges, depending on the product and applicable disclosure rules.
+     </p>
 
-        <p>
-          In practical terms, APR answers this question:
-          <strong>“What is the stated yearly rate?”</strong>
-        </p>
+      <p>
+    In practical terms, APR helps answer this question:
+    <strong>“What annual rate or borrowing cost is being quoted?”</strong>
+    </p>
 
         <p>
           You will often see APR used in:
@@ -945,8 +964,8 @@
 
         <h3>Weak comparison example</h3>
         <p>
-          If one bank shows <strong>5% APR</strong> and another shows <strong>5% APY</strong>, those are not directly equal.
-          The APY account is usually giving you a better effective yearly return.
+        If one bank shows <strong>5% APR</strong> and another shows <strong>5% APY</strong>, those figures cannot be compared directly.
+        First convert the APR into an effective annual yield using the account’s compounding frequency, then compare the resulting APY with the other account’s APY.
         </p>
 
         <h3>What else to check besides the rate</h3>
@@ -1092,10 +1111,9 @@
         </div>
 
         <div class="faq-item">
-          <h3>Why do lenders usually advertise APR?</h3>
           <p>
-            APR is a standard annual rate used across many borrowing products, which makes it useful for comparing lenders at a basic level.
-          </p>
+       APR is a standardized annual measure used across many borrowing products, which can help consumers compare loan offers. Depending on the product, it may also reflect certain fees or finance charges.
+       </p>
         </div>
 
         <div class="faq-item">
