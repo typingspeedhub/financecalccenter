@@ -29,6 +29,7 @@
   <title>Salary Calculator | Convert Annual Salary to Hourly, Monthly and Net Pay</title>
   <meta name="description" content="Use this free salary calculator to convert annual salary into hourly, weekly, biweekly, semimonthly, monthly, and estimated net pay after deductions." />
   <link rel="canonical" href="https://financecalccenter.com/salary-calculator.html" />
+  <meta name="robots" content="index, follow" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Salary Calculator | Annual, Monthly, Weekly and Hourly Pay" />
@@ -514,13 +515,21 @@
     </nav>
 
     <header class="hero">
-      <h1>Salary Calculator</h1>
-      <p>
-        Convert an annual salary into hourly pay, weekly pay, biweekly pay, semimonthly pay,
-        monthly salary, yearly income, and estimated net take-home pay. Use this calculator
-        for job offer comparison, budgeting, paycheck planning, and salary negotiation.
-      </p>
-    </header>
+  <h1>Salary Calculator</h1>
+
+  <p class="intro">
+    Use this free <strong>Salary Calculator</strong> to convert your annual salary into hourly,
+    weekly, biweekly, semimonthly, monthly, and estimated net pay.
+    Whether you're comparing job offers, planning a household budget, or estimating take-home income,
+    this calculator provides quick salary conversions using your work schedule and estimated deductions.
+  </p>
+
+  <p class="intro">
+    Simply enter your annual salary, work hours, pay frequency, tax estimate, and deductions.
+    The calculator instantly estimates gross pay, net pay, hourly wage, daily earnings,
+    and paycheck amounts for different payroll schedules.
+  </p>
+</header>
 
     <main id="main-content">
       <section class="card calculator-card" aria-labelledby="calculator-heading">
@@ -647,6 +656,13 @@
           equals <strong>$1,000 per week</strong>. If you work <strong>40 hours per week</strong>,
           that is about <strong>$25 per hour</strong> before taxes and deductions.
         </div>
+
+        <div class="summary-box">
+        <strong>Key takeaway:</strong>
+
+       A salary calculator helps convert annual income into hourly, monthly,
+       weekly, and paycheck amounts while estimating take-home pay after taxes and deductions.
+       </div>
 
         <section id="what-is-salary">
           <h2>What Is a Salary Calculator?</h2>
@@ -924,6 +940,17 @@
             hour worked. This calculator converts salary into an hourly equivalent for easier comparison.
           </p>
         </section>
+
+        <section id="about-calculator">
+       <h2>About This Calculator</h2>
+
+       <p>
+        This calculator was created by FinanceCalcCenter to help users estimate salary conversions,
+        compare job offers, and understand the difference between gross salary and estimated take-home pay.
+        The calculations are intended for educational and financial planning purposes only.
+       </p>
+       </section>
+        
       </article>
 
       <section class="related-links" aria-labelledby="related-links-heading">
@@ -1221,11 +1248,6 @@
     }
 
   document.getElementById("calculatorForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-  calculateSalary();
-});
-
-document.getElementById("calculatorForm").addEventListener("submit", function (e) {
   e.preventDefault();
   calculateSalary();
 });
