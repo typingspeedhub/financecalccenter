@@ -23,23 +23,22 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <title>Coffee Cost Calculator | Daily, Monthly & Yearly Coffee Spending</title>
-  <meta
-    name="description"
-    content="Use this coffee cost calculator to estimate how much you spend on coffee per day, week, month, and year. Compare coffee shop costs with homemade coffee and see possible yearly savings."
-  />
+  <title>Coffee Cost Calculator – Yearly Spending, Home Coffee Savings & Cost Per Cup | FinanceCalcCenter</title>
+  <meta name="description" content="Estimate your coffee spending by day, week, month, and year. Compare coffee shop prices with homemade coffee and see realistic annual savings from changing part of your routine." />
   <link rel="canonical" href="https://financecalccenter.com/coffee-cost-calculator.html" />
+  <meta name="author" content="Tibor Győry" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
 
  <meta property="og:type" content="website" />
-<meta property="og:title" content="Coffee Cost Calculator | Daily, Monthly & Yearly Coffee Spending" />
-<meta property="og:description" content="Calculate your daily, weekly, monthly, and yearly coffee spending. Compare coffee shop coffee with homemade coffee and estimate possible savings." />
+<meta property="og:title" content="Coffee Cost Calculator – Yearly Spending, Home Coffee Savings & Cost Per Cup" />
+<meta property="og:description" content="Estimate yearly coffee spending, compare coffee shop and homemade costs, and calculate savings from changing part of your routine." />
 <meta property="og:url" content="https://financecalccenter.com/coffee-cost-calculator.html" />
 <meta property="og:site_name" content="FinanceCalcCenter" />
 <meta property="og:image" content="https://financecalccenter.com/assets/og/coffee-cost-calculator-banner.png" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Coffee Cost Calculator | Daily, Monthly & Yearly Coffee Spending" />
-<meta name="twitter:description" content="Estimate how much your coffee habit costs per day, month, and year." />
+<meta name="twitter:title" content="Coffee Cost Calculator – Yearly Spending & Home Coffee Savings" />
+<meta name="twitter:description" content="See your annual coffee cost, homemade alternative, and realistic savings from changing some purchases." />
 <meta name="twitter:image" content="https://financecalccenter.com/assets/og/coffee-cost-calculator-banner.png" />
 
   <style>
@@ -506,15 +505,34 @@
     "@type": "WebApplication",
     "name": "Coffee Cost Calculator",
     "url": "https://financecalccenter.com/coffee-cost-calculator.html",
-    "applicationCategory": "CalculatorApplication",
+    "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "inLanguage": "en",
-    "description": "Estimate how much coffee costs per day, week, month, and year, and compare coffee shop costs with homemade coffee.",
+    "description": "Estimate coffee shop spending, compare homemade coffee costs, and calculate annual savings from replacing some purchased coffees.",
+    "isAccessibleForFree": true,
+    "author": {
+      "@type": "Person",
+      "name": "Tibor Győry",
+      "url": "https://financecalccenter.com/about.html"
+    },
     "publisher": {
       "@type": "Organization",
       "name": "FinanceCalcCenter",
       "url": "https://financecalccenter.com/"
     }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Coffee Cost Calculator – Yearly Spending, Home Coffee Savings & Cost Per Cup",
+    "author": {"@type":"Person","name":"Tibor Győry","url":"https://financecalccenter.com/about.html"},
+    "publisher": {"@type":"Organization","name":"FinanceCalcCenter","url":"https://financecalccenter.com/"},
+    "mainEntityOfPage": "https://financecalccenter.com/coffee-cost-calculator.html",
+    "dateModified": "2026-09-09",
+    "inLanguage": "en"
   }
   </script>
 
@@ -580,10 +598,10 @@
       },
       {
         "@type": "Question",
-        "name": "Why calculate coffee spending?",
+        "name": "Can I estimate savings from replacing only some coffee purchases?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Coffee can feel like a small daily expense, but repeated purchases can become a meaningful yearly cost. Calculating it helps you decide whether the habit fits your budget."
+          "text": "Yes. Enter how many coffee shop purchases you would replace per week and the calculator estimates savings only for those replaced cups."
         }
       }
     ]
@@ -603,16 +621,18 @@
     <header class="hero">
       <h1>Coffee Cost Calculator</h1>
       <p>
-        Estimate how much your coffee habit costs per day, week, month, and year.
-        Compare coffee shop spending with homemade coffee and see how small daily purchases can add up over time.
+        Estimate your coffee spending by week, month, and year, compare coffee shop and homemade costs,
+        and test how much you could save by replacing only part of your usual coffee purchases.
+      </p>
+      <p style="margin-top:.8rem;color:#9ca3af;font-size:.9rem;">
+        Written and reviewed by <a href="about.html">Tibor Győry</a> · Updated September 9, 2026 · Educational use only
       </p>
     </header>
 
     <p class="intro">
-     Coffee is one of the most common daily expenses, but its long-term cost is easy to underestimate.
-    This calculator helps you estimate how much you spend over time and compare coffee shop purchases
-    with homemade coffee so you can better understand the impact on your budget.
-   </p>
+      Coffee is a good example of a small recurring expense that can be difficult to judge from the price of one cup.
+      This tool goes beyond a simple annual total by comparing coffee shop and homemade costs and letting you model a realistic partial switch.
+    </p>
 
     <main id="main-content">
       <section class="card calculator-card" aria-labelledby="calculator-heading">
@@ -658,6 +678,12 @@
                 <input type="number" id="homeCoffeeCost" inputmode="decimal" min="0" step="0.01" value="0.75" />
                 <div class="help-text">Use this to estimate possible savings from making coffee at home.</div>
               </div>
+
+              <div class="field full">
+                <label for="replacePerWeek">Optional: Coffee shop purchases replaced per week</label>
+                <input type="number" id="replacePerWeek" inputmode="decimal" min="0" step="1" value="3" />
+                <div class="help-text">Example: replace 3 purchased coffees per week with homemade coffee for a realistic partial-switch estimate.</div>
+              </div>
             </div>
 
             <div class="actions">
@@ -679,296 +705,33 @@
       </section>
 
       <article class="card content-card">
-          <div class="toc" aria-labelledby="toc-heading">
-            <div class="toc-title" id="toc-heading">On this page</div>
-            <ul>
-              <li><a href="#what-is-coffee-cost-calculator">What this calculator does</a></li>
-              <li><a href="#how-to-use">How to use it</a></li>
-              <li><a href="#examples">Coffee cost examples</a></li>
-              <li><a href="#why-it-matters">Why coffee spending matters</a></li>
-              <li><a href="#formulas">Formulas used</a></li>
-              <li><a href="#coffee-shop-vs-home">Coffee shop vs homemade coffee</a></li>
-              <li><a href="#mistakes">Common mistakes</a></li>
-              <li><a href="#faq">Frequently asked questions</a></li>
-            </ul>
-          </div>
-
-          <div class="callout">
-            <strong>Quick example:</strong>
-            A <strong>$4.50 coffee</strong> bought <strong>5 days per week</strong> costs about
-            <strong>$97.50 per month</strong> and <strong>$1,170 per year</strong>.
-          </div>
-
-           <div class="summary-box" aria-label="Key takeaway">
-         <strong>Key takeaway:</strong>
-          Even one coffee on most weekdays can add up to more than $1,000 per year.
-          Comparing coffee shop spending with homemade coffee can help you identify realistic opportunities to reduce recurring expenses without giving up coffee entirely.
-         </div>
-        
-          <section id="what-is-coffee-cost-calculator">
-            <h2>What Is a Coffee Cost Calculator?</h2>
-            <p>
-              A coffee cost calculator estimates how much you spend on coffee over time.
-              Instead of only thinking about the price of one cup, it shows the daily, weekly, monthly, and yearly cost of your coffee habit.
-            </p>
-            <p>
-              This can be helpful because coffee is usually a small repeated purchase.
-              One coffee may not feel expensive, but buying it several times per week can create a noticeable annual expense.
-            </p>
-          </section>
-
-          <section id="how-to-use">
-            <h2>How to Use This Coffee Cost Calculator</h2>
-            <ul>
-              <li><strong>Choose your currency:</strong> dollar, euro, pound, or forint.</li>
-              <li><strong>Enter the price per coffee:</strong> for example, 4.50 for a coffee shop coffee.</li>
-              <li><strong>Enter coffees per day:</strong> how many coffees you usually buy on a day when you buy coffee.</li>
-              <li><strong>Enter days per week:</strong> how many days per week you buy coffee.</li>
-              <li><strong>Add homemade coffee cost:</strong> optional, but useful for estimating possible savings.</li>
-            </ul>
-            <p>
-              After you click Calculate, the tool shows your estimated coffee spending per day, week, month, and year.
-              It also estimates how much you could save if you replaced the same number of coffees with homemade coffee.
-            </p>
-          </section>
-
-          <section id="examples">
-            <h2>Coffee Cost Examples</h2>
-
-            <h3>Example 1: One coffee on weekdays</h3>
-            <p>
-              If you buy one coffee for <strong>$4.50</strong> on <strong>5 days per week</strong>,
-              your weekly coffee cost is <strong>$22.50</strong>.
-              Over a full year, that becomes about <strong>$1,170</strong>.
-            </p>
-
-            <h3>Example 2: Two coffees per workday</h3>
-            <p>
-              If you buy two coffees per day at <strong>$4.50 each</strong> for <strong>5 days per week</strong>,
-              your weekly cost becomes <strong>$45</strong>.
-              That is about <strong>$195 per month</strong> and <strong>$2,340 per year</strong>.
-            </p>
-
-            <h3>Example 3: Coffee shop vs homemade coffee</h3>
-            <p>
-              If a coffee shop coffee costs <strong>$4.50</strong> and homemade coffee costs about <strong>$0.75</strong>,
-              the difference is <strong>$3.75 per cup</strong>.
-              Replacing 5 coffees per week could save about <strong>$975 per year</strong>.
-            </p>
-
-            <div class="mini-grid">
-              <div class="mini-card">
-                <strong>Daily view</strong><br>
-                Shows what your coffee habit costs on a normal day.
-              </div>
-              <div class="mini-card">
-                <strong>Monthly view</strong><br>
-                Helps you compare coffee spending with subscriptions and bills.
-              </div>
-              <div class="mini-card">
-                <strong>Yearly view</strong><br>
-                Shows the long-term impact of a small repeated purchase.
-              </div>
-            </div>
-          </section>
-
-          <section id="why-it-matters">
-            <h2>Why Coffee Spending Matters</h2>
-            <p>
-              Coffee spending is not automatically bad. Many people enjoy buying coffee, working from a café, or using a daily coffee break as part of their routine.
-              The goal of this calculator is not to tell you to stop buying coffee.
-            </p>
-            <p>
-              The goal is to make the cost visible. When you know the yearly number, you can decide whether the habit is worth it,
-              whether you want to reduce it slightly, or whether you would rather use part of that money for savings, debt payoff, investing, or another goal.
-            </p>
-          </section>
-
-          <section id="formulas">
-            <h2>Formulas Used by This Calculator</h2>
-            <p>This calculator uses simple estimates based on your inputs:</p>
-
-            <div class="comparison-table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Calculation</th>
-                    <th>Formula</th>
-                    <th>Example</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Daily coffee cost</strong></td>
-                    <td>Price per coffee × coffees per day</td>
-                    <td>$4.50 × 1 = $4.50/day</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Weekly coffee cost</strong></td>
-                    <td>Daily coffee cost × days per week</td>
-                    <td>$4.50 × 5 = $22.50/week</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Yearly coffee cost</strong></td>
-                    <td>Weekly coffee cost × 52</td>
-                    <td>$22.50 × 52 = $1,170/year</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Monthly coffee cost</strong></td>
-                    <td>Yearly coffee cost ÷ 12</td>
-                    <td>$1,170 ÷ 12 = $97.50/month</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Estimated yearly savings</strong></td>
-                    <td>(Coffee shop cost - homemade cost) × coffees per year</td>
-                    <td>($4.50 - $0.75) × 260 = $975/year</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section id="coffee-shop-vs-home">
-            <h2>Coffee Shop vs Homemade Coffee</h2>
-            <p>
-              Coffee shop coffee usually costs more than homemade coffee because you are paying for convenience, service, location, rent, labor, and the café experience.
-              Homemade coffee is usually cheaper per cup, but it may not replace the same experience.
-            </p>
-            <p>
-              A realistic approach is to compare the numbers and choose a balance that fits your life.
-              For example, you might keep your favorite café coffee on certain days and make coffee at home on other days.
-            </p>
-
-            <div class="comparison-table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Option</th>
-                    <th>Possible benefit</th>
-                    <th>Possible downside</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Coffee shop coffee</strong></td>
-                    <td>Convenient, social, enjoyable, no preparation needed</td>
-                    <td>Higher cost per cup</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Homemade coffee</strong></td>
-                    <td>Lower cost per cup and easier to control spending</td>
-                    <td>Requires equipment, supplies, and preparation</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Mixed approach</strong></td>
-                    <td>Keeps some convenience while reducing yearly cost</td>
-                    <td>Requires a habit change</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section id="mistakes">
-            <h2>Common Mistakes When Estimating Coffee Costs</h2>
-            <ul>
-              <li><strong>Only looking at one cup:</strong> one coffee may feel small, but repeated purchases create the real cost.</li>
-              <li><strong>Ignoring the number of days per week:</strong> buying coffee every weekday is very different from buying it once or twice a week.</li>
-              <li><strong>Forgetting extra costs:</strong> tips, delivery fees, larger sizes, syrups, snacks, or taxes can increase the total.</li>
-              <li><strong>Assuming homemade coffee is free:</strong> beans, milk, filters, pods, and equipment still have a cost.</li>
-              <li><strong>Making unrealistic cuts:</strong> reducing coffee spending gradually may be easier than trying to stop completely.</li>
-            </ul>
-          </section>
-
-          <section id="faq">
-            <h2>Frequently Asked Questions</h2>
-
-            <div class="faq-item">
-              <h3>What does a coffee cost calculator do?</h3>
-              <p>
-                It estimates how much your coffee habit costs per day, week, month, and year.
-                It can also compare coffee shop spending with homemade coffee costs.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>How do I calculate my yearly coffee spending?</h3>
-              <p>
-                Multiply the price per coffee by the number of coffees you buy per day.
-                Then multiply that by the number of days per week you buy coffee and by 52 weeks.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>How much does a daily coffee cost per year?</h3>
-              <p>
-                It depends on the price per cup. For example, one $4.50 coffee bought 5 days per week costs about $1,170 per year.
-                If you buy coffee every day, the yearly cost would be higher.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>Can making coffee at home save money?</h3>
-              <p>
-                Often, yes. Homemade coffee usually has a lower cost per cup.
-                The exact savings depend on the coffee you buy, the ingredients you use at home, and how often you replace coffee shop purchases.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>Is this calculator exact?</h3>
-              <p>
-                It gives a simple estimate using 52 weeks per year and 12 months per year.
-                Actual costs can differ because of taxes, tips, discounts, skipped days, price changes, or different drink sizes.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>Should I stop buying coffee to save money?</h3>
-              <p>
-                Not necessarily. The calculator is only meant to show the numbers clearly.
-                You can use the result to decide whether your coffee spending fits your budget and priorities.
-              </p>
-            </div>
-
-            <p class="disclaimer">
-              <strong>Note:</strong> This calculator is for educational and planning purposes only. It does not provide financial advice.
-            </p>
-          </section>
-        
-          <section id="about-this-calculator">
-      <h2>About This Calculator</h2>
-
-      <p>
-        The Coffee Cost Calculator was created by FinanceCalcCenter to help users estimate
-       the long-term cost of one of the most common recurring daily expenses. By converting
-       individual coffee purchases into weekly, monthly, and yearly totals, the calculator
-       makes it easier to understand how small spending habits can affect an overall budget.
-     </p>
-
-     <p>
-      The calculations are based on the values you enter, using simple budgeting assumptions
-      of 52 weeks per year and 12 months per year. You can also compare coffee shop purchases
-      with homemade coffee to estimate potential savings. The results are intended for
-      educational and personal financial planning purposes and should not be considered
-     financial advice.
-    </p>
-   </section>
-        
-          <section class="related-links" aria-labelledby="related-links-heading">
-            <h2 id="related-links-heading">Related calculators and articles</h2>
-            <div class="links">
-              <a href="https://financecalccenter.com/cost-per-day-calculator.html">Cost Per Day Calculator</a>
-              <a href="https://financecalccenter.com/monthly-to-yearly-cost-calculator.html">Monthly to Yearly Cost Calculator</a>
-              <a href="https://financecalccenter.com/subscription-cost-calculator.html">Subscription Cost Calculator</a>
-              <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
-              <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
-            <a href="https://financecalccenter.com/">Browse all calculators →</a>
-            </div>
-            </div>
-          </section>
-
-          <a class="back-link" href="index.html">← Back to home</a>
+        <div class="toc" aria-labelledby="toc-heading">
+          <div class="toc-title" id="toc-heading">On this page</div>
+          <ul>
+            <li><a href="#what-it-does">What this calculator does</a></li>
+            <li><a href="#how-to-use">How to use it</a></li>
+            <li><a href="#examples">Practical examples</a></li>
+            <li><a href="#partial-switch">Why a partial switch can be realistic</a></li>
+            <li><a href="#home-cost">What homemade coffee really costs</a></li>
+            <li><a href="#formulas">Formulas and assumptions</a></li>
+            <li><a href="#worth-it">How to judge whether the spending is worth it</a></li>
+            <li><a href="#mistakes">Common mistakes</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="callout"><strong>Quick example:</strong> One $4.50 coffee bought five days per week costs about <strong>$1,170 per year</strong>. Replacing only three of those weekly purchases with $0.75 homemade coffee could save about <strong>$585 per year</strong>.</div>
+        <section id="what-it-does"><h2>What This Coffee Cost Calculator Does</h2><p>The calculator estimates your coffee-shop spending from the price per cup, coffees per buying day, and buying days per week. It then shows weekly, monthly, and yearly totals.</p><p>It also lets you enter a homemade cost per cup and choose how many coffee-shop purchases you would realistically replace each week. That makes the tool more useful than an all-or-nothing “stop buying coffee” estimate.</p></section>
+        <section id="how-to-use"><h2>How to Use the Calculator</h2><ol><li>Choose your currency.</li><li>Enter the price you normally pay per purchased coffee.</li><li>Enter how many coffees you buy on a buying day.</li><li>Enter how many days per week you usually buy coffee.</li><li>Enter an estimated homemade cost per cup.</li><li>Optionally enter how many purchased coffees you would replace each week.</li><li>Click Calculate and review the yearly total and partial-switch savings.</li></ol></section>
+        <section id="examples"><h2>Practical Coffee Spending Examples</h2><h3>One weekday coffee</h3><p>A $4.50 coffee bought five days per week costs $22.50 per week, about $97.50 per month, and about $1,170 per year.</p><h3>Two coffees on workdays</h3><p>Two $4.50 coffees per day for five days per week cost about $2,340 per year.</p><h3>Replace three purchases, keep two</h3><p>If homemade coffee costs $0.75, replacing three of five weekly $4.50 purchases saves $3.75 per replaced cup, or about $585 per year.</p></section>
+        <section id="partial-switch"><h2>Why a Partial Switch Can Be More Realistic</h2><p>Coffee spending is not automatically wasteful. A café purchase can provide convenience, social time, a place to work, or simple enjoyment. A partial switch can reduce cost without removing those benefits completely.</p><p>For example, buy coffee on two office days and make it at home on three other days. The calculator shows the annual difference from that specific change.</p></section>
+        <section id="home-cost"><h2>What Does Homemade Coffee Really Cost?</h2><p>Homemade coffee is usually cheaper, but it is not free. A realistic estimate can include beans or pods, milk or cream, sweeteners, filters, and a small share of equipment cost.</p><p>For equipment, it is better to spread the purchase price over expected years or cups of use rather than count the full price immediately.</p></section>
+        <section id="formulas"><h2>Formulas and Assumptions</h2><div class="comparison-table-wrap"><table><thead><tr><th>Calculation</th><th>Formula</th></tr></thead><tbody><tr><td>Purchased coffees per week</td><td>Coffees per day × buying days per week</td></tr><tr><td>Weekly shop cost</td><td>Price per coffee × coffees per day × buying days</td></tr><tr><td>Yearly shop cost</td><td>Weekly shop cost × 52</td></tr><tr><td>Monthly estimate</td><td>Yearly cost ÷ 12</td></tr><tr><td>Savings per replaced cup</td><td>Shop price − homemade cost</td></tr><tr><td>Partial-switch yearly savings</td><td>Savings per cup × replaced coffees per week × 52</td></tr></tbody></table></div><p>The calculator uses 52 weeks and 12 months per year. It does not automatically add taxes, tips, delivery fees, snacks, seasonal price changes, or skipped weeks.</p></section>
+        <section id="worth-it"><h2>How to Decide Whether Your Coffee Spending Is Worth It</h2><ol><li>Look at the annual total.</li><li>Think about the benefit you actually get.</li><li>Check whether replacing one or two purchases per week would be enough.</li><li>Give any savings a specific purpose.</li><li>Avoid guilt-based decisions; the goal is to make the trade-off visible.</li></ol></section>
+        <section id="mistakes"><h2>Common Mistakes When Estimating Coffee Costs</h2><ul><li>Using the cheapest cup as your average.</li><li>Forgetting second coffees or add-ons.</li><li>Assuming every week is identical.</li><li>Treating homemade coffee as free.</li><li>Assuming you must eliminate the habit completely.</li><li>Ignoring tips, pastries, delivery fees, or upgrades.</li></ul></section>
+        <section id="faq"><h2>Frequently Asked Questions</h2><div class="faq-item"><h3>How do I calculate yearly coffee spending?</h3><p>Multiply the price per coffee by coffees per day, then by buying days per week and by 52 weeks.</p></div><div class="faq-item"><h3>How much does one $5 coffee five days per week cost per year?</h3><p>About $1,300 per year before tips, taxes, snacks, or extras.</p></div><div class="faq-item"><h3>Does making coffee at home always save money?</h3><p>Usually the direct cost per cup is lower, but the difference depends on ingredients, equipment, and what you normally buy.</p></div><div class="faq-item"><h3>What if I replace only some purchases?</h3><p>Use the “coffee shop purchases replaced per week” field. The calculator estimates savings only for those cups.</p></div><div class="faq-item"><h3>Is this calculator exact?</h3><p>No. It is a planning estimate and actual spending can differ because of skipped days, tips, taxes, discounts, or price changes.</p></div><p class="disclaimer"><strong>Note:</strong> Educational and planning purposes only. Not individualized financial advice.</p></section>
+        <section id="about-this-calculator"><h2>About This Calculator</h2><p>This calculator was created for FinanceCalcCenter by <a href="about.html">Tibor Győry</a> to make a small recurring expense easier to evaluate over a full year and to test realistic partial changes instead of an all-or-nothing assumption.</p></section>
+        <section class="related-links" aria-labelledby="related-links-heading"><h2 id="related-links-heading">Related calculators and articles</h2><div class="links"><a href="https://financecalccenter.com/cost-per-day-calculator.html">Cost Per Day Calculator</a><a href="https://financecalccenter.com/monthly-to-yearly-cost-calculator.html">Monthly to Yearly Cost Calculator</a><a href="https://financecalccenter.com/subscription-cost-calculator.html">Subscription Cost Calculator</a><a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a><a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a><a href="https://financecalccenter.com/">Browse all calculators →</a></div></section>
+        <a class="back-link" href="/">← Back to home</a>
       </article>
     </main>
 
@@ -998,13 +761,15 @@
       const daysPerWeekRaw = Math.max(0, parseFloat(document.getElementById("daysPerWeek").value) || 0);
       const daysPerWeek = Math.min(7, daysPerWeekRaw);
       const homeCoffeeCost = Math.max(0, parseFloat(document.getElementById("homeCoffeeCost").value) || 0);
+      const replacePerWeekRaw = Math.max(0, parseFloat(document.getElementById("replacePerWeek").value) || 0);
 
       return {
         currency,
         pricePerCoffee,
         coffeesPerDay,
         daysPerWeek,
-        homeCoffeeCost
+        homeCoffeeCost,
+        replacePerWeekRaw
       };
     }
 
@@ -1014,7 +779,8 @@
         pricePerCoffee,
         coffeesPerDay,
         daysPerWeek,
-        homeCoffeeCost
+        homeCoffeeCost,
+        replacePerWeekRaw
       } = getInputValues();
 
       const resultBox = document.getElementById("result");
@@ -1032,8 +798,12 @@
       const homeYearlyCost = homeWeeklyCost * 52;
       const homeMonthlyCost = homeYearlyCost / 12;
 
-      const yearlySavings = Math.max(0, coffeeShopYearlyCost - homeYearlyCost);
-      const monthlySavings = yearlySavings / 12;
+      const fullReplacementYearlySavings = Math.max(0, coffeeShopYearlyCost - homeYearlyCost);
+      const maxReplaceablePerWeek = coffeesPerWeek;
+      const replacePerWeek = Math.min(replacePerWeekRaw, maxReplaceablePerWeek);
+      const savingPerReplacedCup = Math.max(0, pricePerCoffee - homeCoffeeCost);
+      const partialYearlySavings = savingPerReplacedCup * replacePerWeek * 52;
+      const partialMonthlySavings = partialYearlySavings / 12;
 
       resultBox.style.display = "block";
       resultBox.innerHTML = `
@@ -1061,13 +831,18 @@
           </div>
 
           <div class="result-item highlight-result">
-            <span class="result-label">Estimated yearly savings vs homemade coffee</span>
-            <span class="result-value">${fmtMoney(yearlySavings, currency)}</span>
+            <span class="result-label">Estimated yearly savings from your partial switch</span>
+            <span class="result-value">${fmtMoney(partialYearlySavings, currency)}</span>
           </div>
 
           <div class="result-item">
-            <span class="result-label">Estimated monthly savings</span>
-            <span class="result-value">${fmtMoney(monthlySavings, currency)}</span>
+            <span class="result-label">Estimated monthly savings from your partial switch</span>
+            <span class="result-value">${fmtMoney(partialMonthlySavings, currency)}</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Maximum yearly savings if all purchased coffees were replaced</span>
+            <span class="result-value">${fmtMoney(fullReplacementYearlySavings, currency)}</span>
           </div>
         </div>
 
@@ -1080,9 +855,9 @@
         </p>
 
         <p class="note">
-          If homemade coffee costs about ${fmtMoney(homeCoffeeCost, currency)} per cup, the same amount of coffee would cost about
-          <strong>${fmtMoney(homeMonthlyCost, currency)} per month</strong> and
-          <strong>${fmtMoney(homeYearlyCost, currency)} per year</strong>.
+          If homemade coffee costs about ${fmtMoney(homeCoffeeCost, currency)} per cup and you replace
+          <strong>${replacePerWeek.toLocaleString("en-US", { maximumFractionDigits: 1 })} purchased coffee${replacePerWeek === 1 ? "" : "s"} per week</strong>,
+          the estimated saving is about <strong>${fmtMoney(partialYearlySavings, currency)} per year</strong>.
         </p>
       `;
     }
@@ -1093,6 +868,7 @@
       document.getElementById("coffeesPerDay").value = "1";
       document.getElementById("daysPerWeek").value = "5";
       document.getElementById("homeCoffeeCost").value = "0.75";
+      document.getElementById("replacePerWeek").value = "3";
       document.getElementById("result").style.display = "none";
       document.getElementById("result").innerHTML = "";
     }
