@@ -18,6 +18,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#020617" />
+  <meta name="author" content="Tibor Győry" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -37,8 +39,11 @@
   <meta property="og:description" content="Calculate your daily, weekly, monthly, and yearly lunch spending. Compare eating out with packed lunch costs and estimate possible savings." />
   <meta property="og:url" content="https://financecalccenter.com/lunch-cost-calculator.html" />
   <meta property="og:site_name" content="FinanceCalcCenter" />
+  <meta property="og:image" content="https://financecalccenter.com/og-lunch-cost-calculator.png" />
+  <meta property="og:image:alt" content="Lunch Cost Calculator by FinanceCalcCenter" />
 
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://financecalccenter.com/og-lunch-cost-calculator.png" />
   <meta name="twitter:title" content="Lunch Cost Calculator | Daily, Monthly & Yearly Lunch Spending" />
   <meta name="twitter:description" content="Estimate how much your lunch habit costs per day, month, and year." />
 
@@ -267,6 +272,31 @@
       border-radius: 1rem;
       background: rgba(2, 6, 23, 0.82);
       border: 1px solid rgba(34, 197, 94, 0.35);
+    }
+
+    .error-box {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.9rem 1rem;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(248, 113, 113, 0.45);
+      background: rgba(127, 29, 29, 0.18);
+      color: #fecaca;
+    }
+
+    .result-summary {
+      margin-top: 0.25rem;
+      padding: 0.95rem;
+      border-radius: 0.95rem;
+      background: rgba(34, 197, 94, 0.07);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      color: #d1fae5;
+    }
+
+    .method-note {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
     }
 
     .result-grid {
@@ -502,6 +532,11 @@
     "operatingSystem": "Any",
     "inLanguage": "en",
     "description": "Estimate daily, weekly, monthly, and yearly lunch costs and compare eating out with bringing lunch from home.",
+    "dateModified": "2026-09-10",
+    "creator": {
+      "@type": "Person",
+      "name": "Tibor Győry"
+    },
     "publisher": {
       "@type": "Organization",
       "name": "FinanceCalcCenter",
@@ -543,23 +578,31 @@
         "name": "What does a lunch cost calculator do?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A lunch cost calculator estimates how much you spend on lunch per day, week, month, and year based on the average lunch price, the number of lunches you buy, and how many days per week you buy lunch."
+          "text": "A lunch cost calculator estimates how much your lunch habit costs per week, month, and year based on your meal price, buying frequency, active weeks, and optional extras."
         }
       },
       {
         "@type": "Question",
-        "name": "How do you calculate yearly lunch spending?",
+        "name": "How do I calculate my yearly lunch spending?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Multiply the average cost per lunch by the number of lunches per day, then multiply by the number of lunch-buying days per week and by 52 weeks per year."
+          "text": "Add recurring extras to the average bought-lunch price, multiply by lunches per day and days per week, then multiply by the number of active lunch-buying weeks per year."
         }
       },
       {
         "@type": "Question",
-        "name": "How much can I save by bringing lunch from home?",
+        "name": "Can bringing lunch from home save money?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "To estimate savings, compare the cost of buying lunch with the cost of bringing lunch from home, then multiply the difference by the number of lunches you have per year."
+          "text": "Often, yes. The calculator compares your estimated bought-lunch cost with the estimated cost of packed lunches. Actual savings depend on your grocery costs and routine."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many weeks per year should I use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the number of weeks in which you realistically expect to follow your usual lunch routine. For example, 48 weeks allows for about four weeks of vacation, holidays, travel, or other skipped weeks."
         }
       },
       {
@@ -567,15 +610,15 @@
         "name": "Is this lunch cost calculator exact?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It provides an estimate using 52 weeks per year and 12 months per year. Actual costs may differ because of taxes, tips, delivery fees, skipped days, changing food prices, or different meal choices."
+          "text": "It provides a planning estimate based on your inputs. Actual spending may differ because meal prices, tips, fees, discounts, skipped days, and habits can change."
         }
       },
       {
         "@type": "Question",
-        "name": "Why should I calculate my lunch spending?",
+        "name": "Should I stop buying lunch to save money?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Lunch can feel like a normal daily expense, but repeated purchases can become a meaningful yearly cost. Calculating it helps you decide whether your lunch habit fits your budget."
+          "text": "Not necessarily. The calculator is designed to make the cost visible so you can decide whether your lunch spending fits your budget and priorities."
         }
       }
     ]
@@ -644,6 +687,18 @@
               <input type="number" id="homeLunchCost" inputmode="decimal" min="0" step="0.01" value="4.00" />
               <div class="help-text">Use this to estimate possible savings from bringing lunch from home.</div>
             </div>
+
+            <div class="field">
+              <label for="extrasPerLunch">Optional: drinks, tips or fees per bought lunch</label>
+              <input type="number" id="extrasPerLunch" inputmode="decimal" min="0" step="0.01" value="0.00" />
+              <div class="help-text">Include recurring extras you usually pay with a purchased lunch.</div>
+            </div>
+
+            <div class="field">
+              <label for="activeWeeks">Lunch-buying weeks per year</label>
+              <input type="number" id="activeWeeks" inputmode="numeric" min="1" max="52" step="1" value="48" />
+              <div class="help-text">Use 48 to allow for roughly four weeks of vacation, holidays, or other skipped weeks.</div>
+            </div>
           </div>
 
           <div class="actions">
@@ -656,11 +711,14 @@
           Useful for work lunch spending, takeout lunches, cafeteria meals, school lunches, packed lunch comparisons, and everyday budget planning.
         </div>
 
+        <div id="errorBox" class="error-box" role="alert" aria-live="assertive"></div>
+
         <div id="result" class="result-box" aria-live="polite"></div>
 
         <div class="assumption-box">
-          <strong>Assumption:</strong> This calculator uses 52 weeks per year and 12 months per year.
-          Actual costs may differ because of taxes, tips, delivery fees, skipped days, changing food prices, or different meal choices.
+          <strong>Method:</strong> Monthly values are calculated from the yearly estimate divided by 12.
+          You can set the number of active lunch-buying weeks yourself, which makes the yearly estimate more realistic for vacations,
+          holidays, remote-work periods, or other skipped weeks.
         </div>
       </section>
 
@@ -673,6 +731,8 @@
             <li><a href="#examples">Lunch cost examples</a></li>
             <li><a href="#why-it-matters">Why lunch spending matters</a></li>
             <li><a href="#formulas">Formulas used</a></li>
+            <li><a href="#interpret-results">How to interpret your result</a></li>
+            <li><a href="#realistic-estimate">How to make the estimate realistic</a></li>
             <li><a href="#eating-out-vs-packed-lunch">Eating out vs packed lunch</a></li>
             <li><a href="#ways-to-save">Simple ways to reduce lunch costs</a></li>
             <li><a href="#mistakes">Common mistakes</a></li>
@@ -682,8 +742,9 @@
 
         <div class="callout">
           <strong>Quick example:</strong>
-          A <strong>$12 lunch</strong> bought <strong>5 days per week</strong> costs about
-          <strong>$260 per month</strong> and <strong>$3,120 per year</strong>.
+          A <strong>$12 lunch</strong> bought <strong>5 days per week</strong> for <strong>48 weeks</strong>
+          costs about <strong>$240 per month</strong> on a yearly-average basis and <strong>$2,880 per year</strong>,
+          before drinks, tips, or delivery fees.
         </div>
 
         <div class="summary-box" aria-label="Key takeaway">
@@ -725,23 +786,23 @@
 
           <h3>Example 1: Buying lunch on workdays</h3>
           <p>
-            If you buy one lunch for <strong>$12</strong> on <strong>5 days per week</strong>,
-            your weekly lunch cost is <strong>$60</strong>.
-            Over a full year, that becomes about <strong>$3,120</strong>.
+            If you buy one lunch for <strong>$12</strong> on <strong>5 days per week</strong>
+            and do so for <strong>48 weeks per year</strong>, your weekly lunch cost is <strong>$60</strong>.
+            Your estimated yearly cost is <strong>$2,880</strong>.
           </p>
 
           <h3>Example 2: A more expensive lunch habit</h3>
           <p>
-            If your average lunch costs <strong>$18</strong> and you buy lunch <strong>5 days per week</strong>,
-            your weekly cost becomes <strong>$90</strong>.
-            That is about <strong>$390 per month</strong> and <strong>$4,680 per year</strong>.
+            If your average lunch costs <strong>$18</strong> and you buy lunch <strong>5 days per week</strong>
+            for <strong>48 weeks</strong>, your weekly cost is <strong>$90</strong>.
+            That is about <strong>$360 per month</strong> on a yearly-average basis and <strong>$4,320 per year</strong>.
           </p>
 
           <h3>Example 3: Eating out vs bringing lunch from home</h3>
           <p>
             If buying lunch costs <strong>$12</strong> and a packed lunch costs about <strong>$4</strong>,
             the difference is <strong>$8 per lunch</strong>.
-            Replacing 5 purchased lunches per week could save about <strong>$2,080 per year</strong>.
+            Replacing 5 purchased lunches per week for 48 weeks could save about <strong>$1,920 per year</strong>.
           </p>
 
           <div class="mini-grid">
@@ -774,7 +835,10 @@
 
         <section id="formulas">
           <h2>Formulas Used by This Calculator</h2>
-          <p>This calculator uses simple estimates based on your inputs:</p>
+          <p>
+            The calculator starts with the cost of a typical purchased lunch, adds any recurring extras,
+            and then scales that amount by your actual lunch-buying frequency.
+          </p>
 
           <div class="comparison-table-wrap">
             <table>
@@ -787,33 +851,71 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Daily lunch cost</strong></td>
-                  <td>Average cost per lunch × lunches per day</td>
-                  <td>$12 × 1 = $12/day</td>
+                  <td><strong>Effective bought-lunch cost</strong></td>
+                  <td>Lunch price + drinks, tips or fees</td>
+                  <td>$12 + $2 = $14</td>
                 </tr>
                 <tr>
-                  <td><strong>Weekly lunch cost</strong></td>
-                  <td>Daily lunch cost × days per week</td>
-                  <td>$12 × 5 = $60/week</td>
+                  <td><strong>Weekly bought-lunch cost</strong></td>
+                  <td>Effective bought-lunch cost × lunches per day × days per week</td>
+                  <td>$14 × 1 × 5 = $70/week</td>
                 </tr>
                 <tr>
-                  <td><strong>Yearly lunch cost</strong></td>
-                  <td>Weekly lunch cost × 52</td>
-                  <td>$60 × 52 = $3,120/year</td>
+                  <td><strong>Yearly bought-lunch cost</strong></td>
+                  <td>Weekly bought-lunch cost × active weeks</td>
+                  <td>$70 × 48 = $3,360/year</td>
                 </tr>
                 <tr>
-                  <td><strong>Monthly lunch cost</strong></td>
-                  <td>Yearly lunch cost ÷ 12</td>
-                  <td>$3,120 ÷ 12 = $260/month</td>
+                  <td><strong>Average monthly cost</strong></td>
+                  <td>Yearly bought-lunch cost ÷ 12</td>
+                  <td>$3,360 ÷ 12 = $280/month</td>
                 </tr>
                 <tr>
-                  <td><strong>Estimated yearly savings</strong></td>
-                  <td>(Bought lunch cost - packed lunch cost) × lunches per year</td>
-                  <td>($12 - $4) × 260 = $2,080/year</td>
+                  <td><strong>Yearly packed-lunch cost</strong></td>
+                  <td>Packed lunch cost × lunches per day × days per week × active weeks</td>
+                  <td>$4 × 1 × 5 × 48 = $960/year</td>
+                </tr>
+                <tr>
+                  <td><strong>Potential yearly savings</strong></td>
+                  <td>Yearly bought-lunch cost - yearly packed-lunch cost</td>
+                  <td>$3,360 - $960 = $2,400/year</td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <p class="method-note">
+            The calculator does not assume that every calendar week is a normal lunch-buying week.
+            Using your own active-week estimate can make the annual figure more useful than a fixed 52-week assumption.
+          </p>
+        </section>
+
+        <section id="interpret-results">
+          <h2>How to Interpret Your Lunch Cost Result</h2>
+          <p>
+            The yearly number is useful because it puts a small repeated expense into the same time frame as larger financial goals.
+            A $10 or $15 lunch may feel minor on a single day, but the annual total can be compared with an emergency-fund contribution,
+            a debt payment, a vacation budget, or another priority.
+          </p>
+          <p>
+            The savings number is not a recommendation to eliminate purchased lunches. It is the estimated difference between two routines.
+            If buying lunch saves time, supports work relationships, or simply makes some days easier, a mixed routine may provide a better balance
+            than trying to minimize the cost at all times.
+          </p>
+          <div class="callout">
+            <strong>Practical approach:</strong> Run the calculator twice—first with your current routine, then with one or two fewer
+            purchased-lunch days per week. The difference shows the impact of a realistic change rather than an all-or-nothing scenario.
+          </div>
+        </section>
+
+        <section id="realistic-estimate">
+          <h2>How to Make Your Estimate More Realistic</h2>
+          <ul>
+            <li><strong>Use an average meal price:</strong> look at several recent lunches instead of using your cheapest or most expensive meal.</li>
+            <li><strong>Add recurring extras:</strong> include delivery charges, tips, drinks, or snacks if they are usually part of the purchase.</li>
+            <li><strong>Reduce active weeks:</strong> account for vacations, holidays, remote-work periods, or weeks when you normally do not buy lunch.</li>
+            <li><strong>Estimate packed-lunch cost honestly:</strong> include the food itself rather than treating homemade lunch as free.</li>
+            <li><strong>Test more than one scenario:</strong> compare your current habit with a moderate change, such as bringing lunch twice per week.</li>
+          </ul>
         </section>
 
         <section id="eating-out-vs-packed-lunch">
@@ -899,8 +1001,8 @@
           <div class="faq-item">
             <h3>How do I calculate my yearly lunch spending?</h3>
             <p>
-              Multiply the average cost per lunch by the number of lunches you buy per day.
-              Then multiply that by the number of days per week you buy lunch and by 52 weeks.
+              Add any recurring extras to the average cost per bought lunch, multiply by lunches per day and days per week,
+              then multiply by the number of active lunch-buying weeks you expect during the year.
             </p>
           </div>
 
@@ -908,7 +1010,7 @@
             <h3>How much does buying lunch at work cost per year?</h3>
             <p>
               It depends on the price per meal and how often you buy lunch.
-              For example, one $12 lunch bought 5 days per week costs about $3,120 per year.
+              For example, one $12 lunch bought 5 days per week for 48 active weeks costs about $2,880 per year before optional extras.
             </p>
           </div>
 
@@ -921,10 +1023,18 @@
           </div>
 
           <div class="faq-item">
+            <h3>How many weeks per year should I use?</h3>
+            <p>
+              Use the number of weeks in which you realistically expect to follow your usual lunch routine.
+              For example, 48 weeks allows for about four weeks of vacation, holidays, travel, or other skipped weeks.
+            </p>
+          </div>
+
+          <div class="faq-item">
             <h3>Is this calculator exact?</h3>
             <p>
-              It gives a simple estimate using 52 weeks per year and 12 months per year.
-              Actual costs can differ because of taxes, tips, delivery fees, skipped days, discounts, changing food prices, or different meal choices.
+              It gives a planning estimate based on the values you enter. You can choose your active lunch-buying weeks,
+              but actual spending can still differ because of changing meal prices, unplanned purchases, discounts, skipped days, or other habits.
             </p>
           </div>
 
@@ -937,10 +1047,13 @@
           </div>
 
           <p class="disclaimer">
+            <strong>Updated September 10, 2026.</strong> Calculator logic and examples were reviewed for consistency.
+          </p>
+          <p class="disclaimer">
             <strong>Note:</strong> This calculator is for educational and planning purposes only. It does not provide financial advice.
           </p>
 
-          <a class="back-link" href="index.html">← Back to home</a>
+          <a class="back-link" href="/">← Back to home</a>
         </section>
       </article>
 
@@ -953,7 +1066,7 @@
           <a href="https://financecalccenter.com/coffee-cost-calculator.html">Coffee Cost Calculator</a>
           <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
           <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
-          <a href="https://financecalccenter.com/index.html">Browse all calculators →</a>
+          <a href="https://financecalccenter.com/">Browse all calculators →</a>
         </div>
       </section>
 
@@ -965,7 +1078,7 @@
 
   <script>
     function fmtMoney(x, currency) {
-      if (!isFinite(x)) x = 0;
+      if (!Number.isFinite(x)) x = 0;
 
       if (currency === "Ft") {
         return Math.round(x).toLocaleString("en-US") + " Ft";
@@ -977,49 +1090,96 @@
       });
     }
 
-    function getInputValues() {
-      const currency = document.getElementById("currency").value;
-      const pricePerLunch = Math.max(0, parseFloat(document.getElementById("pricePerLunch").value) || 0);
-      const lunchesPerDay = Math.max(0, parseFloat(document.getElementById("lunchesPerDay").value) || 0);
-      const daysPerWeekRaw = Math.max(0, parseFloat(document.getElementById("daysPerWeek").value) || 0);
-      const daysPerWeek = Math.min(7, daysPerWeekRaw);
-      const homeLunchCost = Math.max(0, parseFloat(document.getElementById("homeLunchCost").value) || 0);
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
 
+    function readNumber(id) {
+      const value = parseFloat(document.getElementById(id).value);
+      return Number.isFinite(value) ? value : 0;
+    }
+
+    function getInputValues() {
       return {
-        currency,
-        pricePerLunch,
-        lunchesPerDay,
-        daysPerWeek,
-        homeLunchCost
+        currency: document.getElementById("currency").value,
+        pricePerLunch: Math.max(0, readNumber("pricePerLunch")),
+        lunchesPerDay: Math.max(0, readNumber("lunchesPerDay")),
+        daysPerWeek: clamp(readNumber("daysPerWeek"), 0, 7),
+        homeLunchCost: Math.max(0, readNumber("homeLunchCost")),
+        extrasPerLunch: Math.max(0, readNumber("extrasPerLunch")),
+        activeWeeks: clamp(readNumber("activeWeeks"), 1, 52)
       };
     }
 
+    function showError(message) {
+      const errorBox = document.getElementById("errorBox");
+      const resultBox = document.getElementById("result");
+      errorBox.textContent = message;
+      errorBox.style.display = "block";
+      resultBox.style.display = "none";
+      resultBox.innerHTML = "";
+    }
+
+    function clearError() {
+      const errorBox = document.getElementById("errorBox");
+      errorBox.textContent = "";
+      errorBox.style.display = "none";
+    }
+
     function calculateLunchCosts() {
+      const values = getInputValues();
       const {
         currency,
         pricePerLunch,
         lunchesPerDay,
         daysPerWeek,
-        homeLunchCost
-      } = getInputValues();
+        homeLunchCost,
+        extrasPerLunch,
+        activeWeeks
+      } = values;
+
+      if (pricePerLunch <= 0) {
+        showError("Enter an average lunch cost greater than zero.");
+        return;
+      }
+
+      if (lunchesPerDay <= 0 || daysPerWeek <= 0) {
+        showError("Enter how many lunches you buy and how many days per week you buy them.");
+        return;
+      }
+
+      clearError();
 
       const resultBox = document.getElementById("result");
-
-      const boughtDailyCost = pricePerLunch * lunchesPerDay;
-      const boughtWeeklyCost = boughtDailyCost * daysPerWeek;
-      const boughtYearlyCost = boughtWeeklyCost * 52;
-      const boughtMonthlyCost = boughtYearlyCost / 12;
-
+      const effectiveBoughtLunchCost = pricePerLunch + extrasPerLunch;
       const lunchesPerWeek = lunchesPerDay * daysPerWeek;
-      const lunchesPerYear = lunchesPerWeek * 52;
+      const lunchesPerYear = lunchesPerWeek * activeWeeks;
+
+      const boughtDailyCost = effectiveBoughtLunchCost * lunchesPerDay;
+      const boughtWeeklyCost = boughtDailyCost * daysPerWeek;
+      const boughtYearlyCost = boughtWeeklyCost * activeWeeks;
+      const boughtMonthlyCost = boughtYearlyCost / 12;
 
       const homeDailyCost = homeLunchCost * lunchesPerDay;
       const homeWeeklyCost = homeDailyCost * daysPerWeek;
-      const homeYearlyCost = homeWeeklyCost * 52;
+      const homeYearlyCost = homeWeeklyCost * activeWeeks;
       const homeMonthlyCost = homeYearlyCost / 12;
 
-      const yearlySavings = Math.max(0, boughtYearlyCost - homeYearlyCost);
+      const yearlySavings = boughtYearlyCost - homeYearlyCost;
       const monthlySavings = yearlySavings / 12;
+      const fiveYearDifference = yearlySavings * 5;
+      const savingsRate = boughtYearlyCost > 0 ? (yearlySavings / boughtYearlyCost) * 100 : 0;
+
+      let comparisonText;
+      if (yearlySavings > 0) {
+        comparisonText = `Your packed-lunch estimate is about <strong>${fmtMoney(yearlySavings, currency)} lower per year</strong>
+          (${Math.max(0, savingsRate).toLocaleString("en-US", { maximumFractionDigits: 1 })}% less) than your bought-lunch estimate.`;
+      } else if (yearlySavings < 0) {
+        comparisonText = `With these inputs, packed lunches are estimated to cost about
+          <strong>${fmtMoney(Math.abs(yearlySavings), currency)} more per year</strong> than bought lunches.`;
+      } else {
+        comparisonText = `With these inputs, the yearly cost of bought and packed lunches is approximately the same.`;
+      }
 
       resultBox.style.display = "block";
       resultBox.innerHTML = `
@@ -1032,7 +1192,7 @@
           </div>
 
           <div class="result-item">
-            <span class="result-label">Buying lunch cost per month</span>
+            <span class="result-label">Average monthly lunch cost</span>
             <span class="result-value">${fmtMoney(boughtMonthlyCost, currency)}</span>
           </div>
 
@@ -1042,26 +1202,35 @@
           </div>
 
           <div class="result-item">
-            <span class="result-label">Buying lunch cost per lunch-buying day</span>
+            <span class="result-label">Cost per lunch-buying day</span>
             <span class="result-value">${fmtMoney(boughtDailyCost, currency)}</span>
           </div>
 
           <div class="result-item highlight-result">
-            <span class="result-label">Estimated yearly savings vs packed lunch</span>
-            <span class="result-value">${fmtMoney(yearlySavings, currency)}</span>
+            <span class="result-label">Yearly difference vs packed lunch</span>
+            <span class="result-value">${fmtMoney(Math.abs(yearlySavings), currency)}</span>
           </div>
 
           <div class="result-item">
-            <span class="result-label">Estimated monthly savings</span>
-            <span class="result-value">${fmtMoney(monthlySavings, currency)}</span>
+            <span class="result-label">5-year difference if unchanged</span>
+            <span class="result-value">${fmtMoney(Math.abs(fiveYearDifference), currency)}</span>
           </div>
+        </div>
+
+        <div class="result-summary">
+          ${comparisonText}
         </div>
 
         <p class="note">
           You buy about <strong>${lunchesPerWeek.toLocaleString("en-US", { maximumFractionDigits: 1 })} lunches per week</strong>
           and about <strong>${lunchesPerYear.toLocaleString("en-US", { maximumFractionDigits: 0 })} lunches per year</strong>.
-          At ${fmtMoney(pricePerLunch, currency)} per lunch, that is about
-          <strong>${fmtMoney(boughtMonthlyCost, currency)} per month</strong> and
+          Your effective purchased-lunch cost is ${fmtMoney(effectiveBoughtLunchCost, currency)} per meal
+          (${fmtMoney(pricePerLunch, currency)} lunch + ${fmtMoney(extrasPerLunch, currency)} extras).
+        </p>
+
+        <p class="note">
+          At your selected frequency of ${activeWeeks.toLocaleString("en-US", { maximumFractionDigits: 0 })} active weeks,
+          buying lunch is about <strong>${fmtMoney(boughtMonthlyCost, currency)} per month</strong> on a yearly-average basis and
           <strong>${fmtMoney(boughtYearlyCost, currency)} per year</strong>.
         </p>
 
@@ -1079,8 +1248,11 @@
       document.getElementById("lunchesPerDay").value = "1";
       document.getElementById("daysPerWeek").value = "5";
       document.getElementById("homeLunchCost").value = "4.00";
+      document.getElementById("extrasPerLunch").value = "0.00";
+      document.getElementById("activeWeeks").value = "48";
       document.getElementById("result").style.display = "none";
       document.getElementById("result").innerHTML = "";
+      clearError();
     }
 
     document.getElementById("calculatorForm").addEventListener("submit", function (e) {
