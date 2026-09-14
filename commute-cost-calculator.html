@@ -26,25 +26,24 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="shortcut icon" href="/favicon.ico">
 
-  <title>Commute Cost Calculator | Daily, Monthly & Yearly Commuting Cost</title>
-  <meta
-    name="description"
-    content="Use this commute cost calculator to estimate your daily, weekly, monthly, and yearly commuting cost. Calculate fuel, parking, tolls, public transit, and compare driving with transit."
-  />
+  <title>Commute Cost Calculator – Driving, Transit, Vehicle Wear & Annual Time | FinanceCalcCenter</title>
+  <meta name="description" content="Estimate the real cost of commuting by car or public transit. Include fuel, parking, tolls, vehicle wear, active commute weeks, and annual commute time for a more realistic comparison." />
   <link rel="canonical" href="https://financecalccenter.com/commute-cost-calculator.html" />
+  <meta name="author" content="Tibor Győry" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Commute Cost Calculator | Daily, Monthly & Yearly Commuting Cost" />
-  <meta property="og:description" content="Estimate how much commuting costs per day, month, and year. Calculate fuel, parking, tolls, transit fares, and possible savings." />
+  <meta property="og:title" content="Commute Cost Calculator – Driving, Transit, Vehicle Wear & Annual Time" />
+  <meta property="og:description" content="Compare driving and transit using fuel, parking, tolls, vehicle wear, active commute weeks, and annual commute time." />
   <meta property="og:url" content="https://financecalccenter.com/commute-cost-calculator.html" />
   <meta property="og:site_name" content="FinanceCalcCenter" />
   <meta property="og:image" content="https://financecalccenter.com/assets/og/commute-cost-banner.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Commute Cost Calculator | Daily, Monthly & Yearly Commuting Cost" />
-  <meta name="twitter:description" content="Calculate how much your commute costs per day, month, and year." />
+  <meta name="twitter:title" content="Commute Cost Calculator – Driving, Transit & Annual Time" />
+  <meta name="twitter:description" content="Estimate annual driving and transit costs, vehicle wear, and time spent commuting." />
   <meta name="twitter:image" content="https://financecalccenter.com/assets/og/commute-cost-banner.png" />
 
   <style>
@@ -496,6 +495,44 @@
       text-align: center;
     }
 
+
+    .byline {
+      margin-top: 0.85rem !important;
+      color: var(--muted) !important;
+      font-size: 0.9rem !important;
+    }
+
+    .decision-box {
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.24);
+    }
+
+    .decision-box strong {
+      color: #dbeafe;
+    }
+
+    .error-box {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.9rem 1rem;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(248, 113, 113, 0.45);
+      background: rgba(127, 29, 29, 0.18);
+      color: #fecaca;
+    }
+
+    .result-summary {
+      margin-top: 0.25rem;
+      padding: 0.95rem;
+      border-radius: 0.95rem;
+      background: rgba(34, 197, 94, 0.07);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      color: #d1fae5;
+    }
+
     @media (max-width: 760px) {
       .field-grid,
       .result-grid,
@@ -524,12 +561,42 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "inLanguage": "en",
-    "description": "Estimate daily, weekly, monthly, and yearly commuting costs, including fuel, parking, tolls, public transit fares, and other commuting expenses.",
+    "description": "Estimate commuting costs by car or public transit, including fuel, parking, tolls, vehicle wear, active commute weeks, and annual commute time.",
+    "isAccessibleForFree": true,
+    "author": {
+      "@type": "Person",
+      "name": "Tibor Győry",
+      "url": "https://financecalccenter.com/about.html"
+    },
     "publisher": {
       "@type": "Organization",
       "name": "FinanceCalcCenter",
       "url": "https://financecalccenter.com/"
     }
+  }
+  </script>
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Commute Cost Calculator – Driving, Transit, Vehicle Wear & Annual Time",
+    "description": "A practical guide to estimating commuting costs and comparing driving with public transit using direct costs, vehicle wear, schedule, and time.",
+    "url": "https://financecalccenter.com/commute-cost-calculator.html",
+    "mainEntityOfPage": "https://financecalccenter.com/commute-cost-calculator.html",
+    "author": {
+      "@type": "Person",
+      "name": "Tibor Győry",
+      "url": "https://financecalccenter.com/about.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "FinanceCalcCenter",
+      "url": "https://financecalccenter.com/"
+    },
+    "dateModified": "2026-09-14",
+    "inLanguage": "en"
   }
   </script>
 
@@ -563,43 +630,33 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What does a commute cost calculator do?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A commute cost calculator estimates how much traveling to work, school, or another regular destination costs per day, week, month, and year. It can include fuel, parking, tolls, transit fares, and other commuting expenses."
-        }
+        "name": "How do I calculate my yearly commute cost?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Estimate the cost per commute day, multiply by commute days per week and active commute weeks per year, then add recurring monthly costs. This calculator also lets you include optional vehicle wear per mile or kilometer."}
       },
       {
         "@type": "Question",
-        "name": "How do you calculate yearly commuting cost?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "To estimate yearly commuting cost, calculate the cost per commute day, multiply it by the number of commute days per week, then multiply by 52 weeks. Monthly cost is estimated by dividing the yearly cost by 12."
-        }
+        "name": "Should I include vehicle wear and depreciation?",
+        "acceptedAnswer": {"@type": "Answer", "text": "If you want a fuller driving-cost estimate, you can include an optional cost per mile or kilometer for maintenance, tires, repairs, and depreciation. Leave it at zero if you only want direct out-of-pocket costs."}
       },
       {
         "@type": "Question",
-        "name": "What should I include in my commuting cost?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Common commuting costs include fuel, parking, tolls, train tickets, bus fares, subway passes, rideshare costs, and other regular monthly commuting expenses."
-        }
+        "name": "How should I account for vacation and remote-work weeks?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Use the active commute weeks field instead of automatically assuming 52 normal commute weeks. For example, 48 weeks allows for about four weeks of vacation, holidays, travel, or other breaks."}
       },
       {
         "@type": "Question",
-        "name": "Is driving or public transit cheaper for commuting?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It depends on distance, fuel price, vehicle efficiency, parking, tolls, and local transit fares. This calculator compares estimated driving cost with public transit cost so you can see which option may be cheaper."
-        }
+        "name": "Is public transit always cheaper than driving?",
+        "acceptedAnswer": {"@type": "Answer", "text": "No. The answer depends on fuel, parking, tolls, vehicle wear, transit fares, fixed monthly costs, and your schedule. The calculator compares both options using the values you enter."}
+      },
+      {
+        "@type": "Question",
+        "name": "Can this calculator show how much time I spend commuting?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. Enter your round-trip commute time in minutes to estimate annual hours spent commuting based on your schedule and active commute weeks."}
       },
       {
         "@type": "Question",
         "name": "Is this commute cost calculator exact?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It provides an estimate using 52 weeks per year and 12 months per year. Actual costs may differ because of traffic, route changes, fuel price changes, car maintenance, insurance, transit fare changes, holidays, and remote work days."
-        }
+        "acceptedAnswer": {"@type": "Answer", "text": "No. It is a planning estimate. Actual costs may differ because of traffic, fuel prices, maintenance, insurance, route changes, transit fares, holidays, and changes to your work schedule."}
       }
     ]
   }
@@ -618,22 +675,23 @@
     <header class="hero">
       <h1>Commute Cost Calculator</h1>
       <p>
-        Estimate how much your commute costs per day, week, month, and year.
-        Calculate fuel, parking, tolls, public transit fares, and compare driving with transit.
+        Estimate the real cost of commuting by car or public transit. Include fuel, parking, tolls,
+        optional vehicle wear, active commute weeks, and even the time you spend traveling each year.
+      </p>
+      <p class="byline">
+        Written and reviewed by <a href="about.html">Tibor Győry</a> · Updated September 14, 2026 · Educational use only
       </p>
     </header>
 
     <div class="intro">
   <p>
-    Daily commuting expenses are easy to underestimate because small costs like fuel,
-    parking, tolls, and transit fares add up over time. Even a relatively short commute
-    can cost hundreds or thousands each year.
+    A commute is more than a fuel bill. Parking, tolls, vehicle wear, transit fares, fixed passes,
+    and the number of weeks you actually travel can all change the real annual cost.
   </p>
-
   <p>
-    This calculator helps estimate your commuting expenses using your distance, fuel
-    efficiency, parking fees, tolls, transit costs, and work schedule. It provides a
-    simple estimate for daily, weekly, monthly, and yearly commuting costs.
+    This calculator separates direct driving costs from optional vehicle wear, compares driving with public transit,
+    and can estimate the annual hours you spend commuting. That makes it useful not only for budgeting, but also for
+    comparing hybrid-work schedules, job locations, or transportation options.
   </p>
 </div>
 
@@ -711,9 +769,33 @@
               </div>
 
               <div class="field">
-                <label for="otherMonthly">Other monthly commute costs</label>
-                <input type="number" id="otherMonthly" inputmode="decimal" min="0" step="0.01" value="0" />
-                <div class="help-text">Optional: passes, bike storage, rideshare, or other recurring costs.</div>
+                <label for="vehicleCostPerDistance">Optional: vehicle wear cost per mile / km</label>
+                <input type="number" id="vehicleCostPerDistance" inputmode="decimal" min="0" step="0.01" value="0" />
+                <div class="help-text">Optional estimate for maintenance, tires, repairs, and depreciation. Leave 0 for direct cash costs only.</div>
+              </div>
+
+              <div class="field">
+                <label for="drivingOtherMonthly">Other monthly driving costs</label>
+                <input type="number" id="drivingOtherMonthly" inputmode="decimal" min="0" step="0.01" value="0" />
+                <div class="help-text">Optional recurring costs tied to driving your commute.</div>
+              </div>
+
+              <div class="field">
+                <label for="transitMonthlyFixed">Monthly transit pass / fixed transit cost</label>
+                <input type="number" id="transitMonthlyFixed" inputmode="decimal" min="0" step="0.01" value="0" />
+                <div class="help-text">Use this if you pay a fixed monthly pass instead of, or in addition to, daily fares.</div>
+              </div>
+
+              <div class="field">
+                <label for="activeWeeks">Active commute weeks per year</label>
+                <input type="number" id="activeWeeks" inputmode="numeric" min="1" max="52" step="1" value="48" />
+                <div class="help-text">Example: 48 allows for roughly four weeks of vacation, holidays, travel, or other breaks.</div>
+              </div>
+
+              <div class="field full">
+                <label for="commuteMinutesDaily">Optional: round-trip commute time in minutes</label>
+                <input type="number" id="commuteMinutesDaily" inputmode="numeric" min="0" step="1" value="60" />
+                <div class="help-text">Used only to estimate annual hours spent commuting. It is not converted into a monetary value.</div>
               </div>
             </div>
 
@@ -727,11 +809,12 @@
             Useful for work commuting, hybrid schedules, school travel, driving costs, public transit comparisons, parking costs, tolls, and everyday budget planning.
           </div>
 
+          <div id="errorBox" class="error-box" role="alert" aria-live="assertive"></div>
+
           <div id="result" class="result-box" aria-live="polite"></div>
 
           <div class="assumption-box">
-            <strong>Assumption:</strong> This calculator uses 52 weeks per year and 12 months per year.
-            Actual costs may differ because of fuel price changes, traffic, route changes, vehicle maintenance, insurance, tire wear, transit fare changes, holidays, and remote work days.
+            <strong>Method:</strong> You choose the number of active commute weeks per year. Monthly values are yearly estimates divided by 12. Vehicle wear and commute time are optional so you can keep the calculation simple or make it more complete.
           </div>
         </section>
 
@@ -739,13 +822,15 @@
           <div class="toc" aria-labelledby="toc-heading">
             <div class="toc-title" id="toc-heading">On this page</div>
             <ul>
-              <li><a href="#what-is-commute-cost-calculator">What this calculator does</a></li>
+              <li><a href="#what-it-does">What this calculator does</a></li>
               <li><a href="#how-to-use">How to use it</a></li>
-              <li><a href="#examples">Commute cost examples</a></li>
-              <li><a href="#why-it-matters">Why commuting costs matter</a></li>
-              <li><a href="#formulas">Formulas used</a></li>
+              <li><a href="#examples">Practical commute examples</a></li>
+              <li><a href="#direct-vs-full">Direct cost vs fuller vehicle cost</a></li>
+              <li><a href="#active-weeks">Why active commute weeks matter</a></li>
+              <li><a href="#time-cost">The time side of commuting</a></li>
               <li><a href="#driving-vs-transit">Driving vs public transit</a></li>
-              <li><a href="#ways-to-save">Ways to reduce commute costs</a></li>
+              <li><a href="#job-comparison">Using commute cost when comparing jobs</a></li>
+              <li><a href="#formulas">Formulas and assumptions</a></li>
               <li><a href="#mistakes">Common mistakes</a></li>
               <li><a href="#faq">Frequently asked questions</a></li>
             </ul>
@@ -753,307 +838,213 @@
 
           <div class="callout">
             <strong>Quick example:</strong>
-            A 30-mile round-trip commute, 5 days per week, at 30 MPG and $3.50 per gallon costs about
-            <strong>$17.50 per week</strong> and about <strong>$910 per year</strong> in fuel before parking, tolls, maintenance, and insurance.
+            A 30-mile round trip, 5 days per week, 48 weeks per year, at 30 MPG and $3.50 per gallon costs about
+            <strong>$840 per year in fuel</strong>. Parking, tolls, vehicle wear, and fixed monthly costs can increase the real total substantially.
           </div>
 
           <div class="summary-box" aria-label="Key takeaway">
-         <strong>Key takeaway:</strong>
-           Commuting costs are more than just fuel. Parking, tolls, public transit fares, and recurring expenses can significantly increase the true yearly cost of traveling to work. Understanding your total commuting cost can help you make better budgeting, transportation, and job-related decisions.
-         </div>
-          
-          <section id="what-is-commute-cost-calculator">
-            <h2>What Is a Commute Cost Calculator?</h2>
+            <strong>Key takeaway:</strong>
+            A useful commute estimate separates what leaves your wallet now from costs that build up more slowly.
+            Fuel, parking, and tolls are direct cash costs; maintenance, tires, repairs, and depreciation are optional fuller-cost estimates.
+          </div>
+
+          <section id="what-it-does">
+            <h2>What This Commute Cost Calculator Does</h2>
             <p>
-              A commute cost calculator estimates how much it costs to travel to work, school, or another regular destination.
-              It can include fuel, parking, tolls, public transit fares, and other recurring commuting costs.
+              The calculator estimates driving and public-transit costs using your actual schedule rather than assuming that every week of the year is identical.
+              For driving, it starts with fuel and then adds parking, tolls, optional vehicle wear, and any recurring monthly driving costs.
             </p>
             <p>
-              This is useful because commuting can be one of the hidden costs of a job or schedule.
-              A longer commute may not seem expensive every day, but fuel, fares, parking, and tolls can add up over a full year.
+              For public transit, you can use a daily fare, a fixed monthly pass, or both. You can also enter round-trip commute time to estimate annual hours spent traveling.
             </p>
           </section>
 
           <section id="how-to-use">
-            <h2>How to Use This Commute Cost Calculator</h2>
-            <ul>
-              <li><strong>Choose your currency:</strong> dollar, euro, pound, or forint.</li>
-              <li><strong>Select your unit:</strong> miles and MPG, or kilometers and L/100 km.</li>
-              <li><strong>Enter round-trip distance:</strong> use the total distance there and back for one commute day.</li>
-              <li><strong>Enter commute days per week:</strong> use 5 for a normal workweek or fewer for hybrid schedules.</li>
-              <li><strong>Enter fuel efficiency and fuel price:</strong> use your vehicle’s average fuel data.</li>
-              <li><strong>Add parking and tolls:</strong> include regular daily commute costs.</li>
-              <li><strong>Add public transit cost:</strong> optional, but useful for comparing driving with transit.</li>
-              <li><strong>Add other monthly costs:</strong> optional recurring commute expenses such as passes, bike storage, or rideshare costs.</li>
-            </ul>
+            <h2>How to Use the Calculator</h2>
+            <ol>
+              <li><strong>Select miles/MPG or km/L per 100 km.</strong></li>
+              <li><strong>Enter round-trip distance</strong> for one commute day.</li>
+              <li><strong>Enter commute days per week</strong> — for example, 3 for a hybrid schedule.</li>
+              <li><strong>Add fuel efficiency and fuel price.</strong></li>
+              <li><strong>Add parking and tolls</strong> if they are regular commute-day costs.</li>
+              <li><strong>Optional: add vehicle wear per mile or km</strong> for a fuller car-cost estimate.</li>
+              <li><strong>Enter public-transit costs</strong> as a daily fare, monthly pass, or both.</li>
+              <li><strong>Set active commute weeks per year</strong> to account for vacation, holidays, and other breaks.</li>
+              <li><strong>Optional: enter daily round-trip commute minutes</strong> to see annual commuting hours.</li>
+            </ol>
           </section>
 
           <section id="examples">
-            <h2>Commute Cost Examples</h2>
+            <h2>Practical Commute Cost Examples</h2>
 
-            <h3>Example 1: Fuel-only commute</h3>
+            <h3>Example 1: Fuel-only estimate</h3>
             <p>
-              A <strong>30-mile round-trip commute</strong>, 5 days per week, with a car that gets <strong>30 MPG</strong>
-              and fuel at <strong>$3.50 per gallon</strong> costs about <strong>$3.50 per commute day</strong> in fuel.
-              Over a year, that is about <strong>$910</strong> before parking, tolls, maintenance, insurance, and wear.
+              A 30-mile round trip at 30 MPG uses about 1 gallon per commute day. At $3.50 per gallon, fuel costs $3.50 per day.
+              Commuting 5 days per week for 48 weeks gives an estimated annual fuel cost of $840.
             </p>
 
-            <h3>Example 2: Commute with parking</h3>
+            <h3>Example 2: Parking changes the picture</h3>
             <p>
-              If the same commute also includes <strong>$8 per day for parking</strong>, the daily cost rises to about
-              <strong>$11.50 per commute day</strong>. Over a 5-day week, that is about <strong>$57.50</strong>.
+              Add $8 of parking per day to the same commute and the direct daily driving cost becomes $11.50 before tolls or vehicle wear.
+              Over 48 active weeks, parking alone adds $1,920 per year.
             </p>
 
-            <h3>Example 3: Public transit comparison</h3>
+            <h3>Example 3: Hybrid work</h3>
             <p>
-              If public transit costs <strong>$8 per commute day</strong>, it may be cheaper than driving if parking, tolls,
-              fuel, and vehicle wear are high. The best option depends on your location, schedule, comfort, and reliability.
+              Reducing the schedule from 5 commute days to 3 cuts variable fuel, parking, and toll costs by about 40% if everything else stays the same.
+              Fixed costs, such as a monthly parking contract, may not fall by the same percentage.
             </p>
 
-            <div class="mini-grid">
-              <div class="mini-card">
-                <strong>Daily view</strong><br>
-                Shows what each commute day costs.
-              </div>
-              <div class="mini-card">
-                <strong>Monthly view</strong><br>
-                Helps compare commuting with rent, bills, subscriptions, and savings goals.
-              </div>
-              <div class="mini-card">
-                <strong>Yearly view</strong><br>
-                Shows the long-term cost of your regular commute.
-              </div>
-            </div>
-          </section>
-
-          <section id="why-it-matters">
-            <h2>Why Commuting Costs Matter</h2>
+            <h3>Example 4: Public transit pass</h3>
             <p>
-              Commuting costs can affect the real value of a job, school schedule, or living location.
-              A higher-paying job farther away may not be as attractive if fuel, parking, tolls, time, and vehicle wear are high.
-            </p>
-            <p>
-              This calculator focuses on direct costs. It does not automatically include the value of your time,
-              vehicle depreciation, repairs, insurance, or stress. Those factors may also matter when comparing commute options.
+              If a transit pass costs $120 per month, that is $1,440 per year before any additional daily fares.
+              Comparing this with driving is more useful when the driving estimate includes parking, tolls, and at least a reasonable allowance for vehicle wear.
             </p>
           </section>
 
-          <section id="formulas">
-            <h2>Formulas Used by This Calculator</h2>
+          <section id="direct-vs-full">
+            <h2>Direct Driving Cost vs a Fuller Vehicle Cost</h2>
             <p>
-              This calculator uses simple estimates based on your inputs.
+              There are two useful ways to look at commuting by car. A <strong>direct-cost estimate</strong> includes the money you clearly spend on the commute now,
+              such as fuel, parking, and tolls. A <strong>fuller-cost estimate</strong> also allows for costs that increase with mileage, such as maintenance, tires, repairs, and depreciation.
             </p>
-
             <div class="comparison-table-wrap">
               <table>
-                <thead>
-                  <tr>
-                    <th>Calculation</th>
-                    <th>Formula</th>
-                    <th>Example</th>
-                  </tr>
-                </thead>
+                <thead><tr><th>Cost type</th><th>Examples</th><th>How this calculator handles it</th></tr></thead>
                 <tbody>
-                  <tr>
-                    <td><strong>Fuel cost with MPG</strong></td>
-                    <td>(Round-trip miles ÷ MPG) × fuel price per gallon</td>
-                    <td>(30 ÷ 30) × $3.50 = $3.50/day</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Fuel cost with L/100 km</strong></td>
-                    <td>(Round-trip km × L/100 km ÷ 100) × fuel price per liter</td>
-                    <td>(40 × 7 ÷ 100) × fuel price per liter</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Driving cost per day</strong></td>
-                    <td>Fuel cost + parking + tolls</td>
-                    <td>$3.50 + $8 + $0 = $11.50/day</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Weekly driving cost</strong></td>
-                    <td>Driving cost per day × commute days per week</td>
-                    <td>$11.50 × 5 = $57.50/week</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Yearly driving cost</strong></td>
-                    <td>(Weekly driving cost × 52) + other monthly costs × 12</td>
-                    <td>($57.50 × 52) + monthly extras</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Monthly driving cost</strong></td>
-                    <td>Yearly driving cost ÷ 12</td>
-                    <td>$2,990 ÷ 12 ≈ $249.17/month</td>
-                  </tr>
+                  <tr><td><strong>Direct variable</strong></td><td>Fuel, parking, tolls</td><td>Entered directly</td></tr>
+                  <tr><td><strong>Optional mileage-based</strong></td><td>Maintenance, tire wear, depreciation</td><td>Optional cost per mile / km</td></tr>
+                  <tr><td><strong>Fixed monthly</strong></td><td>Parking contract, garage fee, other commute-specific fixed costs</td><td>Other monthly driving costs</td></tr>
+                  <tr><td><strong>Not automatically included</strong></td><td>Insurance, financing, registration</td><td>Include only if you believe they change because of the commute</td></tr>
                 </tbody>
               </table>
             </div>
+          </section>
+
+          <section id="active-weeks">
+            <h2>Why Active Commute Weeks Matter</h2>
+            <p>
+              Using 52 weeks can overstate annual costs if you have vacation, holidays, business travel, seasonal work, or other weeks when you do not follow your normal commute.
+              That is why this calculator lets you set active commute weeks yourself.
+            </p>
+            <div class="decision-box">
+              <p><strong>Example:</strong> 5 commute days × 48 weeks = 240 commute days per year, not 260.</p>
+              <p>For a $10 variable cost per commute day, that difference alone is $200 per year.</p>
+            </div>
+          </section>
+
+          <section id="time-cost">
+            <h2>The Time Side of Commuting</h2>
+            <p>
+              Money is only one part of a commute. A 60-minute round trip, 5 days per week, for 48 weeks equals about 240 hours per year.
+              This calculator shows those hours separately rather than assigning a dollar value to your time automatically.
+            </p>
+            <p>
+              Keeping time and money separate avoids pretending that every hour of commuting has the same financial value.
+              You can still use the annual-hour result when comparing job locations, hybrid schedules, or transportation options.
+            </p>
           </section>
 
           <section id="driving-vs-transit">
             <h2>Driving vs Public Transit</h2>
             <p>
-              Driving and public transit can have very different costs. Driving may be more flexible, but it can include fuel,
-              parking, tolls, maintenance, insurance, repairs, and vehicle depreciation. Public transit may have a simpler fare,
-              but it may take longer or offer less flexibility.
+              A fair comparison uses the same active weeks and commute schedule for both options. Driving often has more categories of cost,
+              while public transit may have simpler fares but less flexibility.
             </p>
-
             <div class="comparison-table-wrap">
               <table>
-                <thead>
-                  <tr>
-                    <th>Option</th>
-                    <th>Possible benefit</th>
-                    <th>Possible cost or downside</th>
-                  </tr>
-                </thead>
+                <thead><tr><th>Option</th><th>Possible benefit</th><th>Possible cost or trade-off</th></tr></thead>
                 <tbody>
-                  <tr>
-                    <td><strong>Driving</strong></td>
-                    <td>Flexible schedule, direct route, easier for multiple stops</td>
-                    <td>Fuel, parking, tolls, maintenance, insurance, and wear</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Public transit</strong></td>
-                    <td>Predictable fare, no parking, less driving stress</td>
-                    <td>May take longer, limited routes, schedules, or transfers</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Hybrid commute</strong></td>
-                    <td>May reduce costs and keep flexibility</td>
-                    <td>Requires planning and may vary by day</td>
-                  </tr>
+                  <tr><td><strong>Driving</strong></td><td>Flexible, direct, useful for multiple stops</td><td>Fuel, parking, tolls, vehicle wear, traffic</td></tr>
+                  <tr><td><strong>Public transit</strong></td><td>Predictable fare, no parking, less driving stress</td><td>Schedules, transfers, reliability, possible longer travel time</td></tr>
+                  <tr><td><strong>Hybrid approach</strong></td><td>Can reduce variable car costs while keeping flexibility</td><td>May require planning or multiple payment methods</td></tr>
                 </tbody>
               </table>
             </div>
           </section>
 
-          <section id="ways-to-save">
-            <h2>Ways to Reduce Commute Costs</h2>
-            <ul>
-              <li><strong>Use hybrid work when possible:</strong> fewer commute days can reduce fuel, fares, and parking costs.</li>
-              <li><strong>Compare parking options:</strong> a cheaper lot or monthly pass may reduce costs.</li>
-              <li><strong>Carpool:</strong> sharing fuel and parking costs can lower the total.</li>
-              <li><strong>Check public transit passes:</strong> weekly or monthly passes may be cheaper than daily tickets.</li>
-              <li><strong>Plan efficient routes:</strong> shorter or less congested routes may reduce fuel use.</li>
-              <li><strong>Combine errands:</strong> fewer extra trips can reduce total driving cost.</li>
-              <li><strong>Consider total job value:</strong> compare commute cost when evaluating job offers or workplace locations.</li>
-            </ul>
+          <section id="job-comparison">
+            <h2>Using Commute Cost When Comparing Jobs or Work Locations</h2>
+            <p>
+              A higher salary does not automatically mean a better financial outcome if the new job creates a much more expensive commute.
+              Commuting cost is not the only factor, but it is one concrete number you can compare alongside salary, benefits, schedule, and time.
+            </p>
+            <ol>
+              <li>Estimate the annual commute cost for your current situation.</li>
+              <li>Run the calculator again for the alternative job or location.</li>
+              <li>Compare the annual cost difference.</li>
+              <li>Compare annual commute hours as a separate quality-of-life factor.</li>
+              <li>Then consider salary, benefits, flexibility, and career value.</li>
+            </ol>
+          </section>
+
+          <section id="formulas">
+            <h2>Formulas and Assumptions</h2>
+            <div class="comparison-table-wrap">
+              <table>
+                <thead><tr><th>Calculation</th><th>Formula</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Fuel cost, MPG</strong></td><td>(Round-trip miles ÷ MPG) × fuel price per gallon</td></tr>
+                  <tr><td><strong>Fuel cost, L/100 km</strong></td><td>(Round-trip km × L/100 km ÷ 100) × fuel price per liter</td></tr>
+                  <tr><td><strong>Vehicle wear per day</strong></td><td>Round-trip distance × wear cost per mile / km</td></tr>
+                  <tr><td><strong>Direct driving cost per day</strong></td><td>Fuel + parking + tolls</td></tr>
+                  <tr><td><strong>Fuller driving cost per day</strong></td><td>Direct driving cost + vehicle wear</td></tr>
+                  <tr><td><strong>Yearly variable driving cost</strong></td><td>Daily cost × commute days per week × active weeks</td></tr>
+                  <tr><td><strong>Yearly transit cost</strong></td><td>Daily fare × commute days × active weeks + monthly fixed transit cost × 12</td></tr>
+                  <tr><td><strong>Annual commute hours</strong></td><td>Daily round-trip minutes × commute days × active weeks ÷ 60</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Monthly values are annual estimates divided by 12. This is useful for budgeting, but it is not meant to reproduce every calendar month exactly.
+            </p>
           </section>
 
           <section id="mistakes">
             <h2>Common Mistakes When Estimating Commute Cost</h2>
             <ul>
-              <li><strong>Only counting fuel:</strong> parking, tolls, maintenance, insurance, and wear can also matter.</li>
-              <li><strong>Using one-way distance:</strong> commute cost usually needs round-trip distance.</li>
-              <li><strong>Ignoring hybrid schedules:</strong> fewer commute days can significantly change the yearly total.</li>
-              <li><strong>Forgetting parking:</strong> parking can cost more than fuel in some areas.</li>
-              <li><strong>Comparing driving and transit unfairly:</strong> include all regular costs for both options.</li>
-              <li><strong>Not updating fuel prices:</strong> fuel prices can change and affect the estimate.</li>
+              <li><strong>Counting only fuel:</strong> parking and tolls can be larger than fuel in some locations.</li>
+              <li><strong>Using one-way distance:</strong> the calculator expects the full round trip.</li>
+              <li><strong>Assuming 52 normal workweeks:</strong> vacations and holidays can materially change the annual total.</li>
+              <li><strong>Mixing fixed and variable costs:</strong> a monthly pass may stay the same even if you travel fewer days.</li>
+              <li><strong>Ignoring vehicle wear when comparing with transit:</strong> direct cash cost is useful, but it is not always the full car cost.</li>
+              <li><strong>Automatically pricing commute time:</strong> time matters, but its value is personal and context-dependent.</li>
             </ul>
           </section>
 
           <section id="faq">
             <h2>Frequently Asked Questions</h2>
-
-            <div class="faq-item">
-              <h3>What does a commute cost calculator do?</h3>
-              <p>
-                It estimates how much commuting costs per day, week, month, and year.
-                It can include fuel, parking, tolls, public transit fares, and other recurring commuting expenses.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>How do I calculate fuel cost for commuting?</h3>
-              <p>
-                For miles and MPG, divide round-trip commute miles by MPG, then multiply by fuel price per gallon.
-                For kilometers and L/100 km, multiply round-trip kilometers by L/100 km, divide by 100, then multiply by fuel price per liter.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>Should I include parking and tolls?</h3>
-              <p>
-                Yes. If parking and tolls are regular parts of your commute, they should be included because they can significantly increase the total cost.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>Does this calculator include maintenance or vehicle depreciation?</h3>
-              <p>
-                No. It focuses on direct recurring costs entered by the user, such as fuel, parking, tolls, transit fares, and monthly extras.
-                Maintenance, repairs, insurance, tire wear, and depreciation are not automatically included.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>Is public transit cheaper than driving?</h3>
-              <p>
-                It depends on your route, fuel price, parking, tolls, transit fares, and schedule.
-                This calculator compares the estimated yearly driving cost with the estimated yearly transit cost based on your inputs.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>How does hybrid work affect commuting cost?</h3>
-              <p>
-                Hybrid work can reduce commuting cost because you travel fewer days per week.
-                For example, commuting 3 days per week instead of 5 can reduce fuel, parking, tolls, and transit costs before considering any fixed costs.
-              </p>
-            </div>
-
-            <div class="faq-item">
-              <h3>Is this commute cost calculator exact?</h3>
-              <p>
-                It gives a simple estimate using 52 weeks per year and 12 months per year.
-                Actual costs can differ because of traffic, route changes, fuel price changes, maintenance, insurance, transit fare changes, holidays, vacation days, and remote work days.
-              </p>
-            </div>
-
-            <p class="disclaimer">
-              <strong>Note:</strong> This calculator is for educational and planning purposes only. It does not provide financial advice.
-            </p>
+            <div class="faq-item"><h3>How do I calculate my yearly commute cost?</h3><p>Estimate the cost per commute day, multiply by commute days per week and active weeks per year, then add recurring monthly costs. You can also include optional vehicle wear per mile or kilometer.</p></div>
+            <div class="faq-item"><h3>Should I include vehicle wear and depreciation?</h3><p>If you want a fuller driving-cost estimate, you can add a cost per mile or kilometer for maintenance, tires, repairs, and depreciation. Leave it at zero if you only want direct out-of-pocket costs.</p></div>
+            <div class="faq-item"><h3>How should I account for vacation and remote-work weeks?</h3><p>Use the active commute weeks field instead of assuming 52 normal commute weeks. For example, 48 weeks allows for about four weeks of vacation, holidays, travel, or other breaks.</p></div>
+            <div class="faq-item"><h3>Is public transit always cheaper than driving?</h3><p>No. It depends on fuel, parking, tolls, vehicle wear, transit fares, fixed monthly costs, and your schedule.</p></div>
+            <div class="faq-item"><h3>Can this calculator show how much time I spend commuting?</h3><p>Yes. Enter your round-trip commute time in minutes to estimate annual hours spent commuting based on your schedule and active commute weeks.</p></div>
+            <div class="faq-item"><h3>Is this commute cost calculator exact?</h3><p>No. It is a planning estimate. Actual costs can differ because of traffic, fuel prices, maintenance, insurance, route changes, transit fares, holidays, and schedule changes.</p></div>
+            <p class="disclaimer"><strong>Updated September 14, 2026.</strong> Calculator logic, examples, and comparison guidance were reviewed for consistency.</p>
+            <p class="disclaimer"><strong>Note:</strong> This calculator is for educational and planning purposes only. It does not provide individualized financial advice.</p>
           </section>
 
           <section id="about-this-calculator">
-        <h2>About This Calculator</h2>
+            <h2>About This Calculator</h2>
+            <p>
+              This calculator was created for FinanceCalcCenter by <a href="about.html">Tibor Győry</a> to make commuting costs easier to compare across different schedules and transportation options.
+              It deliberately separates direct cash costs, optional vehicle wear, transit costs, and travel time so users can choose the level of detail that fits their decision.
+            </p>
+          </section>
 
-        <p>
-        This Commute Cost Calculator was created by FinanceCalcCenter to provide a
-        simple and transparent way to estimate regular commuting expenses. It uses
-        the distance, fuel efficiency, fuel price, parking fees, tolls, transit
-        fares, commuting schedule, and other costs entered by the user.
-        </p>
-
-        <p>
-        The calculator provides estimated daily, weekly, monthly, and yearly
-        commuting costs. It can also compare the estimated cost of driving with
-        public transportation based on the values you enter.
-       </p>
-
-       <p>
-       Results are intended for educational and general planning purposes only.
-       Actual commuting expenses may vary because of fuel price changes, traffic,
-       holidays, remote work days, vehicle maintenance, insurance, depreciation,
-       transit fare changes, and other personal circumstances.
-       </p>
-        </section>
-          
           <section class="related-links" aria-labelledby="related-links-heading">
             <h2 id="related-links-heading">Related calculators and articles</h2>
             <div class="links">
               <a href="https://financecalccenter.com/cost-per-day-calculator.html">Cost Per Day Calculator</a>
               <a href="https://financecalccenter.com/monthly-to-yearly-cost-calculator.html">Monthly to Yearly Cost Calculator</a>
               <a href="https://financecalccenter.com/subscription-cost-calculator.html">Subscription Cost Calculator</a>
-              <a href="https://financecalccenter.com/coffee-cost-calculator.html">Coffee Cost Calculator</a>
-              <a href="https://financecalccenter.com/lunch-cost-calculator.html">Lunch Cost Calculator</a>
               <a href="https://financecalccenter.com/savings-goal-calculator.html">Savings Goal Calculator</a>
               <a href="https://financecalccenter.com/how-much-should-you-save-each-month.html">How Much Should You Save Each Month?</a>
-             <a href="https://financecalccenter.com/">Browse all calculators →</a>
+              <a href="https://financecalccenter.com/">Browse all calculators →</a>
             </div>
           </section>
 
-          <a class="back-link" href="index.html">← Back to home</a>
+          <a class="back-link" href="/">← Back to home</a>
         </article>
       </div>
     </main>
@@ -1065,160 +1056,176 @@
 
   <script>
     function fmtMoney(x, currency) {
-      if (!isFinite(x)) x = 0;
-
+      if (!Number.isFinite(x)) x = 0;
       if (currency === "Ft") {
         return Math.round(x).toLocaleString("en-US") + " Ft";
       }
-
       return currency + x.toLocaleString("en-US", {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
       });
     }
 
+    function clamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function readNumber(id) {
+      const value = parseFloat(document.getElementById(id).value);
+      return Number.isFinite(value) ? value : 0;
+    }
+
     function getInputValues() {
-      const currency = document.getElementById("currency").value;
-      const distanceUnit = document.getElementById("distanceUnit").value;
-
-      const roundTripDistance = Math.max(0, parseFloat(document.getElementById("roundTripDistance").value) || 0);
-      const commuteDaysRaw = Math.max(0, parseFloat(document.getElementById("commuteDaysPerWeek").value) || 0);
-      const commuteDaysPerWeek = Math.min(7, commuteDaysRaw);
-
-      const fuelEfficiency = Math.max(0, parseFloat(document.getElementById("fuelEfficiency").value) || 0);
-      const fuelPrice = Math.max(0, parseFloat(document.getElementById("fuelPrice").value) || 0);
-      const parkingDaily = Math.max(0, parseFloat(document.getElementById("parkingDaily").value) || 0);
-      const tollsDaily = Math.max(0, parseFloat(document.getElementById("tollsDaily").value) || 0);
-      const transitDaily = Math.max(0, parseFloat(document.getElementById("transitDaily").value) || 0);
-      const otherMonthly = Math.max(0, parseFloat(document.getElementById("otherMonthly").value) || 0);
-
       return {
-        currency,
-        distanceUnit,
-        roundTripDistance,
-        commuteDaysPerWeek,
-        fuelEfficiency,
-        fuelPrice,
-        parkingDaily,
-        tollsDaily,
-        transitDaily,
-        otherMonthly
+        currency: document.getElementById("currency").value,
+        distanceUnit: document.getElementById("distanceUnit").value,
+        roundTripDistance: Math.max(0, readNumber("roundTripDistance")),
+        commuteDaysPerWeek: clamp(readNumber("commuteDaysPerWeek"), 0, 7),
+        fuelEfficiency: Math.max(0, readNumber("fuelEfficiency")),
+        fuelPrice: Math.max(0, readNumber("fuelPrice")),
+        parkingDaily: Math.max(0, readNumber("parkingDaily")),
+        tollsDaily: Math.max(0, readNumber("tollsDaily")),
+        transitDaily: Math.max(0, readNumber("transitDaily")),
+        vehicleCostPerDistance: Math.max(0, readNumber("vehicleCostPerDistance")),
+        drivingOtherMonthly: Math.max(0, readNumber("drivingOtherMonthly")),
+        transitMonthlyFixed: Math.max(0, readNumber("transitMonthlyFixed")),
+        activeWeeks: clamp(readNumber("activeWeeks"), 1, 52),
+        commuteMinutesDaily: Math.max(0, readNumber("commuteMinutesDaily"))
       };
     }
 
-    function calculateFuelCost(distanceUnit, roundTripDistance, fuelEfficiency, fuelPrice) {
-      if (fuelEfficiency <= 0 || fuelPrice <= 0 || roundTripDistance <= 0) {
-        return 0;
-      }
+    function showError(message) {
+      const errorBox = document.getElementById("errorBox");
+      const resultBox = document.getElementById("result");
+      errorBox.textContent = message;
+      errorBox.style.display = "block";
+      resultBox.style.display = "none";
+      resultBox.innerHTML = "";
+    }
 
+    function clearError() {
+      const errorBox = document.getElementById("errorBox");
+      errorBox.textContent = "";
+      errorBox.style.display = "none";
+    }
+
+    function calculateFuelCost(distanceUnit, roundTripDistance, fuelEfficiency, fuelPrice) {
+      if (fuelEfficiency <= 0 || fuelPrice <= 0 || roundTripDistance <= 0) return 0;
       if (distanceUnit === "miles") {
         return (roundTripDistance / fuelEfficiency) * fuelPrice;
       }
-
       return (roundTripDistance * fuelEfficiency / 100) * fuelPrice;
     }
 
     function calculateCommuteCosts() {
-      const {
-        currency,
-        distanceUnit,
-        roundTripDistance,
-        commuteDaysPerWeek,
-        fuelEfficiency,
-        fuelPrice,
-        parkingDaily,
-        tollsDaily,
-        transitDaily,
-        otherMonthly
-      } = getInputValues();
+      const v = getInputValues();
 
-      const resultBox = document.getElementById("result");
-
-      const fuelDailyCost = calculateFuelCost(distanceUnit, roundTripDistance, fuelEfficiency, fuelPrice);
-      const drivingDailyCost = fuelDailyCost + parkingDaily + tollsDaily;
-
-      const drivingWeeklyCost = drivingDailyCost * commuteDaysPerWeek;
-      const drivingYearlyCost = (drivingWeeklyCost * 52) + (otherMonthly * 12);
-      const drivingMonthlyCost = drivingYearlyCost / 12;
-
-      const transitWeeklyCost = transitDaily * commuteDaysPerWeek;
-      const transitYearlyCost = (transitWeeklyCost * 52) + (otherMonthly * 12);
-      const transitMonthlyCost = transitYearlyCost / 12;
-
-      const commuteDaysPerYear = commuteDaysPerWeek * 52;
-      const yearlyDifference = Math.abs(drivingYearlyCost - transitYearlyCost);
-
-      let cheaperText = "Driving and public transit are estimated to cost the same based on these inputs.";
-      if (drivingYearlyCost < transitYearlyCost) {
-        cheaperText = "Driving is estimated to be cheaper than public transit by about " + fmtMoney(yearlyDifference, currency) + " per year based on these inputs.";
-      } else if (transitYearlyCost < drivingYearlyCost) {
-        cheaperText = "Public transit is estimated to be cheaper than driving by about " + fmtMoney(yearlyDifference, currency) + " per year based on these inputs.";
+      if (v.roundTripDistance <= 0) {
+        showError("Enter a round-trip commute distance greater than zero.");
+        return;
+      }
+      if (v.commuteDaysPerWeek <= 0) {
+        showError("Enter at least one commute day per week.");
+        return;
+      }
+      if (v.fuelEfficiency <= 0 && (v.fuelPrice > 0 || v.parkingDaily > 0 || v.tollsDaily > 0 || v.vehicleCostPerDistance > 0)) {
+        showError("Enter a fuel-efficiency value greater than zero for the driving estimate.");
+        return;
       }
 
-      const unitLabel = distanceUnit === "miles" ? "miles" : "km";
-      const efficiencyLabel = distanceUnit === "miles" ? "MPG" : "L/100 km";
-      const fuelPriceLabel = distanceUnit === "miles" ? "per gallon" : "per liter";
+      clearError();
+
+      const resultBox = document.getElementById("result");
+      const commuteDaysPerYear = v.commuteDaysPerWeek * v.activeWeeks;
+      const yearlyDistance = v.roundTripDistance * commuteDaysPerYear;
+
+      const fuelDailyCost = calculateFuelCost(v.distanceUnit, v.roundTripDistance, v.fuelEfficiency, v.fuelPrice);
+      const directDrivingDailyCost = fuelDailyCost + v.parkingDaily + v.tollsDaily;
+      const vehicleWearDailyCost = v.roundTripDistance * v.vehicleCostPerDistance;
+      const fullerDrivingDailyCost = directDrivingDailyCost + vehicleWearDailyCost;
+
+      const directDrivingYearlyCost = (directDrivingDailyCost * commuteDaysPerYear) + (v.drivingOtherMonthly * 12);
+      const fullerDrivingYearlyCost = (fullerDrivingDailyCost * commuteDaysPerYear) + (v.drivingOtherMonthly * 12);
+      const fullerDrivingMonthlyCost = fullerDrivingYearlyCost / 12;
+
+      const transitVariableYearly = v.transitDaily * commuteDaysPerYear;
+      const transitYearlyCost = transitVariableYearly + (v.transitMonthlyFixed * 12);
+      const transitMonthlyCost = transitYearlyCost / 12;
+
+      const annualCommuteHours = (v.commuteMinutesDaily * commuteDaysPerYear) / 60;
+      const yearlyDifference = Math.abs(fullerDrivingYearlyCost - transitYearlyCost);
+
+      let cheaperText = "Driving and public transit are estimated to cost the same based on these inputs.";
+      if (fullerDrivingYearlyCost < transitYearlyCost) {
+        cheaperText = "Driving is estimated to be cheaper than public transit by about " + fmtMoney(yearlyDifference, v.currency) + " per year based on the fuller driving-cost estimate.";
+      } else if (transitYearlyCost < fullerDrivingYearlyCost) {
+        cheaperText = "Public transit is estimated to be cheaper than driving by about " + fmtMoney(yearlyDifference, v.currency) + " per year based on the fuller driving-cost estimate.";
+      }
+
+      const unitLabel = v.distanceUnit === "miles" ? "miles" : "km";
+      const efficiencyLabel = v.distanceUnit === "miles" ? "MPG" : "L/100 km";
+      const fuelPriceLabel = v.distanceUnit === "miles" ? "per gallon" : "per liter";
 
       resultBox.style.display = "block";
       resultBox.innerHTML = `
         <h2>Results</h2>
-
         <div class="result-grid">
           <div class="result-item highlight-result">
-            <span class="result-label">Estimated driving cost per year</span>
-            <span class="result-value">${fmtMoney(drivingYearlyCost, currency)}</span>
+            <span class="result-label">Direct driving cost per year</span>
+            <span class="result-value">${fmtMoney(directDrivingYearlyCost, v.currency)}</span>
           </div>
-
+          <div class="result-item highlight-result">
+            <span class="result-label">Fuller driving cost per year</span>
+            <span class="result-value">${fmtMoney(fullerDrivingYearlyCost, v.currency)}</span>
+          </div>
           <div class="result-item">
-            <span class="result-label">Estimated driving cost per month</span>
-            <span class="result-value">${fmtMoney(drivingMonthlyCost, currency)}</span>
+            <span class="result-label">Fuller driving cost per month</span>
+            <span class="result-value">${fmtMoney(fullerDrivingMonthlyCost, v.currency)}</span>
           </div>
-
-          <div class="result-item">
-            <span class="result-label">Estimated driving cost per week</span>
-            <span class="result-value">${fmtMoney(drivingWeeklyCost, currency)}</span>
-          </div>
-
-          <div class="result-item">
-            <span class="result-label">Driving cost per commute day</span>
-            <span class="result-value">${fmtMoney(drivingDailyCost, currency)}</span>
-          </div>
-
           <div class="result-item">
             <span class="result-label">Fuel cost per commute day</span>
-            <span class="result-value">${fmtMoney(fuelDailyCost, currency)}</span>
+            <span class="result-value">${fmtMoney(fuelDailyCost, v.currency)}</span>
           </div>
-
+          <div class="result-item">
+            <span class="result-label">Vehicle wear per commute day</span>
+            <span class="result-value">${fmtMoney(vehicleWearDailyCost, v.currency)}</span>
+          </div>
+          <div class="result-item highlight-result">
+            <span class="result-label">Public transit cost per year</span>
+            <span class="result-value">${fmtMoney(transitYearlyCost, v.currency)}</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Public transit cost per month</span>
+            <span class="result-value">${fmtMoney(transitMonthlyCost, v.currency)}</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Annual commute distance</span>
+            <span class="result-value">${yearlyDistance.toLocaleString("en-US", { maximumFractionDigits: 0 })} ${unitLabel}</span>
+          </div>
           <div class="result-item">
             <span class="result-label">Commute days per year</span>
             <span class="result-value">${commuteDaysPerYear.toLocaleString("en-US", { maximumFractionDigits: 0 })}</span>
           </div>
-
-          <div class="result-item highlight-result">
-            <span class="result-label">Public transit cost per year</span>
-            <span class="result-value">${fmtMoney(transitYearlyCost, currency)}</span>
-          </div>
-
           <div class="result-item">
-            <span class="result-label">Public transit cost per month</span>
-            <span class="result-value">${fmtMoney(transitMonthlyCost, currency)}</span>
+            <span class="result-label">Annual commute time</span>
+            <span class="result-value">${annualCommuteHours.toLocaleString("en-US", { maximumFractionDigits: 1 })} hours</span>
           </div>
         </div>
 
-        <p class="note">
-          Your driving estimate is based on a <strong>${roundTripDistance.toLocaleString("en-US", { maximumFractionDigits: 1 })} ${unitLabel}</strong>
-          round-trip commute, <strong>${commuteDaysPerWeek.toLocaleString("en-US", { maximumFractionDigits: 1 })} commute days per week</strong>,
-          <strong>${fuelEfficiency.toLocaleString("en-US", { maximumFractionDigits: 1 })} ${efficiencyLabel}</strong>, and fuel at
-          <strong>${fmtMoney(fuelPrice, currency)} ${fuelPriceLabel}</strong>.
-        </p>
+        <div class="result-summary"><strong>${cheaperText}</strong></div>
 
         <p class="note">
-          Estimated driving cost includes fuel, parking, tolls, and the other monthly commuting cost you entered.
-          It does not automatically include maintenance, repairs, tire wear, insurance, or vehicle depreciation.
+          Your driving estimate uses a <strong>${v.roundTripDistance.toLocaleString("en-US", { maximumFractionDigits: 1 })} ${unitLabel}</strong> round trip,
+          <strong>${v.commuteDaysPerWeek.toLocaleString("en-US", { maximumFractionDigits: 1 })} days per week</strong>, and
+          <strong>${v.activeWeeks.toLocaleString("en-US", { maximumFractionDigits: 0 })} active weeks per year</strong>.
         </p>
-
         <p class="note">
-          <strong>${cheaperText}</strong>
+          Fuel is based on <strong>${v.fuelEfficiency.toLocaleString("en-US", { maximumFractionDigits: 1 })} ${efficiencyLabel}</strong>
+          and fuel at <strong>${fmtMoney(v.fuelPrice, v.currency)} ${fuelPriceLabel}</strong>.
+        </p>
+        <p class="note">
+          Direct driving cost includes fuel, parking, tolls, and monthly driving costs. The fuller estimate also includes your optional
+          <strong>${fmtMoney(v.vehicleCostPerDistance, v.currency)} per ${unitLabel === "miles" ? "mile" : "km"}</strong> vehicle-wear allowance.
         </p>
       `;
     }
@@ -1233,16 +1240,20 @@
       document.getElementById("parkingDaily").value = "0";
       document.getElementById("tollsDaily").value = "0";
       document.getElementById("transitDaily").value = "8.00";
-      document.getElementById("otherMonthly").value = "0";
+      document.getElementById("vehicleCostPerDistance").value = "0";
+      document.getElementById("drivingOtherMonthly").value = "0";
+      document.getElementById("transitMonthlyFixed").value = "0";
+      document.getElementById("activeWeeks").value = "48";
+      document.getElementById("commuteMinutesDaily").value = "60";
       document.getElementById("result").style.display = "none";
       document.getElementById("result").innerHTML = "";
+      clearError();
     }
 
     document.getElementById("calculatorForm").addEventListener("submit", function (e) {
       e.preventDefault();
       calculateCommuteCosts();
     });
-
     document.getElementById("resetBtn").addEventListener("click", resetCalculator);
   </script>
   <footer style="margin-top:3rem; padding-top:1.5rem; border-top:1px solid #334155; color:#9ca3af; text-align:center;">
