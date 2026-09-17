@@ -22,7 +22,7 @@
 
   <title>Impulse Purchase Calculator | See the Real Cost of Buying Now</title>
   <meta name="description" content="Free impulse purchase calculator. Estimate the true cost of an unplanned purchase, including sales tax, shipping, financing interest, opportunity cost, work hours, and delayed savings." />
-  <meta name="author" content="FinanceCalcCenter" />
+  <meta name="author" content="Tibor Győry" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://financecalccenter.com/impulse-purchase-calculator.html" />
 
@@ -686,9 +686,9 @@
 <body>
   <div class="page">
     <nav class="top-nav" aria-label="Breadcrumb">
-      <a class="brand" href="index.html">FinanceCalcCenter</a>
+      <a class="brand" href="/">FinanceCalcCenter</a>
       <div class="breadcrumb">
-        <a href="index.html">Home</a>
+        <a href="/">Home</a>
         <span> / </span>
         <span>Impulse Purchase Calculator</span>
       </div>
@@ -796,15 +796,15 @@
               <div class="field">
                 <label for="financingApr">Financing APR (%)</label>
                 <input id="financingApr" type="number" value="0" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Estimated annual percentage rate if financed.</span>
+                <span class="hint">Estimated annual percentage rate if financed. Enter the lender or card APR, not the monthly rate.</span>
               </div>
             </div>
 
             <div class="input-row">
               <div class="field">
-                <label for="savingsReturn">Savings return if not bought (%)</label>
+                <label for="savingsReturn">Assumed annual return if saved (%)</label>
                 <input id="savingsReturn" type="number" value="4" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Optional annual return or interest rate.</span>
+                <span class="hint">Optional hypothetical annual rate for comparison only; future returns are not guaranteed.</span>
               </div>
 
               <div class="field">
@@ -866,7 +866,7 @@
               </div>
 
               <div class="result-box">
-                <span>Value if saved instead</span>
+                <span>Hypothetical value if saved</span>
                 <strong id="futureValue">$0</strong>
               </div>
             </div>
@@ -888,6 +888,12 @@
             <div class="warning-box" id="decisionBox">
               A good impulse purchase check is simple: if you would not still want the item after waiting, it may
               not deserve your money today.
+            </div>
+
+            <div class="info-box">
+              <strong>How to read these results:</strong> “Total cost today” includes the item price, entered tax,
+              shipping, and add-ons. Financing cost is estimated separately from the APR and term you enter.
+              The savings comparison is a hypothetical compound-growth illustration, not a forecast or guaranteed return.
             </div>
           </div>
         </div>
@@ -930,6 +936,7 @@
           <li><a href="#work-hours">Why work hours are useful</a></li>
           <li><a href="#financing">Impulse buying with financing</a></li>
           <li><a href="#mistakes">Common impulse buying mistakes</a></li>
+          <li><a href="#methodology">Methodology and limitations</a></li>
           <li><a href="#faq">Impulse Purchase Calculator FAQ</a></li>
         </ul>
       </section>
@@ -1063,8 +1070,9 @@
         </p>
         <p>
           If the APR is high, the item may cost much more than expected. Even with 0% financing, the payment still
-          uses future income. Before financing an unplanned purchase, check whether it competes with emergency
-          savings, debt payoff, rent, utilities, insurance, or other fixed bills.
+          uses future income. Compare both the <strong>monthly payment</strong> and the <strong>total repayment</strong>,
+          and check whether the new payment competes with emergency savings, debt payoff, rent, utilities, insurance,
+          or other fixed bills.
         </p>
       </section>
 
@@ -1078,6 +1086,26 @@
           <li>Forgetting how many similar small purchases happen each month.</li>
           <li>Ignoring the savings goal that the purchase delays.</li>
         </ul>
+      </section>
+
+      <section class="card" id="methodology">
+        <h2>Methodology and limitations</h2>
+        <p>
+          This tool separates three questions that are easy to mix together: what the purchase costs at checkout,
+          what financing may add over time, and what the same amount could hypothetically become if it were saved instead.
+        </p>
+        <ul>
+          <li><strong>Checkout cost:</strong> item price + entered tax + shipping + other fees.</li>
+          <li><strong>Financing estimate:</strong> uses a standard fixed-payment calculation based on the APR and number of months entered.</li>
+          <li><strong>Work-time estimate:</strong> divides checkout cost by your entered hourly take-home pay.</li>
+          <li><strong>Budget impact:</strong> compares checkout cost with the monthly discretionary-spending amount you enter.</li>
+          <li><strong>Savings comparison:</strong> applies the annual rate you enter as a hypothetical compound-growth assumption.</li>
+        </ul>
+        <p>
+          Real-world results can differ. Credit cards may use daily interest, promotional rates may expire, taxes and
+          fees vary by location, and investment or savings returns are uncertain. The calculator also cannot measure
+          personal value, urgency, product quality, or whether a purchase is a need rather than a want.
+        </p>
       </section>
 
       <section class="card">
@@ -1149,6 +1177,10 @@
             financial, investment, tax, legal, or professional advice.
           </p>
         </div>
+
+        <p class="small">
+          <strong>Updated September 17, 2026.</strong> Calculator assumptions, financing explanations, and savings-comparison wording were reviewed for clarity.
+        </p>
       </section>
     </main>
 
@@ -1270,7 +1302,7 @@
         ["Total cost today", totalCostToday, "The estimated out-of-pocket cost if you buy now."],
         ["Financing interest", financingCost, "Extra cost from paying over time, if financing is used."],
         ["Total repayment", totalRepaid, "Estimated total paid after financing, if applicable."],
-        ["Opportunity gain if saved", opportunityGain, "Estimated extra value from saving the money instead."]
+        ["Hypothetical growth if saved", opportunityGain, "Illustrative growth above the checkout amount using the annual rate entered; not guaranteed."]
       ];
 
       rows.forEach(function(rowData) {
@@ -1298,8 +1330,9 @@
           " and the estimated financing cost is " + formatMoneyExact(financingCost);
       }
 
-      summary += ". If you saved the money for " + yearsSaved + (yearsSaved === 1 ? " year" : " years") +
-        " at " + savingsReturn.toFixed(2) + "% annually, it could become about " + formatMoneyExact(futureValue) + ".";
+      summary += ". If the checkout amount were saved for " + yearsSaved + (yearsSaved === 1 ? " year" : " years") +
+        " and hypothetically earned " + savingsReturn.toFixed(2) + "% annually, the illustration gives about " +
+        formatMoneyExact(futureValue) + ". This is not a guaranteed return.";
 
       document.getElementById("summaryText").textContent = summary;
 
@@ -1314,7 +1347,7 @@
       } else if (waitDays >= 1) {
         decision = "Consider waiting " + waitDays + (waitDays === 1 ? " day" : " days") + " before buying. If you still want it and it fits your budget, the decision is more intentional.";
       } else {
-        decision = "The numbers look manageable based on the fields entered, but still compare the purchase with your current priorities before buying.";
+        decision = "The entered numbers do not trigger the budget, financing, or work-time checks above. Compare the purchase with your own priorities before deciding.";
       }
 
       document.getElementById("decisionBox").textContent = decision;
@@ -1357,6 +1390,8 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "description": "A free impulse purchase calculator that estimates the real cost of unplanned buying, including tax, shipping, fees, financing interest, work hours, budget impact, and savings trade-off.",
+    "dateModified": "2026-09-17",
+    "creator": {"@type": "Person", "name": "Tibor Győry"},
     "offers": {
       "@type": "Offer",
       "price": "0",
