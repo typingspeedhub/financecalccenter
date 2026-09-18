@@ -22,7 +22,7 @@
 
   <title>Work Hours Cost Calculator | Convert Purchases Into Work Time</title>
   <meta name="description" content="Free work hours cost calculator. Convert a purchase, bill, or subscription into hours of work using your hourly take-home pay, tax, shipping, fees, and savings trade-offs." />
-  <meta name="author" content="FinanceCalcCenter" />
+  <meta name="author" content="Tibor Győry" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://financecalccenter.com/work-hours-cost-calculator.html" />
 
@@ -687,9 +687,9 @@
 <body>
   <div class="page">
     <nav class="top-nav" aria-label="Breadcrumb">
-      <a class="brand" href="index.html">FinanceCalcCenter</a>
+      <a class="brand" href="/">FinanceCalcCenter</a>
       <div class="breadcrumb">
-        <a href="index.html">Home</a>
+        <a href="/">Home</a>
         <span> / </span>
         <span>Work Hours Cost Calculator</span>
       </div>
@@ -803,9 +803,9 @@
 
             <div class="input-row">
               <div class="field">
-                <label for="annualReturn">Return if saved instead (%)</label>
+                <label for="annualReturn">Assumed annual return if saved (%)</label>
                 <input id="annualReturn" type="number" value="4" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Optional annual savings or investment return.</span>
+                <span class="hint">Optional hypothetical annual rate for comparison only; future returns are not guaranteed.</span>
               </div>
 
               <div class="field">
@@ -861,7 +861,7 @@
               </div>
 
               <div class="result-box">
-                <span>Value if saved instead</span>
+                <span>Hypothetical value if saved</span>
                 <strong id="futureValue">$0</strong>
               </div>
             </div>
@@ -881,7 +881,10 @@
             </div>
 
             <div class="warning-box" id="decisionBox">
-              A simple check: if the item costs more work hours than the value it gives you, waiting may be better.
+              Use the work-time estimate as one input in your decision. Whether a purchase is worthwhile depends on your needs, budget, and priorities.
+            </div>
+            <div class="info-box">
+              <strong>How to read the results:</strong> Work hours are based on your after-tax hourly pay. The gross-pay figure is an estimate based on the deduction rate you enter, and the savings figure is a hypothetical illustration rather than a guaranteed future value.
             </div>
           </div>
         </div>
@@ -924,6 +927,7 @@
           <a href="#examples">Examples</a>
           <a href="#subscriptions">Subscriptions</a>
           <a href="#mistakes">Mistakes</a>
+          <a href="#methodology">Methodology</a>
           <a href="#faq">FAQ</a>
         </div>
       </section>
@@ -1033,9 +1037,9 @@
       <section class="card" id="savings-tradeoff">
         <h2>How the savings trade-off works</h2>
         <p>
-          The calculator estimates what the purchase amount could become if saved instead for a chosen number of
-          years. This is an opportunity cost estimate. It does not mean the purchase is wrong; it simply shows what
-          else the same money could do.
+          The calculator illustrates what the purchase amount could become if it were saved instead for a chosen
+          number of years and earned the annual rate you enter. This is a hypothetical opportunity-cost comparison,
+          not a forecast. It does not mean the purchase is right or wrong; it simply provides another way to view the trade-off.
         </p>
         <p>
           Use a conservative return estimate if you are unsure. Savings accounts, investments, inflation, taxes, and
@@ -1053,6 +1057,20 @@
           <li>Forgetting that financing and credit card interest can add extra work hours.</li>
           <li>Treating the calculator as a strict rule instead of a decision aid.</li>
         </ul>
+      </section>
+
+      <section class="card" id="methodology">
+        <h2>Methodology and limitations</h2>
+        <p>This calculator separates the cash cost of a purchase from the amount of work time needed to earn that money. The main work-hours result uses your <strong>hourly take-home pay</strong>, because that is the money actually available for spending after payroll deductions.</p>
+        <ul>
+          <li><strong>Total cost:</strong> item price + entered tax + shipping or service fees + other add-ons.</li>
+          <li><strong>Work hours:</strong> total cost ÷ hourly take-home pay.</li>
+          <li><strong>Workdays:</strong> work hours ÷ your entered hours per workday.</li>
+          <li><strong>Gross pay estimate:</strong> estimates the pre-deduction income needed using the effective deduction rate you enter.</li>
+          <li><strong>Budget impact:</strong> compares total cost with the monthly flexible-spending budget you enter.</li>
+          <li><strong>Savings comparison:</strong> applies your assumed annual rate as a hypothetical compound-growth illustration.</li>
+        </ul>
+        <p>Results are planning estimates. Actual taxes and payroll deductions can be progressive or include fixed amounts, and savings or investment returns are uncertain. The calculator also cannot measure the personal usefulness, urgency, quality, or enjoyment of a purchase.</p>
       </section>
 
       <section class="card">
@@ -1119,6 +1137,7 @@
             financial, investment, tax, legal, or professional advice.
           </p>
         </div>
+        <p class="small"><strong>Updated September 18, 2026.</strong> Calculator assumptions, work-time methodology, and savings-comparison wording were reviewed for clarity.</p>
       </section>
     </main>
 
@@ -1208,13 +1227,13 @@
       if (hourlyTakeHome <= 0) {
         decision.textContent = "Enter your hourly take-home pay to calculate the time cost of this purchase.";
       } else if (monthlyBudget > 0 && budgetPercent >= 100) {
-        decision.textContent = "This purchase uses all or more than all of the monthly budget you entered. Consider waiting, saving first, or reducing other spending.";
+        decision.textContent = "This purchase equals or exceeds the monthly flexible-spending budget you entered. Review how that fits with your other expenses and priorities.";
       } else if (workHours >= 40) {
-        decision.textContent = "This purchase equals roughly a full workweek or more. It may deserve extra comparison, a waiting period, or a savings plan.";
+        decision.textContent = "This purchase equals roughly a full workweek or more based on the work schedule and take-home pay you entered.";
       } else if (workHours >= 8) {
-        decision.textContent = "This purchase equals about one full workday or more. Check whether the value is worth that amount of time.";
+        decision.textContent = "This purchase equals about one full workday or more based on the values you entered.";
       } else {
-        decision.textContent = "This purchase is below one full workday based on your inputs. It may fit if it also fits your budget and priorities.";
+        decision.textContent = "This purchase is below one full workday based on your inputs. Use that result together with your budget, needs, and priorities.";
       }
 
       const rows = [
@@ -1228,8 +1247,8 @@
         ["Workdays needed", formatDays(workDays)],
         ["Estimated gross pay needed", formatMoneyExact(grossPayNeeded)],
         ["Monthly budget used", monthlyBudget > 0 ? budgetPercent.toFixed(1) + "%" : "N/A"],
-        ["Possible value if saved", formatMoneyExact(futureValue)],
-        ["Possible savings gain", formatMoneyExact(opportunityGain)]
+        ["Hypothetical value if saved", formatMoneyExact(futureValue)],
+        ["Hypothetical growth if saved", formatMoneyExact(opportunityGain)]
       ];
 
       document.getElementById("breakdownBody").innerHTML = rows.map(function(row) {
@@ -1268,6 +1287,8 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "All",
     "description": "Free work hours cost calculator that converts purchases, bills, and subscriptions into hours of work based on hourly take-home pay.",
+    "dateModified": "2026-09-18",
+    "creator": {"@type": "Person", "name": "Tibor Győry"},
     "offers": {
       "@type": "Offer",
       "price": "0",
