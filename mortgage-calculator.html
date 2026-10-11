@@ -875,7 +875,7 @@
                 <div id="totalPayment" class="res-value">—</div>
               </div>
               <div class="res-item">
-                <div class="res-label">Total paid over term</div>
+                <div class="res-label">Total recurring payments over term</div>
                 <div id="totalPaid" class="res-value">—</div>
               </div>
               <div class="res-item">
@@ -887,10 +887,11 @@
             <div class="breakdown" id="detailBreakdown"></div>
             <div class="affordability-note" id="affordabilityNote"></div>
 
-            <p class="res-note">
-              Estimate only. Does not include PMI, closing costs, points, maintenance, utilities,
-              lender-specific fees, or local escrow practices. Actual housing cost can be higher.
-            </p>
+           <p class="res-note">
+  Estimate only. Assumes property taxes, homeowner's insurance, and HOA fees remain unchanged
+  for the full loan term. Does not include PMI, closing costs, points, maintenance, utilities,
+  lender-specific fees, or local escrow practices. Actual housing cost can be higher.
+</p>
           </div>
 
           <div class="tips" id="tips">
@@ -1211,20 +1212,20 @@ n = total number of monthly payments
         return;
       }
 
-      if (years <= 0 || isNaN(years)) {
-        errorEl.textContent = "Please enter a valid mortgage term.";
-        return;
-      }
+     if (years < 5 || years > 40 || isNaN(years)) {
+  errorEl.textContent = "Please enter a mortgage term between 5 and 40 years.";
+  return;
+}
 
-      if (rate < 0 || isNaN(rate)) {
-        errorEl.textContent = "Please enter a valid interest rate.";
-        return;
-      }
+if (rate < 0 || rate > 100 || isNaN(rate)) {
+  errorEl.textContent = "Please enter an interest rate between 0% and 100%.";
+  return;
+}
 
-      if (taxRate < 0 || isNaN(taxRate)) {
-        errorEl.textContent = "Please enter a valid property tax rate.";
-        return;
-      }
+if (taxRate < 0 || taxRate > 10 || isNaN(taxRate)) {
+  errorEl.textContent = "Please enter a property tax rate between 0% and 10%.";
+  return;
+}
 
       if (insuranceYear < 0 || isNaN(insuranceYear)) {
         errorEl.textContent = "Please enter a valid annual insurance amount.";
