@@ -1026,20 +1026,22 @@
         let extra = extraPerPayment;
         if (lumpSum > 0 && lumpWhen > 0 && i === lumpWhen) extra += lumpSum;
 
-        let principalTotal = principal + extra;
-        if (principalTotal > balance) principalTotal = balance;
+        principal = Math.min(principal, balance);
 
-        const actualPayment = Math.min(payment, interest + principalTotal - extra);
-        balance -= principalTotal;
+const actualPayment = interest + principal;
+balance -= principal;
 
-        schedule.push({
-          n: i,
-          payment: actualPayment,
-          principal,
-          interest,
-          extra,
-          balance: Math.max(0, balance)
-        });
+const actualExtra = Math.min(extra, balance);
+balance -= actualExtra;
+
+schedule.push({
+  n: i,
+  payment: actualPayment,
+  principal,
+  interest,
+  extra: actualExtra,
+  balance: Math.max(0, balance)
+});
 
         if (r > 0 && payment <= interest && extraPerPayment <= 0 && !(lumpSum > 0)) {
           break;
