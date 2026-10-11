@@ -728,7 +728,7 @@
             <h2>Inflation impact summary</h2>
             <div class="results-grid">
               <div class="res-item">
-                <div class="res-label">Future price after inflation</div>
+                <div class="res-label">Inflation-adjusted future cost</div>
                 <div id="futurePrice" class="res-value">—</div>
               </div>
               <div class="res-item">
@@ -1052,7 +1052,7 @@
     function calculateInflation() {
       const amount = parseFloat($("amount").value || "0");
       const rate = parseFloat($("rate").value || "0");
-      const years = parseInt($("years").value || "0", 10);
+      const years = Number($("years").value || "0");
       const growthRateInput = parseFloat($("growthRate").value || "0");
       const currency = sanitizeCurrencyLabel($("currency").value || "USD") || "USD";
 
@@ -1104,7 +1104,7 @@
       setText("grownValue", formatMoney(grownValue, currency));
       setText("grownRealValue", formatMoney(grownRealValue, currency) + " (inflation-adjusted)");
 
-      const summary1 = `At ${rate.toFixed(1)}% inflation for ${years} year${years === 1 ? "" : "s"}, ${formatMoney(amount, currency)} grows to an estimated price level of ${formatMoney(futurePrice, currency)}.`;
+      const summary1 = `At ${rate.toFixed(1)}% inflation for ${years} year${years === 1 ? "" : "s"}, something that costs ${formatMoney(amount, currency)} today would have an estimated future cost of ${formatMoney(futurePrice, currency)}.`;
       const summary2 = `If the amount itself does not grow, its purchasing power falls to about ${formatMoney(realValue, currency)}, a loss of ${lossPercent.toFixed(1)}%.`;
 
       let summary3 = "";
