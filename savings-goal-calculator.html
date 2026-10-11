@@ -1497,15 +1497,15 @@
         return;
       }
 
-      if (years <= 0 || isNaN(years)) {
-        errorEl.textContent = "Please enter a valid time period in years.";
-        return;
-      }
+      if (years < 0.5 || isNaN(years) || Math.abs(years * 2 - Math.round(years * 2)) > 1e-9) {
+  errorEl.textContent = "Please enter a time period in 0.5-year increments, such as 1, 1.5, 2, or 2.5 years.";
+  return;
+}
 
-      if (rate < 0 || isNaN(rate)) {
-        errorEl.textContent = "Please enter a valid annual interest rate of 0 or more.";
-        return;
-      }
+     if (rate < 0 || rate > 100 || isNaN(rate)) {
+  errorEl.textContent = "Please enter a valid annual interest rate between 0% and 100%.";
+  return;
+}
 
       const n = Math.round(years * 12);
 
@@ -1514,11 +1514,22 @@
         return;
       }
 
-      if (current >= goal) {
-        monthlySavingEl.textContent = formatMoney(0, currencyLabel);
-        totalContributedEl.textContent = formatMoney(0, currencyLabel);
-        interestEarnedEl.textContent = formatMoney(0, currencyLabel);
-        finalBalanceEl.textContent = formatMoney(current, currencyLabel);
+     if (current >= goal) {
+  const annualRate = rate / 100;
+  const monthlyRate = annualRate / 12;
+  const n = Math.round(years * 12);
+
+  const projectedBalance =
+    monthlyRate === 0
+      ? current
+      : current * Math.pow(1 + monthlyRate, n);
+
+  const interestEarned = projectedBalance - current;
+
+  monthlySavingEl.textContent = formatMoney(0, currencyLabel);
+  totalContributedEl.textContent = formatMoney(0, currencyLabel);
+  interestEarnedEl.textContent = formatMoney(interestEarned, currencyLabel);
+  finalBalanceEl.textContent = formatMoney(projectedBalance, currencyLabel);
         breakdownEl.innerHTML =
           "<span>Goal amount: " + formatMoney(goal, currencyLabel) + "</span>" +
           "<span>Timeframe: " + years.toFixed(1) + " years</span>" +
@@ -1539,29 +1550,36 @@
         fvCurrent = current * Math.pow(1 + monthlyRate, n);
       }
 
-      const remaining = goal - fvCurrent;
-      let monthly;
+    const remaining = goal - fvCurrent;
+let monthly;
 
-      if (monthlyRate === 0) {
-        monthly = remaining / n;
-      } else {
-        const factor = Math.pow(1 + monthlyRate, n);
-        monthly = remaining * monthlyRate / (factor - 1);
-      }
+if (remaining <= 0) {
+  monthly = 0;
+} else if (monthlyRate === 0) {
+  monthly = remaining / n;
+} else {
+  const factor = Math.pow(1 + monthlyRate, n);
+  monthly = remaining * monthlyRate / (factor - 1);
+}
 
-      if (!isFinite(monthly)) {
-        errorEl.textContent = "The current combination of values does not produce a valid estimate.";
-        return;
-      }
+if (!isFinite(monthly)) {
+  errorEl.textContent = "The current combination of values does not produce a valid estimate.";
+  return;
+}
 
-      if (monthly < 0) {
-        monthly = 0;
-      }
+const totalContributed = monthly * n;
 
-      const totalContributed = monthly * n;
-      const projectedFinalBalance = goal;
-      const totalAddedCapital = current + totalContributed;
-      const interestEarned = projectedFinalBalance - totalAddedCapital;
+let projectedFinalBalance;
+if (monthlyRate === 0) {
+  projectedFinalBalance = current + totalContributed;
+} else {
+  const factor = Math.pow(1 + monthlyRate, n);
+  const fvContributions = monthly * ((factor - 1) / monthlyRate);
+  projectedFinalBalance = fvCurrent + fvContributions;
+}
+
+const totalAddedCapital = current + totalContributed;
+const interestEarned = projectedFinalBalance - totalAddedCapital;
 
       monthlySavingEl.textContent = formatMoney(monthly, currencyLabel);
       totalContributedEl.textContent = formatMoney(totalContributed, currencyLabel);
