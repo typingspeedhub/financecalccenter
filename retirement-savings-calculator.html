@@ -600,7 +600,7 @@
 
           <label for="return">Annual return (%)</label>
           <input id="return" type="number" value="6" inputmode="decimal" min="0" step="0.01" />
-          <div class="help-text">An assumed long-term average annual growth rate.</div>
+          <div class="help-text">Enter a nominal annual return, assuming monthly compounding. Actual annual returns may differ.</div>
 
           <label for="years">Years until retirement</label>
           <input id="years" type="number" value="30" inputmode="decimal" min="0" step="0.1" />
@@ -949,13 +949,27 @@
       const years = Number(document.getElementById("years").value);
       const inflation = Number(document.getElementById("inflation").value) / 100;
 
-      const values = [current, monthly, annualReturn, years, inflation];
-      if (values.some(value => !Number.isFinite(value) || value < 0) || years === 0) {
-        alert("Please enter valid non-negative values and a time period greater than zero.");
-        return;
-      }
+      const inputIds = ["current", "monthly", "return", "years", "inflation"];
+
+const hasEmptyInput = inputIds.some(id =>
+  document.getElementById(id).value.trim() === ""
+);
+
+const values = [current, monthly, annualReturn, years, inflation];
+
+if (
+  hasEmptyInput ||
+  values.some(value => !Number.isFinite(value) || value < 0) ||
+  years <= 0 ||
+  Math.round(years * 12) < 1
+) {
+  document.getElementById("results").style.display = "none";
+  alert("Please enter valid non-negative values and a time period of at least one month.");
+  return;
+}
 
       const months = Math.round(years * 12);
+      const effectiveYears = months / 12;
       const monthlyRate = annualReturn / 12;
 
       const currentFutureValue = current * Math.pow(1 + monthlyRate, months);
@@ -964,7 +978,7 @@
         : monthly * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
 
       const futureValue = currentFutureValue + contributionFutureValue;
-      const realValue = futureValue / Math.pow(1 + inflation, years);
+      const realValue = futureValue / Math.pow(1 + inflation, effectiveYears);
       const totalContributions = current + monthly * months;
 
       document.getElementById("future").textContent = fmtMoney(futureValue);
