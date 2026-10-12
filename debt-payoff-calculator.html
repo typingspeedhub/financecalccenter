@@ -981,13 +981,13 @@
             <tr><td>3</td><td>$290</td><td>$110</td><td>$200</td><td>Card A</td><td>$672.93</td><td>$4,438.79</td><td>$9,622.18</td></tr>
             <tr><td>4</td><td>$290</td><td>$110</td><td>$200</td><td>Card A</td><td>$390.78</td><td>$4,417.57</td><td>$9,494.35</td></tr>
             <tr><td>5</td><td>$290</td><td>$110</td><td>$200</td><td>Card A</td><td>$105.34</td><td>$4,395.92</td><td>$9,365.55</td></tr>
-            <tr><td>6</td><td>$106.56</td><td>$110</td><td>$200</td><td>Card A</td><td>$0.00</td><td>$4,373.84</td><td>$9,235.80</td></tr>
-            <tr><td>7</td><td>$0</td><td>$400</td><td>$200</td><td>Card B</td><td>$0.00</td><td>$4,061.31</td><td>$9,105.06</td></tr>
-            <tr><td>8</td><td>$0</td><td>$400</td><td>$200</td><td>Card B</td><td>$0.00</td><td>$3,742.54</td><td>$8,973.35</td></tr>
-            <tr><td>9</td><td>$0</td><td>$400</td><td>$200</td><td>Card B</td><td>$0.00</td><td>$3,417.39</td><td>$8,840.65</td></tr>
-            <tr><td>10</td><td>$0</td><td>$400</td><td>$200</td><td>Card B</td><td>$0.00</td><td>$3,085.74</td><td>$8,706.96</td></tr>
-            <tr><td>11</td><td>$0</td><td>$400</td><td>$200</td><td>Card B</td><td>$0.00</td><td>$2,747.45</td><td>$8,572.26</td></tr>
-            <tr><td>12</td><td>$0</td><td>$400</td><td>$200</td><td>Card B</td><td>$0.00</td><td>$2,402.40</td><td>$8,436.55</td></tr>
+            <tr><td>6</td><td>$106.56</td><td>$293.44</td><td>$200.00</td><td>Card A → Card B</td><td>$0.00</td><td>$4,190.40</td><td>$9,235.80</td></tr>
+           <tr><td>7</td><td>$0.00</td><td>$400.00</td><td>$200.00</td><td>Card B</td><td>$0.00</td><td>$3,874.21</td><td>$9,105.06</td></tr>
+           <tr><td>8</td><td>$0.00</td><td>$400.00</td><td>$200.00</td><td>Card B</td><td>$0.00</td><td>$3,551.69</td><td>$8,973.35</td></tr>
+           <tr><td>9</td><td>$0.00</td><td>$400.00</td><td>$200.00</td><td>Card B</td><td>$0.00</td><td>$3,222.73</td><td>$8,840.65</td></tr>
+           <tr><td>10</td><td>$0.00</td><td>$400.00</td><td>$200.00</td><td>Card B</td><td>$0.00</td><td>$2,887.18</td><td>$8,706.96</td></tr>
+           <tr><td>11</td><td>$0.00</td><td>$400.00</td><td>$200.00</td><td>Card B</td><td>$0.00</td><td>$2,544.93</td><td>$8,572.26</td></tr>
+           <tr><td>12</td><td>$0.00</td><td>$400.00</td><td>$200.00</td><td>Card B</td><td>$0.00</td><td>$2,195.82</td><td>$8,436.55</td></tr>
           </tbody>
         </table>
 
@@ -1043,20 +1043,20 @@
           <tbody>
             <tr>
               <td><strong>Snowball</strong></td>
-              <td>33 months</td>
-              <td>$2,860</td>
+              <td>32 months</td>
+              <td>$2,761</td>
               <td>Motivation and fast visible progress</td>
             </tr>
             <tr>
               <td><strong>Avalanche</strong></td>
-              <td>32 months</td>
-              <td>$2,609</td>
+              <td>31 months</td>
+              <td>$2,583</td>
               <td>Lower total interest paid</td>
             </tr>
           </tbody>
         </table>
         <p>
-          Avalanche saves about <strong>$251</strong> in total interest in this specific setup. Your result may be larger or smaller
+       Avalanche saves about <strong>$178</strong> in total interest in this specific setup. Your result may be larger or smaller
           depending on balances, APRs, minimum payments, and how much extra you can send each month.
         </p>
 
@@ -1511,7 +1511,6 @@
 
       const currency = latestCurrency || "USD";
       const csv = rowsToCsv(latestFullSchedule, currency);
-  <a href="apr-vs-apy.html">APR vs APY</a>
       const now = new Date();
       const y = now.getFullYear();
       const m = String(now.getMonth() + 1).padStart(2, "0");
@@ -1526,7 +1525,10 @@
       });
     });
 
-    $("paymentDay").addEventListener("change", calculateDebtPayoff);
+   $("paymentDay").addEventListener("change", calculateDebtPayoff);
 
-    calculateDebtPayoff();
+calculateDebtPayoff();
+</script>
+</body>
+</html>
  
