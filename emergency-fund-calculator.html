@@ -1235,7 +1235,7 @@ footer p {
       return numerator / denominator;
     }
 
-    function getGuidance(monthsCovered, riskProfile, remaining, monthlySaving, targetMonths, neededMonthly) {
+    function getGuidance(monthsCovered, riskProfile, remaining, monthlySaving, targetMonths, neededMonthly, rMonthly) {
       const notes = [];
 
       if (monthsCovered <= 3) {
@@ -1256,8 +1256,12 @@ footer p {
 
       if (remaining <= 0) {
         notes.push("You already have enough savings to cover this target based on the numbers entered.");
-      } else if (monthlySaving <= 0) {
-        notes.push("With no monthly contribution entered, the target will not be reached unless your current savings already cover it.");
+     } else if (monthlySaving <= 0) {
+  if (rMonthly > 0) {
+    notes.push("With no monthly contributions, progress depends entirely on interest earned on existing savings. Reaching the target may take a long time.");
+  } else {
+    notes.push("With no monthly contributions or interest, the target cannot be reached unless current savings already cover it.");
+  }
       } else if (remaining / monthlySaving > 36) {
         notes.push("At the current pace, the timeline is relatively long. A staged goal may feel more achievable.");
       }
@@ -1276,8 +1280,11 @@ footer p {
       const monthlySaving = parseFloat($("monthlySaving").value || "0");
       const apy = parseFloat($("apy").value || "0");
       const targetMonthsInput = ($("targetMonths").value || "").trim();
-      const targetMonths = targetMonthsInput ? parseInt(targetMonthsInput, 10) : NaN;
-      const currency = ($("currencyLabel").value || "USD").trim();
+     const targetMonths = targetMonthsInput ? Number(targetMonthsInput) : NaN;
+      const currency = ($("currencyLabel").value || "USD")
+  .trim()
+  .replace(/[^A-Za-z0-9$€£¥]/g, "")
+  .slice(0, 8) || "USD";
       const riskProfile = $("riskProfile").value;
 
       const errorEl = $("error");
@@ -1313,10 +1320,14 @@ footer p {
         errorEl.textContent = "Please enter a valid APY (0 or more).";
         return;
       }
-      if (targetMonthsInput && (!isFinite(targetMonths) || targetMonths <= 0)) {
-        errorEl.textContent = "Target timeline must be a whole number of months, such as 12.";
-        return;
-      }
+      if (
+  targetMonthsInput &&
+  (!Number.isInteger(targetMonths) || targetMonths <= 0)
+) {
+  errorEl.textContent =
+    "Target timeline must be a positive whole number of months, such as 12.";
+  return;
+}
 
       const fundTarget = monthlyExpenses * monthsCovered;
       const remaining = Math.max(0, fundTarget - currentSavings);
@@ -1324,7 +1335,7 @@ footer p {
 
       let timeMonths = monthsToReachTarget(currentSavings, monthlySaving, rMonthly, fundTarget);
       let timeText = "—";
-      if (timeMonths === Infinity) timeText = "Not reachable with current inputs";
+      if (timeMonths === Infinity) timeText = "Not reachable within 100 years with current inputs";
       else timeText = formatMonths(timeMonths);
 
       let neededMonthlyValue = NaN;
@@ -1351,7 +1362,15 @@ footer p {
         "<span>APY: " + apyText + "</span>" +
         (isFinite(targetMonths) ? "<span>Target timeline: " + targetMonths + " months</span>" : "");
 
-      guidanceEl.innerHTML = getGuidance(monthsCovered, riskProfile, remaining, monthlySaving, targetMonths, neededMonthlyValue);
+      guidanceEl.innerHTML = getGuidance(
+  monthsCovered,
+  riskProfile,
+  remaining,
+  monthlySaving,
+  targetMonths,
+  neededMonthlyValue,
+  rMonthly
+);
     }
 
     function resetExampleValues() {
