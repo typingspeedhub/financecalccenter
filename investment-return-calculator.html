@@ -787,7 +787,7 @@
 
             <div class="results-grid">
               <div class="res-item">
-                <div class="res-label">Annualized return (CAGR)</div>
+                <div class="res-label">Annualized return (CAGR / IRR estimate)</div>
                 <div id="annualReturn" class="res-value">—</div>
               </div>
 
@@ -948,8 +948,8 @@
               <li>Years invested: <strong>5</strong></li>
             </ul>
             <p>
-              Using the CAGR formula, the annualized return is about <strong>10.54% per year</strong>.
-              That means a steady compounded yearly return of roughly 10.54% would take $10,000 to about $16,500 in five years.
+             Using the CAGR formula, the annualized return is about <strong>10.53% per year</strong>.
+              That means a steady compounded yearly return of roughly 10.53% would take $10,000 to about $16,500 in five years.
             </p>
           </div>
 
@@ -1261,8 +1261,20 @@
       }
 
       // Binary search for annual rate
-      let low = -0.999;
-      let high = 10;
+      let low = -11.999988;
+let high = 10;
+
+const minFV = futureValueWithMonthly(low, years, start, monthly, timing);
+const maxFV = futureValueWithMonthly(high, years, start, monthly, timing);
+
+if (
+  !Number.isFinite(minFV) ||
+  !Number.isFinite(maxFV) ||
+  finalAmount < minFV ||
+  finalAmount > maxFV
+) {
+  return NaN;
+}
 
       for (let i = 0; i < 120; i++) {
         const mid = (low + high) / 2;
@@ -1277,7 +1289,9 @@
         }
       }
 
-      return (low + high) / 2;
+    const nominalAnnualRate = (low + high) / 2;
+const monthlyRate = nominalAnnualRate / 12;
+return Math.pow(1 + monthlyRate, 12) - 1;
     }
 
     function getInterpretation(annualRate, totalGain, totalInvested, finalAmount, monthlyContribution) {
@@ -1360,16 +1374,35 @@
       }
 
       const nMonths = Math.round(years * 12);
-      const totalContributions = startAmount + (monthlyContribution * nMonths);
+
+   if (monthlyContribution > 0 && nMonths < 1) {
+  errorEl.textContent = "Please enter a time period of at least one month when using monthly contributions.";
+  return;
+}
+
+const effectiveYears = nMonths / 12;
+
+if (
+  startAmount === 0 &&
+  monthlyContribution > 0 &&
+  nMonths === 1 &&
+  contributionTiming === "end"
+) {
+  errorEl.textContent =
+    "An annualized return cannot be determined from a single end-of-month deposit with no starting balance.";
+  return;
+}
+
+const totalContributions = startAmount + (monthlyContribution * nMonths);
       const totalGain = finalAmount - totalContributions;
 
       const annualRate = estimateAnnualizedReturn(
-        years,
-        startAmount,
-        monthlyContribution,
-        finalAmount,
-        contributionTiming
-      );
+  monthlyContribution > 0 ? effectiveYears : years,
+  startAmount,
+  monthlyContribution,
+  finalAmount,
+  contributionTiming
+);
 
       if (!isFinite(annualRate)) {
         errorEl.textContent = "Could not estimate a consistent annualized return with these inputs.";
