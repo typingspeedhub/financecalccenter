@@ -559,7 +559,7 @@
       "name": "FinanceCalcCenter",
       "url": "https://financecalccenter.com/"
     },
-    "dateModified": "2026-09-07",
+    "dateModified": "2026-10-14",
     "inLanguage": "en"
   }
   </script>
@@ -618,8 +618,7 @@
         to estimate <strong>cost per use</strong> — useful for subscriptions, memberships, software, phone plans, insurance, and recurring habits.
       </p>
       <p class="byline">
-        Written and reviewed by <a href="about.html">Tibor Győry</a> · Updated September 7, 2026 · Educational use only
-      </p>
+        Written and reviewed by <a href="about.html">Tibor Győry</a> · Updated October 14, 2026 · Educational use only
     </header>
 
     <main id="main-content">
@@ -840,34 +839,59 @@
       });
     }
 
-    function getInputValues() {
-      const amount = Math.max(0, parseFloat(document.getElementById("costAmount").value) || 0);
-      const period = document.getElementById("costPeriod").value;
-      const usesRaw = parseFloat(document.getElementById("usesPerWeek").value);
-      const usesPerWeek = Number.isFinite(usesRaw) && usesRaw > 0 ? usesRaw : null;
+   function getInputValues() {
+  const amountRaw = document.getElementById("costAmount").value.trim();
+  const amount = amountRaw === "" ? NaN : Number(amountRaw);
 
-      return {
-        amount,
-        period,
-        usesPerWeek
-      };
-    }
+  const period = document.getElementById("costPeriod").value;
+
+  const usesInput = document.getElementById("usesPerWeek").value.trim();
+  const usesPerWeek = usesInput === "" ? null : Number(usesInput);
+
+  return {
+    amount,
+    period,
+    usesPerWeek
+  };
+}
 
     function calculateCosts() {
-      const { amount, period, usesPerWeek } = getInputValues();
-      const resultBox = document.getElementById("result");
+  const { amount, period, usesPerWeek } = getInputValues();
+  const resultBox = document.getElementById("result");
 
-      let dailyCost = 0;
+  if (!Number.isFinite(amount) || amount < 0) {
+    resultBox.style.display = "block";
+    resultBox.textContent = "Please enter a valid cost amount of zero or more.";
+    return;
+  }
+
+  if (
+    usesPerWeek !== null &&
+    (!Number.isFinite(usesPerWeek) || usesPerWeek <= 0)
+  ) {
+    resultBox.style.display = "block";
+    resultBox.textContent =
+      "Uses per week must be greater than zero, or leave the field blank.";
+    return;
+  }
+
+  if (!["daily", "weekly", "monthly", "yearly"].includes(period)) {
+    resultBox.style.display = "block";
+    resultBox.textContent = "Please select a valid billing period.";
+    return;
+  }
+
+  let dailyCost = 0;
       let weeklyCost = 0;
       let monthlyCost = 0;
       let yearlyCost = 0;
 
-      if (period === "daily") {
-        dailyCost = amount;
-        weeklyCost = amount * 7;
-        yearlyCost = amount * 365;
-        monthlyCost = yearlyCost / 12;
-      }
+     if (period === "daily") {
+  dailyCost = amount;
+  yearlyCost = amount * 365;
+  weeklyCost = yearlyCost / 52;
+  monthlyCost = yearlyCost / 12;
+}
 
       if (period === "weekly") {
         weeklyCost = amount;
