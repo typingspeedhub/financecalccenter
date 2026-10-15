@@ -638,9 +638,9 @@
             </div>
 
             <div class="field">
-              <label for="subscriptionCount">Number of Subscriptions</label>
-              <input type="number" id="subscriptionCount" inputmode="numeric" min="1" step="1" value="3" />
-              <div class="help-text">Use 1 for one subscription, or more for several similar plans.</div>
+             <label for="subscriptionCount">Number of Equal-Cost Subscriptions</label>
+             <input type="number" id="subscriptionCount" inputmode="numeric" min="1" max="100000" step="1" value="3" />
+              <div class="help-text">Enter 1 for one subscription, or more for subscriptions with the same monthly price and annual discount.</div>
             </div>
 
             <div class="field">
@@ -950,8 +950,7 @@
       <p class="footer-note">
         FinanceCalcCenter provides educational calculators and plain-English financial explainers designed to help users compare everyday money decisions more clearly.
       </p>
-    </main>
-  </div>
+       </main>
 
   <script>
     function fmtMoney(x) {
@@ -974,19 +973,62 @@
       return Math.min(Math.max(value, min), max);
     }
 
-    function getInputValues() {
-      const monthlyCost = Math.max(0, parseFloat(document.getElementById("monthlyCost").value) || 0);
-      const subscriptionCount = Math.max(1, parseInt(document.getElementById("subscriptionCount").value, 10) || 1);
-      const annualDiscount = clamp(parseFloat(document.getElementById("annualDiscount").value) || 0, 0, 100);
-      const unusedPercent = clamp(parseFloat(document.getElementById("unusedPercent").value) || 0, 0, 100);
+   function getInputValues() {
+  const monthlyInput = document.getElementById("monthlyCost").value.trim();
+  const countInput = document.getElementById("subscriptionCount").value.trim();
+  const discountInput = document.getElementById("annualDiscount").value.trim();
+  const unusedInput = document.getElementById("unusedPercent").value.trim();
 
-      return {
-        monthlyCost,
-        subscriptionCount,
-        annualDiscount,
-        unusedPercent
-      };
-    }
+  if (monthlyInput === "" || countInput === "") {
+    throw new Error("Please enter the monthly cost and number of subscriptions.");
+  }
+
+  const monthlyCost = Number(monthlyInput);
+  const subscriptionCount = Number(countInput);
+  const annualDiscount = discountInput === "" ? 0 : Number(discountInput);
+  const unusedPercent = unusedInput === "" ? 0 : Number(unusedInput);
+
+  if (!Number.isFinite(monthlyCost) || monthlyCost < 0) {
+    throw new Error("Monthly cost must be a valid non-negative number.");
+  }
+
+  if (
+    !Number.isSafeInteger(subscriptionCount) ||
+    subscriptionCount < 1 ||
+    subscriptionCount > 100000
+  ) {
+    throw new Error("Number of subscriptions must be a whole number between 1 and 100,000.");
+  }
+
+  if (
+    !Number.isFinite(annualDiscount) ||
+    annualDiscount < 0 ||
+    annualDiscount > 100
+  ) {
+    throw new Error("Annual discount must be between 0% and 100%.");
+  }
+
+  if (
+    !Number.isFinite(unusedPercent) ||
+    unusedPercent < 0 ||
+    unusedPercent > 100
+  ) {
+    throw new Error("Unused portion must be between 0% and 100%.");
+  }
+
+  const yearlyTotal = monthlyCost * subscriptionCount * 12;
+
+  if (!Number.isFinite(yearlyTotal) || yearlyTotal > 1e12) {
+    throw new Error("The calculated amount is too large. Please enter a smaller value.");
+  }
+
+  return {
+    monthlyCost,
+    subscriptionCount,
+    annualDiscount,
+    unusedPercent
+  };
+}
 
     function calculateCosts() {
       const { monthlyCost, subscriptionCount, annualDiscount, unusedPercent } = getInputValues();
@@ -1074,9 +1116,15 @@
         </p>
 
         <p class="note">
-          If about <strong>${fmtPercent(unusedPercent)}%</strong> of the subscription value goes unused, the estimated unused cost is
-          <strong>$${fmtMoney(estimatedUnusedCost)}</strong> per year, leaving about <strong>$${fmtMoney(estimatedUsedValue)}</strong> of estimated used value.
-        </p>
+        
+  If you estimate that <strong>${fmtPercent(unusedPercent)}%</strong> of your subscriptions goes unused,
+  the estimated unused portion of your regular annual spending is
+  <strong>$${fmtMoney(estimatedUnusedCost)}</strong>.
+  The remaining portion is approximately
+  <strong>$${fmtMoney(estimatedUsedValue)}</strong>.
+  These are subjective usage-based estimates calculated before any annual billing discount,
+  not guaranteed financial savings or a measure of actual service value.
+</p>
       `;
     }
 
@@ -1090,9 +1138,17 @@
     }
 
     document.getElementById("calculatorForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      calculateCosts();
-    });
+  e.preventDefault();
+
+  const resultBox = document.getElementById("result");
+
+  try {
+    calculateCosts();
+  } catch (error) {
+    resultBox.style.display = "block";
+    resultBox.textContent = error.message;
+  }
+});
 
     document.getElementById("resetBtn").addEventListener("click", resetCalculator);
   </script>
@@ -1108,9 +1164,10 @@
     <a href="disclaimer.html">Disclaimer</a> ·
     <a href="about.html">About</a> ·
     <a href="contact.html">Contact</a>
-  </p>
+   </p>
 </footer>
 
+</div>
 </body>
 </html>
 
