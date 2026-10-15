@@ -618,9 +618,9 @@
             </div>
 
             <div class="field">
-              <label for="numberOfItems">Number of Monthly Costs</label>
-              <input type="number" id="numberOfItems" inputmode="numeric" min="1" step="1" value="1" />
-              <div class="help-text">Use 1 for a single expense, or enter more for multiple subscriptions.</div>
+              <label for="numberOfItems">Number of Equal Monthly Expenses</label>
+              <input type="number" id="numberOfItems" inputmode="numeric" min="1" max="100000" step="1" value="1" />
+              <div class="help-text">Enter 1 for one expense, or a higher number for multiple expenses with the same monthly price.</div>
             </div>
           </div>
 
@@ -920,14 +920,35 @@
     }
 
     function getInputValues() {
-      const monthlyCost = Math.max(0, parseFloat(document.getElementById("monthlyCost").value) || 0);
-      const numberOfItems = Math.max(1, parseInt(document.getElementById("numberOfItems").value, 10) || 1);
+  const monthlyInput = document.getElementById("monthlyCost").value.trim();
+  const itemsInput = document.getElementById("numberOfItems").value.trim();
 
-      return {
-        monthlyCost,
-        numberOfItems
-      };
-    }
+  if (monthlyInput === "" || itemsInput === "") {
+    throw new Error("Please complete both input fields.");
+  }
+
+  const monthlyCost = Number(monthlyInput);
+  const numberOfItems = Number(itemsInput);
+
+  if (!Number.isFinite(monthlyCost) || monthlyCost < 0) {
+    throw new Error("Monthly cost must be a valid non-negative number.");
+  }
+
+  if (!Number.isSafeInteger(numberOfItems) ||
+      numberOfItems < 1 ||
+      numberOfItems > 100000) {
+    throw new Error("Number of expenses must be a whole number between 1 and 100,000.");
+  }
+
+  if (!Number.isFinite(monthlyCost * numberOfItems * 12)) {
+    throw new Error("The calculated amount is too large.");
+  }
+
+  return {
+    monthlyCost,
+    numberOfItems
+  };
+}
 
     function calculateCosts() {
       const { monthlyCost, numberOfItems } = getInputValues();
@@ -992,9 +1013,17 @@
     }
 
     document.getElementById("calculatorForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      calculateCosts();
-    });
+  e.preventDefault();
+
+  const resultBox = document.getElementById("result");
+
+  try {
+    calculateCosts();
+  } catch (error) {
+    resultBox.style.display = "block";
+    resultBox.textContent = error.message;
+  }
+});
 
     document.getElementById("resetBtn").addEventListener("click", resetCalculator);
 
