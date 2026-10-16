@@ -569,7 +569,7 @@
             <div class="field">
               <label for="paidWeeks">Paid weeks per year</label>
               <input type="number" id="paidWeeks" inputmode="decimal" min="0" max="52" step="0.1" value="52" />
-              <div class="help-text">Use 52 if you are paid all year. Use less for unpaid time off or seasonal work.</div>
+             <div class="help-text">Use 52 for a standard full year of paid work. Enter fewer weeks for unpaid leave or seasonal work. Results are annualized estimates based on a 52-week year.</div>
             </div>
 
             <div class="field">
@@ -581,7 +581,7 @@
             <div class="field">
               <label for="overtimeMultiplier">Overtime rate multiplier</label>
               <input type="number" id="overtimeMultiplier" inputmode="decimal" min="0" step="0.1" value="1.5" />
-              <div class="help-text">Common example: 1.5 means time-and-a-half.</div>
+            <div class="help-text">Enter the total overtime pay multiplier. For example, 1.5 means 150% of the regular hourly rate. Actual overtime rules vary by employer and jurisdiction.</div>
             </div>
 
             <div class="field">
@@ -901,9 +901,16 @@
 
   <script>
     function getNumber(id) {
-      const value = parseFloat(document.getElementById(id).value);
-      return Number.isFinite(value) ? value : 0;
-    }
+  const input = document.getElementById(id);
+  const rawValue = input.value.trim();
+
+  if (rawValue === "") {
+    return NaN;
+  }
+
+  const value = Number(rawValue);
+  return Number.isFinite(value) ? value : NaN;
+}
 
     function fmtMoney(value, currency) {
       if (!Number.isFinite(value)) {
@@ -943,7 +950,17 @@
 
       const resultBox = document.getElementById("result");
 
-      if (hourlyWage < 0 || hoursPerWeek < 0 || paidWeeks < 0 || overtimeHours < 0 || overtimeMultiplier < 0 || monthlyDeductions < 0) {
+    if (
+  ![hourlyWage, hoursPerWeek, paidWeeks, overtimeHours, overtimeMultiplier, monthlyDeductions].every(Number.isFinite) ||
+  hourlyWage <= 0 ||
+  hoursPerWeek < 0 ||
+  paidWeeks <= 0 ||
+  overtimeHours < 0 ||
+  overtimeMultiplier < 0 ||
+  monthlyDeductions < 0 ||
+  (hoursPerWeek === 0 && overtimeHours === 0) ||
+  (overtimeHours > 0 && overtimeMultiplier === 0)
+) {
         resultBox.style.display = "block";
         resultBox.innerHTML = "<h2>Check your inputs</h2><p class='note'>Please enter zero or positive numbers only.</p>";
         return;
@@ -971,15 +988,21 @@
       const biweeklyGrossPay = yearlyGrossPay / 26;
       const semimonthlyGrossPay = yearlyGrossPay / 24;
 
-      const monthlyAfterDeductions = Math.max(0, monthlyGrossPay - monthlyDeductions);
-      const yearlyDeductions = monthlyDeductions * 12;
-      const yearlyAfterDeductions = Math.max(0, yearlyGrossPay - yearlyDeductions);
+     if (monthlyDeductions > monthlyGrossPay) {
+     resultBox.style.display = "block";
+     resultBox.innerHTML = "<h2>Check your deductions</h2><p class='note'>Monthly deductions cannot exceed the estimated gross monthly salary.</p>";
+     return;
+     }
 
-      let selectedPaycheckLabel = "Estimated biweekly gross pay";
+    const monthlyAfterDeductions = monthlyGrossPay - monthlyDeductions;
+    const yearlyDeductions = monthlyDeductions * 12;
+    const yearlyAfterDeductions = yearlyGrossPay - yearlyDeductions;
+
+     let selectedPaycheckLabel = "Average biweekly gross pay";
       let selectedPaycheckValue = biweeklyGrossPay;
 
       if (payFrequency === "weekly") {
-        selectedPaycheckLabel = "Estimated weekly gross pay";
+        selectedPaycheckLabel = "Average weekly gross pay";
         selectedPaycheckValue = weeklyAveragePay;
       } else if (payFrequency === "semimonthly") {
         selectedPaycheckLabel = "Estimated semimonthly gross pay";
@@ -1025,7 +1048,7 @@
           </div>
 
           <div class="result-item">
-            <span class="result-label">Estimated biweekly gross pay</span>
+            <span class="result-label">Average biweekly gross pay</span>
             <span class="result-value">${fmtMoney(biweeklyGrossPay, currency)}</span>
           </div>
 
