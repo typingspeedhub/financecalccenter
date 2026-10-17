@@ -587,7 +587,7 @@
             <div class="field">
               <label for="paidWeeks">Paid weeks per year</label>
               <input type="number" id="paidWeeks" inputmode="decimal" min="1" max="52" step="0.1" value="52" />
-              <div class="help-text">Use 52 for a normal year-round salary.</div>
+             <div class="help-text">Use 52 for a standard year-round salary. Fewer paid weeks increase the calculated hourly and weekly equivalent; they do not reduce the annual salary entered.</div>
             </div>
 
             <div class="field">
@@ -658,12 +658,12 @@
           </ul>
         </div>
 
-      
-          <strong>Quick example:</strong>
-          A <strong>$52,000 annual salary</strong> divided by <strong>52 weeks</strong>
-          equals <strong>$1,000 per week</strong>. If you work <strong>40 hours per week</strong>,
-          that is about <strong>$25 per hour</strong> before taxes and deductions.
-        </div>
+              <div class="callout">
+  <strong>Quick example:</strong>
+  A <strong>$52,000 annual salary</strong> divided by <strong>52 weeks</strong>
+  equals <strong>$1,000 per week</strong>. If you work <strong>40 hours per week</strong>,
+  that is about <strong>$25 per hour</strong> before taxes and deductions.
+</div>
 
         <div class="summary-box">
         <strong>Key takeaway:</strong>
@@ -983,10 +983,16 @@
   </div>
 
   <script>
-    function getNumber(id) {
-      const value = parseFloat(document.getElementById(id).value);
-      return Number.isFinite(value) ? value : 0;
-    }
+   function getNumber(id) {
+  const rawValue = document.getElementById(id).value.trim();
+
+  if (rawValue === "") {
+    return NaN;
+  }
+
+  const value = Number(rawValue);
+  return Number.isFinite(value) ? value : NaN;
+}
 
     function getPaychecksPerYear(frequency) {
       if (frequency === "weekly") {
@@ -1079,18 +1085,28 @@
 
       const resultBox = document.getElementById("result");
 
-      if (
-        annualSalary < 0 ||
-        weeklyHours < 0 ||
-        paidWeeks <= 0 ||
-        workDaysPerWeek <= 0 ||
-        bonus < 0 ||
-        taxRate < 0 ||
-        pretaxDeductions < 0 ||
-        posttaxDeductions < 0
-      ) {
+     if (
+  ![
+    annualSalary,
+    weeklyHours,
+    paidWeeks,
+    workDaysPerWeek,
+    bonus,
+    taxRate,
+    pretaxDeductions,
+    posttaxDeductions
+  ].every(Number.isFinite) ||
+  annualSalary <= 0 ||
+  weeklyHours <= 0 ||
+  paidWeeks <= 0 ||
+  workDaysPerWeek <= 0 ||
+  bonus < 0 ||
+  taxRate < 0 ||
+  pretaxDeductions < 0 ||
+  posttaxDeductions < 0
+) {
         resultBox.style.display = "block";
-        resultBox.innerHTML = "<h2>Check your inputs</h2><p class='note'>Please enter valid zero or positive numbers. Paid weeks and work days must be greater than zero.</p>";
+       resultBox.innerHTML = "<h2>Check your inputs</h2><p class='note'>Enter valid numbers. Annual salary, weekly hours, paid weeks, and work days must be greater than zero. Other amounts cannot be negative.</p>";
         return;
       }
 
@@ -1119,10 +1135,32 @@
       }
 
       const totalAnnualGross = annualSalary + bonus;
-      const safePretaxDeductions = Math.min(pretaxDeductions, totalAnnualGross);
-      const taxableAnnualPay = Math.max(0, totalAnnualGross - safePretaxDeductions);
-      const estimatedAnnualTax = taxableAnnualPay * (taxRate / 100);
-      const estimatedAnnualNetPay = Math.max(0, totalAnnualGross - safePretaxDeductions - estimatedAnnualTax - posttaxDeductions);
+
+if (pretaxDeductions > totalAnnualGross) {
+  resultBox.style.display = "block";
+  resultBox.innerHTML =
+    "<h2>Check your deductions</h2>" +
+    "<p class='note'>Annual pre-tax deductions cannot exceed total annual gross pay.</p>";
+  return;
+}
+
+const safePretaxDeductions = pretaxDeductions;
+const taxableAnnualPay = totalAnnualGross - safePretaxDeductions;
+const estimatedAnnualTax = taxableAnnualPay * (taxRate / 100);
+
+if (posttaxDeductions > taxableAnnualPay - estimatedAnnualTax) {
+  resultBox.style.display = "block";
+  resultBox.innerHTML =
+    "<h2>Check your deductions</h2>" +
+    "<p class='note'>Total annual deductions exceed the available annual pay.</p>";
+  return;
+}
+
+const estimatedAnnualNetPay =
+  totalAnnualGross -
+  safePretaxDeductions -
+  estimatedAnnualTax -
+  posttaxDeductions;
 
       const monthlyGross = totalAnnualGross / 12;
       const monthlyNet = estimatedAnnualNetPay / 12;
