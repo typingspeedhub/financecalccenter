@@ -602,13 +602,13 @@
 
             <div class="field">
               <label for="regularHours">Regular hours per paycheck</label>
-              <input type="number" id="regularHours" inputmode="decimal" min="0" max="744" step="0.1" value="80" />
+              <input type="number" id="regularHours" inputmode="decimal" min="0" step="0.1" value="80" />
               <div class="help-text">Example: 80 hours for a biweekly full-time paycheck.</div>
             </div>
 
             <div class="field">
               <label for="overtimeHours">Overtime hours per paycheck</label>
-              <input type="number" id="overtimeHours" inputmode="decimal" min="0" max="744" step="0.1" value="0" />
+            <input type="number" id="overtimeHours" inputmode="decimal" min="0" step="0.1" value="0" />
               <div class="help-text">Optional. Enter 0 if overtime does not apply.</div>
             </div>
 
@@ -621,7 +621,7 @@
             <div class="field">
               <label for="bonus">Bonus, commission, or extra pay per paycheck</label>
               <input type="number" id="bonus" inputmode="decimal" min="0" step="0.01" value="0" />
-              <div class="help-text">Optional extra gross pay for this paycheck.</div>
+              <div class="help-text">Enter extra gross pay for this paycheck. Annual estimates assume this amount repeats every pay period. For one-time bonuses, annual estimates may be overstated.</div>
             </div>
 
             <div class="field">
@@ -633,7 +633,7 @@
             <div class="field">
               <label for="pretaxDeductions">Pre-tax deductions per paycheck</label>
               <input type="number" id="pretaxDeductions" inputmode="decimal" min="0" step="0.01" value="0" />
-              <div class="help-text">Examples: retirement contributions, health plan deductions, eligible benefits.</div>
+             <div class="help-text">Enter deductions assumed to reduce the taxable amount in this simplified estimate. Actual tax treatment varies by deduction type and jurisdiction.</div>
             </div>
 
             <div class="field">
@@ -988,10 +988,16 @@
   </div>
 
   <script>
-    function getNumber(id) {
-      const value = parseFloat(document.getElementById(id).value);
-      return Number.isFinite(value) ? value : 0;
-    }
+   function getNumber(id) {
+  const rawValue = document.getElementById(id).value.trim();
+
+  if (rawValue === "") {
+    return NaN;
+  }
+
+  const value = Number(rawValue);
+  return Number.isFinite(value) ? value : NaN;
+}
 
     function getPaychecksPerYear(frequency) {
       if (frequency === "weekly") {
@@ -1087,53 +1093,92 @@
       const resultBox = document.getElementById("result");
 
       if (
-        annualSalary < 0 ||
-        hourlyWage < 0 ||
-        regularHours < 0 ||
-        overtimeHours < 0 ||
-        overtimeMultiplier < 0 ||
-        bonus < 0 ||
-        taxRate < 0 ||
-        pretaxDeductions < 0 ||
-        posttaxDeductions < 0
-      ) {
-        resultBox.style.display = "block";
-        resultBox.innerHTML = "<h2>Check your inputs</h2><p class='note'>Please enter zero or positive numbers only.</p>";
-        return;
-      }
+  ![bonus, taxRate, pretaxDeductions, posttaxDeductions].every(Number.isFinite) ||
+  bonus < 0 ||
+  taxRate < 0 ||
+  pretaxDeductions < 0 ||
+  posttaxDeductions < 0 ||
+  (payType === "salary" &&
+    (!Number.isFinite(annualSalary) || annualSalary <= 0)) ||
+  (payType === "hourly" &&
+    (
+      ![hourlyWage, regularHours, overtimeHours, overtimeMultiplier].every(Number.isFinite) ||
+      hourlyWage <= 0 ||
+      regularHours < 0 ||
+      overtimeHours < 0 ||
+      overtimeMultiplier < 0 ||
+      (regularHours === 0 && overtimeHours === 0) ||
+          (overtimeHours > 0 && overtimeMultiplier === 0)
+    ))
+) {
+  resultBox.style.display = "block";
+  resultBox.innerHTML = "<h2>Check your inputs</h2><p class='note'>Please enter valid, non-negative values. Hourly wage and annual salary must be greater than zero when applicable.</p>";
+  return;
+}
 
-      if (taxRate > 100) {
+if (taxRate > 100) {
         resultBox.style.display = "block";
         resultBox.innerHTML = "<h2>Check your tax rate</h2><p class='note'>Estimated tax rate cannot be more than 100%.</p>";
         return;
       }
 
-      if (regularHours + overtimeHours > 744) {
-        resultBox.style.display = "block";
-        resultBox.innerHTML = "<h2>Check your hours</h2><p class='note'>Regular hours and overtime hours are unusually high for one paycheck. Please check your input.</p>";
-        return;
-      }
+     if (payType === "hourly") {
+  const maxHoursByFrequency = {
+    weekly: 168,
+    biweekly: 336,
+    semimonthly: 372,
+    monthly: 744,
+    yearly: 8784
+  };
+
+  const maxHours = maxHoursByFrequency[payFrequency];
+
+  if (regularHours + overtimeHours > maxHours) {
+    resultBox.style.display = "block";
+    resultBox.innerHTML =
+      "<h2>Check your hours</h2>" +
+      "<p class='note'>The total hours exceed the maximum possible hours for the selected pay period.</p>";
+    return;
+  }
+}
 
       let baseGrossPay = 0;
       let regularPay = 0;
       let overtimePay = 0;
 
       if (payType === "salary") {
-        baseGrossPay = annualSalary / paychecksPerYear;
-        regularPay = baseGrossPay;
-        overtimePay = hourlyWage * overtimeMultiplier * overtimeHours;
-      } else {
-        regularPay = hourlyWage * regularHours;
-        overtimePay = hourlyWage * overtimeMultiplier * overtimeHours;
-        baseGrossPay = regularPay + overtimePay;
-      }
+  baseGrossPay = annualSalary / paychecksPerYear;
+  regularPay = baseGrossPay;
+  overtimePay = 0;
+} else {
+  regularPay = hourlyWage * regularHours;
+  overtimePay = hourlyWage * overtimeMultiplier * overtimeHours;
+  baseGrossPay = regularPay + overtimePay;
+}
 
       const grossPaycheck = baseGrossPay + bonus;
 
-      const safePretaxDeductions = Math.min(pretaxDeductions, grossPaycheck);
-      const taxablePay = Math.max(0, grossPaycheck - safePretaxDeductions);
-      const estimatedTax = taxablePay * (taxRate / 100);
-      const estimatedNetPaycheck = Math.max(0, grossPaycheck - safePretaxDeductions - estimatedTax - posttaxDeductions);
+      if (pretaxDeductions > grossPaycheck) {
+  resultBox.style.display = "block";
+  resultBox.innerHTML = "<h2>Check your deductions</h2><p class='note'>Pre-tax deductions cannot exceed gross pay.</p>";
+  return;
+}
+
+const safePretaxDeductions = pretaxDeductions;
+const taxablePay = grossPaycheck - safePretaxDeductions;
+const estimatedTax = taxablePay * (taxRate / 100);
+
+if (posttaxDeductions > taxablePay - estimatedTax) {
+  resultBox.style.display = "block";
+  resultBox.innerHTML = "<h2>Check your deductions</h2><p class='note'>Total deductions exceed the available paycheck amount.</p>";
+  return;
+}
+
+const estimatedNetPaycheck =
+  grossPaycheck -
+  safePretaxDeductions -
+  estimatedTax -
+  posttaxDeductions;
 
       const annualGrossEstimate = grossPaycheck * paychecksPerYear;
       const annualPretaxDeductions = safePretaxDeductions * paychecksPerYear;
