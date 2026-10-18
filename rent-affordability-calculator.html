@@ -1035,9 +1035,17 @@
 
   <script>
     function getNumber(id) {
-      const value = parseFloat(document.getElementById(id).value);
-      return Number.isFinite(value) ? value : 0;
-    }
+  const input = document.getElementById(id);
+  const rawValue = input.value.trim();
+
+  if (rawValue === "") {
+    return NaN;
+  }
+
+  const value = Number(rawValue);
+
+  return Number.isFinite(value) ? value : NaN;
+}
 
     function fmtMoney(value, currency) {
       if (!Number.isFinite(value)) {
@@ -1125,8 +1133,23 @@
     function calculateRentAffordability() {
       const currency = document.getElementById("currency").value;
       const monthlyIncome = getNumber("monthlyIncome");
-      const incomeType = document.getElementById("incomeType").value;
-      const incomeTypeLabel = getIncomeTypeLabel(incomeType);
+     const incomeType = document.getElementById("incomeType").value;
+const incomeTypeLabel = getIncomeTypeLabel(incomeType);
+
+let grossIncomeWarning = "";
+
+if (incomeType === "gross") {
+  grossIncomeWarning = `
+    <p class="note" style="color:#fcd34d;font-weight:700;">
+      Important: You selected gross income before taxes.
+      Taxes and payroll deductions are not subtracted
+      by this calculator. Your actual take-home income
+      may be lower, so the budget-based rent estimate
+      may overstate what you can comfortably afford.
+      For personal budgeting, using net income is recommended.
+    </p>
+  `;
+}
 
       const monthlyDebt = getNumber("monthlyDebt");
       const utilities = getNumber("utilities");
@@ -1140,28 +1163,38 @@
 
       const resultBox = document.getElementById("result");
 
-      if (
-        monthlyIncome <= 0 ||
-        monthlyDebt < 0 ||
-        utilities < 0 ||
-        rentersInsurance < 0 ||
-        savingsGoal < 0 ||
-        otherExpenses < 0 ||
-        selectedPercent < 0 ||
-        applicationFees < 0 ||
-        movingCosts < 0
-      ) {
-        resultBox.style.display = "block";
-        resultBox.innerHTML = "<h2>Check your inputs</h2><p class='note'>Please enter valid numbers. Monthly income must be greater than zero, and costs cannot be negative.</p>";
-        return;
-      }
+     if (
+  !Number.isFinite(monthlyIncome) ||
+  !Number.isFinite(monthlyDebt) ||
+  !Number.isFinite(utilities) ||
+  !Number.isFinite(rentersInsurance) ||
+  !Number.isFinite(savingsGoal) ||
+  !Number.isFinite(otherExpenses) ||
+  !Number.isFinite(selectedPercent) ||
+  !Number.isFinite(securityDepositMonths) ||
+  !Number.isFinite(applicationFees) ||
+  !Number.isFinite(movingCosts) ||
+  monthlyIncome <= 0 ||
+  monthlyDebt < 0 ||
+  utilities < 0 ||
+  rentersInsurance < 0 ||
+  savingsGoal < 0 ||
+  otherExpenses < 0 ||
+  selectedPercent < 0 ||
+  securityDepositMonths < 0 ||
+  applicationFees < 0 ||
+  movingCosts < 0
+) {
+  resultBox.style.display = "block";
+  resultBox.innerHTML = "<h2>Check your inputs</h2><p class='note'>Please enter valid numbers in all fields. Monthly income must be greater than zero, and expenses cannot be negative.</p>";
+  return;
+}
 
       if (selectedPercent > 100) {
-        resultBox.style.display = "block";
-        resultBox.innerHTML = "<h2>Check your rent percentage</h2><p class='note'>The selected rent percentage cannot be more than 100%.</p>";
-        return;
-      }
-
+  resultBox.style.display = "block";
+  resultBox.innerHTML = "<h2>Check your rent percentage</h2><p class='note'>The selected rent percentage cannot be more than 100%.</p>";
+  return;
+}
       const conservativeRent = monthlyIncome * 0.25;
       const commonRent = monthlyIncome * 0.30;
       const stretchedRent = monthlyIncome * 0.35;
@@ -1191,13 +1224,32 @@
       const affordabilityMessage = getAffordabilityMessage(housingToIncomeRatio, remainingAfterAllCosts, currency);
 
       let limitingFactor = "your selected rent rule";
-      if (safeBudgetBasedRent < selectedRuleRent) {
-        limitingFactor = "your budget after the expenses entered";
-      }
 
-      resultBox.style.display = "block";
-      resultBox.innerHTML = `
-        <h2>Results</h2>
+if (safeBudgetBasedRent < selectedRuleRent) {
+  limitingFactor = "your budget after the expenses entered";
+}
+
+let budgetWarning = "";
+
+if (budgetBasedRentLimit < 0) {
+  budgetWarning = `
+    <p class="note" style="color:#fca5a5;font-weight:700;">
+      Warning: Your monthly expenses and savings goals exceed
+      your entered income even before rent is added.
+      The suggested rent is shown as zero, but your current
+      budget has a shortfall of
+      ${fmtMoney(Math.abs(budgetBasedRentLimit), currency)}.
+      Review your expenses and income before committing
+      to a rental agreement.
+    </p>
+  `;
+}
+
+   resultBox.style.display = "block";
+resultBox.innerHTML = `
+  <h2>Results</h2>
+  ${budgetWarning}
+  ${grossIncomeWarning}
 
         <div class="result-grid">
           <div class="result-item ${affordabilityClass}">
