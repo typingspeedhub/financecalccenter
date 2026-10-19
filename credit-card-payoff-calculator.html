@@ -432,9 +432,13 @@
       <section class="card">
         <h2>Calculate your credit card payoff plan</h2>
         <p>
-          Enter your current credit card balance, APR, minimum payment, and optional extra monthly payment.
-          The calculator compares a minimum-payment plan with a faster fixed-payment plan.
-        </p>
+          
+  Enter your current credit card balance, APR, base monthly
+  payment, and optional extra monthly payment.
+  The calculator compares two fixed-payment scenarios
+  to estimate repayment time and interest costs.
+</p>
+  
 
         <div class="calculator-layout">
           <div>
@@ -464,15 +468,18 @@
                 </div>
 
                 <div class="field">
-                  <label for="minimumPayment">Minimum monthly payment</label>
-                  <input id="minimumPayment" type="number" value="150" min="0" step="10">
-                  <div class="help">The minimum payment currently required.</div>
+                  <label for="minimumPayment">Base monthly payment</label>
+                 <input id="minimumPayment" type="number" value="150" min="0" step="10">
+                 <div class="help">
+                 Enter a fixed monthly payment amount. Your card issuer's
+                 actual required minimum may change over time.
+                 </div>
                 </div>
 
                 <div class="field">
                   <label for="extraPayment">Extra monthly payment</label>
                   <input id="extraPayment" type="number" value="100" min="0" step="10">
-                  <div class="help">Extra amount paid above the minimum.</div>
+                 <div class="help">Extra amount paid above your base monthly payment.</div>
                 </div>
 
                 <div class="field">
@@ -611,18 +618,24 @@
       </section>
 
       <section class="card">
-        <h2>Minimum payment vs fixed payoff payment</h2>
-        <p>
-          Credit card minimum payments are often designed to keep the account current, not necessarily to pay off the
-          balance quickly. A fixed payment above the minimum can be easier to plan because you know exactly how much
-          you intend to pay each month.
-        </p>
+        <h2>Base payment vs higher fixed monthly payment</h2>
+<p>
+  This calculator compares two fixed monthly payment amounts.
+  Paying more each month generally reduces the repayment
+  period and total interest costs, assuming the APR and
+  other conditions remain unchanged.
+</p>
 
-        <h3>Minimum payment approach</h3>
-        <p>
-          The minimum payment approach may feel easier month to month, but it can be expensive over time.
-          If the minimum payment is low compared with the balance and APR, the payoff timeline may be long.
-        </p>
+<h3>Base fixed payment approach</h3>
+<p>
+  The calculator treats your entered base payment as a fixed
+  monthly amount. A lower fixed payment may result in a
+  longer repayment period and higher interest costs.
+  Your card issuer's actual required minimum payment
+  may change as your balance decreases.
+</p>
+
+       
 
         <h3>Fixed payment approach</h3>
         <p>
@@ -861,24 +874,34 @@
     const comparisonBody = document.getElementById("comparisonBody");
 
     function getValue(id) {
-      const value = parseFloat(document.getElementById(id).value);
-      return Number.isFinite(value) ? value : 0;
-    }
+  const input = document.getElementById(id);
+  const rawValue = input.value.trim();
+
+  if (rawValue === "") {
+    return NaN;
+  }
+
+  const value = Number(rawValue);
+
+  return Number.isFinite(value) ? value : NaN;
+}
 
     function getCurrency() {
       return document.getElementById("currency").value;
     }
 
-    function formatMoney(amount) {
-      const currency = getCurrency();
-      const rounded = Math.round(amount);
+   function formatMoney(amount) {
+  const currency = getCurrency();
 
-      if (currency === "Ft") {
-        return rounded.toLocaleString("en-US") + " Ft";
-      }
+  if (currency === "Ft") {
+    return Math.round(amount).toLocaleString("en-US") + " Ft";
+  }
 
-      return currency + rounded.toLocaleString("en-US");
-    }
+  return currency + amount.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  });
+}
 
     function formatTime(months) {
       if (!Number.isFinite(months)) {
@@ -903,78 +926,105 @@
       return years + (years === 1 ? " year " : " years ") + rest + (rest === 1 ? " month" : " months");
     }
 
-    function calculateScenario(balance, apr, monthlyPayment, newCharges) {
-      const monthlyRate = apr / 100 / 12;
-      let currentBalance = balance;
-      let totalInterest = 0;
-      let totalPaid = 0;
-      let months = 0;
-      const maxMonths = 720;
+   function calculateScenario(balance, apr, monthlyPayment, newCharges) {
+  const monthlyRate = apr / 100 / 12;
+  let currentBalance = balance;
+  let totalInterest = 0;
+  let totalPaid = 0;
+  let months = 0;
+  const maxMonths = 720;
 
-      if (balance <= 0) {
-        return {
-          possible: true,
-          months: 0,
-          totalInterest: 0,
-          totalPaid: 0
-        };
-      }
+  if (balance <= 0) {
+    return {
+      possible: true,
+      reason: "paid",
+      months: 0,
+      totalInterest: 0,
+      totalPaid: 0
+    };
+  }
 
-      while (currentBalance > 0.01 && months < maxMonths) {
-        const interest = currentBalance * monthlyRate;
-        const balanceBeforePayment = currentBalance + interest + newCharges;
+  while (currentBalance > 0.01 && months < maxMonths) {
+    const interest = currentBalance * monthlyRate;
+    const balanceBeforePayment =
+      currentBalance + interest + newCharges;
 
-        if (monthlyPayment <= interest + newCharges && balanceBeforePayment >= currentBalance) {
-          return {
-            possible: false,
-            months: Infinity,
-            totalInterest: totalInterest,
-            totalPaid: totalPaid
-          };
-        }
-
-        const actualPayment = Math.min(monthlyPayment, balanceBeforePayment);
-        currentBalance = balanceBeforePayment - actualPayment;
-
-        totalInterest += interest;
-        totalPaid += actualPayment;
-        months++;
-      }
-
-      if (months >= maxMonths && currentBalance > 0.01) {
-        return {
-          possible: false,
-          months: Infinity,
-          totalInterest: totalInterest,
-          totalPaid: totalPaid
-        };
-      }
-
+    if (monthlyPayment <= interest + newCharges) {
       return {
-        possible: true,
-        months: months,
+        possible: false,
+        reason: "insufficient",
+        months: Infinity,
         totalInterest: totalInterest,
         totalPaid: totalPaid
       };
     }
 
+    const actualPayment = Math.min(
+      monthlyPayment,
+      balanceBeforePayment
+    );
+
+    currentBalance = Math.max(
+      0,
+      balanceBeforePayment - actualPayment
+    );
+
+    totalInterest += interest;
+    totalPaid += actualPayment;
+    months++;
+  }
+
+  if (currentBalance > 0.01) {
+    return {
+      possible: false,
+      reason: "limit",
+      months: Infinity,
+      totalInterest: totalInterest,
+      totalPaid: totalPaid
+    };
+  }
+
+  return {
+    possible: true,
+    reason: "paid",
+    months: months,
+    totalInterest: totalInterest,
+    totalPaid: totalPaid
+  };
+}
+     
+
     function addComparisonRow(label, payment, scenario) {
-      const row = document.createElement("tr");
+  const row = document.createElement("tr");
 
-      const payoffText = scenario.possible ? formatTime(scenario.months) : "Not reachable";
-      const interestText = scenario.possible ? formatMoney(scenario.totalInterest) : "Balance may grow";
-      const paidText = scenario.possible ? formatMoney(scenario.totalPaid) : "N/A";
+  let payoffText;
+  let interestText;
+  let paidText;
 
-      row.innerHTML = `
-        <td>${label}</td>
-        <td>${formatMoney(payment)}</td>
-        <td>${payoffText}</td>
-        <td>${interestText}</td>
-        <td>${paidText}</td>
-      `;
+  if (scenario.possible) {
+    payoffText = formatTime(scenario.months);
+    interestText = formatMoney(scenario.totalInterest);
+    paidText = formatMoney(scenario.totalPaid);
+  } else if (scenario.reason === "limit") {
+    payoffText = "More than 60 years";
+    interestText = "N/A";
+    paidText = "N/A";
+  } else {
+    payoffText = "Not reachable";
+    interestText = "Balance will not decrease";
+    paidText = "N/A";
+  }
 
-      comparisonBody.appendChild(row);
-    }
+  row.innerHTML = `
+    <td>${label}</td>
+    <td>${formatMoney(payment)}</td>
+    <td>${payoffText}</td>
+    <td>${interestText}</td>
+    <td>${paidText}</td>
+  `;
+
+  comparisonBody.appendChild(row);
+}
 
     function calculate() {
       const balance = getValue("balance");
@@ -983,10 +1033,28 @@
       const extraPayment = getValue("extraPayment");
       const newCharges = getValue("newCharges");
 
-      if (balance < 0 || apr < 0 || minimumPayment < 0 || extraPayment < 0 || newCharges < 0) {
-        alert("Please enter zero or positive numbers only.");
-        return;
-      }
+     const inputs = [
+  balance,
+  apr,
+  minimumPayment,
+  extraPayment,
+  newCharges
+];
+
+if (inputs.some(value => !Number.isFinite(value))) {
+  alert("Please fill in all fields with valid numbers.");
+  return;
+}
+
+if (inputs.some(value => value < 0)) {
+  alert("Please enter zero or positive numbers only.");
+  return;
+}
+
+if (apr > 1000) {
+  alert("Please enter an APR of 1000% or less.");
+  return;
+}
 
       const plannedPayment = minimumPayment + extraPayment;
 
@@ -1003,34 +1071,56 @@
       interestOut.textContent = plannedScenario.possible ? formatMoney(plannedScenario.totalInterest) : "Balance may grow";
 
       if (minimumScenario.possible && plannedScenario.possible) {
-        const saved = Math.max(0, minimumScenario.totalInterest - plannedScenario.totalInterest);
-        savedOut.textContent = formatMoney(saved);
-      } else {
-        savedOut.textContent = "N/A";
-      }
+  const saved = Math.max(
+    0,
+    minimumScenario.totalInterest - plannedScenario.totalInterest
+  );
+
+  savedOut.textContent = formatMoney(saved);
+} else {
+  savedOut.textContent = "N/A";
+}
 
       comparisonBody.innerHTML = "";
-      addComparisonRow("Minimum payment only", minimumPayment, minimumScenario);
+      addComparisonRow("Base fixed payment", minimumPayment, minimumScenario);
       addComparisonRow("With extra payment", plannedPayment, plannedScenario);
 
       statusBox.className = "status";
 
       if (!plannedScenario.possible) {
-        statusBox.classList.add("danger");
-        statusBox.textContent =
-          "Your payment may not be enough to pay off the balance because interest and new charges can keep the debt from falling.";
-      } else if (newCharges > 0) {
-        statusBox.classList.add("warning");
-        statusBox.textContent =
-          "Your payoff estimate includes new monthly charges. Reducing new card use can make the payoff faster.";
-      } else if (extraPayment > 0) {
-        statusBox.textContent =
-          "Your extra monthly payment can reduce the payoff time and may save interest compared with paying only the minimum.";
-      } else {
-        statusBox.classList.add("warning");
-        statusBox.textContent =
-          "This estimate uses only the minimum payment. Paying more than the minimum may shorten the payoff time.";
-      }
+  statusBox.classList.add("danger");
+
+  if (plannedScenario.reason === "limit") {
+    statusBox.textContent =
+      "The estimated payoff period exceeds 60 years. " +
+      "Consider increasing your monthly payment.";
+  } else {
+    statusBox.textContent =
+      "Your monthly payment does not cover the estimated " +
+      "interest and new charges. The balance will not decrease.";
+  }
+
+} else if (balance === 0) {
+  statusBox.textContent =
+    "You currently have no outstanding balance.";
+
+} else if (newCharges > 0) {
+  statusBox.classList.add("warning");
+  statusBox.textContent =
+    "Your estimate includes new monthly charges. " +
+    "Reducing new purchases can shorten the payoff period.";
+
+} else if (extraPayment > 0) {
+  statusBox.textContent =
+    "Your extra monthly payment may reduce the payoff " +
+    "time and total interest compared with the base payment.";
+
+} else {
+  statusBox.classList.add("warning");
+  statusBox.textContent =
+    "This estimate assumes a fixed monthly payment. " +
+    "Your card issuer's required minimum may change over time.";
+}
     }
 
     form.addEventListener("submit", function(event) {
