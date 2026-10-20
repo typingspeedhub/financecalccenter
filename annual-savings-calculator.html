@@ -754,7 +754,7 @@
               <div class="field">
                 <label for="monthlySavings">Monthly savings</label>
                 <input id="monthlySavings" type="number" value="300" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Amount you plan to save each month.</span>
+                <span class="hint">Deposit assumed at the beginning of each month.</span>
               </div>
             </div>
 
@@ -762,13 +762,13 @@
               <div class="field">
                 <label for="annualExtra">Extra annual contribution</label>
                 <input id="annualExtra" type="number" value="0" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Optional bonus, tax refund, or yearly deposit.</span>
+                <span class="hint">Optional yearly deposit, added at the end of each year.</span>
               </div>
 
               <div class="field">
                 <label for="annualRate">Annual interest rate (%)</label>
                 <input id="annualRate" type="number" value="4" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Estimated yearly return or savings interest.</span>
+                <span class="hint">Nominal annual rate; the calculator divides it by 12 and compounds monthly. Do not enter APY directly.</span>
               </div>
             </div>
 
@@ -789,7 +789,7 @@
             <div class="field">
               <label for="savingsGoal">Savings goal</label>
               <input id="savingsGoal" type="number" value="25000" min="0" step="0.01" inputmode="decimal" />
-              <span class="hint">Optional target amount. Use 0 if you do not have a specific goal.</span>
+              <span class="hint">Nominal target amount (not adjusted for inflation). Use 0 if no goal.</span>
             </div>
 
             <div class="button-row">
@@ -799,7 +799,7 @@
             </div>
 
             <p class="small">
-              This calculator is for educational planning only. It does not include taxes, account fees,
+              This calculator assumes a fixed nominal annual interest rate, monthly compounding and deposits at the beginning of each month. It does not include taxes, account fees,
               market losses, changing interest rates, or personal financial advice.
             </p>
           </form>
@@ -818,7 +818,7 @@
               </div>
 
               <div class="result-box">
-                <span>Total contributions</span>
+                <span>Starting balance + new deposits</span>
                 <strong id="totalContributions">$0</strong>
               </div>
 
@@ -833,7 +833,7 @@
               </div>
 
               <div class="result-box">
-                <span>Average annual savings</span>
+                <span>Average yearly new deposits</span>
                 <strong id="averageAnnual">$0</strong>
               </div>
 
@@ -944,7 +944,7 @@
           </li>
           <li>
             <strong>Add a savings goal.</strong>
-            The goal progress bar shows how close your projected ending balance is to your target.
+            The goal progress bar compares the projected nominal ending balance with your nominal target, without inflation adjustment.
           </li>
           <li>
             <strong>Review the table.</strong>
@@ -961,23 +961,23 @@
       <section class="card" id="formula">
         <h2>Annual savings formula</h2>
         <p>
-          The calculator uses monthly compounding. Each month, it adds your planned monthly deposit and then
-          applies one month of estimated interest. At the end of each year, it adds the extra annual contribution.
+          The calculator assumes a nominal annual rate (not APY) and uses monthly compounding. Each month, it adds your planned deposit at the beginning of the month and then
+          applies one month of interest. At the end of each year, it adds the extra annual contribution without interest for that month.
         </p>
 
         <div class="two-column">
           <div class="mini-card">
             <strong>Monthly interest rate</strong>
             <p>
-              Monthly rate = annual interest rate ÷ 12. For example, a 4% annual rate becomes approximately
-              0.333% per month before compounding.
+              Monthly rate = nominal annual interest rate ÷ 12. For example, a 4% nominal annual rate becomes approximately
+              0.3333% per month. An advertised APY already includes compounding and must be converted before entry.
             </p>
           </div>
 
           <div class="mini-card">
             <strong>Monthly balance update</strong>
             <p>
-              New balance = previous balance + monthly deposit + estimated monthly interest.
+              New balance = (previous balance + monthly deposit) × (1 + nominal annual rate ÷ 1200).
             </p>
           </div>
         </div>
@@ -1277,7 +1277,7 @@
         <p>
           A future savings balance may look large, but inflation can reduce what that money can buy. That is why
           this calculator includes an inflation-adjusted value. It estimates the purchasing power of the future
-          balance in today's terms.
+          balance in today's terms, assuming a constant annual inflation rate.
         </p>
 
         <p>
@@ -1519,7 +1519,7 @@
           <h3>What should I enter as the interest rate?</h3>
           <p>
             Use a conservative estimate. If you do not want to include interest, enter 0. For a savings account,
-            you can enter an approximate annual percentage yield. For investments, remember that returns can vary.
+            convert the advertised APY to a nominal annual rate before entry: 12 × ((1 + APY / 100)^(1/12) − 1) × 100. For investments, remember that returns can vary.
           </p>
         </div>
 
@@ -1643,9 +1643,8 @@
     const printBtn = document.getElementById("printBtn");
 
     function getValue(id) {
-      const element = document.getElementById(id);
-      const value = parseFloat(element.value);
-      return Number.isFinite(value) ? value : 0;
+      const raw = document.getElementById(id).value.trim();
+      return raw === "" ? NaN : Number(raw);
     }
 
     function getCurrency() {
@@ -1654,8 +1653,12 @@
 
     function formatMoney(amount) {
       const currency = getCurrency();
-      const rounded = Math.round(amount);
-      const formatted = rounded.toLocaleString("en-US");
+      if (!Number.isFinite(amount)) return "N/A";
+      const rounded = Math.round((amount + Number.EPSILON) * 100) / 100;
+      const formatted = rounded.toLocaleString("en-US", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+      });
 
       if (currency === "Ft") {
         return formatted + " Ft";
@@ -1681,14 +1684,15 @@
       const remainingMonths = months % 12;
 
       if (years === 0) {
-        return remainingMonths + " months";
+        return remainingMonths + (remainingMonths === 1 ? " month" : " months");
       }
 
       if (remainingMonths === 0) {
         return years + (years === 1 ? " year" : " years");
       }
 
-      return years + (years === 1 ? " year " : " years ") + remainingMonths + " months";
+      return years + (years === 1 ? " year " : " years ") + remainingMonths +
+        (remainingMonths === 1 ? " month" : " months");
     }
 
     function calculateTimeToGoal(startingBalance, monthlySavings, annualExtra, annualRate, goal) {
@@ -1727,13 +1731,29 @@
     }
 
     function calculateSavings() {
-      const startingBalance = Math.max(0, getValue("startingBalance"));
-      const monthlySavings = Math.max(0, getValue("monthlySavings"));
-      const annualExtra = Math.max(0, getValue("annualExtra"));
-      const annualRate = Math.max(0, getValue("annualRate"));
-      const inflationRate = Math.max(0, getValue("inflationRate"));
-      const years = Math.max(1, Math.min(50, Math.round(getValue("years"))));
-      const savingsGoal = Math.max(0, getValue("savingsGoal"));
+      const startingBalance = getValue("startingBalance");
+      const monthlySavings = getValue("monthlySavings");
+      const annualExtra = getValue("annualExtra");
+      const annualRate = getValue("annualRate");
+      const inflationRate = getValue("inflationRate");
+      const years = getValue("years");
+      const savingsGoal = getValue("savingsGoal");
+
+      const amounts = [startingBalance, monthlySavings, annualExtra, savingsGoal];
+      const valid = amounts.every(value => Number.isFinite(value) && value >= 0 && value <= 1e12) &&
+        Number.isFinite(annualRate) && annualRate >= 0 && annualRate <= 100 &&
+        Number.isFinite(inflationRate) && inflationRate >= 0 && inflationRate <= 100 &&
+        Number.isInteger(years) && years >= 1 && years <= 50;
+      if (!valid) {
+        ["endingBalance", "totalContributions", "interestEarned", "realValue", "averageAnnual", "timeToGoal"]
+          .forEach(id => document.getElementById(id).textContent = "—");
+        document.getElementById("goalProgressFill").style.width = "0%";
+        document.getElementById("goalProgressText").textContent = "—";
+        document.getElementById("breakdownBody").innerHTML = "";
+        document.getElementById("summaryText").textContent =
+          "Please enter valid non-negative numbers. Amounts must not exceed 1 trillion, rates must be between 0% and 100%, and years must be a whole number from 1 to 50.";
+        return;
+      }
 
       const monthlyRate = annualRate / 100 / 12;
       const inflationDecimal = inflationRate / 100;
@@ -1812,6 +1832,8 @@
 
       if (savingsGoal <= 0) {
         document.getElementById("timeToGoal").textContent = "No goal entered";
+      } else if (!Number.isFinite(timeToGoalMonths)) {
+        document.getElementById("timeToGoal").textContent = "Not reached within 50 years";
       } else {
         document.getElementById("timeToGoal").textContent = formatTime(timeToGoalMonths);
       }
