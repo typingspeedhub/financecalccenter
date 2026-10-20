@@ -456,8 +456,9 @@
       <section class="card">
         <h2>Calculate your extra mortgage payment savings</h2>
         <p>
-          Enter your remaining mortgage balance, interest rate, remaining term, and planned extra payments.
-          The calculator compares your current mortgage payoff schedule with a faster payoff plan that includes extra principal payments.
+          Enter your remaining mortgage balance, annual interest rate, remaining term, and planned extra principal payments.
+          The calculator estimates your regular payment using a fixed-rate amortization formula and compares it with a faster payoff plan.
+          Your actual contractual mortgage payment may differ from this estimate.
         </p>
 
         <div class="calculator-layout">
@@ -530,12 +531,12 @@
 
             <div class="summary-grid">
               <div class="summary-box">
-                <div class="summary-label">Regular principal & interest</div>
+                <div class="summary-label">Estimated regular monthly payment (including taxes & insurance)</div>
                 <div class="summary-value" id="regularPaymentOut">-</div>
               </div>
 
               <div class="summary-box">
-                <div class="summary-label">With extra monthly payment</div>
+                <div class="summary-label">Estimated monthly payment with extra principal (including taxes & insurance)</div>
                 <div class="summary-value" id="extraPaymentOut">-</div>
               </div>
 
@@ -575,6 +576,8 @@
         <p class="small-note">
           This calculator is an educational estimate. It uses a simplified monthly amortization method and does not include
           lender fees, mortgage insurance, escrow changes, prepayment penalties, adjustable-rate changes, or taxes and insurance in the payoff calculation.
+          The summary's monthly estimates include any taxes and insurance you enter; the comparison table and total-paid figures exclude them.
+          A one-time payoff means no further mortgage installments are due. Total paid includes the initial lump sum but excludes taxes and insurance.
         </p>
       </section>
 
@@ -860,7 +863,8 @@
 
         <h3>Is it better to pay extra monthly or once a year?</h3>
         <p>
-          Monthly extra payments usually reduce principal sooner, which may save more interest than waiting for one annual payment.
+          Making payments earlier generally reduces principal sooner and can save more interest. For equal annual totals,
+          monthly payments may save more than a lump sum paid at the end of the year, but a lump sum paid at the start may save more.
           However, the best method depends on your cash flow and budget.
         </p>
 
@@ -914,7 +918,7 @@
 
     function getValue(id) {
       const value = parseFloat(document.getElementById(id).value);
-      return Number.isFinite(value) ? value : 0;
+      return document.getElementById(id).value.trim() === "" ? NaN : value;
     }
 
     function getCurrency() {
@@ -1054,6 +1058,16 @@
       comparisonBody.appendChild(row);
     }
 
+    function clearResults() {
+      regularPaymentOut.textContent = "—";
+      extraPaymentOut.textContent = "—";
+      timeSavedOut.textContent = "—";
+      interestSavedOut.textContent = "—";
+      comparisonBody.innerHTML = "";
+      statusBox.className = "status warning";
+      statusBox.textContent = "Please correct the input values to calculate a new estimate.";
+    }
+
     function calculate() {
       const balance = getValue("balance");
       const rate = getValue("rate");
@@ -1063,14 +1077,22 @@
       const oneTimeExtra = getValue("oneTimeExtra");
       const propertyTaxInsurance = getValue("propertyTaxInsurance");
 
-      if (balance < 0 || rate < 0 || years < 0 || monthsInput < 0 || extraMonthly < 0 || oneTimeExtra < 0 || propertyTaxInsurance < 0) {
-        alert("Please enter zero or positive numbers only.");
+      if (
+        ![balance, rate, years, monthsInput, extraMonthly, oneTimeExtra, propertyTaxInsurance].every(Number.isFinite) ||
+        [balance, rate, years, monthsInput, extraMonthly, oneTimeExtra, propertyTaxInsurance].some(value => value < 0) ||
+        !Number.isInteger(years) || !Number.isInteger(monthsInput) || monthsInput > 11 ||
+        years * 12 + monthsInput > 720 || rate > 100 ||
+        !Number.isFinite(years * 12 + monthsInput)
+      ) {
+        clearResults();
+        alert("Enter valid non-negative numbers. Use whole years, 0–11 additional months, a term up to 60 years, and an interest rate up to 100%.");
         return;
       }
 
-      const remainingMonths = Math.round(years * 12 + monthsInput);
+      const remainingMonths = years * 12 + monthsInput;
 
       if (balance > 0 && remainingMonths <= 0) {
+        clearResults();
         alert("Please enter a remaining term greater than zero.");
         return;
       }
@@ -1080,8 +1102,10 @@
       const regularScenario = calculateScenario(balance, rate, remainingMonths, regularPayment, 0, 0);
       const extraScenario = calculateScenario(balance, rate, remainingMonths, regularPayment, extraMonthly, oneTimeExtra);
 
-      const totalRegularMonthly = regularPayment + propertyTaxInsurance;
-      const totalWithExtraMonthly = regularPayment + extraMonthly + propertyTaxInsurance;
+      // An immediate lump sum can settle the entire principal before another installment is due.
+      const totalRegularMonthly = balance > 0 ? regularPayment + propertyTaxInsurance : 0;
+      const totalWithExtraMonthly = extraScenario.months > 0
+        ? regularPayment + extraMonthly + propertyTaxInsurance : 0;
 
       regularPaymentOut.textContent = formatMoney(totalRegularMonthly);
       extraPaymentOut.textContent = formatMoney(totalWithExtraMonthly);
@@ -1108,8 +1132,9 @@
         statusBox.textContent =
           "The entered payment may not be enough to pay off the mortgage under this estimate.";
       } else if (extraMonthly > 0 || oneTimeExtra > 0) {
-        statusBox.textContent =
-          "Your extra payment plan may reduce your payoff time and total interest compared with the regular schedule.";
+        statusBox.textContent = extraScenario.months === 0
+          ? "Your one-time principal payment pays off the entire balance immediately. No further monthly mortgage payments are needed."
+          : "Your extra payment plan may reduce your payoff time and total interest compared with the regular schedule.";
       } else {
         statusBox.classList.add("warning");
         statusBox.textContent =
@@ -1218,4 +1243,3 @@
 </footer>
 </body>
 </html>
-
