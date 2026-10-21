@@ -749,13 +749,13 @@
               <div class="field">
                 <label for="itemCost">Purchase, bill, or item cost</label>
                 <input id="itemCost" type="number" value="250" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">The advertised price before extra costs.</span>
+                <span class="hint">Price before any additional sales tax; do not add tax twice if included.</span>
               </div>
 
               <div class="field">
                 <label for="taxRate">Sales tax / VAT (%)</label>
                 <input id="taxRate" type="number" value="8" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Use 0 if tax is already included.</span>
+                <span class="hint">Applied to the base item price only. Use 0 if tax is already included.</span>
               </div>
             </div>
 
@@ -783,7 +783,7 @@
               <div class="field">
                 <label for="effectiveTaxRate">Estimated tax/deduction rate (%)</label>
                 <input id="effectiveTaxRate" type="number" value="25" min="0" max="95" step="0.1" inputmode="decimal" />
-                <span class="hint">Used only to estimate gross pay needed.</span>
+                <span class="hint">Used only for a simplified gross pay estimate; actual deductions may differ.</span>
               </div>
             </div>
 
@@ -805,7 +805,7 @@
               <div class="field">
                 <label for="annualReturn">Assumed annual return if saved (%)</label>
                 <input id="annualReturn" type="number" value="4" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Optional hypothetical annual rate for comparison only; future returns are not guaranteed.</span>
+                <span class="hint">Optional hypothetical effective annual return, compounded annually; future returns are not guaranteed.</span>
               </div>
 
               <div class="field">
@@ -916,7 +916,7 @@
         </p>
         <p>
           For example, a $200 purchase may not feel large on its own. But if your take-home pay is $20 per hour,
-          the purchase represents about 10 hours of work before tax, shipping, or extra fees. Seeing the cost as
+          the purchase represents about 10 hours of net-pay work time, excluding sales tax, shipping, and extra fees. Seeing the cost as
           time can make the decision more realistic.
         </p>
 
@@ -942,7 +942,7 @@
           <li>Use the budget and savings fields if you want to compare the purchase with other goals.</li>
         </ol>
         <p>
-          The result is not meant to tell you what you are allowed to buy. It is a decision tool that helps you slow
+          The result is a work-time equivalent, not the literal number of additional hours you must work. It is not meant to tell you what you are allowed to buy. It is a decision tool that helps you slow
           down and compare the purchase with your time, budget, and future goals.
         </p>
       </section>
@@ -994,7 +994,7 @@
       <section class="card" id="examples">
         <h2>Work hours cost examples</h2>
         <p>
-          Example 1: a $120 purchase with $10 shipping and 8% tax costs $139.60. At $20 per hour take-home pay, it
+          Example 1: a $120 purchase with $10 shipping and 8% tax applied to the item price costs $139.60. At $20 per hour take-home pay, it
           takes about 7.0 hours of work to pay for it.
         </p>
         <p>
@@ -1038,7 +1038,7 @@
         <h2>How the savings trade-off works</h2>
         <p>
           The calculator illustrates what the purchase amount could become if it were saved instead for a chosen
-          number of years and earned the annual rate you enter. This is a hypothetical opportunity-cost comparison,
+          number of years and earned the constant effective annual return you enter, compounded once per year. This is a hypothetical opportunity-cost comparison,
           not a forecast. It does not mean the purchase is right or wrong; it simply provides another way to view the trade-off.
         </p>
         <p>
@@ -1068,7 +1068,7 @@
           <li><strong>Workdays:</strong> work hours ÷ your entered hours per workday.</li>
           <li><strong>Gross pay estimate:</strong> estimates the pre-deduction income needed using the effective deduction rate you enter.</li>
           <li><strong>Budget impact:</strong> compares total cost with the monthly flexible-spending budget you enter.</li>
-          <li><strong>Savings comparison:</strong> applies your assumed annual rate as a hypothetical compound-growth illustration.</li>
+          <li><strong>Savings comparison:</strong> applies your assumed effective annual return using annual compounding, before fees, taxes, and inflation.</li>
         </ul>
         <p>Results are planning estimates. Actual taxes and payroll deductions can be progressive or include fixed amounts, and savings or investment returns are uncertain. The calculator also cannot measure the personal usefulness, urgency, quality, or enjoyment of a purchase.</p>
       </section>
@@ -1137,7 +1137,7 @@
             financial, investment, tax, legal, or professional advice.
           </p>
         </div>
-        <p class="small"><strong>Updated September 18, 2026.</strong> Calculator assumptions, work-time methodology, and savings-comparison wording were reviewed for clarity.</p>
+        <p class="small"><strong>Updated October 21, 2026.</strong> Calculator assumptions, work-time methodology, and savings-comparison wording were reviewed for clarity.</p>
       </section>
     </main>
 
@@ -1151,8 +1151,8 @@
 
     function getValue(id) {
       const element = document.getElementById(id);
-      const value = parseFloat(element.value);
-      return Number.isFinite(value) ? value : 0;
+      if (element.value.trim() === "") return NaN;
+      return Number(element.value);
     }
 
     function getCurrency() {
@@ -1179,7 +1179,7 @@
 
     function formatHours(hours) {
       if (!Number.isFinite(hours) || hours <= 0) return "0 hours";
-      if (hours < 1) return (hours * 60).toFixed(0) + " minutes";
+      if (hours < 1) return (hours * 60).toFixed(1).replace(/\.0$/, "") + " minutes";
       return hours.toFixed(1) + " hours";
     }
 
@@ -1189,23 +1189,38 @@
     }
 
     function calculateWorkHoursCost() {
-      const itemCost = Math.max(0, getValue("itemCost"));
-      const taxRate = Math.max(0, getValue("taxRate"));
-      const shippingCost = Math.max(0, getValue("shippingCost"));
-      const otherFees = Math.max(0, getValue("otherFees"));
-      const hourlyTakeHome = Math.max(0, getValue("hourlyTakeHome"));
-      const effectiveTaxRate = Math.min(95, Math.max(0, getValue("effectiveTaxRate")));
-      const hoursPerDay = Math.max(1, getValue("hoursPerDay"));
-      const monthlyBudget = Math.max(0, getValue("monthlyBudget"));
-      const annualReturn = Math.max(0, getValue("annualReturn"));
-      const yearsSaved = Math.max(1, getValue("yearsSaved"));
+      const ids = ["itemCost", "taxRate", "shippingCost", "otherFees", "hourlyTakeHome",
+        "effectiveTaxRate", "hoursPerDay", "monthlyBudget", "annualReturn", "yearsSaved"];
+      const values = Object.fromEntries(ids.map(id => [id, getValue(id)]));
+      const invalid = ids.some(id => !Number.isFinite(values[id]) || values[id] < 0) ||
+        values.hourlyTakeHome <= 0 || values.effectiveTaxRate > 95 ||
+        values.hoursPerDay < 1 || values.hoursPerDay > 24 ||
+        values.yearsSaved < 1 || values.yearsSaved > 50 ||
+        !Number.isInteger(values.yearsSaved) || values.taxRate > 100 ||
+        values.annualReturn > 100;
 
-      const taxAmount = itemCost * (taxRate / 100);
+      const breakdownBody = document.getElementById("breakdownBody");
+      const summary = document.getElementById("summaryText");
+      const decision = document.getElementById("decisionBox");
+      if (invalid) {
+        ["workHours", "totalCost", "workDays", "grossPayNeeded", "budgetUsed", "futureValue"]
+          .forEach(id => { document.getElementById(id).textContent = "—"; });
+        document.getElementById("budgetProgressText").textContent = "N/A";
+        document.getElementById("budgetProgressFill").style.width = "0%";
+        breakdownBody.innerHTML = "";
+        summary.textContent = "Enter valid numbers in every field. Hourly take-home pay must be greater than zero, work hours per day must be 1–24, deduction rate must be 0–95%, and years saved must be a whole number from 1 to 50.";
+        decision.textContent = "No estimate is shown while the inputs are invalid.";
+        return;
+      }
+
+      const {itemCost, taxRate, shippingCost, otherFees, hourlyTakeHome,
+        effectiveTaxRate, hoursPerDay, monthlyBudget, annualReturn, yearsSaved} = values;
+      const taxAmount = itemCost * taxRate / 100;
       const totalCost = itemCost + taxAmount + shippingCost + otherFees;
-      const workHours = hourlyTakeHome > 0 ? totalCost / hourlyTakeHome : 0;
+      const workHours = totalCost / hourlyTakeHome;
       const workDays = workHours / hoursPerDay;
-      const grossPayNeeded = effectiveTaxRate < 95 ? totalCost / (1 - effectiveTaxRate / 100) : 0;
-      const budgetPercent = monthlyBudget > 0 ? (totalCost / monthlyBudget) * 100 : 0;
+      const grossPayNeeded = totalCost / (1 - effectiveTaxRate / 100);
+      const budgetPercent = monthlyBudget > 0 ? totalCost / monthlyBudget * 100 : null;
       const futureValue = totalCost * Math.pow(1 + annualReturn / 100, yearsSaved);
       const opportunityGain = futureValue - totalCost;
 
@@ -1213,32 +1228,27 @@
       document.getElementById("totalCost").textContent = formatMoneyExact(totalCost);
       document.getElementById("workDays").textContent = formatDays(workDays);
       document.getElementById("grossPayNeeded").textContent = formatMoneyExact(grossPayNeeded);
-      document.getElementById("budgetUsed").textContent = monthlyBudget > 0 ? budgetPercent.toFixed(1) + "%" : "N/A";
+      document.getElementById("budgetUsed").textContent = budgetPercent !== null ? budgetPercent.toFixed(1) + "%" : "N/A";
       document.getElementById("futureValue").textContent = formatMoneyExact(futureValue);
+      document.getElementById("budgetProgressText").textContent = budgetPercent !== null ? budgetPercent.toFixed(1) + "%" : "N/A";
+      document.getElementById("budgetProgressFill").style.width = (budgetPercent !== null ? Math.min(100, budgetPercent) : 0) + "%";
 
-      const progress = Math.max(0, Math.min(100, budgetPercent));
-      document.getElementById("budgetProgressText").textContent = monthlyBudget > 0 ? budgetPercent.toFixed(1) + "%" : "N/A";
-      document.getElementById("budgetProgressFill").style.width = progress + "%";
-
-      const summary = document.getElementById("summaryText");
-      summary.textContent = "This cost equals about " + formatHours(workHours) + " of take-home work time, or " + formatDays(workDays) + ". The total cost is " + formatMoneyExact(totalCost) + ".";
-
-      const decision = document.getElementById("decisionBox");
-      if (hourlyTakeHome <= 0) {
-        decision.textContent = "Enter your hourly take-home pay to calculate the time cost of this purchase.";
-      } else if (monthlyBudget > 0 && budgetPercent >= 100) {
-        decision.textContent = "This purchase equals or exceeds the monthly flexible-spending budget you entered. Review how that fits with your other expenses and priorities.";
-      } else if (workHours >= 40) {
-        decision.textContent = "This purchase equals roughly a full workweek or more based on the work schedule and take-home pay you entered.";
-      } else if (workHours >= 8) {
-        decision.textContent = "This purchase equals about one full workday or more based on the values you entered.";
+      summary.textContent = "This purchase represents about " + formatHours(workHours) +
+        " of take-home work-time equivalent, or " + formatDays(workDays) +
+        ". Total cost: " + formatMoneyExact(totalCost) + ".";
+      if (budgetPercent !== null && budgetPercent >= 100) {
+        decision.textContent = "This purchase equals or exceeds the monthly flexible-spending budget you entered. Review how it fits your other expenses and priorities.";
+      } else if (workDays >= 5) {
+        decision.textContent = "This purchase represents five or more of your entered workdays (a five-day workweek equivalent, not necessarily your actual schedule).";
+      } else if (workDays >= 1) {
+        decision.textContent = "This purchase represents at least one of your entered workdays. Review it alongside your budget and priorities.";
       } else {
-        decision.textContent = "This purchase is below one full workday based on your inputs. Use that result together with your budget, needs, and priorities.";
+        decision.textContent = "This purchase represents less than one of your entered workdays. Consider your budget, needs, and priorities too.";
       }
 
       const rows = [
         ["Base cost", formatMoneyExact(itemCost)],
-        ["Tax / VAT", formatMoneyExact(taxAmount)],
+        ["Sales tax / VAT on base cost", formatMoneyExact(taxAmount)],
         ["Shipping or service fees", formatMoneyExact(shippingCost)],
         ["Other add-ons", formatMoneyExact(otherFees)],
         ["Total out-of-pocket cost", formatMoneyExact(totalCost)],
@@ -1246,14 +1256,11 @@
         ["Work hours needed", formatHours(workHours)],
         ["Workdays needed", formatDays(workDays)],
         ["Estimated gross pay needed", formatMoneyExact(grossPayNeeded)],
-        ["Monthly budget used", monthlyBudget > 0 ? budgetPercent.toFixed(1) + "%" : "N/A"],
+        ["Monthly budget used", budgetPercent !== null ? budgetPercent.toFixed(1) + "%" : "N/A"],
         ["Hypothetical value if saved", formatMoneyExact(futureValue)],
         ["Hypothetical growth if saved", formatMoneyExact(opportunityGain)]
       ];
-
-      document.getElementById("breakdownBody").innerHTML = rows.map(function(row) {
-        return "<tr><td>" + row[0] + "</td><td>" + row[1] + "</td></tr>";
-      }).join("");
+      breakdownBody.innerHTML = rows.map(row => "<tr><td>" + row[0] + "</td><td>" + row[1] + "</td></tr>").join("");
     }
 
     form.addEventListener("submit", function(event) {
@@ -1287,7 +1294,7 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "All",
     "description": "Free work hours cost calculator that converts purchases, bills, and subscriptions into hours of work based on hourly take-home pay.",
-    "dateModified": "2026-09-18",
+    "dateModified": "2026-10-21",
     "creator": {"@type": "Person", "name": "Tibor Győry"},
     "offers": {
       "@type": "Offer",
