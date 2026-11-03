@@ -1,365 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1607876440670769"
-    crossorigin="anonymous"></script>
-  
-<meta charset="UTF-8">
-<title>How Mortgage Payments Are Calculated | Principal, Interest, Taxes & Insurance</title>
-
-<meta name="description" content="Learn how mortgage payments are calculated step by step including principal, interest, property taxes and insurance. See real examples and understand the true cost of a home loan.">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://financecalccenter.com/how-mortgage-payments-are-calculated.html">
-
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
-
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-68ZVCW4FWK');
-</script>
-
-<style>
-
-:root{
---bg:#020617;
---card:#020617;
---accent:#22c55e;
---text:#e5e7eb;
---muted:#9ca3af;
---border:#1f2937;
-}
-
-body{
-margin:0;
-font-family:system-ui,-apple-system,Segoe UI,sans-serif;
-background:radial-gradient(circle at top,#1f2937 0,#020617 45%) fixed;
-color:var(--text);
-line-height:1.6;
-}
-
-.wrapper{
-max-width:900px;
-margin:auto;
-padding:2rem 1.25rem;
-}
-
-h1{
-font-size:2.2rem;
-margin-bottom:.5rem;
-}
-
-h2{
-margin-top:2.5rem;
-font-size:1.5rem;
-}
-
-p{
-color:var(--muted);
-}
-
-.card{
-background:rgba(15,23,42,0.9);
-border:1px solid var(--border);
-padding:1.25rem;
-border-radius:1rem;
-margin:1.5rem 0;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:1rem;
-}
-
-td,th{
-padding:.6rem;
-border-bottom:1px solid var(--border);
-text-align:left;
-}
-
-.btn{
-display:inline-block;
-background:linear-gradient(135deg,#22c55e,#16a34a);
-padding:.6rem 1.2rem;
-border-radius:999px;
-color:#022c22;
-text-decoration:none;
-font-weight:600;
-margin-top:1rem;
-}
-
-footer{
-margin-top:3rem;
-border-top:1px solid var(--border);
-padding-top:1rem;
-font-size:.8rem;
-color:var(--muted);
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How Mortgage Payments Are Calculated | Principal, Interest, Taxes &amp; Insurance</title>
+  <meta name="description" content="Learn how mortgage payments are calculated, including principal, interest, taxes, insurance and PMI. See the formula and accurate monthly examples.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://financecalccenter.com/how-mortgage-payments-are-calculated.html">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1607876440670769" crossorigin="anonymous"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-68ZVCW4FWK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-68ZVCW4FWK');
+  </script>
+  <style>
+    :root{--bg:#020617;--accent:#22c55e;--text:#e5e7eb;--muted:#b7c0ce;--border:#334155}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle at top,#1f2937 0,#020617 45%) fixed;color:var(--text);line-height:1.7}
+    .wrapper{max-width:900px;margin:auto;padding:2rem 1.25rem}
+    h1{font-size:clamp(1.9rem,5vw,2.4rem);line-height:1.2;margin-bottom:.5rem}
+    h2{margin-top:2.5rem;font-size:1.5rem;line-height:1.3}
+    h3{margin-top:1.5rem;font-size:1.1rem}
+    p,li{color:var(--muted)}
+    strong,th{color:var(--text)}
+    .card{background:rgba(15,23,42,.9);border:1px solid var(--border);padding:1.25rem;border-radius:1rem;margin:1.5rem 0}
+    .table-scroll{max-width:100%;overflow-x:auto;margin-top:1rem}
+    table{width:100%;border-collapse:collapse;min-width:440px}
+    td,th{padding:.7rem .6rem;border-bottom:1px solid var(--border);text-align:left}
+    th{background:rgba(255,255,255,.05)}
+    a{color:var(--accent)}
+    a:hover,a:focus{text-decoration:underline}
+    .btn{display:inline-block;background:linear-gradient(135deg,#22c55e,#16a34a);padding:.6rem 1.2rem;border-radius:999px;color:#022c22;text-decoration:none;font-weight:700;margin-top:1rem}
+    .formula{font-weight:600;overflow-wrap:anywhere;font-size:1.08rem;color:var(--text)}
+    .small{font-size:.9rem;color:var(--muted)}
+    footer{margin-top:3rem;border-top:1px solid var(--border);padding-top:1rem;font-size:.85rem;color:var(--muted)}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"How Mortgage Payments Are Calculated",
+    "description":"Explanation of mortgage principal, interest, property taxes, homeowners insurance and PMI with worked examples.",
+    "inLanguage":"en",
+    "author":{"@type":"Organization","name":"FinanceCalcCenter"},
+    "publisher":{"@type":"Organization","name":"FinanceCalcCenter","url":"https://financecalccenter.com/"},
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://financecalccenter.com/how-mortgage-payments-are-calculated.html"}
+  }
+  </script>
 </head>
-
 <body>
-
 <div class="wrapper">
+<main>
+  <h1>How Mortgage Payments Are Calculated</h1>
+  <p>When people think about a mortgage payment, they often assume it is just the loan repayment. In reality, the amount you pay to your mortgage servicer may include several components. Understanding them helps you plan your budget, compare loan offers, and avoid surprises.</p>
+  <p>A typical U.S. mortgage payment can include four elements, often called <strong>PITI</strong>:</p>
+  <ul><li><strong>Principal</strong> — repayment of the loan balance</li><li><strong>Interest</strong> — the cost of borrowing</li><li><strong>Property taxes</strong> — local taxes on the property</li><li><strong>Insurance</strong> — usually homeowners insurance, and sometimes mortgage insurance</li></ul>
+  <p>Taxes and homeowners insurance are often collected by the lender through an escrow account, but sometimes you pay them separately. Additional expenses such as HOA dues and maintenance may not be included in the amount you send to the lender.</p>
 
-<h1>How Mortgage Payments Are Calculated</h1>
+  <h2>Principal: Repaying the Loan Amount</h2>
+  <p>The <strong>principal</strong> is the amount borrowed. With a standard fully amortizing fixed-rate mortgage, every scheduled principal-and-interest payment reduces the balance over time.</p>
+  <div class="card"><strong>Example: 20% down payment</strong><p>Home price: $400,000<br>Down payment (20%): $80,000<br>Loan amount: <strong>$320,000</strong></p></div>
+  <p>Early in the loan term, a greater share of the scheduled principal-and-interest payment typically goes toward interest. As the balance falls, the share going toward principal increases. The combined principal-and-interest payment generally stays constant on a standard fixed-rate loan, assuming no extra payments or changes to the loan.</p>
 
-<p>
-When people think about a mortgage payment, they often assume it is just the loan repayment.
-In reality, most mortgage payments include several components.
-Understanding how mortgage payments are calculated can help you plan your budget,
-compare loan offers, and understand the real cost of buying a home.
-</p>
+  <h2>Interest: The Cost of Borrowing</h2>
+  <p>Interest is charged on the outstanding loan balance. For a standard fixed-rate mortgage with monthly payments, a common illustration uses the annual interest rate divided by 12 to obtain the monthly rate. Actual lender calculations and payment timing can vary by loan terms.</p>
+  <div class="card"><strong>Example: 30-year fixed-rate mortgage</strong><p>Loan amount: $320,000<br>Annual interest rate: 6%<br>Loan term: 30 years (360 months)<br>Monthly principal and interest: <strong>$1,918.56</strong> (about $1,919)</p></div>
 
-<p>
-A typical mortgage payment includes four main parts often called <strong>PITI</strong>:
-</p>
+  <h2>Mortgage Payment Formula</h2>
+  <p>For a conventional fully amortizing fixed-rate loan with equal monthly principal-and-interest payments, use:</p>
+  <div class="card"><p class="formula">M = P × [r(1 + r)<sup>n</sup>] / [(1 + r)<sup>n</sup> − 1]</p>
+    <ul><li><strong>M</strong> = monthly principal-and-interest payment</li><li><strong>P</strong> = original loan principal</li><li><strong>r</strong> = monthly interest rate (annual rate ÷ 12, as a decimal)</li><li><strong>n</strong> = total number of monthly payments (years × 12)</li></ul>
+    <p>In this example: P = $320,000, r = 0.06 ÷ 12 = 0.005, and n = 30 × 12 = 360. Therefore M ≈ <strong>$1,918.56</strong>.</p>
+    <p class="small">If the interest rate is 0%, the monthly principal-and-interest payment is simply P ÷ n. This formula does not include taxes, insurance, HOA fees, closing costs or adjustable-rate changes.</p>
+  </div>
 
-<ul>
-<li>Principal</li>
-<li>Interest</li>
-<li>Property Taxes</li>
-<li>Insurance</li>
-</ul>
+  <h2>Property Taxes</h2>
+  <p>Property taxes are assessed by state or local authorities and depend on the property and location. Many mortgage servicers collect an estimated monthly amount in escrow and pay the tax bill when due. Tax assessments can change.</p>
+  <div class="card">Illustrative annual property tax: $4,800<br>Estimated monthly tax portion: <strong>$400.00</strong> ($4,800 ÷ 12)</div>
+  <p>If taxes are not collected through escrow, you still need to budget for them and pay them separately.</p>
 
-<p>
-Each of these components contributes to the total amount you pay every month.
-</p>
+  <h2>Homeowners Insurance</h2>
+  <p>Mortgage lenders generally require appropriate property insurance. Some insurance premiums are included in monthly escrow payments, while others are paid directly to the insurer.</p>
+  <div class="card">Illustrative annual homeowners insurance: $1,200<br>Estimated monthly insurance portion: <strong>$100.00</strong> ($1,200 ÷ 12)</div>
 
-<h2>Principal: Repaying the Loan Amount</h2>
+  <h2>Private Mortgage Insurance (PMI)</h2>
+  <p>PMI typically applies to certain <strong>conventional mortgages</strong> when the down payment is less than 20%. It protects the lender, not the borrower. In the $400,000 home example above, the borrower makes a 20% down payment; <strong>PMI is therefore not included in the base example</strong>.</p>
+  <p>Other mortgage programs have different insurance requirements. Some conventional loans may offer lender-paid mortgage insurance or other pricing structures. The conditions for canceling borrower-paid PMI also depend on the loan.</p>
+  <div class="card"><strong>Separate example: 5% down payment</strong><p>Home price: $400,000<br>Down payment (5%): $20,000<br>Loan amount: $380,000<br>30-year fixed rate: 6%<br>Monthly principal and interest: <strong>$2,278.29</strong><br>Illustrative property tax: $400.00<br>Illustrative homeowners insurance: $100.00<br>Illustrative monthly PMI: $150.00<br><strong>Estimated total monthly payment: $2,928.29</strong></p><p class="small">The $150 PMI is a hypothetical illustration, not a quoted premium. Real PMI costs depend on the borrower, loan and insurer.</p></div>
 
-<p>
-The <strong>principal</strong> is the amount of money you borrow from the lender.
-Every mortgage payment gradually reduces this balance.
-</p>
+  <h2>Total Monthly Mortgage Payment Example</h2>
+  <p>Returning to the <strong>20%-down-payment, $320,000 loan</strong> example at 6% over 30 years, the estimated payment is:</p>
+  <div class="table-scroll"><table><thead><tr><th scope="col">Component</th><th scope="col">Monthly cost</th></tr></thead><tbody>
+    <tr><td>Principal + interest</td><td>$1,918.56</td></tr>
+    <tr><td>Property taxes (illustrative)</td><td>$400.00</td></tr>
+    <tr><td>Homeowners insurance (illustrative)</td><td>$100.00</td></tr>
+    <tr><td>PMI (20%-down conventional loan)</td><td>$0.00</td></tr>
+    <tr><td><strong>Estimated total</strong></td><td><strong>$2,418.56</strong></td></tr>
+  </tbody></table></div>
+  <p>The example assumes the estimated tax and insurance amounts remain unchanged. It excludes HOA dues, maintenance, utilities, any fees not shown and other ownership costs. A fixed principal-and-interest payment does <em>not</em> guarantee that the full payment including escrow will stay the same.</p>
 
-<p>
-For example:
-</p>
+  <h2>How Interest Rates Affect Monthly Payments</h2>
+  <p>Even modest changes in interest rates can change monthly principal-and-interest payments. This table uses the same $320,000 loan amount and 30-year term each time.</p>
+  <div class="table-scroll"><table><thead><tr><th scope="col">Annual interest rate</th><th scope="col">Monthly principal + interest</th></tr></thead><tbody>
+    <tr><td>5%</td><td>$1,717.83</td></tr>
+    <tr><td>6%</td><td>$1,918.56</td></tr>
+    <tr><td>7%</td><td>$2,128.97</td></tr>
+  </tbody></table></div>
+  <p>These figures exclude taxes, homeowners insurance, mortgage insurance, HOA dues and other costs. The comparison holds the loan amount and term constant; it is not a prediction of future rates.</p>
 
-<div class="card">
-Home price: $400,000<br>
-Down payment: $80,000<br>
-Loan amount (principal): $320,000
-</div>
+  <h2>Costs That May Not Be Included</h2>
+  <p>When comparing the payment with your household budget, also account for HOA or condominium dues, maintenance, repairs, utilities, upfront closing costs and possible changes in property taxes or insurance. HOA dues are often paid separately from the mortgage servicer.</p>
+  <p>Review the lender's <strong>Loan Estimate</strong>, especially the Projected Payments section, to see which costs are included in the estimated monthly payment.</p>
 
-<p>
-In the early years of a mortgage, only a small part of the payment goes toward the principal.
-Most of the payment goes toward interest.
-Over time, the principal portion becomes larger.
-</p>
+  <h2>Calculate Your Own Mortgage Payment</h2>
+  <p>Because mortgage costs depend on the loan and property, use a calculator to explore different principal amounts, rates and terms. Check separately whether the calculator includes taxes, insurance and other expenses.</p>
+  <a href="/mortgage-calculator.html" class="btn">Try the Mortgage Calculator →</a>
 
+  <h2>Official Sources and Further Reading</h2>
+  <ul>
+    <li><a href="https://www.consumerfinance.gov/ask-cfpb/how-do-mortgage-lenders-calculate-monthly-payments-en-1965/" target="_blank" rel="noopener noreferrer">CFPB — How do mortgage lenders calculate monthly payments?</a> — The standard fixed-rate loan payment and important exceptions.</li>
+    <li><a href="https://www.consumerfinance.gov/ask-cfpb/on-a-mortgage-whats-the-difference-between-my-principal-and-interest-payment-and-my-total-monthly-payment-en-1941/" target="_blank" rel="noopener noreferrer">CFPB — Principal and interest versus total monthly payment</a> — Taxes, insurance, escrow and other payment components.</li>
+    <li><a href="https://www.consumerfinance.gov/ask-cfpb/what-is-private-mortgage-insurance-en-122/" target="_blank" rel="noopener noreferrer">CFPB — What is private mortgage insurance?</a> — When PMI is commonly required and whom it protects.</li>
+    <li><a href="https://www.consumerfinance.gov/ask-cfpb/how-does-paying-down-a-mortgage-work-en-1943/" target="_blank" rel="noopener noreferrer">CFPB — How does paying down a mortgage work?</a> — Explanation of amortization.</li>
+  </ul>
 
-<h2>Interest: The Cost of Borrowing</h2>
-
-<p>
-Interest is the fee charged by the lender for providing the loan.
-Mortgage interest is typically calculated annually but paid monthly.
-</p>
-
-<p>
-For example, with a 6% interest rate:
-</p>
-
-<div class="card">
-  Loan amount: $320,000<br>
-  Interest rate: 6%<br>
-  Loan term: 30 years<br><br>
-  Estimated monthly principal + interest payment ≈ <strong>$1,918</strong>
-</div>
-
-<p>
-Interest is highest at the beginning of the loan because it is calculated based on the remaining balance.
-</p>
-
-<h2>Property Taxes</h2>
-
-<p>
-Property taxes are charged by local governments based on the value of your home.
-Many lenders collect property taxes through an escrow account.
-</p>
-
-<p>
-Example:
-</p>
-
-<div class="card">
-Annual property tax: $4,800<br>
-Monthly tax portion: $400
-</div>
-
-<p>
-This amount is added to your monthly mortgage payment and paid to the local tax authority.
-</p>
-
-<h2>Homeowners Insurance</h2>
-
-<p>
-Lenders require homeowners insurance to protect the property against damage or disasters.
-Like property taxes, insurance is often included in the monthly payment through escrow.
-</p>
-
-<p>
-Example:
-</p>
-
-<div class="card">
-Annual insurance: $1,200<br>
-Monthly portion: $100
-</div>
-
-<h2>Private Mortgage Insurance (PMI)</h2>
-
-<p>
-Private mortgage insurance may be required when the down payment is below a certain percentage of the home price.
-PMI protects the lender, not the borrower, but the borrower usually pays the monthly premium.
-</p>
-
-<div class="card">
-Estimated monthly PMI: $150<br>
-Previous monthly payment: $2,418<br>
-New estimated total payment: $2,568
-</div>
-
-<p>
-PMI rules vary by loan type and lender. Some borrowers may be able to remove PMI later after building enough equity.
-</p>
-  
-<h2>Total Monthly Mortgage Payment Example</h2>
-
-<p>
-Let’s combine all major monthly mortgage costs, including estimated private mortgage insurance (PMI).
-</p>
-
-<table>
-
-<tr>
-<th>Component</th>
-<th>Monthly Cost</th>
-</tr>
-
-<tr>
-<td>Principal + Interest</td>
-<td>$1,918</td>
-</tr>
-
-<tr>
-<td>Property Taxes</td>
-<td>$400</td>
-</tr>
-
-<tr>
-<td>Homeowners Insurance</td>
-<td>$100</td>
-</tr>
-
-<tr>
-<td>Private Mortgage Insurance (PMI)</td>
-<td>$150</td>
-</tr>
-
-<tr>
-<td><strong>Total Monthly Payment</strong></td>
-<td><strong>$2,568</strong></td>
-</tr>
-
-</table>
-
-<p>
-This means the real cost of the mortgage is not just the loan repayment.
-Taxes and insurance can significantly increase the monthly payment.
-</p>
-
-
-<h2>How Interest Rates Affect Monthly Payments</h2>
-
-<p>
-Even small changes in interest rates can significantly affect your monthly payment.
-</p>
-
-<table>
-
-<tr>
-<th>Interest Rate</th>
-<th>Monthly Payment (30-year loan, $320k)</th>
-</tr>
-
-<tr>
-<td>5%</td>
-<td>$1,718</td>
-</tr>
-
-<tr>
-<td>6%</td>
-<td>$1,918</td>
-</tr>
-
-<tr>
-<td>7%</td>
-<td>$2,129</td>
-</tr>
-
-</table>
-
-<p>
-This is why comparing interest rates is extremely important when choosing a mortgage.
-</p>
-
-
-<h2>Calculate Your Own Mortgage Payment</h2>
-
-<p>
-Because mortgage calculations depend on many variables,
-using a calculator is the easiest way to estimate your payment.
-</p>
-
-<a href="/mortgage-calculator.html" class="btn">
-Try the Mortgage Calculator →
-</a>
-
-
-<h2>Key Takeaways</h2>
-
-<ul>
-<li>Mortgage payments usually include principal, interest, taxes, and insurance.</li>
-<li>Interest is highest at the beginning of the loan.</li>
-<li>Property taxes and insurance can significantly increase monthly costs.</li>
-<li>Even small interest rate changes can affect affordability.</li>
-</ul>
-
-<p>
-Understanding how mortgage payments work can help you choose the right loan
-and avoid surprises when planning your housing budget.
-</p>
-
-<footer style="margin-top:3rem;color:#9ca3af;">
-  <p>
-    © <script>document.write(new Date().getFullYear())</script> FinanceCalcCenter — Educational content only. Not financial advice.
-  </p>
-
-  <p>
-    <a href="privacy-policy.html">Privacy Policy</a> ·
-    <a href="terms-and-conditions.html">Terms</a> ·
-    <a href="disclaimer.html">Disclaimer</a> ·
-    <a href="about.html">About</a> ·
-    <a href="contact.html">Contact</a>
-  </p>
+  <h2>Key Takeaways</h2>
+  <ul>
+    <li>A mortgage's principal-and-interest payment is not necessarily the entire monthly housing cost.</li>
+    <li>Taxes and homeowners insurance may be added through escrow or paid separately.</li>
+    <li>PMI usually applies to conventional mortgages with less than 20% down, depending on the loan structure.</li>
+    <li>A fixed rate generally keeps principal and interest stable, but taxes and insurance can change.</li>
+    <li>Compare the complete housing budget, not just the quoted loan payment.</li>
+  </ul>
+  <p>Understanding these components can help you compare loan offers and plan more realistically. This article provides educational examples, not a lending quote or individualized financial advice.</p>
+</main>
+<footer>
+  <p>© <span id="year"></span> FinanceCalcCenter — Educational content only. Not financial advice.</p>
+  <p><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-and-conditions.html">Terms</a> · <a href="disclaimer.html">Disclaimer</a> · <a href="about.html">About</a> · <a href="contact.html">Contact</a></p>
 </footer>
-
 </div>
-
-
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
