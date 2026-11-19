@@ -754,7 +754,7 @@
               <div class="field">
                 <label for="taxRate">Sales tax / VAT (%)</label>
                 <input id="taxRate" type="number" value="8" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Use 0 if tax is already included.</span>
+                <span class="hint">Applied to the item price only. Enter 0 if tax is already included; add any other applicable taxes under fees.</span>
               </div>
             </div>
 
@@ -782,7 +782,7 @@
               <div class="field">
                 <label for="monthlySpendingBudget">Monthly fun-money budget</label>
                 <input id="monthlySpendingBudget" type="number" value="300" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Optional monthly amount for wants or non-essential spending.</span>
+                <span class="hint">Optional monthly allowance for non-essential purchases. The checkout cost is compared with one month's budget.</span>
               </div>
             </div>
 
@@ -796,7 +796,7 @@
               <div class="field">
                 <label for="financingApr">Financing APR (%)</label>
                 <input id="financingApr" type="number" value="0" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Estimated annual percentage rate if financed. Enter the lender or card APR, not the monthly rate.</span>
+                <span class="hint">Enter the annual APR, not a monthly rate. Assumes fixed monthly payments; real credit-card charges may differ.</span>
               </div>
             </div>
 
@@ -804,7 +804,7 @@
               <div class="field">
                 <label for="savingsReturn">Assumed annual return if saved (%)</label>
                 <input id="savingsReturn" type="number" value="4" min="0" step="0.01" inputmode="decimal" />
-                <span class="hint">Optional hypothetical annual rate for comparison only; future returns are not guaranteed.</span>
+                <span class="hint">Hypothetical constant effective annual return, compounded once per year; excludes fees and taxes. Not guaranteed.</span>
               </div>
 
               <div class="field">
@@ -835,28 +835,28 @@
           <div class="soft-card">
             <h2>Your impulse purchase estimate</h2>
             <p>
-              The results show the real purchase cost and several practical trade-offs: time worked, budget impact,
-              financing cost, and possible savings value if you do not buy today.
+              The results compare checkout cost, estimated total repayment if financed, equivalent paid work hours,
+              one-month budget impact, and a hypothetical savings alternative.
             </p>
 
             <div class="result-grid">
               <div class="result-box highlight">
-                <span>Total cost today</span>
+                <span>Checkout cost (before financing)</span>
                 <strong id="totalCost">$0</strong>
               </div>
 
               <div class="result-box">
-                <span>Work hours needed</span>
+                <span>Work hours for total amount paid</span>
                 <strong id="workHours">0 hours</strong>
               </div>
 
               <div class="result-box">
-                <span>Budget used</span>
+                <span>Checkout cost / monthly wants budget</span>
                 <strong id="budgetUsed">0%</strong>
               </div>
 
               <div class="result-box">
-                <span>Estimated financing cost</span>
+                <span>Estimated financing interest</span>
                 <strong id="financingCost">$0</strong>
               </div>
 
@@ -866,14 +866,19 @@
               </div>
 
               <div class="result-box">
-                <span>Hypothetical value if saved</span>
+                <span>Total amount paid (including financing)</span>
+                <strong id="totalRepaid">$0</strong>
+              </div>
+
+              <div class="result-box">
+                <span>Hypothetical future value if checkout amount saved</span>
                 <strong id="futureValue">$0</strong>
               </div>
             </div>
 
             <div class="progress-wrap">
               <div class="progress-label">
-                <span>Monthly fun-money budget used</span>
+                <span>Checkout cost as % of monthly wants budget</span>
                 <span id="budgetProgressText">0%</span>
               </div>
               <div class="progress-bar" aria-hidden="true">
@@ -891,17 +896,20 @@
             </div>
 
             <div class="info-box">
-              <strong>How to read these results:</strong> “Total cost today” includes the item price, entered tax,
-              shipping, and add-ons. Financing cost is estimated separately from the APR and term you enter.
-              The savings comparison is a hypothetical compound-growth illustration, not a forecast or guaranteed return.
+              <strong>How to read these results:</strong> “Checkout cost” is the estimated price before borrowing costs:
+              item price, tax applied to the item price only, shipping, and add-ons. “Total amount paid” also includes estimated
+              financing interest when a repayment period is entered. Work hours use the total amount paid; the budget percentage
+              compares the checkout cost with one full month's discretionary budget, not a financed monthly payment.
+              The savings comparison assumes you save the checkout amount today at a constant annual rate; it is not a forecast.
             </div>
           </div>
         </div>
 
         <h2>Cost breakdown</h2>
         <p>
-          This table separates the advertised price from taxes, shipping, fees, financing, and the estimated
-          opportunity cost of not saving the money.
+          This table separates the checkout price from taxes, shipping, fees, estimated financing interest and
+          hypothetical growth you give up by spending the checkout amount instead of saving it. Do not add every row together:
+          totals and growth comparisons are shown for reference, not as additional checkout charges.
         </p>
 
         <div class="table-wrap">
@@ -966,18 +974,19 @@
           A simple impulse purchase estimate starts with this formula:
         </p>
         <div class="summary-box">
-          Total cost today = item price + tax + shipping + other fees
+          Checkout cost = item price + tax on item price + shipping + other fees
         </div>
         <p>
-          If the purchase is financed, the total repayment may be higher than the price today. This calculator
-          estimates monthly payment and financing cost using a standard monthly APR calculation. If APR is 0%, it
-          simply divides the total cost by the number of months.
+          If the purchase is financed, total repayment may be higher than the checkout cost. The calculator models a
+          fully amortizing loan with a fixed monthly interest rate of APR ÷ 12 and equal monthly payments. It excludes
+          extra lender fees, late charges and promotional terms. If the APR is 0%, the model divides the checkout cost
+          equally over the entered months. Real credit cards typically use a different interest calculation.
         </p>
         <p>
           The calculator also estimates work hours:
         </p>
         <div class="summary-box">
-          Work hours needed = total cost today ÷ hourly take-home pay
+          Work hours = (checkout cost + estimated financing interest) ÷ hourly take-home pay
         </div>
       </section>
 
@@ -1007,7 +1016,7 @@
       <section class="card" id="examples">
         <h2>Impulse purchase examples</h2>
         <p>
-          Example 1: a $120 item with 8% tax and $10 shipping costs $139.60 today. If your after-tax pay is $20 per
+          Example 1: a $120 item with 8% tax on the item price and $10 shipping costs $139.60 at checkout. If your after-tax pay is $20 per
           hour, that purchase equals about 7 hours of work.
         </p>
         <p>
@@ -1052,8 +1061,8 @@
         <h2>Why work hours are useful</h2>
         <p>
           Work hours turn money into time. This is useful because a price tag can feel abstract, especially online.
-          If a purchase costs 10 hours of take-home pay, you can ask whether the item is worth more than a full day
-          of work.
+          If a purchase represents 10 hours of take-home pay, you can consider whether it is worth that much earning time.
+          This is an affordability comparison, not the monetary value of every hour of your free time.
         </p>
         <p>
           Use take-home pay rather than gross pay if possible. Taxes, deductions, commuting costs, and other
@@ -1097,13 +1106,14 @@
         <ul>
           <li><strong>Checkout cost:</strong> item price + entered tax + shipping + other fees.</li>
           <li><strong>Financing estimate:</strong> uses a standard fixed-payment calculation based on the APR and number of months entered.</li>
-          <li><strong>Work-time estimate:</strong> divides checkout cost by your entered hourly take-home pay.</li>
-          <li><strong>Budget impact:</strong> compares checkout cost with the monthly discretionary-spending amount you enter.</li>
-          <li><strong>Savings comparison:</strong> applies the annual rate you enter as a hypothetical compound-growth assumption.</li>
+          <li><strong>Work-time estimate:</strong> divides estimated total repayment (or checkout cost if paid in full) by entered hourly take-home pay.</li>
+          <li><strong>Budget impact:</strong> compares the one-time checkout cost with one month's discretionary budget, even when the item is financed; it does not represent a monthly installment ratio.</li>
+          <li><strong>Savings comparison:</strong> compounds the checkout amount once per year at the entered constant effective annual return, assuming no fees, taxes or withdrawals.</li>
         </ul>
         <p>
-          Real-world results can differ. Credit cards may use daily interest, promotional rates may expire, taxes and
-          fees vary by location, and investment or savings returns are uncertain. The calculator also cannot measure
+          Real-world results can differ. Taxes are applied only to the item price in this tool; tax treatment of shipping or
+          fees depends on location. Credit cards may use daily interest, promotional rates and lender fees may apply,
+          and savings returns are uncertain. The calculator also cannot measure
           personal value, urgency, product quality, or whether a purchase is a need rather than a want.
         </p>
       </section>
@@ -1179,7 +1189,7 @@
         </div>
 
         <p class="small">
-          <strong>Updated September 17, 2026.</strong> Calculator assumptions, financing explanations, and savings-comparison wording were reviewed for clarity.
+          <strong>Updated November 19, 2026.</strong> Financing, work-hours and savings-comparison assumptions were clarified.
         </p>
       </section>
     </main>
@@ -1262,7 +1272,7 @@
       const totalRepaid = financingMonths > 0 ? monthlyPayment * financingMonths : totalCostToday;
       const financingCost = Math.max(0, totalRepaid - totalCostToday);
 
-      const workHours = hourlyPay > 0 ? totalCostToday / hourlyPay : 0;
+      const workHours = hourlyPay > 0 ? totalRepaid / hourlyPay : 0;
       const budgetUsed = monthlySpendingBudget > 0 ? (totalCostToday / monthlySpendingBudget) * 100 : 0;
 
       const annualReturnDecimal = savingsReturn / 100;
@@ -1279,6 +1289,7 @@
         : "No budget entered";
 
       document.getElementById("financingCost").textContent = formatMoneyExact(financingCost);
+      document.getElementById("totalRepaid").textContent = formatMoneyExact(totalRepaid);
       document.getElementById("monthlyPayment").textContent = financingMonths > 0
         ? formatMoneyExact(monthlyPayment)
         : "Paid in full";
@@ -1296,12 +1307,12 @@
 
       const rows = [
         ["Item price", itemPrice, "The advertised price before extra costs."],
-        ["Sales tax / VAT", taxAmount, "Estimated tax based on the percentage entered."],
+        ["Sales tax / VAT", taxAmount, "Tax percentage applied only to the entered item price."],
         ["Shipping and handling", shippingCost, "Delivery, handling, or convenience charges."],
         ["Other fees or add-ons", otherFees, "Accessories, warranties, service fees, or extras."],
-        ["Total cost today", totalCostToday, "The estimated out-of-pocket cost if you buy now."],
+        ["Checkout cost before financing", totalCostToday, "Item price plus entered tax, shipping and add-ons; not including borrowing interest."],
         ["Financing interest", financingCost, "Extra cost from paying over time, if financing is used."],
-        ["Total repayment", totalRepaid, "Estimated total paid after financing, if applicable."],
+        ["Total amount paid", totalRepaid, "Checkout cost plus estimated financing interest (not an extra charge to add again)."],
         ["Hypothetical growth if saved", opportunityGain, "Illustrative growth above the checkout amount using the annual rate entered; not guaranteed."]
       ];
 
@@ -1314,20 +1325,21 @@
         breakdownBody.appendChild(row);
       });
 
-      let summary = "This purchase costs about " + formatMoneyExact(totalCostToday) + " today";
+      let summary = "The estimated checkout cost before financing is " + formatMoneyExact(totalCostToday);
 
       if (hourlyPay > 0) {
-        summary += ", which equals about " + workHours.toFixed(1) + " hours of take-home work";
+        summary += ". The estimated total amount paid represents about " + workHours.toFixed(1) + " hours at your take-home hourly rate";
       }
 
       if (monthlySpendingBudget > 0) {
-        summary += ". It would use " + formatPercent(budgetUsed) + " of your monthly fun-money budget";
+        summary += ". The checkout cost equals " + formatPercent(budgetUsed) + " of one month's fun-money budget";
       }
 
       if (financingMonths > 0) {
         summary += ". If financed for " + financingMonths + " months at " + financingApr.toFixed(2) +
           "% APR, the estimated monthly payment is " + formatMoneyExact(monthlyPayment) +
-          " and the estimated financing cost is " + formatMoneyExact(financingCost);
+          "; total estimated repayment is " + formatMoneyExact(totalRepaid) +
+          ", including " + formatMoneyExact(financingCost) + " in interest";
       }
 
       summary += ". If the checkout amount were saved for " + yearsSaved + (yearsSaved === 1 ? " year" : " years") +
@@ -1339,7 +1351,7 @@
       let decision = "";
 
       if (monthlySpendingBudget > 0 && budgetUsed > 100) {
-        decision = "This purchase is larger than your monthly fun-money budget. Waiting, saving first, or skipping it may protect your cash flow.";
+        decision = "The one-time checkout cost exceeds your monthly wants budget. If financing, also check whether each installment fits future budgets. Waiting or saving first may protect your cash flow.";
       } else if (financingMonths > 0 && financingApr > 0) {
         decision = "Financing adds extra cost. Check whether the item is still worth it after including interest and future monthly payments.";
       } else if (workHours >= 8) {
@@ -1389,8 +1401,8 @@
     "url": "https://financecalccenter.com/impulse-purchase-calculator.html",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
-    "description": "A free impulse purchase calculator that estimates the real cost of unplanned buying, including tax, shipping, fees, financing interest, work hours, budget impact, and savings trade-off.",
-    "dateModified": "2026-09-17",
+    "description": "A free impulse purchase calculator to compare checkout cost, estimated loan repayment, work hours, discretionary-budget impact and hypothetical savings growth.",
+    "dateModified": "2026-11-19",
     "creator": {"@type": "Person", "name": "Tibor Győry"},
     "offers": {
       "@type": "Offer",
