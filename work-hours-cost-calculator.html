@@ -1137,7 +1137,7 @@
             financial, investment, tax, legal, or professional advice.
           </p>
         </div>
-        <p class="small"><strong>Updated October 21, 2026.</strong> Calculator assumptions, work-time methodology, and savings-comparison wording were reviewed for clarity.</p>
+        <p class="small"><strong>Updated November 22, 2026.</strong> Calculator assumptions, work-time methodology, and savings-comparison wording were reviewed for clarity.</p>
       </section>
     </main>
 
@@ -1150,10 +1150,25 @@
     const printBtn = document.getElementById("printBtn");
 
     function getValue(id) {
-      const element = document.getElementById(id);
-      if (element.value.trim() === "") return NaN;
-      return Number(element.value);
-    }
+  const element = document.getElementById(id);
+  const value = element.value.trim();
+
+  if (value === "") {
+    const optionalFields = [
+      "taxRate",
+      "shippingCost",
+      "otherFees",
+      "effectiveTaxRate",
+      "monthlyBudget",
+      "annualReturn"
+    ];
+
+    if (optionalFields.includes(id)) return 0;
+    return NaN;
+  }
+
+  return Number(value);
+}
 
     function getCurrency() {
       return document.getElementById("currency").value;
@@ -1223,6 +1238,27 @@
       const budgetPercent = monthlyBudget > 0 ? totalCost / monthlyBudget * 100 : null;
       const futureValue = totalCost * Math.pow(1 + annualReturn / 100, yearsSaved);
       const opportunityGain = futureValue - totalCost;
+
+if (![taxAmount, totalCost, workHours, workDays,
+      grossPayNeeded, futureValue, opportunityGain]
+      .every(Number.isFinite) ||
+    (budgetPercent !== null && !Number.isFinite(budgetPercent))) {
+  summary.textContent =
+    "The entered values are too large to calculate reliably.";
+  decision.textContent =
+    "Please enter smaller values and try again.";
+
+  ["workHours", "totalCost", "workDays",
+   "grossPayNeeded", "budgetUsed", "futureValue"]
+    .forEach(id => {
+      document.getElementById(id).textContent = "—";
+    });
+
+  document.getElementById("budgetProgressText").textContent = "N/A";
+  document.getElementById("budgetProgressFill").style.width = "0%";
+  breakdownBody.innerHTML = "";
+  return;
+}
 
       document.getElementById("workHours").textContent = formatHours(workHours);
       document.getElementById("totalCost").textContent = formatMoneyExact(totalCost);
@@ -1294,7 +1330,7 @@
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "All",
     "description": "Free work hours cost calculator that converts purchases, bills, and subscriptions into hours of work based on hourly take-home pay.",
-    "dateModified": "2026-10-21",
+    "dateModified": "2026-11-22",
     "creator": {"@type": "Person", "name": "Tibor Győry"},
     "offers": {
       "@type": "Offer",
