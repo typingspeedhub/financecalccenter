@@ -37,7 +37,7 @@
     content="Plan your money with simple, accurate online calculators for interest, loans, mortgages and savings goals."
   />
   <meta property="og:url" content="https://financecalccenter.com/" />
-  <!-- <meta property="og:image" content="https://financecalccenter.com/og-image.png" /> -->
+<meta property="og:image" content="https://financecalccenter.com/og-image.png" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -326,7 +326,15 @@
 .ebooks-grid .tool-card {
   grid-column: span 2;
 }
+@media (max-width: 640px) {
+  .ebooks-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
+  .ebooks-grid .tool-card {
+    grid-column: auto;
+  }
+}
     
     @media (max-width: 1024px) {
       .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -464,18 +472,16 @@
         </p>
 
         <div class="hero-actions">
-          <a href="compound-interest-calculator.html">
-            <button class="btn btn-primary" type="button">
-              <span>Open compound interest calculator</span>
-              <span>→</span>
-            </button>
-          </a>
-          <a href="#tools">
-            <button class="btn btn-secondary" type="button">
-              <span>Browse calculators</span>
-            </button>
-          </a>
-        </div>
+  <a href="compound-interest-calculator.html"
+     class="btn btn-primary">
+    <span>Open compound interest calculator</span>
+    <span>→</span>
+  </a>
+
+  <a href="#tools" class="btn btn-secondary">
+    <span>Browse calculators</span>
+  </a>
+</div>
         <p class="hero-note">
           Educational use only · Not financial advice · Results are estimates.
         </p>
@@ -1086,49 +1092,49 @@
 
   <div class="ebooks-grid">
     <a href="https://payhip.com/b/LABgO" class="tool-card" target="_blank" rel="nofollow sponsored noopener">
-      <div class="tool-label">Digital guide</div>
+     <div class="tool-label">Paid digital guide</div>
       <div class="tool-name">The Credit Card Reset System</div>
       <div class="tool-desc">
         Learn how to understand credit card debt, avoid costly interest habits, and reset your credit card routine step by step.
       </div>
       <div class="tool-meta">
         <span class="pill">PDF eBook</span>
-        <span>Instant download</span>
+       <span>View eBook &amp; Pricing</span>
       </div>
     </a>
 
     <a href="https://payhip.com/b/h2Oqu" class="tool-card" target="_blank" rel="nofollow sponsored noopener">
-      <div class="tool-label">Digital guide</div>
+     <div class="tool-label">Paid digital guide</div>
       <div class="tool-name">Debt-Free Starter Blueprint</div>
       <div class="tool-desc">
         A simple debt payoff guide with payoff methods, planning steps, worksheets, and monthly tracking tools.
       </div>
       <div class="tool-meta">
         <span class="pill">PDF eBook</span>
-        <span>Instant download</span>
+      <span>View eBook &amp; Pricing</span>
       </div>
     </a>
     <a href="https://payhip.com/b/GLr3k" class="tool-card" target="_blank" rel="nofollow sponsored noopener">
-      <div class="tool-label">Digital guide</div>
+      <div class="tool-label">Paid digital guide</div>
       <div class="tool-name">Stop Paying the Minimum</div>
       <div class="tool-desc">
         A practical 90-day debt reset guide to help you understand minimum payments, reduce interest habits, and build a simple payoff system.
     </div>
     <div class="tool-meta">
       <span class="pill">PDF eBook</span>
-      <span>Instant download</span>
+      <span>View eBook &amp; Pricing</span>
     </div>
       </a>
 
 <a href="https://payhip.com/b/zSWJD" class="tool-card" target="_blank" rel="nofollow sponsored noopener">
-  <div class="tool-label">Digital guide</div>
+  <div class="tool-label">Paid digital guide</div>
   <div class="tool-name">Stop Losing Money to Hidden Costs</div>
   <div class="tool-desc">
     A practical 30-day guide to help you find spending leaks, review subscriptions, reduce everyday costs, and keep more of your paycheck.
   </div>
   <div class="tool-meta">
     <span class="pill">PDF eBook</span>
-    <span>Instant download</span>
+  <span>View eBook &amp; Pricing</span>
   </div>
 </a>
 
@@ -1161,7 +1167,7 @@
       <span>
         <a href="privacy-policy.html" style="color:#22c55e;">Privacy Policy</a> ·
         <a href="terms-and-conditions.html" style="color:#22c55e;">Terms</a> ·
-         <a href="disclaimer.html">Disclaimer</a>
+         <a href="disclaimer.html" style="color:#22c55e;">Disclaimer</a> ·
         <a href="about.html" style="color:#22c55e;">About</a> ·
         <a href="contact.html" style="color:#22c55e;">Contact</a> ·
         <a href="sitemap.xml" style="color:#22c55e;">Sitemap</a>
